@@ -15,6 +15,19 @@ apis:
       with programmatic access to a proprietary software application. An API is
       software that makes it possible for application programs to interact with
       each other and share data. Filter Total Items: 25. Year. Advanced filters.
+  - aid: u-s-geological-survey:asset-identifier-service-ais
+    name: Asset Identifier Service (AIS)
+    description: >-
+      The USGS Asset Identifier Service (AIS) allows USGS personnel to reserve,
+      register, publish, and manage USGS persistent identifiers to make our
+      research more Findable, Accessible, Interoperable, and Reusable (FAIR).
+      AIS includes separate modules for unique identifier types including the
+      following:
+    humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+    tags: []
+    properties:
+      - type: Documentation
+        url: https://www.usgs.gov/tools/asset-identifier-service-ais
 name: U.S. Geological Survey
 tags:
   - Federal Government
@@ -22,7 +35,7 @@ type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2024-11-14'
-modified: '2025-01-03'
+modified: '2025-02-28'
 position: Consuming
 description: >-
   The U.S. Geological Survey (USGS) is a scientific agency of the U.S.
@@ -39,3 +52,4 @@ maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
 specificationVersion: '0.19'
+common: []
