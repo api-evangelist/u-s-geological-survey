@@ -262,6 +262,9 @@ apis:
 name: U.S. Geological Survey
 tags:
   - Federal Government
+  - Mining
+  - Geological
+  - Natural Resources
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
