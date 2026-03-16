@@ -270,7 +270,7 @@ image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common: []
 created: '2024-11-14'
-modified: '2025-02-28'
+modified: '2026-03-16'
 position: Consuming
 description: >-
   The U.S. Geological Survey (USGS) is a scientific agency of the U.S.
@@ -285,5 +285,5 @@ description: >-
   understanding and preserving the natural environment of the United States.
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
