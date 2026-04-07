@@ -164,8 +164,7 @@ apis:
   - aid: u-s-geological-survey:earthquake-notifications-feeds-and-web-services
     name: Earthquake Notifications, Feeds, and Web Services
     tags: []
-    humanURL: 
-      https://www.usgs.gov/tools/earthquake-notifications-feeds-and-web-services
+    humanURL: https://www.usgs.gov/tools/earthquake-notifications-feeds-and-web-services
     properties:
       - url: >-
           https://www.usgs.gov/tools/earthquake-notifications-feeds-and-web-services
@@ -230,11 +229,9 @@ apis:
   - aid: u-s-geological-survey:coastal-information-management-system-cims
     name: Coastal Information Management System (CIMS)
     tags: []
-    humanURL: 
-      https://www.usgs.gov/tools/coastal-information-management-system-cims
+    humanURL: https://www.usgs.gov/tools/coastal-information-management-system-cims
     properties:
-      - url: 
-          https://www.usgs.gov/tools/coastal-information-management-system-cims
+      - url: https://www.usgs.gov/tools/coastal-information-management-system-cims
         type: Documentation
     description: >-
       WARCs Advanced Applications Team is responsible for data management and application
@@ -243,8 +240,7 @@ apis:
   - aid: u-s-geological-survey:integrated-taxonomic-information-system-itis
     name: Integrated Taxonomic Information System (ITIS)
     tags: []
-    humanURL: 
-      https://www.usgs.gov/tools/integrated-taxonomic-information-system-itis
+    humanURL: https://www.usgs.gov/tools/integrated-taxonomic-information-system-itis
     properties:
       - url: >-
           https://www.usgs.gov/tools/integrated-taxonomic-information-system-itis
@@ -254,8 +250,7 @@ apis:
       that enables biodiversity information to be discovered, indexed, and connected
       across all human endeavors. Use the ITIS search, download, API, and web tools
       as a standardized reference of scientific names and their taxonomic hierarchy.
-  - aid: 
-      u-s-geological-survey:species-of-greatest-conservation-need-analysis-tool
+  - aid: u-s-geological-survey:species-of-greatest-conservation-need-analysis-tool
     name: Species of Greatest Conservation Need Analysis Tool
     tags: []
     humanURL: >-
@@ -274,11 +269,9 @@ apis:
   - aid: u-s-geological-survey:national-vegetation-classification-standard
     name: National Vegetation Classification Standard
     tags: []
-    humanURL: 
-      https://www.usgs.gov/tools/national-vegetation-classification-standard
+    humanURL: https://www.usgs.gov/tools/national-vegetation-classification-standard
     properties:
-      - url: 
-          https://www.usgs.gov/tools/national-vegetation-classification-standard
+      - url: https://www.usgs.gov/tools/national-vegetation-classification-standard
         type: Documentation
     description: >-
       The National Vegetation Classification (NVC) is your guide to inventorying plant
@@ -300,8 +293,8 @@ apis:
 name: U.S. Geological Survey
 tags:
   - Federal Government
-  - Mining
   - Geological
+  - Mining
   - Natural Resources
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
