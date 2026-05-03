@@ -1,0 +1,834 @@
+openapi: 3.0.3
+info:
+  title: USGS Earthquake Notifications, Feeds, and Web Services
+  description: >-
+    The USGS Earthquake Hazards Program provides real-time earthquake data
+    through the FDSN (International Federation of Digital Seismograph Networks)
+    Event Web Service. This API allows searching the USGS ANSS (Advanced
+    National Seismic System) ComCat earthquake catalog for event data using
+    geographic, temporal, magnitude, and other filters. Responses are available
+    in GeoJSON, CSV, KML, QuakeML, and text formats.
+  version: "1.0"
+  contact:
+    name: USGS Earthquake Hazards Program
+    url: https://earthquake.usgs.gov/
+    email: shake-admin@usgs.gov
+  license:
+    name: Public Domain (U.S. Government Work)
+    url: https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits
+  x-generated-from: documentation
+servers:
+  - url: https://earthquake.usgs.gov/fdsnws/event/1
+    description: USGS FDSN Event Web Service
+tags:
+  - name: Earthquakes
+    description: >-
+      Query and retrieve earthquake event data from the USGS earthquake catalog.
+  - name: Catalog
+    description: >-
+      Discover available catalogs, contributors, and supported parameter values.
+paths:
+  /query:
+    get:
+      operationId: queryEarthquakes
+      summary: USGS Query Earthquake Events
+      description: >-
+        Search the USGS earthquake catalog using geographic, temporal, magnitude,
+        depth, and other filters. Returns earthquake events in the requested
+        format (GeoJSON by default). Supports both rectangle and circle spatial
+        filters, with a maximum of 20,000 events per request.
+      tags:
+        - Earthquakes
+      parameters:
+        - name: format
+          in: query
+          required: false
+          description: >-
+            Response format. Options: geojson (default), csv, kml, quakeml,
+            text, xml.
+          schema:
+            type: string
+            enum:
+              - geojson
+              - csv
+              - kml
+              - quakeml
+              - text
+              - xml
+            default: geojson
+            example: geojson
+        - name: starttime
+          in: query
+          required: false
+          description: >-
+            Limit events to those occurring after this time. ISO8601 format.
+            Default: NOW minus 30 days.
+          schema:
+            type: string
+            format: date-time
+            example: "2025-01-01T00:00:00Z"
+        - name: endtime
+          in: query
+          required: false
+          description: >-
+            Limit events to those occurring before this time. ISO8601 format.
+            Default: present.
+          schema:
+            type: string
+            format: date-time
+            example: "2025-01-31T23:59:59Z"
+        - name: updatedafter
+          in: query
+          required: false
+          description: Return events updated after this ISO8601 timestamp.
+          schema:
+            type: string
+            format: date-time
+        - name: minlatitude
+          in: query
+          required: false
+          description: Minimum latitude for rectangle filter in degrees (-90 to 90).
+          schema:
+            type: number
+            format: float
+            minimum: -90
+            maximum: 90
+            example: 25.0
+        - name: maxlatitude
+          in: query
+          required: false
+          description: Maximum latitude for rectangle filter in degrees (-90 to 90).
+          schema:
+            type: number
+            format: float
+            minimum: -90
+            maximum: 90
+            example: 50.0
+        - name: minlongitude
+          in: query
+          required: false
+          description: Minimum longitude for rectangle filter in degrees (-360 to 360).
+          schema:
+            type: number
+            format: float
+            minimum: -360
+            maximum: 360
+            example: -125.0
+        - name: maxlongitude
+          in: query
+          required: false
+          description: Maximum longitude for rectangle filter in degrees (-360 to 360).
+          schema:
+            type: number
+            format: float
+            minimum: -360
+            maximum: 360
+            example: -65.0
+        - name: latitude
+          in: query
+          required: false
+          description: Latitude for circle filter center in degrees (-90 to 90).
+          schema:
+            type: number
+            format: float
+            minimum: -90
+            maximum: 90
+            example: 37.75
+        - name: longitude
+          in: query
+          required: false
+          description: Longitude for circle filter center in degrees (-360 to 360).
+          schema:
+            type: number
+            format: float
+            minimum: -360
+            maximum: 360
+            example: -122.0
+        - name: maxradius
+          in: query
+          required: false
+          description: Maximum search radius for circle filter in degrees (0 to 180).
+          schema:
+            type: number
+            format: float
+            minimum: 0
+            maximum: 180
+            example: 5.0
+        - name: maxradiuskm
+          in: query
+          required: false
+          description: Maximum search radius for circle filter in kilometers (0 to 20001.6).
+          schema:
+            type: number
+            format: float
+            minimum: 0
+            maximum: 20001.6
+            example: 100.0
+        - name: minmagnitude
+          in: query
+          required: false
+          description: Minimum earthquake magnitude.
+          schema:
+            type: number
+            format: float
+            example: 2.5
+        - name: maxmagnitude
+          in: query
+          required: false
+          description: Maximum earthquake magnitude.
+          schema:
+            type: number
+            format: float
+            example: 8.0
+        - name: mindepth
+          in: query
+          required: false
+          description: Minimum event depth in kilometers (-100 to 1000).
+          schema:
+            type: number
+            format: float
+            minimum: -100
+            maximum: 1000
+            example: 0.0
+        - name: maxdepth
+          in: query
+          required: false
+          description: Maximum event depth in kilometers (-100 to 1000).
+          schema:
+            type: number
+            format: float
+            minimum: -100
+            maximum: 1000
+            example: 700.0
+        - name: eventid
+          in: query
+          required: false
+          description: Retrieve a specific event by its USGS event identifier.
+          schema:
+            type: string
+            example: us7000n5no
+        - name: limit
+          in: query
+          required: false
+          description: Maximum number of events to return (1 to 20000).
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 20000
+            example: 100
+        - name: offset
+          in: query
+          required: false
+          description: Starting record number for paginated results (1-based).
+          schema:
+            type: integer
+            minimum: 1
+            example: 1
+        - name: orderby
+          in: query
+          required: false
+          description: Order results by time, time-asc, magnitude, or magnitude-asc.
+          schema:
+            type: string
+            enum:
+              - time
+              - time-asc
+              - magnitude
+              - magnitude-asc
+            default: time
+            example: time
+        - name: catalog
+          in: query
+          required: false
+          description: Filter by earthquake catalog (e.g., us, ci, nc).
+          schema:
+            type: string
+            example: us
+        - name: contributor
+          in: query
+          required: false
+          description: Filter by contributing network.
+          schema:
+            type: string
+            example: us
+        - name: eventtype
+          in: query
+          required: false
+          description: Filter by event type (earthquake, explosion, quarry blast, etc.).
+          schema:
+            type: string
+            example: earthquake
+        - name: alertlevel
+          in: query
+          required: false
+          description: Filter by PAGER alert level (green, yellow, orange, red).
+          schema:
+            type: string
+            enum:
+              - green
+              - yellow
+              - orange
+              - red
+            example: yellow
+        - name: minsig
+          in: query
+          required: false
+          description: Minimum significance value (integer, 0+).
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+        - name: maxsig
+          in: query
+          required: false
+          description: Maximum significance value.
+          schema:
+            type: integer
+            minimum: 0
+            example: 1000
+        - name: reviewstatus
+          in: query
+          required: false
+          description: Filter by review status (automatic or reviewed).
+          schema:
+            type: string
+            enum:
+              - automatic
+              - reviewed
+            example: reviewed
+        - name: producttype
+          in: query
+          required: false
+          description: >-
+            Filter by product type associated with the event (moment-tensor,
+            focal-mechanism, shakemap, losspager, dyfi).
+          schema:
+            type: string
+            example: shakemap
+        - name: includedeleted
+          in: query
+          required: false
+          description: Include deleted events in results (true, false, or only).
+          schema:
+            type: string
+            enum:
+              - "true"
+              - "false"
+              - only
+            example: "false"
+        - name: includeallorigins
+          in: query
+          required: false
+          description: Include all origin solutions in results.
+          schema:
+            type: boolean
+            example: false
+        - name: includeallmagnitudes
+          in: query
+          required: false
+          description: Include all magnitude estimates in results.
+          schema:
+            type: boolean
+            example: false
+        - name: nodata
+          in: query
+          required: false
+          description: HTTP status code to return when no data is found (204 or 404).
+          schema:
+            type: integer
+            enum:
+              - 204
+              - 404
+            example: 204
+      responses:
+        '200':
+          description: Successful response with earthquake event data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EarthquakeFeatureCollection'
+              examples:
+                QueryEarthquakes200Example:
+                  summary: Default queryEarthquakes 200 response
+                  x-microcks-default: true
+                  value:
+                    type: FeatureCollection
+                    metadata:
+                      generated: 1743897600000
+                      url: "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=1"
+                      title: "USGS Earthquakes"
+                      status: 200
+                      api: "1.14.1"
+                      count: 1
+                    features:
+                      - type: Feature
+                        properties:
+                          mag: 4.5
+                          place: "45 km NE of San Francisco, CA"
+                          time: 1743840000000
+                          updated: 1743843600000
+                          tz: null
+                          url: "https://earthquake.usgs.gov/earthquakes/eventpage/us7000n5no"
+                          detail: "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000n5no&format=geojson"
+                          felt: null
+                          cdi: null
+                          mmi: 3.2
+                          alert: null
+                          status: reviewed
+                          tsunami: 0
+                          sig: 312
+                          net: us
+                          code: "7000n5no"
+                          ids: ",us7000n5no,"
+                          sources: ",us,"
+                          types: ",origin,phase-data,"
+                          nst: 45
+                          dmin: 0.82
+                          rms: 0.45
+                          gap: 78
+                          magType: mb
+                          type: earthquake
+                          title: "M 4.5 - 45 km NE of San Francisco, CA"
+                        geometry:
+                          type: Point
+                          coordinates:
+                            - -122.0
+                            - 37.75
+                            - 10.5
+                        id: us7000n5no
+        '204':
+          description: No events found matching the query parameters.
+        '400':
+          description: Invalid request parameters.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '404':
+          description: No data found (when nodata=404).
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /count:
+    get:
+      operationId: countEarthquakes
+      summary: USGS Count Earthquake Events
+      description: >-
+        Return the number of earthquake events matching the query parameters
+        without returning event data. Accepts the same parameters as the query
+        endpoint.
+      tags:
+        - Earthquakes
+      parameters:
+        - name: format
+          in: query
+          required: false
+          description: Response format (geojson or text).
+          schema:
+            type: string
+            enum:
+              - geojson
+              - text
+            default: geojson
+        - name: starttime
+          in: query
+          required: false
+          description: Start time in ISO8601 format.
+          schema:
+            type: string
+            format: date-time
+            example: "2025-01-01T00:00:00Z"
+        - name: endtime
+          in: query
+          required: false
+          description: End time in ISO8601 format.
+          schema:
+            type: string
+            format: date-time
+            example: "2025-01-31T23:59:59Z"
+        - name: minmagnitude
+          in: query
+          required: false
+          description: Minimum earthquake magnitude.
+          schema:
+            type: number
+            format: float
+            example: 5.0
+        - name: maxmagnitude
+          in: query
+          required: false
+          description: Maximum earthquake magnitude.
+          schema:
+            type: number
+            format: float
+            example: 9.0
+        - name: minlatitude
+          in: query
+          required: false
+          description: Minimum latitude for rectangle filter.
+          schema:
+            type: number
+            format: float
+        - name: maxlatitude
+          in: query
+          required: false
+          description: Maximum latitude for rectangle filter.
+          schema:
+            type: number
+            format: float
+        - name: minlongitude
+          in: query
+          required: false
+          description: Minimum longitude for rectangle filter.
+          schema:
+            type: number
+            format: float
+        - name: maxlongitude
+          in: query
+          required: false
+          description: Maximum longitude for rectangle filter.
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Count of matching earthquake events.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountResponse'
+              examples:
+                CountEarthquakes200Example:
+                  summary: Default countEarthquakes 200 response
+                  x-microcks-default: true
+                  value:
+                    count: 1547
+                    maxAllowed: 20000
+        '400':
+          description: Invalid request parameters.
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /catalogs:
+    get:
+      operationId: listCatalogs
+      summary: USGS List Available Earthquake Catalogs
+      description: >-
+        Return a list of available earthquake catalog sources that can be
+        used to filter event queries.
+      tags:
+        - Catalog
+      parameters:
+        - name: format
+          in: query
+          required: false
+          description: Response format.
+          schema:
+            type: string
+            enum:
+              - text
+              - geojson
+            default: text
+      responses:
+        '200':
+          description: List of available earthquake catalogs.
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                ListCatalogs200Example:
+                  summary: Default listCatalogs 200 response
+                  x-microcks-default: true
+                  value: "ak\nci\ncn\nhv\nld\nmb\nnc\nnn\nok\npa\npr\nus\nuu\nuw"
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /contributors:
+    get:
+      operationId: listContributors
+      summary: USGS List Earthquake Data Contributors
+      description: >-
+        Return a list of data contributors (seismic networks) that provide
+        earthquake information to the USGS catalog.
+      tags:
+        - Catalog
+      parameters:
+        - name: format
+          in: query
+          required: false
+          description: Response format.
+          schema:
+            type: string
+            enum:
+              - text
+              - geojson
+            default: text
+      responses:
+        '200':
+          description: List of earthquake data contributors.
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                ListContributors200Example:
+                  summary: Default listContributors 200 response
+                  x-microcks-default: true
+                  value: "ak\nci\ncn\nhv\nnc\nus\nuu"
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /version:
+    get:
+      operationId: getVersion
+      summary: USGS Get Earthquake API Version
+      description: Return the current version of the USGS FDSN Event Web Service.
+      tags:
+        - Catalog
+      responses:
+        '200':
+          description: Service version string.
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                GetVersion200Example:
+                  summary: Default getVersion 200 response
+                  x-microcks-default: true
+                  value: "1.14.1"
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+components:
+  schemas:
+    EarthquakeFeatureCollection:
+      title: EarthquakeFeatureCollection
+      type: object
+      description: >-
+        GeoJSON FeatureCollection containing earthquake event records from the
+        USGS ComCat earthquake catalog.
+      properties:
+        type:
+          type: string
+          description: GeoJSON object type (always FeatureCollection).
+          example: FeatureCollection
+        metadata:
+          $ref: '#/components/schemas/EarthquakeMetadata'
+        features:
+          type: array
+          description: Array of earthquake event GeoJSON Features.
+          items:
+            $ref: '#/components/schemas/EarthquakeFeature'
+        bbox:
+          type: array
+          description: Bounding box for the collection [min_lon, min_lat, max_lon, max_lat].
+          items:
+            type: number
+          example:
+            - -180.0
+            - -90.0
+            - 180.0
+            - 90.0
+
+    EarthquakeMetadata:
+      title: EarthquakeMetadata
+      type: object
+      description: Metadata about the earthquake query response.
+      properties:
+        generated:
+          type: integer
+          description: Unix timestamp (milliseconds) when the response was generated.
+          example: 1743897600000
+        url:
+          type: string
+          description: URL used to generate this response.
+          example: "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=10"
+        title:
+          type: string
+          description: Title for this result set.
+          example: "USGS Earthquakes"
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 200
+        api:
+          type: string
+          description: API version string.
+          example: "1.14.1"
+        count:
+          type: integer
+          description: Number of events returned.
+          example: 47
+        limit:
+          type: integer
+          description: Maximum events requested.
+          example: 100
+        offset:
+          type: integer
+          description: Starting offset in the result set.
+          example: 1
+
+    EarthquakeFeature:
+      title: EarthquakeFeature
+      type: object
+      description: A GeoJSON Feature representing a single earthquake event.
+      properties:
+        type:
+          type: string
+          description: GeoJSON object type (always Feature).
+          example: Feature
+        properties:
+          $ref: '#/components/schemas/EarthquakeProperties'
+        geometry:
+          $ref: '#/components/schemas/EarthquakeGeometry'
+        id:
+          type: string
+          description: Unique USGS event identifier.
+          example: us7000n5no
+
+    EarthquakeProperties:
+      title: EarthquakeProperties
+      type: object
+      description: Properties of an earthquake event including magnitude, location, and metadata.
+      properties:
+        mag:
+          type: number
+          description: Earthquake magnitude.
+          example: 4.5
+        place:
+          type: string
+          description: Textual description of the event location.
+          example: "45 km NE of San Francisco, CA"
+        time:
+          type: integer
+          description: Unix timestamp (milliseconds) of the earthquake occurrence.
+          example: 1743840000000
+        updated:
+          type: integer
+          description: Unix timestamp (milliseconds) of the last catalog update.
+          example: 1743843600000
+        url:
+          type: string
+          description: USGS event detail page URL.
+          example: "https://earthquake.usgs.gov/earthquakes/eventpage/us7000n5no"
+        detail:
+          type: string
+          description: API URL for the full event GeoJSON.
+          example: "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000n5no&format=geojson"
+        felt:
+          type: integer
+          description: Number of DYFI (Did You Feel It?) responses.
+          example: 23
+        cdi:
+          type: number
+          description: Maximum Community Determined Intensity (CDI) value.
+          example: 3.5
+        mmi:
+          type: number
+          description: Maximum Modified Mercalli Intensity (MMI) from ShakeMap.
+          example: 3.2
+        alert:
+          type: string
+          description: PAGER alert level (green, yellow, orange, red).
+          example: green
+        status:
+          type: string
+          description: Review status (automatic or reviewed).
+          example: reviewed
+        tsunami:
+          type: integer
+          description: >-
+            Tsunami hazard flag. 1 if tsunami warning was issued; 0 otherwise.
+          example: 0
+        sig:
+          type: integer
+          description: >-
+            Significance value (0-1000) indicating event importance based
+            on magnitude, MMI, felt reports, and estimated impact.
+          example: 312
+        net:
+          type: string
+          description: Network ID for the preferred source of event data.
+          example: us
+        code:
+          type: string
+          description: Event code assigned by the network.
+          example: "7000n5no"
+        magType:
+          type: string
+          description: Magnitude type (ml, md, mb, mw, mww, etc.).
+          example: mb
+        type:
+          type: string
+          description: Event type (earthquake, explosion, quarry blast, etc.).
+          example: earthquake
+        title:
+          type: string
+          description: Title string summarizing the event.
+          example: "M 4.5 - 45 km NE of San Francisco, CA"
+        gap:
+          type: number
+          description: Azimuthal gap in degrees between seismic stations.
+          example: 78
+        dmin:
+          type: number
+          description: Horizontal distance from epicenter to nearest station in degrees.
+          example: 0.82
+        rms:
+          type: number
+          description: Root-mean-square travel time residual in seconds.
+          example: 0.45
+        nst:
+          type: integer
+          description: Number of seismic stations used to determine earthquake location.
+          example: 45
+
+    EarthquakeGeometry:
+      title: EarthquakeGeometry
+      type: object
+      description: GeoJSON Point geometry for the earthquake epicenter location.
+      properties:
+        type:
+          type: string
+          description: GeoJSON geometry type (always Point).
+          example: Point
+        coordinates:
+          type: array
+          description: >-
+            Array of [longitude, latitude, depth_km]. Depth is in kilometers
+            below the surface (positive = deeper).
+          items:
+            type: number
+          example:
+            - -122.0
+            - 37.75
+            - 10.5
+
+    CountResponse:
+      title: CountResponse
+      type: object
+      description: Response from the count endpoint.
+      properties:
+        count:
+          type: integer
+          description: Number of events matching the query.
+          example: 1547
+        maxAllowed:
+          type: integer
+          description: Maximum allowed events per query.
+          example: 20000

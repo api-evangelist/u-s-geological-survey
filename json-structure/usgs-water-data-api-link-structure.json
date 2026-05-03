@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-structure/usgs-water-data-api-link-structure.json",
+  "description": "A hypermedia link.",
+  "type": "object",
+  "properties": {
+    "href": {
+      "type": "string",
+      "description": "Link URL.",
+      "example": "https://api.waterdata.usgs.gov/ogcapi/v0/"
+    },
+    "rel": {
+      "type": "string",
+      "description": "Link relation type.",
+      "example": "self"
+    },
+    "type": {
+      "type": "string",
+      "description": "Media type of the linked resource.",
+      "example": "application/json"
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable link title.",
+      "example": "This document"
+    }
+  },
+  "name": "Link"
+}

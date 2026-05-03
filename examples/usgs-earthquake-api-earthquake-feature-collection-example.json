@@ -1,0 +1,13 @@
+{
+  "type": "FeatureCollection",
+  "metadata": "sample-value",
+  "features": [
+    "sample-value"
+  ],
+  "bbox": [
+    -180.0,
+    -90.0,
+    180.0,
+    90.0
+  ]
+}

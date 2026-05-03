@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json",
+  "title": "MonitoringLocationProperties",
+  "description": "Attributes describing a USGS water monitoring location.",
+  "type": "object",
+  "properties": {
+    "monitoringLocationIdentifier": {
+      "type": "string",
+      "description": "Unique identifier in format AGENCY-SITENUMBER.",
+      "example": "USGS-11169025"
+    },
+    "monitoringLocationName": {
+      "type": "string",
+      "description": "Name of the monitoring location.",
+      "example": "GUADALUPE R AB HWY 237 NR ALVISO CA"
+    },
+    "monitoringLocationTypeName": {
+      "type": "string",
+      "description": "Type of monitoring location (Stream, Well, Lake, etc.).",
+      "example": "Stream"
+    },
+    "hucEightDigitCode": {
+      "type": "string",
+      "description": "8-digit Hydrologic Unit Code for the location's watershed.",
+      "example": "18050001"
+    },
+    "stateFIPSCode": {
+      "type": "string",
+      "description": "Two-digit state FIPS code.",
+      "example": "06"
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 country code.",
+      "example": "US"
+    },
+    "drainageAreaMeasure": {
+      "type": "number",
+      "description": "Drainage area measurement value.",
+      "example": 850.0
+    },
+    "drainageAreaMeasureUnitCode": {
+      "type": "string",
+      "description": "Unit code for drainage area.",
+      "example": "sq mi"
+    },
+    "siteWebAddress": {
+      "type": "string",
+      "description": "URL for the USGS NWIS site page.",
+      "example": "https://waterdata.usgs.gov/nwis/inventory?agency_code=USGS&site_no=11169025"
+    }
+  }
+}

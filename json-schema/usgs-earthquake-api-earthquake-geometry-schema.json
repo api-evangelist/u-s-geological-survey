@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-geometry-schema.json",
+  "title": "EarthquakeGeometry",
+  "description": "GeoJSON Point geometry for the earthquake epicenter location.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "GeoJSON geometry type (always Point).",
+      "example": "Point"
+    },
+    "coordinates": {
+      "type": "array",
+      "description": "Array of [longitude, latitude, depth_km]. Depth is in kilometers below the surface (positive = deeper).",
+      "items": {
+        "type": "number"
+      },
+      "example": [
+        -122.0,
+        37.75,
+        10.5
+      ]
+    }
+  }
+}

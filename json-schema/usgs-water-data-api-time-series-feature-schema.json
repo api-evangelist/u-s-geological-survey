@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-feature-schema.json",
+  "title": "TimeSeriesFeature",
+  "description": "A single time series observation from a USGS monitoring location.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "GeoJSON type.",
+      "example": "Feature"
+    },
+    "properties": {
+      "$ref": "#/components/schemas/TimeSeriesProperties"
+    }
+  }
+}

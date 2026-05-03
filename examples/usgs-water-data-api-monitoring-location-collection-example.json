@@ -1,0 +1,8 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    "sample-value"
+  ],
+  "numberMatched": 8423,
+  "numberReturned": 100
+}

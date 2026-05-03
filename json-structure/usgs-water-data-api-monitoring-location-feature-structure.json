@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-structure/usgs-water-data-api-monitoring-location-feature-structure.json",
+  "description": "GeoJSON Feature for a single USGS water monitoring location.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "GeoJSON type.",
+      "example": "Feature"
+    },
+    "geometry": {
+      "type": "object",
+      "description": "GeoJSON Point geometry with longitude and latitude.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "Point"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "double"
+          },
+          "example": [
+            -122.419,
+            37.775
+          ]
+        }
+      }
+    },
+    "properties": {
+      "$ref": "#/components/schemas/MonitoringLocationProperties"
+    }
+  },
+  "name": "MonitoringLocationFeature"
+}

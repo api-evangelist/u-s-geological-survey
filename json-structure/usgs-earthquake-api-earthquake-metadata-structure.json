@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-structure/usgs-earthquake-api-earthquake-metadata-structure.json",
+  "description": "Metadata about the earthquake query response.",
+  "type": "object",
+  "properties": {
+    "generated": {
+      "type": "int32",
+      "description": "Unix timestamp (milliseconds) when the response was generated.",
+      "example": 1743897600000
+    },
+    "url": {
+      "type": "string",
+      "description": "URL used to generate this response.",
+      "example": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=10"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title for this result set.",
+      "example": "USGS Earthquakes"
+    },
+    "status": {
+      "type": "int32",
+      "description": "HTTP status code.",
+      "example": 200
+    },
+    "api": {
+      "type": "string",
+      "description": "API version string.",
+      "example": "1.14.1"
+    },
+    "count": {
+      "type": "int32",
+      "description": "Number of events returned.",
+      "example": 47
+    },
+    "limit": {
+      "type": "int32",
+      "description": "Maximum events requested.",
+      "example": 100
+    },
+    "offset": {
+      "type": "int32",
+      "description": "Starting offset in the result set.",
+      "example": 1
+    }
+  },
+  "name": "EarthquakeMetadata"
+}

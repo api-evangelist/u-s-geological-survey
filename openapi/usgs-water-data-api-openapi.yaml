@@ -1,0 +1,731 @@
+openapi: 3.0.3
+info:
+  title: USGS Water Data APIs
+  description: >-
+    The USGS Water Data APIs provide OGC-compliant interfaces to USGS water data,
+    including continuous sensor measurements, daily values, discrete field
+    measurements, and metadata about monitoring locations. These APIs implement
+    the OGC API Features standard and support spatial filtering, temporal
+    filtering, CQL2 filtering, and multiple output formats. An API key is
+    required for data access beyond metadata endpoints.
+  version: "0.49.2"
+  contact:
+    name: USGS Water Data for the Nation
+    url: https://api.waterdata.usgs.gov/
+    email: wdfn@usgs.gov
+  license:
+    name: Public Domain (CC0 1.0)
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+  x-generated-from: documentation
+servers:
+  - url: https://api.waterdata.usgs.gov/ogcapi/v0
+    description: USGS Water Data OGC API
+security:
+  - ApiKeyQuery: []
+  - ApiKeyHeader: []
+  - {}
+tags:
+  - name: Monitoring Locations
+    description: >-
+      USGS stream gages, groundwater wells, and other water monitoring stations.
+  - name: Time Series Data
+    description: >-
+      Continuous and daily value water data from USGS monitoring locations.
+  - name: Reference Data
+    description: >-
+      Reference code tables including agency codes, datum types, and aquifer data.
+  - name: Collections
+    description: >-
+      OGC API collections listing and metadata.
+paths:
+  /:
+    get:
+      operationId: getLandingPage
+      summary: USGS Water Data Get API Landing Page
+      description: >-
+        Retrieve the OGC API landing page with links to available resources,
+        conformance declarations, and API documentation.
+      tags:
+        - Collections
+      parameters:
+        - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Landing page with API links and metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LandingPage'
+              examples:
+                GetLandingPage200Example:
+                  summary: Default getLandingPage 200 response
+                  x-microcks-default: true
+                  value:
+                    title: "USGS Water Data OGC APIs"
+                    description: "Access to USGS water data using OGC API standards."
+                    links:
+                      - href: "https://api.waterdata.usgs.gov/ogcapi/v0/"
+                        rel: self
+                        type: application/json
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /collections:
+    get:
+      operationId: listCollections
+      summary: USGS Water Data List Collections
+      description: >-
+        List all available OGC API collections (data layers) including monitoring
+        locations, time series, reference codes, and other water data entities.
+      tags:
+        - Collections
+      parameters:
+        - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: List of available collections.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionsList'
+              examples:
+                ListCollections200Example:
+                  summary: Default listCollections 200 response
+                  x-microcks-default: true
+                  value:
+                    collections:
+                      - id: monitoring-locations
+                        title: Monitoring Locations
+                        description: "USGS water monitoring sites including stream gages and wells."
+                      - id: time-series
+                        title: Time Series
+                        description: "Continuous sensor measurement time series."
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /collections/monitoring-locations/items:
+    get:
+      operationId: getMonitoringLocations
+      summary: USGS Water Data Get Monitoring Locations
+      description: >-
+        Retrieve USGS water monitoring locations (stream gages, groundwater wells,
+        springs, etc.) as GeoJSON features. Supports spatial filtering by
+        bounding box, attribute filtering by state/county/HUC, and pagination.
+      tags:
+        - Monitoring Locations
+      parameters:
+        - $ref: '#/components/parameters/bbox'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/format'
+        - name: stateCd
+          in: query
+          required: false
+          description: Two-letter U.S. state or territory FIPS code (e.g., CA, TX, NY).
+          schema:
+            type: string
+            example: CA
+        - name: huc
+          in: query
+          required: false
+          description: Hydrologic Unit Code (2-12 digits) to filter by watershed.
+          schema:
+            type: string
+            example: "18010103"
+        - name: siteType
+          in: query
+          required: false
+          description: >-
+            USGS site type code (ST for streams, GW for groundwater, LK for lakes,
+            AT for atmosphere, WE for wetlands, etc.).
+          schema:
+            type: string
+            example: ST
+        - name: agencyCd
+          in: query
+          required: false
+          description: Agency code (default USGS).
+          schema:
+            type: string
+            example: USGS
+      responses:
+        '200':
+          description: GeoJSON FeatureCollection of monitoring locations.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonitoringLocationCollection'
+              examples:
+                GetMonitoringLocations200Example:
+                  summary: Default getMonitoringLocations 200 response
+                  x-microcks-default: true
+                  value:
+                    type: FeatureCollection
+                    features:
+                      - type: Feature
+                        geometry:
+                          type: Point
+                          coordinates:
+                            - -122.419
+                            - 37.775
+                        properties:
+                          monitoringLocationIdentifier: "USGS-11169025"
+                          monitoringLocationName: "GUADALUPE R AB HWY 237 NR ALVISO CA"
+                          monitoringLocationTypeName: "Stream"
+                          hucEightDigitCode: "18050001"
+                          stateFIPSCode: "06"
+                          countryCode: "US"
+                          drainageAreaMeasure: 850.0
+                          drainageAreaMeasureUnitCode: "sq mi"
+                          siteWebAddress: "https://waterdata.usgs.gov/nwis/inventory?agency_code=USGS&site_no=11169025"
+        '400':
+          description: Invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: API key missing or unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /collections/monitoring-locations/items/{featureId}:
+    get:
+      operationId: getMonitoringLocation
+      summary: USGS Water Data Get Monitoring Location by ID
+      description: >-
+        Retrieve a single USGS water monitoring location by its feature identifier
+        (site number with agency prefix, e.g., USGS-11169025).
+      tags:
+        - Monitoring Locations
+      parameters:
+        - name: featureId
+          in: path
+          required: true
+          description: >-
+            Monitoring location identifier in format AGENCY-SITENUMBER
+            (e.g., USGS-11169025).
+          schema:
+            type: string
+            example: USGS-11169025
+        - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Single monitoring location GeoJSON Feature.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonitoringLocationFeature'
+              examples:
+                GetMonitoringLocation200Example:
+                  summary: Default getMonitoringLocation 200 response
+                  x-microcks-default: true
+                  value:
+                    type: Feature
+                    geometry:
+                      type: Point
+                      coordinates:
+                        - -122.419
+                        - 37.775
+                    properties:
+                      monitoringLocationIdentifier: "USGS-11169025"
+                      monitoringLocationName: "GUADALUPE R AB HWY 237 NR ALVISO CA"
+                      monitoringLocationTypeName: "Stream"
+        '403':
+          description: API key missing or unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Monitoring location not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /collections/time-series/items:
+    get:
+      operationId: getTimeSeries
+      summary: USGS Water Data Get Time Series
+      description: >-
+        Retrieve USGS water data time series records including continuous sensor
+        measurements (streamflow, stage, temperature, specific conductance, etc.)
+        and daily values. Filter by monitoring location, parameter code, time
+        range, and spatial extent.
+      tags:
+        - Time Series Data
+      parameters:
+        - $ref: '#/components/parameters/bbox'
+        - $ref: '#/components/parameters/time'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/format'
+        - name: monitoringLocationIdentifier
+          in: query
+          required: false
+          description: Filter by specific monitoring location identifier (e.g., USGS-11169025).
+          schema:
+            type: string
+            example: USGS-11169025
+        - name: observedPropertyId
+          in: query
+          required: false
+          description: >-
+            USGS parameter code for the measured property (e.g., 00060 for
+            streamflow in cfs, 00065 for gage height in feet).
+          schema:
+            type: string
+            example: "00060"
+        - name: statistic
+          in: query
+          required: false
+          description: >-
+            Statistic code for daily values (00001=max, 00002=min, 00003=mean).
+          schema:
+            type: string
+            example: "00003"
+      responses:
+        '200':
+          description: Collection of time series records.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeSeriesCollection'
+              examples:
+                GetTimeSeries200Example:
+                  summary: Default getTimeSeries 200 response
+                  x-microcks-default: true
+                  value:
+                    type: FeatureCollection
+                    features:
+                      - type: Feature
+                        properties:
+                          monitoringLocationIdentifier: "USGS-11169025"
+                          observedPropertyId: "00060"
+                          observedPropertyName: "Streamflow, ft³/s"
+                          phenomenonTime: "2025-03-15T14:00:00Z"
+                          result: 450.0
+                          resultUnitCode: "ft3/s"
+                          resultQualityCode: "P"
+        '400':
+          description: Invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: API key missing or unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /collections/agency-codes/items:
+    get:
+      operationId: getAgencyCodes
+      summary: USGS Water Data Get Agency Codes
+      description: >-
+        Retrieve organization identifiers (agency codes) assigned by NWIS
+        (National Water Information System) to identify data-collecting agencies.
+      tags:
+        - Reference Data
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Collection of agency code features.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureCollection'
+              examples:
+                GetAgencyCodes200Example:
+                  summary: Default getAgencyCodes 200 response
+                  x-microcks-default: true
+                  value:
+                    type: FeatureCollection
+                    features:
+                      - type: Feature
+                        properties:
+                          agency_cd: USGS
+                          agency_name: "U.S. Geological Survey"
+        '403':
+          description: API key required.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+components:
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: >-
+        USGS Water Data API key. Obtain at https://api.waterdata.usgs.gov/signup/
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: api_key
+      description: >-
+        USGS Water Data API key passed as a request header.
+
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format (json, html, jsonld, csv).
+      schema:
+        type: string
+        enum:
+          - json
+          - html
+          - jsonld
+          - csv
+        default: json
+        example: json
+    bbox:
+      name: bbox
+      in: query
+      required: false
+      description: >-
+        Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat].
+        Optionally include min_elev and max_elev for 6-coordinate form.
+      schema:
+        type: string
+        example: "-125,25,-65,50"
+    time:
+      name: time
+      in: query
+      required: false
+      description: >-
+        Temporal filter in RFC 3339 or ISO 8601 format. Use a single datetime
+        or interval (e.g., 2025-01-01/2025-03-01).
+      schema:
+        type: string
+        example: "2025-01-01/2025-03-01"
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Number of results to return (default 100, max 10000).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 10000
+        default: 100
+        example: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: Starting offset for pagination.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+        example: 0
+
+  schemas:
+    LandingPage:
+      title: LandingPage
+      type: object
+      description: OGC API landing page with navigation links.
+      properties:
+        title:
+          type: string
+          description: API title.
+          example: "USGS Water Data OGC APIs"
+        description:
+          type: string
+          description: API description.
+          example: "Access to USGS water data using OGC API standards."
+        links:
+          type: array
+          description: Navigation links.
+          items:
+            $ref: '#/components/schemas/Link'
+
+    CollectionsList:
+      title: CollectionsList
+      type: object
+      description: List of available OGC API collections.
+      properties:
+        collections:
+          type: array
+          description: Array of collection metadata objects.
+          items:
+            $ref: '#/components/schemas/Collection'
+
+    Collection:
+      title: Collection
+      type: object
+      description: Metadata for an OGC API collection.
+      properties:
+        id:
+          type: string
+          description: Collection identifier.
+          example: monitoring-locations
+        title:
+          type: string
+          description: Human-readable collection title.
+          example: Monitoring Locations
+        description:
+          type: string
+          description: Description of the collection.
+          example: "USGS water monitoring sites."
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+
+    Link:
+      title: Link
+      type: object
+      description: A hypermedia link.
+      properties:
+        href:
+          type: string
+          description: Link URL.
+          example: "https://api.waterdata.usgs.gov/ogcapi/v0/"
+        rel:
+          type: string
+          description: Link relation type.
+          example: self
+        type:
+          type: string
+          description: Media type of the linked resource.
+          example: application/json
+        title:
+          type: string
+          description: Human-readable link title.
+          example: "This document"
+
+    FeatureCollection:
+      title: FeatureCollection
+      type: object
+      description: Generic GeoJSON FeatureCollection.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type (FeatureCollection).
+          example: FeatureCollection
+        features:
+          type: array
+          description: Array of GeoJSON Feature objects.
+          items:
+            type: object
+        numberMatched:
+          type: integer
+          description: Total number of features matching the query.
+          example: 4523
+        numberReturned:
+          type: integer
+          description: Number of features in this response.
+          example: 100
+
+    MonitoringLocationCollection:
+      title: MonitoringLocationCollection
+      type: object
+      description: GeoJSON FeatureCollection of USGS monitoring locations.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: FeatureCollection
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonitoringLocationFeature'
+        numberMatched:
+          type: integer
+          description: Total number of matching locations.
+          example: 8423
+        numberReturned:
+          type: integer
+          description: Number of locations returned.
+          example: 100
+
+    MonitoringLocationFeature:
+      title: MonitoringLocationFeature
+      type: object
+      description: GeoJSON Feature for a single USGS water monitoring location.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: Feature
+        geometry:
+          type: object
+          description: GeoJSON Point geometry with longitude and latitude.
+          properties:
+            type:
+              type: string
+              example: Point
+            coordinates:
+              type: array
+              items:
+                type: number
+              example:
+                - -122.419
+                - 37.775
+        properties:
+          $ref: '#/components/schemas/MonitoringLocationProperties'
+
+    MonitoringLocationProperties:
+      title: MonitoringLocationProperties
+      type: object
+      description: Attributes describing a USGS water monitoring location.
+      properties:
+        monitoringLocationIdentifier:
+          type: string
+          description: Unique identifier in format AGENCY-SITENUMBER.
+          example: "USGS-11169025"
+        monitoringLocationName:
+          type: string
+          description: Name of the monitoring location.
+          example: "GUADALUPE R AB HWY 237 NR ALVISO CA"
+        monitoringLocationTypeName:
+          type: string
+          description: Type of monitoring location (Stream, Well, Lake, etc.).
+          example: Stream
+        hucEightDigitCode:
+          type: string
+          description: 8-digit Hydrologic Unit Code for the location's watershed.
+          example: "18050001"
+        stateFIPSCode:
+          type: string
+          description: Two-digit state FIPS code.
+          example: "06"
+        countryCode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+          example: US
+        drainageAreaMeasure:
+          type: number
+          description: Drainage area measurement value.
+          example: 850.0
+        drainageAreaMeasureUnitCode:
+          type: string
+          description: Unit code for drainage area.
+          example: "sq mi"
+        siteWebAddress:
+          type: string
+          description: URL for the USGS NWIS site page.
+          example: "https://waterdata.usgs.gov/nwis/inventory?agency_code=USGS&site_no=11169025"
+
+    TimeSeriesCollection:
+      title: TimeSeriesCollection
+      type: object
+      description: Collection of USGS water data time series observations.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: FeatureCollection
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSeriesFeature'
+        numberMatched:
+          type: integer
+          description: Total number of matching observations.
+          example: 8760
+        numberReturned:
+          type: integer
+          description: Number of observations returned.
+          example: 100
+
+    TimeSeriesFeature:
+      title: TimeSeriesFeature
+      type: object
+      description: A single time series observation from a USGS monitoring location.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: Feature
+        properties:
+          $ref: '#/components/schemas/TimeSeriesProperties'
+
+    TimeSeriesProperties:
+      title: TimeSeriesProperties
+      type: object
+      description: Properties of a single water data observation.
+      properties:
+        monitoringLocationIdentifier:
+          type: string
+          description: Monitoring location identifier.
+          example: "USGS-11169025"
+        observedPropertyId:
+          type: string
+          description: USGS parameter code for the measured property.
+          example: "00060"
+        observedPropertyName:
+          type: string
+          description: Human-readable parameter name.
+          example: "Streamflow, ft³/s"
+        phenomenonTime:
+          type: string
+          format: date-time
+          description: ISO 8601 datetime when the measurement was taken.
+          example: "2025-03-15T14:00:00Z"
+        result:
+          type: number
+          description: Measured value.
+          example: 450.0
+        resultUnitCode:
+          type: string
+          description: Unit of measurement.
+          example: "ft3/s"
+        resultQualityCode:
+          type: string
+          description: >-
+            Quality code: P (provisional), A (approved), e (estimated).
+          example: P
+
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: Standard OGC API error response.
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: InvalidParameter
+        description:
+          type: string
+          description: Human-readable error description.
+          example: "Invalid value for parameter bbox."

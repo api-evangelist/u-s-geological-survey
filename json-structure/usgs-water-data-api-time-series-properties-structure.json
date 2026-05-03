@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-structure/usgs-water-data-api-time-series-properties-structure.json",
+  "description": "Properties of a single water data observation.",
+  "type": "object",
+  "properties": {
+    "monitoringLocationIdentifier": {
+      "type": "string",
+      "description": "Monitoring location identifier.",
+      "example": "USGS-11169025"
+    },
+    "observedPropertyId": {
+      "type": "string",
+      "description": "USGS parameter code for the measured property.",
+      "example": "00060"
+    },
+    "observedPropertyName": {
+      "type": "string",
+      "description": "Human-readable parameter name.",
+      "example": "Streamflow, ft\u00b3/s"
+    },
+    "phenomenonTime": {
+      "type": "datetime",
+      "description": "ISO 8601 datetime when the measurement was taken.",
+      "example": "2025-03-15T14:00:00Z"
+    },
+    "result": {
+      "type": "double",
+      "description": "Measured value.",
+      "example": 450.0
+    },
+    "resultUnitCode": {
+      "type": "string",
+      "description": "Unit of measurement.",
+      "example": "ft3/s"
+    },
+    "resultQualityCode": {
+      "type": "string",
+      "description": "Quality code: P (provisional), A (approved), e (estimated).",
+      "example": "P"
+    }
+  },
+  "name": "TimeSeriesProperties"
+}

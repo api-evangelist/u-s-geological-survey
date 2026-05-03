@@ -1,0 +1,7 @@
+{
+  "title": "USGS Water Data OGC APIs",
+  "description": "Access to USGS water data using OGC API standards.",
+  "links": [
+    "sample-value"
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "usgs": "https://www.usgs.gov/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "CountResponse": "usgs:CountResponse",
+    "EarthquakeFeatureCollection": "usgs:EarthquakeFeatureCollection",
+    "EarthquakeFeature": "usgs:EarthquakeFeature",
+    "EarthquakeGeometry": "usgs:EarthquakeGeometry",
+    "EarthquakeMetadata": "usgs:EarthquakeMetadata",
+    "EarthquakeProperties": "usgs:EarthquakeProperties",
+    "count": {
+      "@id": "usgs:count",
+      "@type": "xsd:integer"
+    },
+    "maxAllowed": {
+      "@id": "usgs:maxAllowed",
+      "@type": "xsd:integer"
+    },
+    "type": {
+      "@id": "usgs:type",
+      "@type": "xsd:string"
+    },
+    "metadata": {
+      "@id": "usgs:metadata",
+      "@type": "xsd:string"
+    },
+    "features": {
+      "@id": "usgs:features",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "bbox": {
+      "@id": "usgs:bbox",
+      "@container": "@set",
+      "@type": "xsd:decimal"
+    },
+    "properties": {
+      "@id": "usgs:properties",
+      "@type": "xsd:string"
+    },
+    "geometry": {
+      "@id": "usgs:geometry",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "usgs:id",
+      "@type": "xsd:string"
+    },
+    "coordinates": {
+      "@id": "usgs:coordinates",
+      "@container": "@set",
+      "@type": "xsd:decimal"
+    },
+    "generated": {
+      "@id": "usgs:generated",
+      "@type": "xsd:integer"
+    },
+    "url": {
+      "@id": "schema:url"
+    },
+    "title": {
+      "@id": "schema:name"
+    },
+    "status": {
+      "@id": "usgs:status",
+      "@type": "xsd:integer"
+    },
+    "api": {
+      "@id": "usgs:api",
+      "@type": "xsd:string"
+    },
+    "limit": {
+      "@id": "usgs:limit",
+      "@type": "xsd:integer"
+    },
+    "offset": {
+      "@id": "usgs:offset",
+      "@type": "xsd:integer"
+    },
+    "mag": {
+      "@id": "usgs:mag",
+      "@type": "xsd:decimal"
+    },
+    "place": {
+      "@id": "usgs:place",
+      "@type": "xsd:string"
+    },
+    "time": {
+      "@id": "usgs:time",
+      "@type": "xsd:integer"
+    },
+    "updated": {
+      "@id": "usgs:updated",
+      "@type": "xsd:integer"
+    },
+    "detail": {
+      "@id": "usgs:detail",
+      "@type": "xsd:string"
+    },
+    "felt": {
+      "@id": "usgs:felt",
+      "@type": "xsd:integer"
+    },
+    "cdi": {
+      "@id": "usgs:cdi",
+      "@type": "xsd:decimal"
+    },
+    "mmi": {
+      "@id": "usgs:mmi",
+      "@type": "xsd:decimal"
+    },
+    "alert": {
+      "@id": "usgs:alert",
+      "@type": "xsd:string"
+    },
+    "tsunami": {
+      "@id": "usgs:tsunami",
+      "@type": "xsd:integer"
+    },
+    "sig": {
+      "@id": "usgs:sig",
+      "@type": "xsd:integer"
+    },
+    "net": {
+      "@id": "usgs:net",
+      "@type": "xsd:string"
+    },
+    "code": {
+      "@id": "usgs:code",
+      "@type": "xsd:string"
+    },
+    "magType": {
+      "@id": "usgs:magType",
+      "@type": "xsd:string"
+    },
+    "gap": {
+      "@id": "usgs:gap",
+      "@type": "xsd:decimal"
+    },
+    "dmin": {
+      "@id": "usgs:dmin",
+      "@type": "xsd:decimal"
+    },
+    "rms": {
+      "@id": "usgs:rms",
+      "@type": "xsd:decimal"
+    },
+    "nst": {
+      "@id": "usgs:nst",
+      "@type": "xsd:integer"
+    }
+  }
+}

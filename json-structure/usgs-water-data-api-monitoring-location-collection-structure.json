@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-structure/usgs-water-data-api-monitoring-location-collection-structure.json",
+  "description": "GeoJSON FeatureCollection of USGS monitoring locations.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "GeoJSON type.",
+      "example": "FeatureCollection"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MonitoringLocationFeature"
+      }
+    },
+    "numberMatched": {
+      "type": "int32",
+      "description": "Total number of matching locations.",
+      "example": 8423
+    },
+    "numberReturned": {
+      "type": "int32",
+      "description": "Number of locations returned.",
+      "example": 100
+    }
+  },
+  "name": "MonitoringLocationCollection"
+}

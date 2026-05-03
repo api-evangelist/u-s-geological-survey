@@ -1,0 +1,9 @@
+{
+  "monitoringLocationIdentifier": "USGS-11169025",
+  "observedPropertyId": "00060",
+  "observedPropertyName": "Streamflow, ft\u00b3/s",
+  "phenomenonTime": "2025-03-15T14:00:00Z",
+  "result": 450.0,
+  "resultUnitCode": "ft3/s",
+  "resultQualityCode": "P"
+}

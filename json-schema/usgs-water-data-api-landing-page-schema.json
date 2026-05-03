@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-landing-page-schema.json",
+  "title": "LandingPage",
+  "description": "OGC API landing page with navigation links.",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "API title.",
+      "example": "USGS Water Data OGC APIs"
+    },
+    "description": {
+      "type": "string",
+      "description": "API description.",
+      "example": "Access to USGS water data using OGC API standards."
+    },
+    "links": {
+      "type": "array",
+      "description": "Navigation links.",
+      "items": {
+        "$ref": "#/components/schemas/Link"
+      }
+    }
+  }
+}

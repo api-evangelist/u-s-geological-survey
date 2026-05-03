@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-collection-schema.json",
+  "title": "TimeSeriesCollection",
+  "description": "Collection of USGS water data time series observations.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "GeoJSON type.",
+      "example": "FeatureCollection"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TimeSeriesFeature"
+      }
+    },
+    "numberMatched": {
+      "type": "integer",
+      "description": "Total number of matching observations.",
+      "example": 8760
+    },
+    "numberReturned": {
+      "type": "integer",
+      "description": "Number of observations returned.",
+      "example": 100
+    }
+  }
+}

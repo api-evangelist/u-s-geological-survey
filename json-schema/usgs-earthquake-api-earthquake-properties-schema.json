@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json",
+  "title": "EarthquakeProperties",
+  "description": "Properties of an earthquake event including magnitude, location, and metadata.",
+  "type": "object",
+  "properties": {
+    "mag": {
+      "type": "number",
+      "description": "Earthquake magnitude.",
+      "example": 4.5
+    },
+    "place": {
+      "type": "string",
+      "description": "Textual description of the event location.",
+      "example": "45 km NE of San Francisco, CA"
+    },
+    "time": {
+      "type": "integer",
+      "description": "Unix timestamp (milliseconds) of the earthquake occurrence.",
+      "example": 1743840000000
+    },
+    "updated": {
+      "type": "integer",
+      "description": "Unix timestamp (milliseconds) of the last catalog update.",
+      "example": 1743843600000
+    },
+    "url": {
+      "type": "string",
+      "description": "USGS event detail page URL.",
+      "example": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000n5no"
+    },
+    "detail": {
+      "type": "string",
+      "description": "API URL for the full event GeoJSON.",
+      "example": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000n5no&format=geojson"
+    },
+    "felt": {
+      "type": "integer",
+      "description": "Number of DYFI (Did You Feel It?) responses.",
+      "example": 23
+    },
+    "cdi": {
+      "type": "number",
+      "description": "Maximum Community Determined Intensity (CDI) value.",
+      "example": 3.5
+    },
+    "mmi": {
+      "type": "number",
+      "description": "Maximum Modified Mercalli Intensity (MMI) from ShakeMap.",
+      "example": 3.2
+    },
+    "alert": {
+      "type": "string",
+      "description": "PAGER alert level (green, yellow, orange, red).",
+      "example": "green"
+    },
+    "status": {
+      "type": "string",
+      "description": "Review status (automatic or reviewed).",
+      "example": "reviewed"
+    },
+    "tsunami": {
+      "type": "integer",
+      "description": "Tsunami hazard flag. 1 if tsunami warning was issued; 0 otherwise.",
+      "example": 0
+    },
+    "sig": {
+      "type": "integer",
+      "description": "Significance value (0-1000) indicating event importance based on magnitude, MMI, felt reports, and estimated impact.",
+      "example": 312
+    },
+    "net": {
+      "type": "string",
+      "description": "Network ID for the preferred source of event data.",
+      "example": "us"
+    },
+    "code": {
+      "type": "string",
+      "description": "Event code assigned by the network.",
+      "example": "7000n5no"
+    },
+    "magType": {
+      "type": "string",
+      "description": "Magnitude type (ml, md, mb, mw, mww, etc.).",
+      "example": "mb"
+    },
+    "type": {
+      "type": "string",
+      "description": "Event type (earthquake, explosion, quarry blast, etc.).",
+      "example": "earthquake"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title string summarizing the event.",
+      "example": "M 4.5 - 45 km NE of San Francisco, CA"
+    },
+    "gap": {
+      "type": "number",
+      "description": "Azimuthal gap in degrees between seismic stations.",
+      "example": 78
+    },
+    "dmin": {
+      "type": "number",
+      "description": "Horizontal distance from epicenter to nearest station in degrees.",
+      "example": 0.82
+    },
+    "rms": {
+      "type": "number",
+      "description": "Root-mean-square travel time residual in seconds.",
+      "example": 0.45
+    },
+    "nst": {
+      "type": "integer",
+      "description": "Number of seismic stations used to determine earthquake location.",
+      "example": 45
+    }
+  }
+}

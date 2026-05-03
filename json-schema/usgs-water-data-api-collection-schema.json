@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-collection-schema.json",
+  "title": "Collection",
+  "description": "Metadata for an OGC API collection.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Collection identifier.",
+      "example": "monitoring-locations"
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable collection title.",
+      "example": "Monitoring Locations"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the collection.",
+      "example": "USGS water monitoring sites."
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Link"
+      }
+    }
+  }
+}

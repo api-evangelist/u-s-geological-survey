@@ -1,0 +1,8 @@
+{
+  "id": "monitoring-locations",
+  "title": "Monitoring Locations",
+  "description": "USGS water monitoring sites.",
+  "links": [
+    "sample-value"
+  ]
+}

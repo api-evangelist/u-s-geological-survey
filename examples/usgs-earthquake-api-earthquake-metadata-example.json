@@ -1,0 +1,10 @@
+{
+  "generated": 1743897600000,
+  "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=10",
+  "title": "USGS Earthquakes",
+  "status": 200,
+  "api": "1.14.1",
+  "count": 47,
+  "limit": 100,
+  "offset": 1
+}

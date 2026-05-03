@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-structure/usgs-earthquake-api-earthquake-feature-structure.json",
+  "description": "A GeoJSON Feature representing a single earthquake event.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "GeoJSON object type (always Feature).",
+      "example": "Feature"
+    },
+    "properties": {
+      "$ref": "#/components/schemas/EarthquakeProperties"
+    },
+    "geometry": {
+      "$ref": "#/components/schemas/EarthquakeGeometry"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique USGS event identifier.",
+      "example": "us7000n5no"
+    }
+  },
+  "name": "EarthquakeFeature"
+}

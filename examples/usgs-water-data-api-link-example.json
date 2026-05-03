@@ -1,0 +1,6 @@
+{
+  "href": "https://api.waterdata.usgs.gov/ogcapi/v0/",
+  "rel": "self",
+  "type": "application/json",
+  "title": "This document"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-count-response-schema.json",
+  "title": "CountResponse",
+  "description": "Response from the count endpoint.",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "integer",
+      "description": "Number of events matching the query.",
+      "example": 1547
+    },
+    "maxAllowed": {
+      "type": "integer",
+      "description": "Maximum allowed events per query.",
+      "example": 20000
+    }
+  }
+}

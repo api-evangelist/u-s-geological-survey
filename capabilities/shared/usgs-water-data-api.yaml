@@ -1,0 +1,206 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "USGS Water Data API"
+  description: >-
+    The USGS Water Data OGC API provides standardized access to USGS water
+    monitoring data including streamflow, groundwater levels, water quality,
+    and monitoring location metadata. Implements OGC API Features standard
+    with support for spatial and temporal filtering.
+  tags:
+    - USGS
+    - Water
+    - Hydrology
+    - Streamflow
+    - Groundwater
+    - Federal Government
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      USGS_WATER_API_KEY: USGS_WATER_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: usgs-water
+      baseUri: https://api.waterdata.usgs.gov/ogcapi/v0
+      description: "USGS Water Data OGC API for water monitoring data."
+      authentication:
+        type: apikey
+        key: api_key
+        value: "{{USGS_WATER_API_KEY}}"
+        placement: query
+      resources:
+        - name: monitoring-locations
+          path: /collections/monitoring-locations/items
+          description: "USGS water monitoring locations (gages, wells, springs)."
+          operations:
+            - name: get-monitoring-locations
+              method: GET
+              description: "Retrieve water monitoring locations with optional spatial and attribute filters."
+              inputParameters:
+                - name: bbox
+                  in: query
+                  type: string
+                  required: false
+                  description: "Bounding box as min_lon,min_lat,max_lon,max_lat."
+                - name: stateCd
+                  in: query
+                  type: string
+                  required: false
+                  description: "Two-letter state FIPS code."
+                - name: huc
+                  in: query
+                  type: string
+                  required: false
+                  description: "Hydrologic Unit Code."
+                - name: siteType
+                  in: query
+                  type: string
+                  required: false
+                  description: "USGS site type code (ST, GW, LK, etc.)."
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum number of results."
+                - name: offset
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Starting offset for pagination."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: monitoring-location
+          path: /collections/monitoring-locations/items/{featureId}
+          description: "Get a single USGS monitoring location by ID."
+          operations:
+            - name: get-monitoring-location
+              method: GET
+              description: "Retrieve a single monitoring location by its USGS site identifier."
+              inputParameters:
+                - name: featureId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Monitoring location identifier (e.g., USGS-11169025)."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: time-series
+          path: /collections/time-series/items
+          description: "USGS continuous and daily water data time series."
+          operations:
+            - name: get-time-series
+              method: GET
+              description: "Retrieve water data time series observations."
+              inputParameters:
+                - name: monitoringLocationIdentifier
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by monitoring location identifier."
+                - name: observedPropertyId
+                  in: query
+                  type: string
+                  required: false
+                  description: "USGS parameter code (e.g., 00060 for streamflow)."
+                - name: time
+                  in: query
+                  type: string
+                  required: false
+                  description: "Temporal filter as ISO 8601 datetime or interval."
+                - name: bbox
+                  in: query
+                  type: string
+                  required: false
+                  description: "Spatial bounding box filter."
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum number of observations."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8102
+      namespace: usgs-water-rest
+      resources:
+        - path: /v1/monitoring-locations
+          name: monitoring-locations
+          operations:
+            - method: GET
+              name: get-monitoring-locations
+              description: "Get USGS water monitoring locations."
+              call: "usgs-water.get-monitoring-locations"
+              with:
+                bbox: "rest.bbox"
+                stateCd: "rest.stateCd"
+                huc: "rest.huc"
+                limit: "rest.limit"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/time-series
+          name: time-series
+          operations:
+            - method: GET
+              name: get-time-series
+              description: "Get USGS water data time series."
+              call: "usgs-water.get-time-series"
+              with:
+                monitoringLocationIdentifier: "rest.locationId"
+                observedPropertyId: "rest.parameterId"
+                time: "rest.time"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9102
+      namespace: usgs-water-mcp
+      transport: http
+      tools:
+        - name: get-monitoring-locations
+          description: "Find USGS water monitoring locations by state, watershed, or bounding box."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "usgs-water.get-monitoring-locations"
+          with:
+            bbox: "tools.bbox"
+            stateCd: "tools.state_code"
+            huc: "tools.huc"
+            siteType: "tools.site_type"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-streamflow-data
+          description: "Retrieve streamflow (discharge) time series from a USGS stream gage."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "usgs-water.get-time-series"
+          with:
+            monitoringLocationIdentifier: "tools.location_id"
+            observedPropertyId: "tools.parameter_id"
+            time: "tools.time_range"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-collections-list-schema.json",
+  "title": "CollectionsList",
+  "description": "List of available OGC API collections.",
+  "type": "object",
+  "properties": {
+    "collections": {
+      "type": "array",
+      "description": "Array of collection metadata objects.",
+      "items": {
+        "$ref": "#/components/schemas/Collection"
+      }
+    }
+  }
+}

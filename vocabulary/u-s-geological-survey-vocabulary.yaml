@@ -1,0 +1,357 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "U.S. Geological Survey"
+  description: >-
+    Vocabulary mapping the USGS earthquake and water data API operational
+    dimensions and capability dimensions for geoscience data access workflows.
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  apis:
+    - name: USGS Earthquake API
+      namespace: usgs-earthquake
+      version: "1.0"
+      baseUrl: https://earthquake.usgs.gov/fdsnws/event/1
+      status: active
+    - name: USGS Water Data API
+      namespace: usgs-water
+      version: "0.49.2"
+      baseUrl: https://api.waterdata.usgs.gov/ogcapi/v0
+      status: active
+
+  resources:
+    - name: earthquake-events
+      description: Seismic events from the USGS ANSS ComCat earthquake catalog
+      api: usgs-earthquake
+      actions:
+        - query
+        - count
+        - get
+    - name: monitoring-locations
+      description: USGS water monitoring stations (stream gages, wells, springs)
+      api: usgs-water
+      actions:
+        - list
+        - get
+    - name: time-series
+      description: Water data observations from USGS monitoring locations
+      api: usgs-water
+      actions:
+        - list
+        - query
+    - name: catalogs
+      description: Available earthquake catalog sources
+      api: usgs-earthquake
+      actions:
+        - list
+
+  actions:
+    - name: query
+      description: Search for events matching spatial, temporal, and attribute criteria
+      httpMethod: GET
+      pattern: query
+    - name: count
+      description: Count events matching criteria without returning full data
+      httpMethod: GET
+      pattern: query
+    - name: get
+      description: Retrieve a single resource by identifier
+      httpMethod: GET
+      pattern: read
+    - name: list
+      description: Retrieve a collection of resources
+      httpMethod: GET
+      pattern: read
+
+  schemas:
+    earthquake:
+      - name: EarthquakeFeatureCollection
+        description: GeoJSON FeatureCollection of earthquake events
+        properties:
+          - type
+          - metadata
+          - features
+          - bbox
+      - name: EarthquakeProperties
+        description: Attributes of a single earthquake event
+        properties:
+          - mag
+          - place
+          - time
+          - updated
+          - url
+          - status
+          - tsunami
+          - sig
+          - magType
+          - type
+          - alert
+          - nst
+          - gap
+          - rms
+          - dmin
+      - name: EarthquakeGeometry
+        description: GeoJSON Point geometry with longitude, latitude, and depth
+        properties:
+          - type
+          - coordinates
+    water:
+      - name: MonitoringLocationProperties
+        description: Attributes of a USGS water monitoring location
+        properties:
+          - monitoringLocationIdentifier
+          - monitoringLocationName
+          - monitoringLocationTypeName
+          - hucEightDigitCode
+          - stateFIPSCode
+          - countryCode
+          - drainageAreaMeasure
+          - siteWebAddress
+      - name: TimeSeriesProperties
+        description: A single water quality or quantity observation
+        properties:
+          - monitoringLocationIdentifier
+          - observedPropertyId
+          - observedPropertyName
+          - phenomenonTime
+          - result
+          - resultUnitCode
+          - resultQualityCode
+
+  parameters:
+    spatial:
+      - name: bbox
+        description: Bounding box spatial filter [min_lon,min_lat,max_lon,max_lat]
+        type: string
+      - name: minlatitude
+        description: Minimum latitude for rectangle spatial filter
+        type: number
+      - name: maxlatitude
+        description: Maximum latitude for rectangle spatial filter
+        type: number
+      - name: minlongitude
+        description: Minimum longitude for rectangle spatial filter
+        type: number
+      - name: maxlongitude
+        description: Maximum longitude for rectangle spatial filter
+        type: number
+      - name: latitude
+        description: Center latitude for circle spatial filter
+        type: number
+      - name: longitude
+        description: Center longitude for circle spatial filter
+        type: number
+      - name: maxradiuskm
+        description: Search radius in kilometers for circle filter
+        type: number
+    temporal:
+      - name: starttime
+        description: Start of time range in ISO8601 format
+        type: string
+        format: date-time
+      - name: endtime
+        description: End of time range in ISO8601 format
+        type: string
+        format: date-time
+      - name: time
+        description: OGC API temporal filter (ISO 8601 datetime or interval)
+        type: string
+    filters:
+      - name: minmagnitude
+        description: Minimum earthquake magnitude
+        type: number
+      - name: maxmagnitude
+        description: Maximum earthquake magnitude
+        type: number
+      - name: alertlevel
+        description: PAGER alert level filter
+        type: string
+      - name: reviewstatus
+        description: Earthquake review status filter
+        type: string
+      - name: stateCd
+        description: U.S. state FIPS code for water location filtering
+        type: string
+      - name: huc
+        description: Hydrologic Unit Code for watershed filtering
+        type: string
+      - name: siteType
+        description: USGS site type code (ST, GW, LK, etc.)
+        type: string
+      - name: observedPropertyId
+        description: USGS parameter code for the measured water property
+        type: string
+    pagination:
+      - name: limit
+        description: Maximum number of results to return
+        type: integer
+      - name: offset
+        description: Starting offset for paginated results
+        type: integer
+
+  enums:
+    earthquakeFormat:
+      - geojson
+      - csv
+      - kml
+      - quakeml
+      - text
+      - xml
+    earthquakeOrderBy:
+      - time
+      - time-asc
+      - magnitude
+      - magnitude-asc
+    alertLevel:
+      - green
+      - yellow
+      - orange
+      - red
+    reviewStatus:
+      - automatic
+      - reviewed
+    waterFormat:
+      - json
+      - html
+      - jsonld
+      - csv
+    siteTypes:
+      - ST
+      - GW
+      - LK
+      - AT
+      - WE
+      - LA
+    qualityCode:
+      - P
+      - A
+      - e
+
+  authentication:
+    earthquake:
+      type: none
+      notes: "No authentication required for the USGS Earthquake API."
+    water:
+      schemes:
+        - type: apiKey
+          in: query
+          name: api_key
+        - type: apiKey
+          in: header
+          name: api_key
+      notes: "API key required for water data access. Register at api.waterdata.usgs.gov/signup/"
+
+capability:
+  workflows:
+    - name: geoscience-data-access
+      file: capabilities/geoscience-data-access.yaml
+      description: >-
+        Unified workflow for earthquake researchers, hydrologists, emergency
+        managers, and scientists to access USGS earthquake catalog and water
+        monitoring data.
+      apis:
+        - usgs-earthquake
+        - usgs-water
+      tools: 7
+      personas:
+        - Geoscientist
+        - Emergency Manager
+        - Hydrologist
+        - Researcher
+      domains:
+        - Earthquake Monitoring
+        - Water Resources
+        - Hazard Assessment
+
+  personas:
+    - id: geoscientist
+      name: Geoscientist
+      description: >-
+        Researcher studying seismic activity, geological hazards, or earth
+        processes using USGS earthquake and geophysical data.
+      workflows:
+        - geoscience-data-access
+
+    - id: emergency-manager
+      name: Emergency Manager
+      description: >-
+        Government or public safety official monitoring earthquakes and
+        flood conditions for emergency response planning.
+      workflows:
+        - geoscience-data-access
+
+    - id: hydrologist
+      name: Hydrologist
+      description: >-
+        Water resources scientist analyzing streamflow, groundwater levels,
+        and water quality using USGS monitoring data.
+      workflows:
+        - geoscience-data-access
+
+    - id: researcher
+      name: Researcher
+      description: >-
+        Academic or agency researcher using USGS data for geological,
+        hydrological, or environmental studies.
+      workflows:
+        - geoscience-data-access
+
+  domains:
+    - name: Earthquake Monitoring
+      description: Real-time and historical seismic event data and hazard assessment
+    - name: Water Resources
+      description: Streamflow, groundwater, water quality, and flood monitoring
+    - name: Hazard Assessment
+      description: Natural hazard evaluation including earthquakes, floods, and landslides
+
+  namespaces:
+    consumed:
+      - name: usgs-earthquake
+        baseUri: https://earthquake.usgs.gov/fdsnws/event/1
+      - name: usgs-water
+        baseUri: https://api.waterdata.usgs.gov/ogcapi/v0
+    rest:
+      - name: geoscience-data-api
+        port: 8080
+    mcp:
+      - name: geoscience-data-mcp
+        port: 9090
+
+  binds:
+    - name: USGS_WATER_API_KEY
+      description: API key for USGS Water Data API access
+      workflows:
+        - geoscience-data-access
+
+crossReference:
+  - resource: earthquake-events
+    operations:
+      - queryEarthquakes
+      - countEarthquakes
+    workflows:
+      - geoscience-data-access
+    personas:
+      - Geoscientist
+      - Emergency Manager
+      - Researcher
+
+  - resource: monitoring-locations
+    operations:
+      - getMonitoringLocations
+      - getMonitoringLocation
+    workflows:
+      - geoscience-data-access
+    personas:
+      - Hydrologist
+      - Researcher
+
+  - resource: time-series
+    operations:
+      - getTimeSeries
+    workflows:
+      - geoscience-data-access
+    personas:
+      - Hydrologist
+      - Emergency Manager

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-structure/usgs-water-data-api-collections-list-structure.json",
+  "description": "List of available OGC API collections.",
+  "type": "object",
+  "properties": {
+    "collections": {
+      "type": "array",
+      "description": "Array of collection metadata objects.",
+      "items": {
+        "$ref": "#/components/schemas/Collection"
+      }
+    }
+  },
+  "name": "CollectionsList"
+}

@@ -1,0 +1,11 @@
+{
+  "monitoringLocationIdentifier": "USGS-11169025",
+  "monitoringLocationName": "GUADALUPE R AB HWY 237 NR ALVISO CA",
+  "monitoringLocationTypeName": "Stream",
+  "hucEightDigitCode": "18050001",
+  "stateFIPSCode": "06",
+  "countryCode": "US",
+  "drainageAreaMeasure": 850.0,
+  "drainageAreaMeasureUnitCode": "sq mi",
+  "siteWebAddress": "https://waterdata.usgs.gov/nwis/inventory?agency_code=USGS&site_no=11169025"
+}

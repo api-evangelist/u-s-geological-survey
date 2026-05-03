@@ -1,0 +1,309 @@
+rules:
+  # INFO / METADATA
+  info-title-required:
+    description: API title must be present and include "USGS".
+    severity: error
+    given: $.info.title
+    then:
+      function: truthy
+
+  info-description-min-length:
+    description: API description must be at least 50 characters.
+    severity: warn
+    given: $.info
+    then:
+      field: description
+      function: minLength
+      functionOptions:
+        min: 50
+
+  info-version-required:
+    description: API version must be specified.
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+
+  info-contact-required:
+    description: Contact information should be present.
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  info-license-required:
+    description: License information should be present for government APIs.
+    severity: info
+    given: $.info
+    then:
+      field: license
+      function: truthy
+
+  # OPENAPI VERSION
+  openapi-version-3:
+    description: USGS API specs must use OpenAPI 3.0.x.
+    severity: warn
+    given: $
+    then:
+      field: openapi
+      function: pattern
+      functionOptions:
+        match: "^3\\.0\\."
+
+  # SERVERS
+  servers-defined:
+    description: At least one server URL must be defined.
+    severity: error
+    given: $
+    then:
+      field: servers
+      function: truthy
+
+  servers-https:
+    description: All server URLs must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  servers-usgs-domain:
+    description: Server URLs should reference usgs.gov domains.
+    severity: info
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "usgs\\.gov"
+
+  # PATHS — NAMING CONVENTIONS
+  paths-kebab-case:
+    description: Path segments must use kebab-case.
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z0-9{}_.-]*)+$"
+
+  paths-no-trailing-slash:
+    description: Paths should not end with a trailing slash (except root).
+    severity: info
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: ".+/$"
+
+  # OPERATIONS
+  operation-summary-required:
+    description: All operations must have a summary.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: summary
+      function: truthy
+
+  operation-summary-prefix:
+    description: Operation summaries should start with "USGS".
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: "^USGS"
+
+  operation-description-required:
+    description: All operations should have a description.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: description
+      function: truthy
+
+  operation-id-required:
+    description: All operations must have an operationId.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+
+  operation-id-camel-case:
+    description: OperationIds should use camelCase.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  operation-tags-required:
+    description: All operations must have at least one tag.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+
+  # TAGS
+  tags-global-defined:
+    description: Global tags array should be defined with descriptions.
+    severity: info
+    given: $
+    then:
+      field: tags
+      function: truthy
+
+  # PARAMETERS
+  parameter-description-required:
+    description: All parameters must have a description.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[*]
+    then:
+      field: description
+      function: truthy
+
+  parameter-schema-required:
+    description: All parameters must define a schema.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete].parameters[*]
+    then:
+      field: schema
+      function: truthy
+
+  parameter-format-lowercase:
+    description: Format parameter values should use lowercase identifiers.
+    severity: info
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.name == 'f')].schema.enum[*]
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z]+$"
+
+  # RESPONSES
+  response-success-required:
+    description: All operations must define a 200 success response.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - "200"
+
+  response-400-defined:
+    description: Operations should define a 400 error response.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - "400"
+
+  response-403-defined:
+    description: Authenticated operations should define a 403 error response.
+    severity: info
+    given: $.paths[*][get,post].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - "403"
+
+  response-description-required:
+    description: All response definitions must have descriptions.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses[*]
+    then:
+      field: description
+      function: truthy
+
+  # SCHEMAS — PROPERTY NAMING
+  schema-description-required:
+    description: Component schemas should have descriptions.
+    severity: warn
+    given: $.components.schemas[*]
+    then:
+      field: description
+      function: truthy
+
+  schema-geojson-type-documented:
+    description: GeoJSON Feature and FeatureCollection schemas should document the 'type' property.
+    severity: info
+    given: $.components.schemas[?(@.title =~ /Feature|Collection/)].properties
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - type
+
+  # SECURITY
+  security-scheme-defined:
+    description: API key security schemes should be defined in components.
+    severity: warn
+    given: $.components.securitySchemes
+    then:
+      function: truthy
+
+  security-api-key-documented:
+    description: API key security scheme should describe how to obtain the key.
+    severity: info
+    given: $.components.securitySchemes[*]
+    then:
+      field: description
+      function: truthy
+
+  # HTTP METHOD CONVENTIONS
+  get-no-request-body:
+    description: GET operations must not have a request body.
+    severity: error
+    given: $.paths[*].get
+    then:
+      field: requestBody
+      function: falsy
+
+  # OGC/USGS SPECIFIC
+  usgs-ogc-format-parameter:
+    description: OGC API endpoints should support the 'f' format parameter.
+    severity: info
+    given: $.paths[*].get.parameters[*].name
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: string
+
+  usgs-rate-limit-documented:
+    description: APIs with API key auth should document 429 responses.
+    severity: info
+    given: $.paths[*][get,post].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - "429"
+
+  # GENERAL QUALITY
+  no-empty-descriptions:
+    description: Descriptions should not be empty.
+    severity: warn
+    given: $..description
+    then:
+      function: pattern
+      functionOptions:
+        match: ".{1,}"

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-structure/usgs-water-data-api-time-series-feature-structure.json",
+  "description": "A single time series observation from a USGS monitoring location.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "GeoJSON type.",
+      "example": "Feature"
+    },
+    "properties": {
+      "$ref": "#/components/schemas/TimeSeriesProperties"
+    }
+  },
+  "name": "TimeSeriesFeature"
+}
