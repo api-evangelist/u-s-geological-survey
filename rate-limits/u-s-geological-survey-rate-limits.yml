@@ -4,118 +4,47 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: U.S. Geological Survey
 providerId: u-s-geological-survey
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Federal Government
-  - Geological
   - Earth Science
-  - Natural Resources
   - Earthquake
-  - Water
   - Hydrology
+  - Open Data
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the U.S. Geological Survey API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
+description: USGS does not publish numeric rate limits for its public web services. Documentation steers
+  high-volume / automated consumers toward the bulk GeoJSON feeds, ATOM feeds, and Python-based catalog
+  download scripts rather than ad-hoc API polling. Specific throttling thresholds and headers are not
+  documented on the public USGS pages reviewed.
+notes: No documented numeric rate limits could be located on USGS pages reviewed. Reconciled flag remains
+  false until USGS publishes per-service throttling thresholds.
+sources:
+  - https://earthquake.usgs.gov/fdsnws/event/1/
+  - https://earthquake.usgs.gov/data/comcat/
+  - https://www.usgs.gov/products/web-tools/apis
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Earthquake Notifications, Feeds, and Web Services
-      - USGS Water Data APIs
-      - Asset Identifier Service (AIS)
-      - Seismic Design Web Service
-      - ScienceBase
-      - StreamStats Web Services
-      - USGS Water Services (Legacy)
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Earthquake Notifications, Feeds, and Web Services
-      - USGS Water Data APIs
-      - Asset Identifier Service (AIS)
-      - Seismic Design Web Service
-      - ScienceBase
-      - StreamStats Web Services
-      - USGS Water Services (Legacy)
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Earthquake Notifications, Feeds, and Web Services
-      - USGS Water Data APIs
-      - Asset Identifier Service (AIS)
-      - Seismic Design Web Service
-      - ScienceBase
-      - StreamStats Web Services
-      - USGS Water Services (Legacy)
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Earthquake Notifications, Feeds, and Web Services
-      - USGS Water Data APIs
-      - Asset Identifier Service (AIS)
-      - Seismic Design Web Service
-      - ScienceBase
-      - StreamStats Web Services
-      - USGS Water Services (Legacy)
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Earthquake Notifications, Feeds, and Web Services
-      - USGS Water Data APIs
-      - Asset Identifier Service (AIS)
-      - Seismic Design Web Service
-      - ScienceBase
-      - StreamStats Web Services
-      - USGS Water Services (Legacy)
+  - name: Earthquake / FDSN Web Service
+    scope: IP
+    metric: varies
+    limit: see https://earthquake.usgs.gov/data/comcat/
+    notes: USGS recommends real-time GeoJSON feeds over repeated FDSN queries for automated applications;
+      explicit per-second numeric limits are not published.
+  - name: USGS Water Data
+    scope: IP
+    metric: varies
+    limit: see https://api.waterdata.usgs.gov/
+    notes: Specific request-rate ceilings not documented on the public service pages reviewed.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Use Bulk Feeds for Automation
+    description: USGS explicitly recommends that automated applications consume the real-time GeoJSON
+      / ATOM feeds rather than repeatedly polling the catalog API.
+  - name: Acceptable Use
+    description: Federal information services expect courteous use; sustained excessive polling may be
+      throttled at the network edge without prior notice.
+  - name: 429 Handling
+    description: Apply exponential backoff on transient failures; specific Retry-After timing is not
+      published.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

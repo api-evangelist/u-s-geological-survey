@@ -1,180 +1,71 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: U.S. Geological Survey
+providerId: u-s-geological-survey
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - Federal Government
+  - Earth Science
+  - Open Data
+  - FinOps
+  - FOCUS
+description: 'FOCUS-aligned FinOps for USGS: federal open-data services are zero-cost to consumers; FinOps
+  exposure is on the consumer side (egress, downstream compute) rather than direct USGS billing.'
+sources:
+  - https://www.usgs.gov/products/web-tools/apis
+  - https://earthquake.usgs.gov/data/comcat/
+  - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: U.S. Geological Survey
-providerId: u-s-geological-survey
 publisherName: U.S. Geological Survey
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - Federal Government
-  - Geological
-  - Earth Science
-  - Natural Resources
-  - Earthquake
-  - Water
-  - Hydrology
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the U.S. Geological Survey API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+serviceCategory: Public Open Data
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: No Charge (Public Open Data)
+  billingFrequency: Not Applicable
   billingCurrency: USD
-  chargeCategories:
-    - Usage
-    - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
+  chargeCategories: []
 focusColumns:
-  ServiceName: U.S. Geological Survey
-  ServiceCategory: Developer Tools / API
+  ServiceName: U.S. Geological Survey APIs
+  ServiceCategory: Public Open Data
   ProviderName: U.S. Geological Survey
   PublisherName: U.S. Geological Survey
   InvoiceIssuerName: U.S. Geological Survey
-  PricingCategory: Usage-Based
-  PricingUnit: request
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
   - name: api_requests
-    description: Count of billable API requests
+    description: Count of requests to USGS web services (no monetary charge from USGS)
     unit: request
     aggregation: sum
     dimensions:
-      - api
+      - service
       - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
+  - name: bulk_download_volume
+    description: Volume of catalog / feed bulk downloads
     unit: GB
     aggregation: sum
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Earthquake Notifications, Feeds, and Web Services
-    baseURL: https://earthquake.usgs.gov/fdsnws/event/1
-    tags:
-      - Earthquakes
-      - Seismic
-      - Geoscience
-    serviceName: Earthquake Notifications, Feeds, and Web Services
-    serviceCategory: API
-  - name: USGS Water Data APIs
-    baseURL: https://api.waterdata.usgs.gov/ogcapi/v0
-    tags:
-      - Water
-      - Hydrology
-      - Streamflow
-      - Groundwater
-    serviceName: USGS Water Data APIs
-    serviceCategory: API
-  - name: Asset Identifier Service (AIS)
-    baseURL: ''
-    tags:
-      - Identifiers
-      - Research Data
-    serviceName: Asset Identifier Service (AIS)
-    serviceCategory: API
-  - name: Seismic Design Web Service
-    baseURL: ''
-    tags:
-      - Seismic
-      - Engineering
-    serviceName: Seismic Design Web Service
-    serviceCategory: API
-  - name: ScienceBase
-    baseURL: ''
-    tags:
-      - Research Data
-      - Data Repository
-    serviceName: ScienceBase
-    serviceCategory: API
-  - name: StreamStats Web Services
-    baseURL: ''
-    tags:
-      - Hydrology
-      - Streamflow
-      - Statistics
-    serviceName: StreamStats Web Services
-    serviceCategory: API
-  - name: USGS Water Services (Legacy)
-    baseURL: ''
-    tags:
-      - Water
-      - Hydrology
-      - Legacy
-    serviceName: USGS Water Services (Legacy)
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - service
+principles:
+  - name: Visibility
+    description: Track consumption inside your own application logs; USGS does not provide a per-consumer
+      usage dashboard.
+  - name: Allocation
+    description: USGS access is free, so allocation is for capacity-planning rather than chargeback —
+      tag downstream compute and egress that result from USGS calls.
+  - name: Optimization
+    description: Cache stable catalog records, prefer the recommended GeoJSON / ATOM feeds over repeated
+      ad-hoc queries, and batch via the documented Python download scripts.
+  - name: Accountability
+    description: Application owners are responsible for being courteous federal-data citizens — avoiding
+      polling storms that could trigger network-edge throttling.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -4,172 +4,46 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: U.S. Geological Survey
 providerId: u-s-geological-survey
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Federal Government
   - Geological
   - Earth Science
-  - Natural Resources
   - Earthquake
-  - Water
   - Hydrology
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Open Data
+description: USGS APIs (Earthquake Catalog / FDSN, Water Data, ScienceBase, StreamStats, Seismic Design,
+  Asset Identifier Service) are publicly accessible federal-government data services. There is no fee,
+  no published commercial tier, and no documented monetary pricing. Use is governed by USGS terms and
+  the federal information-quality guidelines rather than a paid plan structure.
+sources:
+  - https://www.usgs.gov/products/web-tools/apis
+  - https://earthquake.usgs.gov/data/comcat/
 plans:
-  - id: u-s-geological-survey-free
-    name: Free
+  - id: u-s-geological-survey-public
+    name: Public Open Data
     type: freemium
-    description: Free entry tier for the U.S. Geological Survey API surface. Intended for evaluation,
-      prototyping, and low-volume integrations. Real limits and pricing must be reconciled with the provider's
-      published plan documentation.
+    description: All USGS web services are free to access. No registration or commercial tier; users
+      are asked to follow USGS data citation and acceptable-use guidance.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://earthquake.usgs.gov/fdsnws/event/1
-          - https://api.waterdata.usgs.gov/ogcapi/v0
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://earthquake.usgs.gov/fdsnws/event/1
-          - https://api.waterdata.usgs.gov/ogcapi/v0
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Earthquake Notifications, Feeds, and Web Services
-      - name: USGS Water Data APIs
-      - name: Asset Identifier Service (AIS)
-      - name: Seismic Design Web Service
-      - name: ScienceBase
-      - name: StreamStats Web Services
-      - name: USGS Water Services (Legacy)
-  - id: u-s-geological-survey-pro
-    name: Professional
-    type: paid
-    description: Production tier for U.S. Geological Survey. Provides higher quotas, priority support,
-      and access to the broader API portfolio. Pricing placeholder; align with the provider's pricing
-      page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://earthquake.usgs.gov/fdsnws/event/1
-          - https://api.waterdata.usgs.gov/ogcapi/v0
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://earthquake.usgs.gov/fdsnws/event/1
-          - https://api.waterdata.usgs.gov/ogcapi/v0
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
+      - label: Public API Access
+        name: public_access
+        type: flat
+        metric: request
         limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://earthquake.usgs.gov/fdsnws/event/1
-          - https://api.waterdata.usgs.gov/ogcapi/v0
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: '0.00'
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
       - name: Earthquake Notifications, Feeds, and Web Services
       - name: USGS Water Data APIs
-      - name: Asset Identifier Service (AIS)
-      - name: Seismic Design Web Service
       - name: ScienceBase
       - name: StreamStats Web Services
-      - name: USGS Water Services (Legacy)
-  - id: u-s-geological-survey-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for U.S. Geological Survey. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://earthquake.usgs.gov/fdsnws/event/1
-          - https://api.waterdata.usgs.gov/ogcapi/v0
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://earthquake.usgs.gov/fdsnws/event/1
-          - https://api.waterdata.usgs.gov/ogcapi/v0
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Earthquake Notifications, Feeds, and Web Services
-      - name: USGS Water Data APIs
-      - name: Asset Identifier Service (AIS)
       - name: Seismic Design Web Service
-      - name: ScienceBase
-      - name: StreamStats Web Services
+      - name: Asset Identifier Service (AIS)
       - name: USGS Water Services (Legacy)
 maintainers:
   - FN: Kin Lane
