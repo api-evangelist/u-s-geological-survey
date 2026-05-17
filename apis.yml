@@ -24,7 +24,7 @@ apis:
         title: Earthquake Properties Schema
       - url: >-
           https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
-        type: JSON-LD
+        type: JSONLD
       - url: >-
           https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
         type: Example
@@ -62,7 +62,7 @@ apis:
         title: Time Series Properties Schema
       - url: >-
           https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
-        type: JSON-LD
+        type: JSONLD
       - url: >-
           https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
         type: Example
@@ -159,7 +159,7 @@ tags:
   - Earthquake
   - Water
   - Hydrology
-type: Contract
+kind: contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
