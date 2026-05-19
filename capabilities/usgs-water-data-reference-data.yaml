@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: USGS Water Data APIs — Reference Data
+  description: 'USGS Water Data APIs — Reference Data. 1 operations. Lead operation: USGS Water Data Get Agency Codes. Self-contained
+    Naftiko capability covering one U S Geological Survey business surface.'
+  tags:
+  - U S Geological Survey
+  - Reference Data
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    U_S_GEOLOGICAL_SURVEY_API_KEY: U_S_GEOLOGICAL_SURVEY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: usgs-water-data-reference-data
+    baseUri: https://api.waterdata.usgs.gov/ogcapi/v0
+    description: USGS Water Data APIs — Reference Data business capability. Self-contained, no shared references.
+    resources:
+    - name: collections-agency-codes-items
+      path: /collections/agency-codes/items
+      operations:
+      - name: getagencycodes
+        method: GET
+        description: USGS Water Data Get Agency Codes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: api_key
+      value: '{{env.U_S_GEOLOGICAL_SURVEY_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: usgs-water-data-reference-data-rest
+    port: 8080
+    description: REST adapter for USGS Water Data APIs — Reference Data. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/collections/agency-codes/items
+      name: collections-agency-codes-items
+      description: REST surface for collections-agency-codes-items.
+      operations:
+      - method: GET
+        name: getagencycodes
+        description: USGS Water Data Get Agency Codes
+        call: usgs-water-data-reference-data.getagencycodes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: usgs-water-data-reference-data-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for USGS Water Data APIs — Reference Data. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: usgs-water-data-get-agency
+      description: USGS Water Data Get Agency Codes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: usgs-water-data-reference-data.getagencycodes
+      outputParameters:
+      - type: object
+        mapping: $.

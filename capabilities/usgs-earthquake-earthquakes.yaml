@@ -1,0 +1,353 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: USGS Earthquake Notifications, Feeds, and Web Services — Earthquakes
+  description: 'USGS Earthquake Notifications, Feeds, and Web Services — Earthquakes. 2 operations. Lead operation: USGS Count
+    Earthquake Events. Self-contained Naftiko capability covering one U S Geological Survey business surface.'
+  tags:
+  - U S Geological Survey
+  - Earthquakes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    U_S_GEOLOGICAL_SURVEY_API_KEY: U_S_GEOLOGICAL_SURVEY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: usgs-earthquake-earthquakes
+    baseUri: https://earthquake.usgs.gov/fdsnws/event/1
+    description: USGS Earthquake Notifications, Feeds, and Web Services — Earthquakes business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: count
+      path: /count
+      operations:
+      - name: countearthquakes
+        method: GET
+        description: USGS Count Earthquake Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: format
+          in: query
+          type: string
+          description: Response format (geojson or text).
+        - name: starttime
+          in: query
+          type: string
+          description: Start time in ISO8601 format.
+        - name: endtime
+          in: query
+          type: string
+          description: End time in ISO8601 format.
+        - name: minmagnitude
+          in: query
+          type: number
+          description: Minimum earthquake magnitude.
+        - name: maxmagnitude
+          in: query
+          type: number
+          description: Maximum earthquake magnitude.
+        - name: minlatitude
+          in: query
+          type: number
+          description: Minimum latitude for rectangle filter.
+        - name: maxlatitude
+          in: query
+          type: number
+          description: Maximum latitude for rectangle filter.
+        - name: minlongitude
+          in: query
+          type: number
+          description: Minimum longitude for rectangle filter.
+        - name: maxlongitude
+          in: query
+          type: number
+          description: Maximum longitude for rectangle filter.
+    - name: query
+      path: /query
+      operations:
+      - name: queryearthquakes
+        method: GET
+        description: USGS Query Earthquake Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: format
+          in: query
+          type: string
+          description: 'Response format. Options: geojson (default), csv, kml, quakeml, text, xml.'
+        - name: starttime
+          in: query
+          type: string
+          description: 'Limit events to those occurring after this time. ISO8601 format. Default: NOW minus 30 days.'
+        - name: endtime
+          in: query
+          type: string
+          description: 'Limit events to those occurring before this time. ISO8601 format. Default: present.'
+        - name: updatedafter
+          in: query
+          type: string
+          description: Return events updated after this ISO8601 timestamp.
+        - name: minlatitude
+          in: query
+          type: number
+          description: Minimum latitude for rectangle filter in degrees (-90 to 90).
+        - name: maxlatitude
+          in: query
+          type: number
+          description: Maximum latitude for rectangle filter in degrees (-90 to 90).
+        - name: minlongitude
+          in: query
+          type: number
+          description: Minimum longitude for rectangle filter in degrees (-360 to 360).
+        - name: maxlongitude
+          in: query
+          type: number
+          description: Maximum longitude for rectangle filter in degrees (-360 to 360).
+        - name: latitude
+          in: query
+          type: number
+          description: Latitude for circle filter center in degrees (-90 to 90).
+        - name: longitude
+          in: query
+          type: number
+          description: Longitude for circle filter center in degrees (-360 to 360).
+        - name: maxradius
+          in: query
+          type: number
+          description: Maximum search radius for circle filter in degrees (0 to 180).
+        - name: maxradiuskm
+          in: query
+          type: number
+          description: Maximum search radius for circle filter in kilometers (0 to 20001.6).
+        - name: minmagnitude
+          in: query
+          type: number
+          description: Minimum earthquake magnitude.
+        - name: maxmagnitude
+          in: query
+          type: number
+          description: Maximum earthquake magnitude.
+        - name: mindepth
+          in: query
+          type: number
+          description: Minimum event depth in kilometers (-100 to 1000).
+        - name: maxdepth
+          in: query
+          type: number
+          description: Maximum event depth in kilometers (-100 to 1000).
+        - name: eventid
+          in: query
+          type: string
+          description: Retrieve a specific event by its USGS event identifier.
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of events to return (1 to 20000).
+        - name: offset
+          in: query
+          type: integer
+          description: Starting record number for paginated results (1-based).
+        - name: orderby
+          in: query
+          type: string
+          description: Order results by time, time-asc, magnitude, or magnitude-asc.
+        - name: catalog
+          in: query
+          type: string
+          description: Filter by earthquake catalog (e.g., us, ci, nc).
+        - name: contributor
+          in: query
+          type: string
+          description: Filter by contributing network.
+        - name: eventtype
+          in: query
+          type: string
+          description: Filter by event type (earthquake, explosion, quarry blast, etc.).
+        - name: alertlevel
+          in: query
+          type: string
+          description: Filter by PAGER alert level (green, yellow, orange, red).
+        - name: minsig
+          in: query
+          type: integer
+          description: Minimum significance value (integer, 0+).
+        - name: maxsig
+          in: query
+          type: integer
+          description: Maximum significance value.
+        - name: reviewstatus
+          in: query
+          type: string
+          description: Filter by review status (automatic or reviewed).
+        - name: producttype
+          in: query
+          type: string
+          description: Filter by product type associated with the event (moment-tensor, focal-mechanism, shakemap, losspager,
+            dyfi).
+        - name: includedeleted
+          in: query
+          type: string
+          description: Include deleted events in results (true, false, or only).
+        - name: includeallorigins
+          in: query
+          type: boolean
+          description: Include all origin solutions in results.
+        - name: includeallmagnitudes
+          in: query
+          type: boolean
+          description: Include all magnitude estimates in results.
+        - name: nodata
+          in: query
+          type: integer
+          description: HTTP status code to return when no data is found (204 or 404).
+  exposes:
+  - type: rest
+    namespace: usgs-earthquake-earthquakes-rest
+    port: 8080
+    description: REST adapter for USGS Earthquake Notifications, Feeds, and Web Services — Earthquakes. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/count
+      name: count
+      description: REST surface for count.
+      operations:
+      - method: GET
+        name: countearthquakes
+        description: USGS Count Earthquake Events
+        call: usgs-earthquake-earthquakes.countearthquakes
+        with:
+          format: rest.format
+          starttime: rest.starttime
+          endtime: rest.endtime
+          minmagnitude: rest.minmagnitude
+          maxmagnitude: rest.maxmagnitude
+          minlatitude: rest.minlatitude
+          maxlatitude: rest.maxlatitude
+          minlongitude: rest.minlongitude
+          maxlongitude: rest.maxlongitude
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/query
+      name: query
+      description: REST surface for query.
+      operations:
+      - method: GET
+        name: queryearthquakes
+        description: USGS Query Earthquake Events
+        call: usgs-earthquake-earthquakes.queryearthquakes
+        with:
+          format: rest.format
+          starttime: rest.starttime
+          endtime: rest.endtime
+          updatedafter: rest.updatedafter
+          minlatitude: rest.minlatitude
+          maxlatitude: rest.maxlatitude
+          minlongitude: rest.minlongitude
+          maxlongitude: rest.maxlongitude
+          latitude: rest.latitude
+          longitude: rest.longitude
+          maxradius: rest.maxradius
+          maxradiuskm: rest.maxradiuskm
+          minmagnitude: rest.minmagnitude
+          maxmagnitude: rest.maxmagnitude
+          mindepth: rest.mindepth
+          maxdepth: rest.maxdepth
+          eventid: rest.eventid
+          limit: rest.limit
+          offset: rest.offset
+          orderby: rest.orderby
+          catalog: rest.catalog
+          contributor: rest.contributor
+          eventtype: rest.eventtype
+          alertlevel: rest.alertlevel
+          minsig: rest.minsig
+          maxsig: rest.maxsig
+          reviewstatus: rest.reviewstatus
+          producttype: rest.producttype
+          includedeleted: rest.includedeleted
+          includeallorigins: rest.includeallorigins
+          includeallmagnitudes: rest.includeallmagnitudes
+          nodata: rest.nodata
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: usgs-earthquake-earthquakes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for USGS Earthquake Notifications, Feeds, and Web Services — Earthquakes. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: usgs-count-earthquake-events
+      description: USGS Count Earthquake Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: usgs-earthquake-earthquakes.countearthquakes
+      with:
+        format: tools.format
+        starttime: tools.starttime
+        endtime: tools.endtime
+        minmagnitude: tools.minmagnitude
+        maxmagnitude: tools.maxmagnitude
+        minlatitude: tools.minlatitude
+        maxlatitude: tools.maxlatitude
+        minlongitude: tools.minlongitude
+        maxlongitude: tools.maxlongitude
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: usgs-query-earthquake-events
+      description: USGS Query Earthquake Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: usgs-earthquake-earthquakes.queryearthquakes
+      with:
+        format: tools.format
+        starttime: tools.starttime
+        endtime: tools.endtime
+        updatedafter: tools.updatedafter
+        minlatitude: tools.minlatitude
+        maxlatitude: tools.maxlatitude
+        minlongitude: tools.minlongitude
+        maxlongitude: tools.maxlongitude
+        latitude: tools.latitude
+        longitude: tools.longitude
+        maxradius: tools.maxradius
+        maxradiuskm: tools.maxradiuskm
+        minmagnitude: tools.minmagnitude
+        maxmagnitude: tools.maxmagnitude
+        mindepth: tools.mindepth
+        maxdepth: tools.maxdepth
+        eventid: tools.eventid
+        limit: tools.limit
+        offset: tools.offset
+        orderby: tools.orderby
+        catalog: tools.catalog
+        contributor: tools.contributor
+        eventtype: tools.eventtype
+        alertlevel: tools.alertlevel
+        minsig: tools.minsig
+        maxsig: tools.maxsig
+        reviewstatus: tools.reviewstatus
+        producttype: tools.producttype
+        includedeleted: tools.includedeleted
+        includeallorigins: tools.includeallorigins
+        includeallmagnitudes: tools.includeallmagnitudes
+        nodata: tools.nodata
+      outputParameters:
+      - type: object
+        mapping: $.
