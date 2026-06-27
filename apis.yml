@@ -22,11 +22,11 @@ apis:
     - url: https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
       type: JSONLD
     - url: https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
-      type: Example
+      type: Examples
       title: Earthquake Properties Example
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/usgs-earthquake-catalog.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/usgs-earthquake-earthquakes.yaml
     description: The USGS Earthquake Hazards Program provides real-time notifications and historical earthquake data through
       the FDSN Event Web Service. Search the ANSS ComCat earthquake catalog by geography, time, magnitude, and depth. Responses
@@ -56,15 +56,15 @@ apis:
     - url: https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
       type: JSONLD
     - url: https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
-      type: Example
+      type: Examples
       title: Monitoring Location Example
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/usgs-water-data-collections.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/usgs-water-data-monitoring-locations.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/usgs-water-data-reference-data.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/usgs-water-data-time-series-data.yaml
     description: The USGS Water Data OGC APIs provide standardized access to USGS water monitoring data including continuous
       streamflow, daily values, groundwater levels, discrete water quality measurements, and monitoring location metadata. Implements
