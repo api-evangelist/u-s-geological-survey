@@ -142,6 +142,12 @@ kind: contract
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+  - type: VulnerabilityDisclosure
+    url: security/u-s-geological-survey-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/u-s-geological-survey-domain-security.yml
+  - type: Authentication
+    url: authentication/u-s-geological-survey-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/usgs
   - type: Website
@@ -197,6 +203,8 @@ common:
     - name: FDSN Standards
       description: USGS earthquake API implements FDSN (International Federation of Digital Seismograph Networks) web service
         specifications.
+  - url: https://www.usgs.gov/news/news-releases/all-news-releases
+    type: Blog
 created: '2024-11-14'
 modified: '2026-05-19'
 position: Consuming

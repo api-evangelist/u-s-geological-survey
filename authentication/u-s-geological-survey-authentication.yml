@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/usgs-water-data-api-openapi.yaml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: ApiKeyQuery
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: USGS Water Data API key. Obtain at https://api.waterdata.usgs.gov/signup/
+  sources:
+  - openapi/usgs-water-data-api-openapi.yaml
+- name: ApiKeyHeader
+  type: apiKey
+  in: header
+  parameter: api_key
+  description: USGS Water Data API key passed as a request header.
+  sources:
+  - openapi/usgs-water-data-api-openapi.yaml
