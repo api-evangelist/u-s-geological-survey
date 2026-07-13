@@ -1,0 +1,14 @@
+{
+  "repo": "u-s-geological-survey",
+  "feeds": [
+    {
+      "source": "https://www.usgs.gov/news/news-releases/all-news-releases",
+      "feed_url": "https://www.usgs.gov/news/news-releases/all-news-releases",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 5
+}
