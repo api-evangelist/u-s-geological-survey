@@ -1,0 +1,146 @@
+openapi: 3.0.3
+info:
+  title: USGS Earthquake Notifications, Feeds, and Web Services Catalog API
+  description: The USGS Earthquake Hazards Program provides real-time earthquake data through the FDSN (International Federation of Digital Seismograph Networks) Event Web Service. This API allows searching the USGS ANSS (Advanced National Seismic System) ComCat earthquake catalog for event data using geographic, temporal, magnitude, and other filters. Responses are available in GeoJSON, CSV, KML, QuakeML, and text formats.
+  version: '1.0'
+  contact:
+    name: USGS Earthquake Hazards Program
+    url: https://earthquake.usgs.gov/
+    email: shake-admin@usgs.gov
+  license:
+    name: Public Domain (U.S. Government Work)
+    url: https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits
+  x-generated-from: documentation
+servers:
+- url: https://earthquake.usgs.gov/fdsnws/event/1
+  description: USGS FDSN Event Web Service
+tags:
+- name: Catalog
+  description: Discover available catalogs, contributors, and supported parameter values.
+paths:
+  /catalogs:
+    get:
+      operationId: listCatalogs
+      summary: USGS List Available Earthquake Catalogs
+      description: Return a list of available earthquake catalog sources that can be used to filter event queries.
+      tags:
+      - Catalog
+      parameters:
+      - name: format
+        in: query
+        required: false
+        description: Response format.
+        schema:
+          type: string
+          enum:
+          - text
+          - geojson
+          default: text
+      responses:
+        '200':
+          description: List of available earthquake catalogs.
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                ListCatalogs200Example:
+                  summary: Default listCatalogs 200 response
+                  x-microcks-default: true
+                  value: 'ak
+
+                    ci
+
+                    cn
+
+                    hv
+
+                    ld
+
+                    mb
+
+                    nc
+
+                    nn
+
+                    ok
+
+                    pa
+
+                    pr
+
+                    us
+
+                    uu
+
+                    uw'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /contributors:
+    get:
+      operationId: listContributors
+      summary: USGS List Earthquake Data Contributors
+      description: Return a list of data contributors (seismic networks) that provide earthquake information to the USGS catalog.
+      tags:
+      - Catalog
+      parameters:
+      - name: format
+        in: query
+        required: false
+        description: Response format.
+        schema:
+          type: string
+          enum:
+          - text
+          - geojson
+          default: text
+      responses:
+        '200':
+          description: List of earthquake data contributors.
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                ListContributors200Example:
+                  summary: Default listContributors 200 response
+                  x-microcks-default: true
+                  value: 'ak
+
+                    ci
+
+                    cn
+
+                    hv
+
+                    nc
+
+                    us
+
+                    uu'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /version:
+    get:
+      operationId: getVersion
+      summary: USGS Get Earthquake API Version
+      description: Return the current version of the USGS FDSN Event Web Service.
+      tags:
+      - Catalog
+      responses:
+        '200':
+          description: Service version string.
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                GetVersion200Example:
+                  summary: Default getVersion 200 response
+                  x-microcks-default: true
+                  value: 1.14.1
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK

@@ -1,0 +1,168 @@
+openapi: 3.0.3
+info:
+  title: USGS Earthquake Notifications, Feeds, and Web Services Catalog Collections API
+  description: The USGS Earthquake Hazards Program provides real-time earthquake data through the FDSN (International Federation of Digital Seismograph Networks) Event Web Service. This API allows searching the USGS ANSS (Advanced National Seismic System) ComCat earthquake catalog for event data using geographic, temporal, magnitude, and other filters. Responses are available in GeoJSON, CSV, KML, QuakeML, and text formats.
+  version: '1.0'
+  contact:
+    name: USGS Earthquake Hazards Program
+    url: https://earthquake.usgs.gov/
+    email: shake-admin@usgs.gov
+  license:
+    name: Public Domain (U.S. Government Work)
+    url: https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits
+  x-generated-from: documentation
+servers:
+- url: https://earthquake.usgs.gov/fdsnws/event/1
+  description: USGS FDSN Event Web Service
+tags:
+- name: Collections
+  description: OGC API collections listing and metadata.
+paths:
+  /:
+    get:
+      operationId: getLandingPage
+      summary: USGS Water Data Get API Landing Page
+      description: Retrieve the OGC API landing page with links to available resources, conformance declarations, and API documentation.
+      tags:
+      - Collections
+      parameters:
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Landing page with API links and metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LandingPage'
+              examples:
+                GetLandingPage200Example:
+                  summary: Default getLandingPage 200 response
+                  x-microcks-default: true
+                  value:
+                    title: USGS Water Data OGC APIs
+                    description: Access to USGS water data using OGC API standards.
+                    links:
+                    - href: https://api.waterdata.usgs.gov/ogcapi/v0/
+                      rel: self
+                      type: application/json
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /collections:
+    get:
+      operationId: listCollections
+      summary: USGS Water Data List Collections
+      description: List all available OGC API collections (data layers) including monitoring locations, time series, reference codes, and other water data entities.
+      tags:
+      - Collections
+      parameters:
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: List of available collections.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionsList'
+              examples:
+                ListCollections200Example:
+                  summary: Default listCollections 200 response
+                  x-microcks-default: true
+                  value:
+                    collections:
+                    - id: monitoring-locations
+                      title: Monitoring Locations
+                      description: USGS water monitoring sites including stream gages and wells.
+                    - id: time-series
+                      title: Time Series
+                      description: Continuous sensor measurement time series.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Collection:
+      title: Collection
+      type: object
+      description: Metadata for an OGC API collection.
+      properties:
+        id:
+          type: string
+          description: Collection identifier.
+          example: monitoring-locations
+        title:
+          type: string
+          description: Human-readable collection title.
+          example: Monitoring Locations
+        description:
+          type: string
+          description: Description of the collection.
+          example: USGS water monitoring sites.
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    Link:
+      title: Link
+      type: object
+      description: A hypermedia link.
+      properties:
+        href:
+          type: string
+          description: Link URL.
+          example: https://api.waterdata.usgs.gov/ogcapi/v0/
+        rel:
+          type: string
+          description: Link relation type.
+          example: self
+        type:
+          type: string
+          description: Media type of the linked resource.
+          example: application/json
+        title:
+          type: string
+          description: Human-readable link title.
+          example: This document
+    LandingPage:
+      title: LandingPage
+      type: object
+      description: OGC API landing page with navigation links.
+      properties:
+        title:
+          type: string
+          description: API title.
+          example: USGS Water Data OGC APIs
+        description:
+          type: string
+          description: API description.
+          example: Access to USGS water data using OGC API standards.
+        links:
+          type: array
+          description: Navigation links.
+          items:
+            $ref: '#/components/schemas/Link'
+    CollectionsList:
+      title: CollectionsList
+      type: object
+      description: List of available OGC API collections.
+      properties:
+        collections:
+          type: array
+          description: Array of collection metadata objects.
+          items:
+            $ref: '#/components/schemas/Collection'
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format (json, html, jsonld, csv).
+      schema:
+        type: string
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        default: json
+        example: json

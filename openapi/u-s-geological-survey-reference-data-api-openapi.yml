@@ -1,0 +1,120 @@
+openapi: 3.0.3
+info:
+  title: USGS Earthquake Notifications, Feeds, and Web Services Catalog Reference Data API
+  description: The USGS Earthquake Hazards Program provides real-time earthquake data through the FDSN (International Federation of Digital Seismograph Networks) Event Web Service. This API allows searching the USGS ANSS (Advanced National Seismic System) ComCat earthquake catalog for event data using geographic, temporal, magnitude, and other filters. Responses are available in GeoJSON, CSV, KML, QuakeML, and text formats.
+  version: '1.0'
+  contact:
+    name: USGS Earthquake Hazards Program
+    url: https://earthquake.usgs.gov/
+    email: shake-admin@usgs.gov
+  license:
+    name: Public Domain (U.S. Government Work)
+    url: https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits
+  x-generated-from: documentation
+servers:
+- url: https://earthquake.usgs.gov/fdsnws/event/1
+  description: USGS FDSN Event Web Service
+tags:
+- name: Reference Data
+  description: Reference code tables including agency codes, datum types, and aquifer data.
+paths:
+  /collections/agency-codes/items:
+    get:
+      operationId: getAgencyCodes
+      summary: USGS Water Data Get Agency Codes
+      description: Retrieve organization identifiers (agency codes) assigned by NWIS (National Water Information System) to identify data-collecting agencies.
+      tags:
+      - Reference Data
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Collection of agency code features.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureCollection'
+              examples:
+                GetAgencyCodes200Example:
+                  summary: Default getAgencyCodes 200 response
+                  x-microcks-default: true
+                  value:
+                    type: FeatureCollection
+                    features:
+                    - type: Feature
+                      properties:
+                        agency_cd: USGS
+                        agency_name: U.S. Geological Survey
+        '403':
+          description: API key required.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    FeatureCollection:
+      title: FeatureCollection
+      type: object
+      description: Generic GeoJSON FeatureCollection.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type (FeatureCollection).
+          example: FeatureCollection
+        features:
+          type: array
+          description: Array of GeoJSON Feature objects.
+          items:
+            type: object
+        numberMatched:
+          type: integer
+          description: Total number of features matching the query.
+          example: 4523
+        numberReturned:
+          type: integer
+          description: Number of features in this response.
+          example: 100
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: Standard OGC API error response.
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: InvalidParameter
+        description:
+          type: string
+          description: Human-readable error description.
+          example: Invalid value for parameter bbox.
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format (json, html, jsonld, csv).
+      schema:
+        type: string
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        default: json
+        example: json
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Number of results to return (default 100, max 10000).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 10000
+        default: 100
+        example: 100

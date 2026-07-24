@@ -1,0 +1,310 @@
+openapi: 3.0.3
+info:
+  title: USGS Earthquake Notifications, Feeds, and Web Services Catalog Monitoring Locations API
+  description: The USGS Earthquake Hazards Program provides real-time earthquake data through the FDSN (International Federation of Digital Seismograph Networks) Event Web Service. This API allows searching the USGS ANSS (Advanced National Seismic System) ComCat earthquake catalog for event data using geographic, temporal, magnitude, and other filters. Responses are available in GeoJSON, CSV, KML, QuakeML, and text formats.
+  version: '1.0'
+  contact:
+    name: USGS Earthquake Hazards Program
+    url: https://earthquake.usgs.gov/
+    email: shake-admin@usgs.gov
+  license:
+    name: Public Domain (U.S. Government Work)
+    url: https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits
+  x-generated-from: documentation
+servers:
+- url: https://earthquake.usgs.gov/fdsnws/event/1
+  description: USGS FDSN Event Web Service
+tags:
+- name: Monitoring Locations
+  description: USGS stream gages, groundwater wells, and other water monitoring stations.
+paths:
+  /collections/monitoring-locations/items:
+    get:
+      operationId: getMonitoringLocations
+      summary: USGS Water Data Get Monitoring Locations
+      description: Retrieve USGS water monitoring locations (stream gages, groundwater wells, springs, etc.) as GeoJSON features. Supports spatial filtering by bounding box, attribute filtering by state/county/HUC, and pagination.
+      tags:
+      - Monitoring Locations
+      parameters:
+      - $ref: '#/components/parameters/bbox'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/format'
+      - name: stateCd
+        in: query
+        required: false
+        description: Two-letter U.S. state or territory FIPS code (e.g., CA, TX, NY).
+        schema:
+          type: string
+          example: CA
+      - name: huc
+        in: query
+        required: false
+        description: Hydrologic Unit Code (2-12 digits) to filter by watershed.
+        schema:
+          type: string
+          example: '18010103'
+      - name: siteType
+        in: query
+        required: false
+        description: USGS site type code (ST for streams, GW for groundwater, LK for lakes, AT for atmosphere, WE for wetlands, etc.).
+        schema:
+          type: string
+          example: ST
+      - name: agencyCd
+        in: query
+        required: false
+        description: Agency code (default USGS).
+        schema:
+          type: string
+          example: USGS
+      responses:
+        '200':
+          description: GeoJSON FeatureCollection of monitoring locations.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonitoringLocationCollection'
+              examples:
+                GetMonitoringLocations200Example:
+                  summary: Default getMonitoringLocations 200 response
+                  x-microcks-default: true
+                  value:
+                    type: FeatureCollection
+                    features:
+                    - type: Feature
+                      geometry:
+                        type: Point
+                        coordinates:
+                        - -122.419
+                        - 37.775
+                      properties:
+                        monitoringLocationIdentifier: USGS-11169025
+                        monitoringLocationName: GUADALUPE R AB HWY 237 NR ALVISO CA
+                        monitoringLocationTypeName: Stream
+                        hucEightDigitCode: '18050001'
+                        stateFIPSCode: '06'
+                        countryCode: US
+                        drainageAreaMeasure: 850.0
+                        drainageAreaMeasureUnitCode: sq mi
+                        siteWebAddress: https://waterdata.usgs.gov/nwis/inventory?agency_code=USGS&site_no=11169025
+        '400':
+          description: Invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: API key missing or unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /collections/monitoring-locations/items/{featureId}:
+    get:
+      operationId: getMonitoringLocation
+      summary: USGS Water Data Get Monitoring Location by ID
+      description: Retrieve a single USGS water monitoring location by its feature identifier (site number with agency prefix, e.g., USGS-11169025).
+      tags:
+      - Monitoring Locations
+      parameters:
+      - name: featureId
+        in: path
+        required: true
+        description: Monitoring location identifier in format AGENCY-SITENUMBER (e.g., USGS-11169025).
+        schema:
+          type: string
+          example: USGS-11169025
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Single monitoring location GeoJSON Feature.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonitoringLocationFeature'
+              examples:
+                GetMonitoringLocation200Example:
+                  summary: Default getMonitoringLocation 200 response
+                  x-microcks-default: true
+                  value:
+                    type: Feature
+                    geometry:
+                      type: Point
+                      coordinates:
+                      - -122.419
+                      - 37.775
+                    properties:
+                      monitoringLocationIdentifier: USGS-11169025
+                      monitoringLocationName: GUADALUPE R AB HWY 237 NR ALVISO CA
+                      monitoringLocationTypeName: Stream
+        '403':
+          description: API key missing or unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Monitoring location not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    MonitoringLocationCollection:
+      title: MonitoringLocationCollection
+      type: object
+      description: GeoJSON FeatureCollection of USGS monitoring locations.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: FeatureCollection
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonitoringLocationFeature'
+        numberMatched:
+          type: integer
+          description: Total number of matching locations.
+          example: 8423
+        numberReturned:
+          type: integer
+          description: Number of locations returned.
+          example: 100
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: Standard OGC API error response.
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: InvalidParameter
+        description:
+          type: string
+          description: Human-readable error description.
+          example: Invalid value for parameter bbox.
+    MonitoringLocationFeature:
+      title: MonitoringLocationFeature
+      type: object
+      description: GeoJSON Feature for a single USGS water monitoring location.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: Feature
+        geometry:
+          type: object
+          description: GeoJSON Point geometry with longitude and latitude.
+          properties:
+            type:
+              type: string
+              example: Point
+            coordinates:
+              type: array
+              items:
+                type: number
+              example:
+              - -122.419
+              - 37.775
+        properties:
+          $ref: '#/components/schemas/MonitoringLocationProperties'
+    MonitoringLocationProperties:
+      title: MonitoringLocationProperties
+      type: object
+      description: Attributes describing a USGS water monitoring location.
+      properties:
+        monitoringLocationIdentifier:
+          type: string
+          description: Unique identifier in format AGENCY-SITENUMBER.
+          example: USGS-11169025
+        monitoringLocationName:
+          type: string
+          description: Name of the monitoring location.
+          example: GUADALUPE R AB HWY 237 NR ALVISO CA
+        monitoringLocationTypeName:
+          type: string
+          description: Type of monitoring location (Stream, Well, Lake, etc.).
+          example: Stream
+        hucEightDigitCode:
+          type: string
+          description: 8-digit Hydrologic Unit Code for the location's watershed.
+          example: '18050001'
+        stateFIPSCode:
+          type: string
+          description: Two-digit state FIPS code.
+          example: '06'
+        countryCode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+          example: US
+        drainageAreaMeasure:
+          type: number
+          description: Drainage area measurement value.
+          example: 850.0
+        drainageAreaMeasureUnitCode:
+          type: string
+          description: Unit code for drainage area.
+          example: sq mi
+        siteWebAddress:
+          type: string
+          description: URL for the USGS NWIS site page.
+          example: https://waterdata.usgs.gov/nwis/inventory?agency_code=USGS&site_no=11169025
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format (json, html, jsonld, csv).
+      schema:
+        type: string
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        default: json
+        example: json
+    bbox:
+      name: bbox
+      in: query
+      required: false
+      description: Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form.
+      schema:
+        type: string
+        example: -125,25,-65,50
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: Starting offset for pagination.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+        example: 0
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Number of results to return (default 100, max 10000).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 10000
+        default: 100
+        example: 100
