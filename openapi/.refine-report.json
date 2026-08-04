@@ -1,0 +1,24 @@
+{
+  "provider": "u-s-geological-survey",
+  "sources": [
+    "u-s-geological-survey-catalog-api-openapi.yml",
+    "u-s-geological-survey-collections-api-openapi.yml",
+    "u-s-geological-survey-earthquakes-api-openapi.yml",
+    "u-s-geological-survey-monitoring-locations-api-openapi.yml",
+    "u-s-geological-survey-reference-data-api-openapi.yml",
+    "u-s-geological-survey-time-series-data-api-openapi.yml"
+  ],
+  "outputs": [
+    "u-s-geological-survey-catalog-api-openapi.yml",
+    "u-s-geological-survey-collections-api-openapi.yml",
+    "u-s-geological-survey-earthquakes-api-openapi.yml",
+    "u-s-geological-survey-monitoring-locations-api-openapi.yml",
+    "u-s-geological-survey-reference-data-api-openapi.yml",
+    "u-s-geological-survey-time-series-data-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
