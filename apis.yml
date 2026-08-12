@@ -91,10 +91,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-earthquake-catalog.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-earthquake-earthquakes.yaml
   - type: Documentation
     url: https://api.waterdata.usgs.gov/docs/
   - type: Authentication
@@ -111,14 +107,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-collections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-monitoring-locations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-reference-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-time-series-data.yaml
 - aid: u-s-geological-survey:u-s-geological-survey-collections-api
   name: U.S. Geological Survey Collections API
   description: OGC API collections listing and metadata.
@@ -142,10 +130,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-earthquake-catalog.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-earthquake-earthquakes.yaml
   - type: Documentation
     url: https://api.waterdata.usgs.gov/docs/
   - type: Authentication
@@ -162,14 +146,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-collections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-monitoring-locations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-reference-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-time-series-data.yaml
 - aid: u-s-geological-survey:u-s-geological-survey-earthquakes-api
   name: U.S. Geological Survey Earthquakes API
   description: Query and retrieve earthquake event data from the USGS earthquake catalog.
@@ -193,10 +169,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-earthquake-catalog.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-earthquake-earthquakes.yaml
   - type: Documentation
     url: https://api.waterdata.usgs.gov/docs/
   - type: Authentication
@@ -213,14 +185,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-collections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-monitoring-locations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-reference-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-time-series-data.yaml
 - aid: u-s-geological-survey:u-s-geological-survey-monitoring-locations-api
   name: U.S. Geological Survey Monitoring Locations API
   description: USGS stream gages, groundwater wells, and other water monitoring stations.
@@ -244,10 +208,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-earthquake-catalog.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-earthquake-earthquakes.yaml
   - type: Documentation
     url: https://api.waterdata.usgs.gov/docs/
   - type: Authentication
@@ -264,14 +224,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-collections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-monitoring-locations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-reference-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-time-series-data.yaml
 - aid: u-s-geological-survey:u-s-geological-survey-reference-data-api
   name: U.S. Geological Survey Reference Data API
   description: Reference code tables including agency codes, datum types, and aquifer data.
@@ -295,10 +247,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-earthquake-catalog.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-earthquake-earthquakes.yaml
   - type: Documentation
     url: https://api.waterdata.usgs.gov/docs/
   - type: Authentication
@@ -315,14 +263,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-collections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-monitoring-locations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-reference-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-time-series-data.yaml
 - aid: u-s-geological-survey:u-s-geological-survey-time-series-data-api
   name: U.S. Geological Survey Time Series Data API
   description: Continuous and daily value water data from USGS monitoring locations.
@@ -346,10 +286,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-earthquake-catalog.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-earthquake-earthquakes.yaml
   - type: Documentation
     url: https://api.waterdata.usgs.gov/docs/
   - type: Authentication
@@ -366,14 +302,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-collections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-monitoring-locations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-reference-data.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/usgs-water-data-time-series-data.yaml
 name: U.S. Geological Survey
 tags:
   - Federal Government
