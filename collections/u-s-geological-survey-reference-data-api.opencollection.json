@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USGS Earthquake Notifications, Feeds, and Web Services Catalog Reference Data API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "USGS Water Data Get Agency Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://earthquake.usgs.gov/fdsnws/event/1/collections/agency-codes/items",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return (default 100, max 10000)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format (json, html, jsonld, csv)."
+              }
+            ]
+          },
+          "docs": "Retrieve organization identifiers (agency codes) assigned by NWIS (National Water Information System) to identify data-collecting agencies."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

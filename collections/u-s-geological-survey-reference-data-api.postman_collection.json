@@ -1,0 +1,174 @@
+{
+  "item": [
+    {
+      "id": "9748f9f9-a279-437a-a2fb-38694a0dcbce",
+      "name": "Reference Data",
+      "description": {
+        "content": "Reference code tables including agency codes, datum types, and aquifer data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "530b1067-45da-44e8-be78-33628ccbb8ec",
+          "name": "USGS Water Data Get Agency Codes",
+          "request": {
+            "name": "USGS Water Data Get Agency Codes",
+            "description": {
+              "content": "Retrieve organization identifiers (agency codes) assigned by NWIS (National Water Information System) to identify data-collecting agencies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                "agency-codes",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Number of results to return (default 100, max 10000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format (json, html, jsonld, csv)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ac10a24-1291-4676-82e8-37d429232ca5",
+              "name": "Collection of agency code features.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "agency-codes",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "f",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"properties\": {\n        \"agency_cd\": \"USGS\",\n        \"agency_name\": \"U.S. Geological Survey\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f707bd02-3b2f-4ba7-91fb-4f7d36d5d852",
+              "name": "API key required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "agency-codes",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "f",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidParameter\",\n  \"description\": \"Invalid value for parameter bbox.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://earthquake.usgs.gov/fdsnws/event/1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1bae481e-bea9-4838-a8fc-5f09965ad9c9",
+    "name": "USGS Earthquake Notifications, Feeds, and Web Services Catalog Reference Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USGS Earthquake Hazards Program provides real-time earthquake data through the FDSN (International Federation of Digital Seismograph Networks) Event Web Service. This API allows searching the USGS ANSS (Advanced National Seismic System) ComCat earthquake catalog for event data using geographic, temporal, magnitude, and other filters. Responses are available in GeoJSON, CSV, KML, QuakeML, and text formats.\n\nContact Support:\n Name: USGS Earthquake Hazards Program\n Email: shake-admin@usgs.gov",
+      "type": "text/plain"
+    }
+  }
+}

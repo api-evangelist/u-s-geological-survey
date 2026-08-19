@@ -1,0 +1,604 @@
+{
+  "item": [
+    {
+      "id": "49322e64-01a8-4014-b28f-0dfeaef5e85f",
+      "name": "Monitoring Locations",
+      "description": {
+        "content": "USGS stream gages, groundwater wells, and other water monitoring stations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bf49ddd1-f81a-433f-b59b-c900b8fe7ba1",
+          "name": "USGS Water Data Get Monitoring Locations",
+          "request": {
+            "name": "USGS Water Data Get Monitoring Locations",
+            "description": {
+              "content": "Retrieve USGS water monitoring locations (stream gages, groundwater wells, springs, etc.) as GeoJSON features. Supports spatial filtering by bounding box, attribute filtering by state/county/HUC, and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                "monitoring-locations",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bbox",
+                  "value": "<string>",
+                  "description": "Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Number of results to return (default 100, max 10000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Starting offset for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format (json, html, jsonld, csv)."
+                },
+                {
+                  "disabled": false,
+                  "key": "stateCd",
+                  "value": "<string>",
+                  "description": "Two-letter U.S. state or territory FIPS code (e.g., CA, TX, NY)."
+                },
+                {
+                  "disabled": false,
+                  "key": "huc",
+                  "value": "<string>",
+                  "description": "Hydrologic Unit Code (2-12 digits) to filter by watershed."
+                },
+                {
+                  "disabled": false,
+                  "key": "siteType",
+                  "value": "<string>",
+                  "description": "USGS site type code (ST for streams, GW for groundwater, LK for lakes, AT for atmosphere, WE for wetlands, etc.)."
+                },
+                {
+                  "disabled": false,
+                  "key": "agencyCd",
+                  "value": "<string>",
+                  "description": "Agency code (default USGS)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25aec650-7259-46bf-864c-2bbd5ab005fa",
+              "name": "GeoJSON FeatureCollection of monitoring locations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "monitoring-locations",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-125,25,-65,50"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "f",
+                      "value": "json"
+                    },
+                    {
+                      "key": "stateCd",
+                      "value": "CA"
+                    },
+                    {
+                      "key": "huc",
+                      "value": "18010103"
+                    },
+                    {
+                      "key": "siteType",
+                      "value": "ST"
+                    },
+                    {
+                      "key": "agencyCd",
+                      "value": "USGS"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          -122.419,\n          37.775\n        ]\n      },\n      \"properties\": {\n        \"monitoringLocationIdentifier\": \"USGS-11169025\",\n        \"monitoringLocationName\": \"GUADALUPE R AB HWY 237 NR ALVISO CA\",\n        \"monitoringLocationTypeName\": \"Stream\",\n        \"hucEightDigitCode\": \"18050001\",\n        \"stateFIPSCode\": \"06\",\n        \"countryCode\": \"US\",\n        \"drainageAreaMeasure\": 850,\n        \"drainageAreaMeasureUnitCode\": \"sq mi\",\n        \"siteWebAddress\": \"https://waterdata.usgs.gov/nwis/inventory?agency_code=USGS&site_no=11169025\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90b0d7b2-49ff-4cb8-88d3-27c89c2f003c",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "monitoring-locations",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-125,25,-65,50"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "f",
+                      "value": "json"
+                    },
+                    {
+                      "key": "stateCd",
+                      "value": "CA"
+                    },
+                    {
+                      "key": "huc",
+                      "value": "18010103"
+                    },
+                    {
+                      "key": "siteType",
+                      "value": "ST"
+                    },
+                    {
+                      "key": "agencyCd",
+                      "value": "USGS"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidParameter\",\n  \"description\": \"Invalid value for parameter bbox.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c31c74b-c3ad-4d1c-8967-9e2ea30c5833",
+              "name": "API key missing or unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "monitoring-locations",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-125,25,-65,50"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "f",
+                      "value": "json"
+                    },
+                    {
+                      "key": "stateCd",
+                      "value": "CA"
+                    },
+                    {
+                      "key": "huc",
+                      "value": "18010103"
+                    },
+                    {
+                      "key": "siteType",
+                      "value": "ST"
+                    },
+                    {
+                      "key": "agencyCd",
+                      "value": "USGS"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidParameter\",\n  \"description\": \"Invalid value for parameter bbox.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b35eadbe-2217-4afe-b974-dddc57059d04",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "monitoring-locations",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-125,25,-65,50"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "f",
+                      "value": "json"
+                    },
+                    {
+                      "key": "stateCd",
+                      "value": "CA"
+                    },
+                    {
+                      "key": "huc",
+                      "value": "18010103"
+                    },
+                    {
+                      "key": "siteType",
+                      "value": "ST"
+                    },
+                    {
+                      "key": "agencyCd",
+                      "value": "USGS"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidParameter\",\n  \"description\": \"Invalid value for parameter bbox.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c74f083c-46a1-4345-8446-823f97053ed1",
+          "name": "USGS Water Data Get Monitoring Location by ID",
+          "request": {
+            "name": "USGS Water Data Get Monitoring Location by ID",
+            "description": {
+              "content": "Retrieve a single USGS water monitoring location by its feature identifier (site number with agency prefix, e.g., USGS-11169025).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                "monitoring-locations",
+                "items",
+                ":featureId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format (json, html, jsonld, csv)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "featureId",
+                  "description": "(Required) Monitoring location identifier in format AGENCY-SITENUMBER (e.g., USGS-11169025)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff58f826-f43f-41b8-9709-6446de27f116",
+              "name": "Single monitoring location GeoJSON Feature.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "monitoring-locations",
+                    "items",
+                    ":featureId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "featureId",
+                      "description": "(Required) Monitoring location identifier in format AGENCY-SITENUMBER (e.g., USGS-11169025)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      -122.419,\n      37.775\n    ]\n  },\n  \"properties\": {\n    \"monitoringLocationIdentifier\": \"USGS-11169025\",\n    \"monitoringLocationName\": \"GUADALUPE R AB HWY 237 NR ALVISO CA\",\n    \"monitoringLocationTypeName\": \"Stream\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef5f1652-d288-473e-8cfa-e126b6dbc706",
+              "name": "API key missing or unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "monitoring-locations",
+                    "items",
+                    ":featureId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "featureId",
+                      "description": "(Required) Monitoring location identifier in format AGENCY-SITENUMBER (e.g., USGS-11169025)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidParameter\",\n  \"description\": \"Invalid value for parameter bbox.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba26d7c2-74c8-4bce-9de0-4cf1e0301b41",
+              "name": "Monitoring location not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "monitoring-locations",
+                    "items",
+                    ":featureId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "featureId",
+                      "description": "(Required) Monitoring location identifier in format AGENCY-SITENUMBER (e.g., USGS-11169025)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidParameter\",\n  \"description\": \"Invalid value for parameter bbox.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://earthquake.usgs.gov/fdsnws/event/1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f0df4bd2-f7ad-4474-be2b-2ba42d7d87e3",
+    "name": "USGS Earthquake Notifications, Feeds, and Web Services Catalog Monitoring Locations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USGS Earthquake Hazards Program provides real-time earthquake data through the FDSN (International Federation of Digital Seismograph Networks) Event Web Service. This API allows searching the USGS ANSS (Advanced National Seismic System) ComCat earthquake catalog for event data using geographic, temporal, magnitude, and other filters. Responses are available in GeoJSON, CSV, KML, QuakeML, and text formats.\n\nContact Support:\n Name: USGS Earthquake Hazards Program\n Email: shake-admin@usgs.gov",
+      "type": "text/plain"
+    }
+  }
+}

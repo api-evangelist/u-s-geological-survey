@@ -1,0 +1,290 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USGS Earthquake Notifications, Feeds, and Web Services Catalog Earthquakes API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Earthquakes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "USGS Query Earthquake Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://earthquake.usgs.gov/fdsnws/event/1/query",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. Options: geojson (default), csv, kml, quakeml, text, xml."
+              },
+              {
+                "name": "starttime",
+                "value": "",
+                "type": "query",
+                "description": "Limit events to those occurring after this time. ISO8601 format. Default: NOW minus 30 days."
+              },
+              {
+                "name": "endtime",
+                "value": "",
+                "type": "query",
+                "description": "Limit events to those occurring before this time. ISO8601 format. Default: present."
+              },
+              {
+                "name": "updatedafter",
+                "value": "",
+                "type": "query",
+                "description": "Return events updated after this ISO8601 timestamp."
+              },
+              {
+                "name": "minlatitude",
+                "value": "",
+                "type": "query",
+                "description": "Minimum latitude for rectangle filter in degrees (-90 to 90)."
+              },
+              {
+                "name": "maxlatitude",
+                "value": "",
+                "type": "query",
+                "description": "Maximum latitude for rectangle filter in degrees (-90 to 90)."
+              },
+              {
+                "name": "minlongitude",
+                "value": "",
+                "type": "query",
+                "description": "Minimum longitude for rectangle filter in degrees (-360 to 360)."
+              },
+              {
+                "name": "maxlongitude",
+                "value": "",
+                "type": "query",
+                "description": "Maximum longitude for rectangle filter in degrees (-360 to 360)."
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude for circle filter center in degrees (-90 to 90)."
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude for circle filter center in degrees (-360 to 360)."
+              },
+              {
+                "name": "maxradius",
+                "value": "",
+                "type": "query",
+                "description": "Maximum search radius for circle filter in degrees (0 to 180)."
+              },
+              {
+                "name": "maxradiuskm",
+                "value": "",
+                "type": "query",
+                "description": "Maximum search radius for circle filter in kilometers (0 to 20001.6)."
+              },
+              {
+                "name": "minmagnitude",
+                "value": "",
+                "type": "query",
+                "description": "Minimum earthquake magnitude."
+              },
+              {
+                "name": "maxmagnitude",
+                "value": "",
+                "type": "query",
+                "description": "Maximum earthquake magnitude."
+              },
+              {
+                "name": "mindepth",
+                "value": "",
+                "type": "query",
+                "description": "Minimum event depth in kilometers (-100 to 1000)."
+              },
+              {
+                "name": "maxdepth",
+                "value": "",
+                "type": "query",
+                "description": "Maximum event depth in kilometers (-100 to 1000)."
+              },
+              {
+                "name": "eventid",
+                "value": "",
+                "type": "query",
+                "description": "Retrieve a specific event by its USGS event identifier."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of events to return (1 to 20000)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Starting record number for paginated results (1-based)."
+              },
+              {
+                "name": "orderby",
+                "value": "",
+                "type": "query",
+                "description": "Order results by time, time-asc, magnitude, or magnitude-asc."
+              },
+              {
+                "name": "catalog",
+                "value": "",
+                "type": "query",
+                "description": "Filter by earthquake catalog (e.g., us, ci, nc)."
+              },
+              {
+                "name": "contributor",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contributing network."
+              },
+              {
+                "name": "eventtype",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event type (earthquake, explosion, quarry blast, etc.)."
+              },
+              {
+                "name": "alertlevel",
+                "value": "",
+                "type": "query",
+                "description": "Filter by PAGER alert level (green, yellow, orange, red)."
+              },
+              {
+                "name": "minsig",
+                "value": "",
+                "type": "query",
+                "description": "Minimum significance value (integer, 0+)."
+              },
+              {
+                "name": "maxsig",
+                "value": "",
+                "type": "query",
+                "description": "Maximum significance value."
+              },
+              {
+                "name": "reviewstatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by review status (automatic or reviewed)."
+              },
+              {
+                "name": "producttype",
+                "value": "",
+                "type": "query",
+                "description": "Filter by product type associated with the event (moment-tensor, focal-mechanism, shakemap, losspager, dyfi)."
+              },
+              {
+                "name": "includedeleted",
+                "value": "",
+                "type": "query",
+                "description": "Include deleted events in results (true, false, or only)."
+              },
+              {
+                "name": "includeallorigins",
+                "value": "",
+                "type": "query",
+                "description": "Include all origin solutions in results."
+              },
+              {
+                "name": "includeallmagnitudes",
+                "value": "",
+                "type": "query",
+                "description": "Include all magnitude estimates in results."
+              },
+              {
+                "name": "nodata",
+                "value": "",
+                "type": "query",
+                "description": "HTTP status code to return when no data is found (204 or 404)."
+              }
+            ]
+          },
+          "docs": "Search the USGS earthquake catalog using geographic, temporal, magnitude, depth, and other filters. Returns earthquake events in the requested format (GeoJSON by default). Supports both rectangle and circle spatial filters, with a maximum of 20,000 events per request."
+        },
+        {
+          "info": {
+            "name": "USGS Count Earthquake Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://earthquake.usgs.gov/fdsnws/event/1/count",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format (geojson or text)."
+              },
+              {
+                "name": "starttime",
+                "value": "",
+                "type": "query",
+                "description": "Start time in ISO8601 format."
+              },
+              {
+                "name": "endtime",
+                "value": "",
+                "type": "query",
+                "description": "End time in ISO8601 format."
+              },
+              {
+                "name": "minmagnitude",
+                "value": "",
+                "type": "query",
+                "description": "Minimum earthquake magnitude."
+              },
+              {
+                "name": "maxmagnitude",
+                "value": "",
+                "type": "query",
+                "description": "Maximum earthquake magnitude."
+              },
+              {
+                "name": "minlatitude",
+                "value": "",
+                "type": "query",
+                "description": "Minimum latitude for rectangle filter."
+              },
+              {
+                "name": "maxlatitude",
+                "value": "",
+                "type": "query",
+                "description": "Maximum latitude for rectangle filter."
+              },
+              {
+                "name": "minlongitude",
+                "value": "",
+                "type": "query",
+                "description": "Minimum longitude for rectangle filter."
+              },
+              {
+                "name": "maxlongitude",
+                "value": "",
+                "type": "query",
+                "description": "Maximum longitude for rectangle filter."
+              }
+            ]
+          },
+          "docs": "Return the number of earthquake events matching the query parameters without returning event data. Accepts the same parameters as the query endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

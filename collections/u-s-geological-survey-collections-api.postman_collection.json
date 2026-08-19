@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "79989a15-a688-4aea-8580-ad10bc994a9c",
+      "name": "Collections",
+      "description": {
+        "content": "OGC API collections listing and metadata.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1a35260b-4da6-4b09-aecb-b3cdbe187425",
+          "name": "USGS Water Data Get API Landing Page",
+          "request": {
+            "name": "USGS Water Data Get API Landing Page",
+            "description": {
+              "content": "Retrieve the OGC API landing page with links to available resources, conformance declarations, and API documentation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format (json, html, jsonld, csv)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e1d3c52-f081-4178-8b00-273f664c8700",
+              "name": "Landing page with API links and metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"USGS Water Data OGC APIs\",\n  \"description\": \"Access to USGS water data using OGC API standards.\",\n  \"links\": [\n    {\n      \"href\": \"https://api.waterdata.usgs.gov/ogcapi/v0/\",\n      \"rel\": \"self\",\n      \"type\": \"application/json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fff0ba0-4482-461d-a48d-9c9024482ac4",
+          "name": "USGS Water Data List Collections",
+          "request": {
+            "name": "USGS Water Data List Collections",
+            "description": {
+              "content": "List all available OGC API collections (data layers) including monitoring locations, time series, reference codes, and other water data entities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format (json, html, jsonld, csv)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55cbaa70-84d7-4685-9096-44b59002e5bd",
+              "name": "List of available collections.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collections\": [\n    {\n      \"id\": \"monitoring-locations\",\n      \"title\": \"Monitoring Locations\",\n      \"description\": \"USGS water monitoring sites including stream gages and wells.\"\n    },\n    {\n      \"id\": \"time-series\",\n      \"title\": \"Time Series\",\n      \"description\": \"Continuous sensor measurement time series.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://earthquake.usgs.gov/fdsnws/event/1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8839d961-5dbe-4d9c-ab3c-713355d4541b",
+    "name": "USGS Earthquake Notifications, Feeds, and Web Services Catalog Collections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USGS Earthquake Hazards Program provides real-time earthquake data through the FDSN (International Federation of Digital Seismograph Networks) Event Web Service. This API allows searching the USGS ANSS (Advanced National Seismic System) ComCat earthquake catalog for event data using geographic, temporal, magnitude, and other filters. Responses are available in GeoJSON, CSV, KML, QuakeML, and text formats.\n\nContact Support:\n Name: USGS Earthquake Hazards Program\n Email: shake-admin@usgs.gov",
+      "type": "text/plain"
+    }
+  }
+}

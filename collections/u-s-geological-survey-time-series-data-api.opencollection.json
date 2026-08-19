@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USGS Earthquake Notifications, Feeds, and Web Services Catalog Time Series Data API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Time Series Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "USGS Water Data Get Time Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://earthquake.usgs.gov/fdsnws/event/1/collections/time-series/items",
+            "params": [
+              {
+                "name": "bbox",
+                "value": "",
+                "type": "query",
+                "description": "Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form."
+              },
+              {
+                "name": "time",
+                "value": "",
+                "type": "query",
+                "description": "Temporal filter in RFC 3339 or ISO 8601 format. Use a single datetime or interval (e.g., 2025-01-01/2025-03-01)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return (default 100, max 10000)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Starting offset for pagination."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format (json, html, jsonld, csv)."
+              },
+              {
+                "name": "monitoringLocationIdentifier",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specific monitoring location identifier (e.g., USGS-11169025)."
+              },
+              {
+                "name": "observedPropertyId",
+                "value": "",
+                "type": "query",
+                "description": "USGS parameter code for the measured property (e.g., 00060 for streamflow in cfs, 00065 for gage height in feet)."
+              },
+              {
+                "name": "statistic",
+                "value": "",
+                "type": "query",
+                "description": "Statistic code for daily values (00001=max, 00002=min, 00003=mean)."
+              }
+            ]
+          },
+          "docs": "Retrieve USGS water data time series records including continuous sensor measurements (streamflow, stage, temperature, specific conductance, etc.) and daily values. Filter by monitoring location, parameter code, time range, and spatial extent."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

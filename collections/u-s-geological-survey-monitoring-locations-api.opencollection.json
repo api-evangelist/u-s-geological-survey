@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USGS Earthquake Notifications, Feeds, and Web Services Catalog Monitoring Locations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Monitoring Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "USGS Water Data Get Monitoring Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://earthquake.usgs.gov/fdsnws/event/1/collections/monitoring-locations/items",
+            "params": [
+              {
+                "name": "bbox",
+                "value": "",
+                "type": "query",
+                "description": "Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return (default 100, max 10000)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Starting offset for pagination."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format (json, html, jsonld, csv)."
+              },
+              {
+                "name": "stateCd",
+                "value": "",
+                "type": "query",
+                "description": "Two-letter U.S. state or territory FIPS code (e.g., CA, TX, NY)."
+              },
+              {
+                "name": "huc",
+                "value": "",
+                "type": "query",
+                "description": "Hydrologic Unit Code (2-12 digits) to filter by watershed."
+              },
+              {
+                "name": "siteType",
+                "value": "",
+                "type": "query",
+                "description": "USGS site type code (ST for streams, GW for groundwater, LK for lakes, AT for atmosphere, WE for wetlands, etc.)."
+              },
+              {
+                "name": "agencyCd",
+                "value": "",
+                "type": "query",
+                "description": "Agency code (default USGS)."
+              }
+            ]
+          },
+          "docs": "Retrieve USGS water monitoring locations (stream gages, groundwater wells, springs, etc.) as GeoJSON features. Supports spatial filtering by bounding box, attribute filtering by state/county/HUC, and pagination."
+        },
+        {
+          "info": {
+            "name": "USGS Water Data Get Monitoring Location by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://earthquake.usgs.gov/fdsnws/event/1/collections/monitoring-locations/items/:featureId",
+            "params": [
+              {
+                "name": "featureId",
+                "value": "",
+                "type": "path",
+                "description": "Monitoring location identifier in format AGENCY-SITENUMBER (e.g., USGS-11169025)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format (json, html, jsonld, csv)."
+              }
+            ]
+          },
+          "docs": "Retrieve a single USGS water monitoring location by its feature identifier (site number with agency prefix, e.g., USGS-11169025)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

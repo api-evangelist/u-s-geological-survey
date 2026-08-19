@@ -1,0 +1,266 @@
+{
+  "item": [
+    {
+      "id": "d266d9e9-60eb-414c-82b2-24d86d169be6",
+      "name": "Catalog",
+      "description": {
+        "content": "Discover available catalogs, contributors, and supported parameter values.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1abee1be-4692-4f46-ad62-77ccb705baf6",
+          "name": "USGS List Available Earthquake Catalogs",
+          "request": {
+            "name": "USGS List Available Earthquake Catalogs",
+            "description": {
+              "content": "Return a list of available earthquake catalog sources that can be used to filter event queries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalogs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "text",
+                  "description": "Response format."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe6f92c9-b1bd-463f-af13-d18b0de5bdb8",
+              "name": "List of available earthquake catalogs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "text"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "ak\nci\ncn\nhv\nld\nmb\nnc\nnn\nok\npa\npr\nus\nuu\nuw",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddf8e8d8-8e93-4730-a549-476ec7f2f5fd",
+          "name": "USGS List Earthquake Data Contributors",
+          "request": {
+            "name": "USGS List Earthquake Data Contributors",
+            "description": {
+              "content": "Return a list of data contributors (seismic networks) that provide earthquake information to the USGS catalog.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contributors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "text",
+                  "description": "Response format."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "434d5f4a-37c9-45d2-b4cc-07dd38118327",
+              "name": "List of earthquake data contributors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contributors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "text"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "ak\nci\ncn\nhv\nnc\nus\nuu",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f11c57bd-3d8c-4307-aa15-1c4bc97f89fe",
+          "name": "USGS Get Earthquake API Version",
+          "request": {
+            "name": "USGS Get Earthquake API Version",
+            "description": {
+              "content": "Return the current version of the USGS FDSN Event Web Service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d70aadd-340c-48ba-a56c-7b98176a1fc0",
+              "name": "Service version string.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "1.14.1",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://earthquake.usgs.gov/fdsnws/event/1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "db7f179f-8818-4c6a-b3aa-5092a01755c9",
+    "name": "USGS Earthquake Notifications, Feeds, and Web Services Catalog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USGS Earthquake Hazards Program provides real-time earthquake data through the FDSN (International Federation of Digital Seismograph Networks) Event Web Service. This API allows searching the USGS ANSS (Advanced National Seismic System) ComCat earthquake catalog for event data using geographic, temporal, magnitude, and other filters. Responses are available in GeoJSON, CSV, KML, QuakeML, and text formats.\n\nContact Support:\n Name: USGS Earthquake Hazards Program\n Email: shake-admin@usgs.gov",
+      "type": "text/plain"
+    }
+  }
+}

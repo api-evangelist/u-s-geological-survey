@@ -1,0 +1,398 @@
+{
+  "item": [
+    {
+      "id": "ab258ae1-886d-4cf2-b27e-b1cdd30c24cd",
+      "name": "Time Series Data",
+      "description": {
+        "content": "Continuous and daily value water data from USGS monitoring locations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "450b297f-58be-45e6-ae37-8f662c211694",
+          "name": "USGS Water Data Get Time Series",
+          "request": {
+            "name": "USGS Water Data Get Time Series",
+            "description": {
+              "content": "Retrieve USGS water data time series records including continuous sensor measurements (streamflow, stage, temperature, specific conductance, etc.) and daily values. Filter by monitoring location, parameter code, time range, and spatial extent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                "time-series",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bbox",
+                  "value": "<string>",
+                  "description": "Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form."
+                },
+                {
+                  "disabled": false,
+                  "key": "time",
+                  "value": "<string>",
+                  "description": "Temporal filter in RFC 3339 or ISO 8601 format. Use a single datetime or interval (e.g., 2025-01-01/2025-03-01)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Number of results to return (default 100, max 10000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Starting offset for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format (json, html, jsonld, csv)."
+                },
+                {
+                  "disabled": false,
+                  "key": "monitoringLocationIdentifier",
+                  "value": "<string>",
+                  "description": "Filter by specific monitoring location identifier (e.g., USGS-11169025)."
+                },
+                {
+                  "disabled": false,
+                  "key": "observedPropertyId",
+                  "value": "<string>",
+                  "description": "USGS parameter code for the measured property (e.g., 00060 for streamflow in cfs, 00065 for gage height in feet)."
+                },
+                {
+                  "disabled": false,
+                  "key": "statistic",
+                  "value": "<string>",
+                  "description": "Statistic code for daily values (00001=max, 00002=min, 00003=mean)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3717093-94ea-4c28-a802-de0841cff7d2",
+              "name": "Collection of time series records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "time-series",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-125,25,-65,50"
+                    },
+                    {
+                      "key": "time",
+                      "value": "2025-01-01/2025-03-01"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "f",
+                      "value": "json"
+                    },
+                    {
+                      "key": "monitoringLocationIdentifier",
+                      "value": "USGS-11169025"
+                    },
+                    {
+                      "key": "observedPropertyId",
+                      "value": "00060"
+                    },
+                    {
+                      "key": "statistic",
+                      "value": "00003"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"properties\": {\n        \"monitoringLocationIdentifier\": \"USGS-11169025\",\n        \"observedPropertyId\": \"00060\",\n        \"observedPropertyName\": \"Streamflow, ft³/s\",\n        \"phenomenonTime\": \"2025-03-15T14:00:00Z\",\n        \"result\": 450,\n        \"resultUnitCode\": \"ft3/s\",\n        \"resultQualityCode\": \"P\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b56f8c7b-308a-4daa-a2da-a3e493c2b073",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "time-series",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-125,25,-65,50"
+                    },
+                    {
+                      "key": "time",
+                      "value": "2025-01-01/2025-03-01"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "f",
+                      "value": "json"
+                    },
+                    {
+                      "key": "monitoringLocationIdentifier",
+                      "value": "USGS-11169025"
+                    },
+                    {
+                      "key": "observedPropertyId",
+                      "value": "00060"
+                    },
+                    {
+                      "key": "statistic",
+                      "value": "00003"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidParameter\",\n  \"description\": \"Invalid value for parameter bbox.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9f42fdb-f0f6-43bf-b8d9-ccaa5a077d2e",
+              "name": "API key missing or unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "time-series",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-125,25,-65,50"
+                    },
+                    {
+                      "key": "time",
+                      "value": "2025-01-01/2025-03-01"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "f",
+                      "value": "json"
+                    },
+                    {
+                      "key": "monitoringLocationIdentifier",
+                      "value": "USGS-11169025"
+                    },
+                    {
+                      "key": "observedPropertyId",
+                      "value": "00060"
+                    },
+                    {
+                      "key": "statistic",
+                      "value": "00003"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidParameter\",\n  \"description\": \"Invalid value for parameter bbox.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54bff498-f9ce-42c4-8f9c-415882d89958",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "time-series",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-125,25,-65,50"
+                    },
+                    {
+                      "key": "time",
+                      "value": "2025-01-01/2025-03-01"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "f",
+                      "value": "json"
+                    },
+                    {
+                      "key": "monitoringLocationIdentifier",
+                      "value": "USGS-11169025"
+                    },
+                    {
+                      "key": "observedPropertyId",
+                      "value": "00060"
+                    },
+                    {
+                      "key": "statistic",
+                      "value": "00003"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidParameter\",\n  \"description\": \"Invalid value for parameter bbox.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://earthquake.usgs.gov/fdsnws/event/1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "90cacc46-9916-4cef-9e26-a710e7936eb0",
+    "name": "USGS Earthquake Notifications, Feeds, and Web Services Catalog Time Series Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USGS Earthquake Hazards Program provides real-time earthquake data through the FDSN (International Federation of Digital Seismograph Networks) Event Web Service. This API allows searching the USGS ANSS (Advanced National Seismic System) ComCat earthquake catalog for event data using geographic, temporal, magnitude, and other filters. Responses are available in GeoJSON, CSV, KML, QuakeML, and text formats.\n\nContact Support:\n Name: USGS Earthquake Hazards Program\n Email: shake-admin@usgs.gov",
+      "type": "text/plain"
+    }
+  }
+}

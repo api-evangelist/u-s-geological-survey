@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USGS Earthquake Notifications, Feeds, and Web Services Catalog API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "USGS List Available Earthquake Catalogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://earthquake.usgs.gov/fdsnws/event/1/catalogs",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              }
+            ]
+          },
+          "docs": "Return a list of available earthquake catalog sources that can be used to filter event queries."
+        },
+        {
+          "info": {
+            "name": "USGS List Earthquake Data Contributors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://earthquake.usgs.gov/fdsnws/event/1/contributors",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              }
+            ]
+          },
+          "docs": "Return a list of data contributors (seismic networks) that provide earthquake information to the USGS catalog."
+        },
+        {
+          "info": {
+            "name": "USGS Get Earthquake API Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://earthquake.usgs.gov/fdsnws/event/1/version"
+          },
+          "docs": "Return the current version of the USGS FDSN Event Web Service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
