@@ -405,4 +405,4 @@ description: The U.S. Geological Survey (USGS) is a scientific agency of the U.S
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-specificationVersion: '0.19'
+specificationVersion: '0.23'
