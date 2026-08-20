@@ -1,0 +1,48 @@
+generated: '2026-08-20'
+method: probed
+source: https://api.waterdata.usgs.gov/ogcapi/v0/conformance
+note: >-
+  Fetched anonymously with HTTP 200 on 2026-08-20 from the API's own /conformance
+  endpoint. These are the classes the service declares about itself — first-party,
+  not inferred from documentation.
+standards:
+- id: ogc-api
+  conforms: true
+  evidence: >-
+    /conformance declares OGC API - Common Part 1 (core, landing-page, json, html, oas30)
+    and Part 2 (collections), retrieved live 2026-08-20.
+- id: ogc-api-features
+  conforms: true
+  evidence: >-
+    Declares OGC API - Features Part 1 (core, geojson, html, oas30), Part 2 (crs),
+    Part 3 (queryables, queryables-query-parameters) and Part 4 (create-replace-delete).
+- id: cql2
+  conforms: true
+  evidence: Declares cql2/1.0/conf/basic-cql2 and cql2/1.0/conf/cql2-text.
+- id: openapi
+  conforms: true
+  evidence: >-
+    OpenAPI 3.0.2 served live and anonymously at /openapi?f=json — 184 paths,
+    220 operations, "USGS Water Data APIs" v0.71.7.
+- id: geojson
+  conforms: true
+  evidence: Declares ogcapi-features-1/1.0/conf/geojson; collection items return GeoJSON.
+conformsTo:
+- http://www.opengis.net/spec/cql2/1.0/conf/basic-cql2
+- http://www.opengis.net/spec/cql2/1.0/conf/cql2-text
+- http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core
+- http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/html
+- http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/json
+- http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/landing-page
+- http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/oas30
+- http://www.opengis.net/spec/ogcapi-common-2/1.0/conf/collections
+- http://www.opengis.net/spec/ogcapi-common-3/1.0/conf/advanced-property-roles
+- http://www.opengis.net/spec/ogcapi-common-3/1.0/conf/schemas
+- http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/core
+- http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/geojson
+- http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/html
+- http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/oas30
+- http://www.opengis.net/spec/ogcapi-features-2/1.0/conf/crs
+- http://www.opengis.net/spec/ogcapi-features-3/1.0/conf/queryables
+- http://www.opengis.net/spec/ogcapi-features-3/1.0/conf/queryables-query-parameters
+- http://www.opengis.net/spec/ogcapi-features-4/1.0/conf/create-replace-delete
