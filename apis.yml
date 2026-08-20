@@ -107,16 +107,35 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
-- aid: u-s-geological-survey:u-s-geological-survey-collections-api
-  name: U.S. Geological Survey Collections API
-  description: OGC API collections listing and metadata.
-  humanURL: https://earthquake.usgs.gov/earthquakes/feed/
-  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+- aid: u-s-geological-survey:usgs-water-data-ogc-api
+  name: USGS Water Data OGC API
+  description: >-
+    The USGS Water Data OGC API — a conformant OGC API - Features implementation over the national water
+    observation network, exposing 36 collections (monitoring locations, continuous and daily values, field
+    and channel measurements, peaks, time-series metadata, and the full USGS reference-code vocabulary) as
+    GeoJSON with CQL2 filtering. Verified anonymously on 2026-08-20: the landing page, /conformance and
+    /collections each returned HTTP 200, and the first-party OpenAPI 3.0.2 (184 paths, 220 operations,
+    "USGS Water Data APIs" v0.71.7) is served live and without a key at /openapi?f=json. The conformance
+    declaration names 18 classes across OGC API - Common parts 1-3, OGC API - Features parts 1-4, and CQL2.
+    This replaces an earlier catalog entry that described these OGC operations but pointed at
+    earthquake.usgs.gov/fdsnws/event/1, where /collections soft-404s to an HTML documentation page.
+  humanURL: https://api.waterdata.usgs.gov/docs/
+  baseURL: https://api.waterdata.usgs.gov/ogcapi/v0
   tags:
-  - Collections
+  - OGC
+  - OGC API
+  - OGC API Features
+  - CQL2
+  - GeoJSON
+  - Geospatial
+  - Water
+  - Hydrology
+  - Open Access
   properties:
   - type: OpenAPI
-    url: openapi/u-s-geological-survey-collections-api-openapi.yml
+    url: openapi/u-s-geological-survey-water-data-ogc-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
   - type: Documentation
     url: https://earthquake.usgs.gov/fdsnws/event/1/
   - type: GettingStarted
@@ -304,6 +323,14 @@ apis:
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
 name: U.S. Geological Survey
 tags:
+  - Federal Government
+  - Geological
+  - Earth Science
+  - Natural Resources
+  - Earthquake
+  - Water
+  - Hydrology
+tags_raw:
   - Federal Government
   - Geological
   - Earth Science
