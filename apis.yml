@@ -107,64 +107,6 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
-- aid: u-s-geological-survey:usgs-water-data-ogc-api
-  name: USGS Water Data OGC API
-  description: >-
-    The USGS Water Data OGC API — a conformant OGC API - Features implementation over the national water
-    observation network, exposing 36 collections (monitoring locations, continuous and daily values, field
-    and channel measurements, peaks, time-series metadata, and the full USGS reference-code vocabulary) as
-    GeoJSON with CQL2 filtering. Verified anonymously on 2026-08-20: the landing page, /conformance and
-    /collections each returned HTTP 200, and the first-party OpenAPI 3.0.2 (184 paths, 220 operations,
-    "USGS Water Data APIs" v0.71.7) is served live and without a key at /openapi?f=json. The conformance
-    declaration names 18 classes across OGC API - Common parts 1-3, OGC API - Features parts 1-4, and CQL2.
-    This replaces an earlier catalog entry that described these OGC operations but pointed at
-    earthquake.usgs.gov/fdsnws/event/1, where /collections soft-404s to an HTML documentation page.
-  humanURL: https://api.waterdata.usgs.gov/docs/
-  baseURL: https://api.waterdata.usgs.gov/ogcapi/v0
-  tags:
-  - OGC
-  - OGC API
-  - OGC API Features
-  - CQL2
-  - GeoJSON
-  - Geospatial
-  - Water
-  - Hydrology
-  - Open Access
-  properties:
-  - type: OpenAPI
-    url: openapi/u-s-geological-survey-water-data-ogc-api-openapi.yml
-  - type: Conformance
-    url: conformance/u-s-geological-survey-conformance.yml
-  - type: Documentation
-    url: https://earthquake.usgs.gov/fdsnws/event/1/
-  - type: GettingStarted
-    url: https://earthquake.usgs.gov/earthquakes/feed/
-  - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
-  - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
-  - type: Examples
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
-  - type: Documentation
-    url: https://api.waterdata.usgs.gov/docs/
-  - type: Authentication
-    url: https://api.waterdata.usgs.gov/signup/
-  - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
-  - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
-  - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
-  - type: Examples
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
 - aid: u-s-geological-survey:u-s-geological-survey-earthquakes-api
   name: U.S. Geological Survey Earthquakes API
   description: Query and retrieve earthquake event data from the USGS earthquake catalog.
@@ -292,6 +234,1603 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/u-s-geological-survey-time-series-data-api-openapi.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-agency-codes-api
+  name: U.S. Geological Survey Agency Codes API
+  description: >-
+    Code identifying the agency or organization used for site information, data sources, and permitting
+    agencies. Agency codes are fixed values assigned by the National Water Information System (NWIS).
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - agency-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-agency-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-altitude-datums-api
+  name: U.S. Geological Survey Altitude Datums API
+  description: >-
+    The recommended vertical datum is NAVD88 (North American Vertical Datum of 1988) where applicable
+    as stated in Office of Information Technical Memo 2002.01. NGVD29 (National Geodetic Vertical Datum
+    of 1929) and NAVD88 are the only datums that can be converted on output. NWIS uses the North American
+    Vertical Datum Conversions (VERTCON) of the National Geodetic Survey to convert from NGVD29 to NAVD88
+    or vice versa. Conversions to or from other vertical datums are not available.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - altitude-datums
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-altitude-datums-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-aquifer-codes-api
+  name: U.S. Geological Survey Aquifer Codes API
+  description: >-
+    Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit
+    number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic
+    unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents
+    the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective.
+    One rock unit may be called different aquifer names by different people. Local aquifers and layered
+    aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the
+    National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered
+    regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different
+    name in each of the states in which the aquifer is found.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - aquifer-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-aquifer-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-aquifer-types-api
+  name: U.S. Geological Survey Aquifer Types API
+  description: >-
+    Groundwater occurs in aquifers under two different conditions. Where water only partly fills an aquifer,
+    the upper surface is free to rise and decline. These aquifers are referred to as unconfined (or water-table)
+    aquifers. Where water completely fills an aquifer that is overlain by a confining bed, the aquifer
+    is referred to as a confined (or artesian) aquifer. When a confined aquifer is penetrated by a well,
+    the water level in the well will rise above the top of the aquifer (but not necessarily above land
+    surface).
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - aquifer-types
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-aquifer-types-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-channel-measurements-api
+  name: U.S. Geological Survey Channel Measurements API
+  description: Channel measurements taken as part of streamflow field measurements.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - channel-measurements
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-channel-measurements-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-citations-api
+  name: U.S. Geological Survey Citations API
+  description: Citations associated with water measurement methods.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - citations
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-citations-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-combined-metadata-api
+  name: U.S. Geological Survey Combined Metadata API
+  description: >-
+    This endpoint combines metadata from timeseries and field measurements collections by site.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - combined-metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-combined-metadata-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-continuous-api
+  name: U.S. Geological Survey Continuous API
+  description: >-
+    Continuous data are collected via automated sensors installed at a monitoring location. They are collected
+    at a high frequency and often at a fixed 15-minute interval. Depending on the specific monitoring
+    location, the data may be transmitted automatically via telemetry and be available on WDFN within
+    minutes of collection, while other times the delivery of data may be delayed if the monitoring location
+    does not have the capacity to automatically transmit data. Continuous data are described by parameter
+    name and parameter code (pcode). These data might also be referred to as "instantaneous values" or
+    "IV".
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - continuous
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-continuous-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-coordinate-accuracy-codes-api
+  name: U.S. Geological Survey Coordinate Accuracy Codes API
+  description: >-
+    Appropriate code on the schedule to indicate the accuracy of the latitude-longitude values.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - coordinate-accuracy-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-coordinate-accuracy-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-coordinate-datum-codes-api
+  name: U.S. Geological Survey Coordinate Datum Codes API
+  description: >-
+    Horizontal datum code for the latitude/longitude coordinates. There are currently more than 300 horizontal
+    datums available for entry.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - coordinate-datum-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-coordinate-datum-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-coordinate-method-codes-api
+  name: U.S. Geological Survey Coordinate Method Codes API
+  description: Methods used to determine latitude-longitude values.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - coordinate-method-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-coordinate-method-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-counties-api
+  name: U.S. Geological Survey Counties API
+  description: >-
+    The name of the county or county equivalent (parish, borough, planning reagion, etc.) in which the
+    site is located. List includes Census Bureau FIPS county codes, names and associated Country and State.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - counties
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-counties-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-countries-api
+  name: U.S. Geological Survey Countries API
+  description: FIPS country codes and names.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - countries
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-countries-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-daily-api
+  name: U.S. Geological Survey Daily API
+  description: >-
+    Daily data provide one data value to represent water conditions for the day. Throughout much of the
+    history of the USGS, the primary water data available was daily data collected manually at the monitoring
+    location once each day. With improved availability of computer storage and automated transmission
+    of data, the daily data published today are generally a statistical summary or metric of the continuous
+    data collected each day, such as the daily mean, minimum, or maximum value. Daily data are automatically
+    calculated from the continuous data of the same parameter code and are described by parameter code
+    and a statistic code. These data have also been referred to as “daily values” or “DV”.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - daily
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-daily-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-field-measurements-api
+  name: U.S. Geological Survey Field Measurements API
+  description: >-
+    Field measurements are physically measured values collected during a visit to the monitoring location.
+    Field measurements consist of measurements of gage height and discharge, and readings of groundwater
+    levels, and are primarily used as calibration readings for the automated sensors collecting continuous
+    data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to
+    data processing time.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - field-measurements
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-field-measurements-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-field-measurements-metadata-api
+  name: U.S. Geological Survey Field Measurements Metadata API
+  description: >-
+    This endpoint provides metadata about field measurement collections, including when the earliest and
+    most recent observations for a parameter occurred at a monitoring location and its units.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - field-measurements-metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-field-measurements-metadata-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-hydrologic-unit-codes-api
+  name: U.S. Geological Survey Hydrologic Unit Codes API
+  description: >-
+    Hydrologic units are geographic areas representing part or all of a surface drainage basin or distinct
+    hydrologic feature identified by a unique number (HUC), and a name. The United States is divided and
+    sub-divided into successively smaller hydrologic units which are classified into four levels: regions,
+    sub-regions, accounting units, and cataloging units. Each unit consists of two to eight digits based
+    on the four levels of classification in the hydrologic unit system. Additional information can be
+    found at &lt;https://water.usgs.gov/GIS/huc.html&gt;.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - hydrologic-unit-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-hydrologic-unit-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-latest-continuous-api
+  name: U.S. Geological Survey Latest Continuous API
+  description: >-
+    This endpoint provides the most recent observation for each time series of continuous data. Continuous
+    data are collected via automated sensors installed at a monitoring location. They are collected at
+    a high frequency and often at a fixed 15-minute interval. Depending on the specific monitoring location,
+    the data may be transmitted automatically via telemetry and be available on WDFN within minutes of
+    collection, while other times the delivery of data may be delayed if the monitoring location does
+    not have the capacity to automatically transmit data. Continuous data are described by parameter name
+    and parameter code. These data might also be referred to as "instantaneous values" or "IV"
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - latest-continuous
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-latest-continuous-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-latest-daily-api
+  name: U.S. Geological Survey Latest Daily API
+  description: >-
+    Daily data provide one data value to represent water conditions for the day. Throughout much of the
+    history of the USGS, the primary water data available was daily data collected manually at the monitoring
+    location once each day. With improved availability of computer storage and automated transmission
+    of data, the daily data published today are generally a statistical summary or metric of the continuous
+    data collected each day, such as the daily mean, minimum, or maximum value. Daily data are automatically
+    calculated from the continuous data of the same parameter code and are described by parameter code
+    and a statistic code. These data have also been referred to as “daily values” or “DV”.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - latest-daily
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-latest-daily-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-latest-field-measurements-api
+  name: U.S. Geological Survey Latest Field Measurements API
+  description: >-
+    Field measurements are physically measured values collected during a visit to the monitoring location.
+    Field measurements consist of measurements of gage height and discharge, and readings of groundwater
+    levels, and are primarily used as calibration readings for the automated sensors collecting continuous
+    data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to
+    data processing time.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - latest-field-measurements
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-latest-field-measurements-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-medium-codes-api
+  name: U.S. Geological Survey Medium Codes API
+  description: >-
+    Medium refers to the specific environmental medium from which the sample was collected. Medium type
+    differs from site type because one site type, such as surface water, could have data for several media,
+    such as water, bottom sediment, fish tissue, and others.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - medium-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-medium-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-method-categories-api
+  name: U.S. Geological Survey Method Categories API
+  description: >-
+    Categorical standards for methods describing the associated data's appropriateness for an intended
+    use.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - method-categories
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-method-categories-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-method-citations-api
+  name: U.S. Geological Survey Method Citations API
+  description: Citation identifiers for water measurement methods.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - method-citations
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-method-citations-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-methods-api
+  name: U.S. Geological Survey Methods API
+  description: >-
+    Water measurement or water-quality analytical methods. Codes and descriptions defining a method for
+    calculating or measuring the value of a water quality or quantity parameter. Method codes are associated
+    with one or many parameter codes.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - methods
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-methods-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-national-aquifer-codes-api
+  name: U.S. Geological Survey National Aquifer Codes API
+  description: >-
+    National aquifers are the principal aquifers or aquifer systems in the United States, defined as regionally
+    extensive aquifers or aquifer systems that have the potential to be used as a source of potable water.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - national-aquifer-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-national-aquifer-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-parameter-codes-api
+  name: U.S. Geological Survey Parameter Codes API
+  description: >-
+    Parameter codes are 5-digit codes and associated descriptions used to identify the constituent measured
+    and the units of measure. Some parameter code definitions include information about the sampling matrix,
+    fraction, and methods used to measure the constituent. Some parameters are fixed-value (fxd) numeric
+    codes having textual meaning (for example: parameter code 00041 is a weather code parameter, code
+    of 60 means rain), but more commonly represent a numeric value for chemical, physical, or biological
+    data.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - parameter-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-parameter-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-peaks-api
+  name: U.S. Geological Survey Peaks API
+  description: >-
+    Annual peak flow values are the maximum instantaneous streamflow values recorded at a particular site
+    for the entire water year from October 1 to September 30. Note that the annual peak flow value may
+    not occur at the same time the maximum water level occurs due to conditions such as backwater, tidal
+    fluctuations, etc.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - peaks
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-peaks-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-reliability-codes-api
+  name: U.S. Geological Survey Reliability Codes API
+  description: Code indicating the reliability of the data available for the site.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - reliability-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-reliability-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-server-api
+  name: U.S. Geological Survey Server API
+  description: >-
+    The United States Geological Survey (USGS) collects water data at monitoring locations across the
+    United States using both automated sensors and manual data collection. These APIs provide access to
+    that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable
+    formats.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - server
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-server-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-site-types-api
+  name: U.S. Geological Survey Site Types API
+  description: >-
+    The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured
+    at a site. Primary and secondary site types associated with data collection sites. All sites have
+    a primary site type, and may additionally have a secondary site type that further describes the location.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - site-types
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-site-types-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-states-api
+  name: U.S. Geological Survey States API
+  description: >-
+    State name or territory. Includes U.S. states and foreign entities classified under FIPS as 'Principal
+    Administrative Divisions'.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - states
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-states-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-statistic-codes-api
+  name: U.S. Geological Survey Statistic Codes API
+  description: Statistic codes.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - statistic-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-statistic-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-time-series-metadata-api
+  name: U.S. Geological Survey Time Series Metadata API
+  description: >-
+    Daily data and continuous measurements are grouped into time series, which represent a collection
+    of observations of a single parameter, potentially aggregated using a standard statistic, at a single
+    monitoring location. This endpoint provides metadata about those time series, including their operational
+    thresholds, units of measurement, and when the earliest and most recent observations in a time series
+    occurred.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - time-series-metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-time-series-metadata-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-time-series-revisions-api
+  name: U.S. Geological Survey Time Series Revisions API
+  description: >-
+    Approved water data are considered published record, but on occasion changes or deletions (revisions)
+    must be made to data after they are approved. Data revisions are rare because of USGS quality assurance
+    practices, including documentation of all data before they are officially approved. This field contains
+    text explanations for data revisions on a specific time series. Changes to data also are indicated
+    with revision qualifier codes alongside the data. Text explanations before 2017 are not necessarily
+    available online, but can be requested. This collection is non-spatial: revision records carry no
+    geometry, so bbox/spatial filters are not supported.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - time-series-revisions
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-time-series-revisions-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-time-zone-codes-api
+  name: U.S. Geological Survey Time Zone Codes API
+  description: >-
+    The ISO 8601 standard defines time zone offsets as a numerical value added to a local time to convert
+    it to Coordinated Universal Time (UTC), either as +hh:mm or -hh:mm, or represented by the letter Z
+    to explicitly indicate UTC. For example, +05:30 means 5 hours and 30 minutes ahead of UTC, while -08:00
+    means 8 hours behind UTC. The offset Z specifically signifies UTC.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - time-zone-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-time-zone-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
+  - type: Documentation
+    url: https://earthquake.usgs.gov/fdsnws/event/1/
+  - type: GettingStarted
+    url: https://earthquake.usgs.gov/earthquakes/feed/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-earthquake-api-earthquake-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-earthquake-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-earthquake-api-earthquake-properties-example.json
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
+  - type: Authentication
+    url: https://api.waterdata.usgs.gov/signup/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-monitoring-location-properties-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-schema/usgs-water-data-api-time-series-properties-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/json-ld/usgs-water-data-api-context.jsonld
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-topographic-codes-api
+  name: U.S. Geological Survey Topographic Codes API
+  description: >-
+    The code that best describes the topographic setting in which the site is located. Topographic setting
+    refers to the geomorphic features in the vicinity of the site.
+  humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
+  baseURL: https://earthquake.usgs.gov/fdsnws/event/1
+  tags:
+  - topographic-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-topographic-codes-api-openapi.yml
+  - type: Conformance
+    url: conformance/u-s-geological-survey-conformance.yml
   - type: Documentation
     url: https://earthquake.usgs.gov/fdsnws/event/1/
   - type: GettingStarted
