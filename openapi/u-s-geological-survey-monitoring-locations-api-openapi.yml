@@ -1,19 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: USGS Earthquake Notifications, Feeds, and Web Services Catalog Monitoring Locations API
-  description: The USGS Earthquake Hazards Program provides real-time earthquake data through the FDSN (International Federation of Digital Seismograph Networks) Event Web Service. This API allows searching the USGS ANSS (Advanced National Seismic System) ComCat earthquake catalog for event data using geographic, temporal, magnitude, and other filters. Responses are available in GeoJSON, CSV, KML, QuakeML, and text formats.
+  title: U S Geological Survey Monitoring Locations API
+  x-refined-note:
+  - x-generated-from differs across the merged source definitions and was not carried
+  - x-keywords differs across the merged source definitions and was not carried
   version: '1.0'
-  contact:
-    name: USGS Earthquake Hazards Program
-    url: https://earthquake.usgs.gov/
-    email: shake-admin@usgs.gov
-  license:
-    name: Public Domain (U.S. Government Work)
-    url: https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits
-  x-generated-from: documentation
+  description: 'Operations tagged Monitoring Locations across 2 of this provider''s published API definitions: u-s-geological-survey-monitoring-locations-api-openapi.yml, u-s-geological-survey-water-data-ogc-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://earthquake.usgs.gov/fdsnws/event/1
   description: USGS FDSN Event Web Service
+- description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+    '
+  url: https://api.waterdata.usgs.gov/ogcapi/v0
 tags:
 - name: Monitoring Locations
   description: USGS stream gages, groundwater wells, and other water monitoring stations.
@@ -109,6 +108,52 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    options:
+      description: 'Location information is basic information about the monitoring location including the name, identifier, agency responsible for data collection, and the date the location was established. It also includes information about the type of location, such as stream, lake, or groundwater, and geographic information about the location, such as state, county, latitude and longitude, and hydrologic unit code (HUC).
+
+        '
+      operationId: optionsMonitoring-locationsFeatures
+      responses:
+        '200':
+          description: options response
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Options for Monitoring locations items
+      tags:
+      - Monitoring Locations
+    post:
+      description: 'Location information is basic information about the monitoring location including the name, identifier, agency responsible for data collection, and the date the location was established. It also includes information about the type of location, such as stream, lake, or groundwater, and geographic information about the location, such as state, county, latitude and longitude, and hydrologic unit code (HUC).
+
+        '
+      operationId: getCQL2Monitoring-locationsFeatures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: https://schemas.opengis.net/cql2/1.0/cql2.json
+        description: Get items with CQL2
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/MonitoringLocationsFeatures'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Monitoring locations items with CQL2
+      tags:
+      - Monitoring Locations
+    servers:
+    - url: https://earthquake.usgs.gov/fdsnws/event/1
+      description: USGS FDSN Event Web Service
   /collections/monitoring-locations/items/{featureId}:
     get:
       operationId: getMonitoringLocation
@@ -162,8 +207,213 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    options:
+      description: 'Location information is basic information about the monitoring location including the name, identifier, agency responsible for data collection, and the date the location was established. It also includes information about the type of location, such as stream, lake, or groundwater, and geographic information about the location, such as state, county, latitude and longitude, and hydrologic unit code (HUC).
+
+        '
+      operationId: optionsMonitoring-locationsFeature
+      parameters:
+      - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
+      responses:
+        '200':
+          description: options response
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Options for Monitoring locations item by id
+      tags:
+      - Monitoring Locations
+    servers:
+    - url: https://earthquake.usgs.gov/fdsnws/event/1
+      description: USGS FDSN Event Web Service
+  /collections/monitoring-locations:
+    get:
+      description: 'Location information is basic information about the monitoring location including the name, identifier, agency responsible for data collection, and the date the location was established. It also includes information about the type of location, such as stream, lake, or groundwater, and geographic information about the location, such as state, county, latitude and longitude, and hydrologic unit code (HUC).
+
+        '
+      operationId: describeMonitoring-locationsCollection
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/Collection
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: Get Monitoring locations metadata
+      tags:
+      - Monitoring Locations
+    servers:
+    - description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+        '
+      url: https://api.waterdata.usgs.gov/ogcapi/v0
+  /collections/monitoring-locations/queryables:
+    get:
+      description: 'Location information is basic information about the monitoring location including the name, identifier, agency responsible for data collection, and the date the location was established. It also includes information about the type of location, such as stream, lake, or groundwater, and geographic information about the location, such as state, county, latitude and longitude, and hydrologic unit code (HUC).
+
+        '
+      operationId: getMonitoring-locationsQueryables
+      parameters:
+      - description: The properties that should be included. The parameter value is a comma-separated list of property names.
+        explode: false
+        in: query
+        name: properties
+        required: false
+        schema:
+          items:
+            enum:
+            - id
+            - agency_code
+            - agency_name
+            - monitoring_location_number
+            - monitoring_location_name
+            - district_code
+            - country_code
+            - country_name
+            - state_code
+            - state_name
+            - county_code
+            - county_name
+            - minor_civil_division_code
+            - site_type_code
+            - site_type
+            - hydrologic_unit_code
+            - basin_code
+            - altitude
+            - altitude_accuracy
+            - altitude_method_code
+            - altitude_method_name
+            - vertical_datum
+            - vertical_datum_name
+            - horizontal_positional_accuracy_code
+            - horizontal_positional_accuracy
+            - horizontal_position_method_code
+            - horizontal_position_method_name
+            - original_horizontal_datum
+            - original_horizontal_datum_name
+            - drainage_area
+            - contributing_drainage_area
+            - time_zone_abbreviation
+            - uses_daylight_savings
+            - construction_date
+            - aquifer_code
+            - national_aquifer_code
+            - aquifer_type_code
+            - well_constructed_depth
+            - hole_constructed_depth
+            - depth_source_code
+            - revision_note
+            - revision_created
+            - revision_modified
+            type: string
+          type: array
+        style: form
+      - $ref: '#/components/parameters/f'
+      - description: The profile to be applied to a given request
+        explode: false
+        in: query
+        name: profile
+        required: false
+        schema:
+          enum:
+          - actual-domain
+          - valid-domain
+          type: string
+        style: form
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/Queryables'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Monitoring locations queryables
+      tags:
+      - Monitoring Locations
+    servers:
+    - description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+        '
+      url: https://api.waterdata.usgs.gov/ogcapi/v0
+  /collections/monitoring-locations/schema:
+    get:
+      description: 'Location information is basic information about the monitoring location including the name, identifier, agency responsible for data collection, and the date the location was established. It also includes information about the type of location, such as stream, lake, or groundwater, and geographic information about the location, such as state, county, latitude and longitude, and hydrologic unit code (HUC).
+
+        '
+      operationId: getMonitoring-locationsSchema
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/Queryables'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Monitoring locations schema
+      tags:
+      - Monitoring Locations
+    servers:
+    - description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+        '
+      url: https://api.waterdata.usgs.gov/ogcapi/v0
 components:
   schemas:
+    MonitoringLocationFeature:
+      title: MonitoringLocationFeature
+      type: object
+      description: GeoJSON Feature for a single USGS water monitoring location.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: Feature
+        geometry:
+          type: object
+          description: GeoJSON Point geometry with longitude and latitude.
+          properties:
+            type:
+              type: string
+              example: Point
+            coordinates:
+              type: array
+              items:
+                type: number
+              example:
+              - -122.419
+              - 37.775
+        properties:
+          $ref: '#/components/schemas/MonitoringLocationProperties'
     MonitoringLocationCollection:
       title: MonitoringLocationCollection
       type: object
@@ -198,31 +448,6 @@ components:
           type: string
           description: Human-readable error description.
           example: Invalid value for parameter bbox.
-    MonitoringLocationFeature:
-      title: MonitoringLocationFeature
-      type: object
-      description: GeoJSON Feature for a single USGS water monitoring location.
-      properties:
-        type:
-          type: string
-          description: GeoJSON type.
-          example: Feature
-        geometry:
-          type: object
-          description: GeoJSON Point geometry with longitude and latitude.
-          properties:
-            type:
-              type: string
-              example: Point
-            coordinates:
-              type: array
-              items:
-                type: number
-              example:
-              - -122.419
-              - 37.775
-        properties:
-          $ref: '#/components/schemas/MonitoringLocationProperties'
     MonitoringLocationProperties:
       title: MonitoringLocationProperties
       type: object
@@ -264,7 +489,463 @@ components:
           type: string
           description: URL for the USGS NWIS site page.
           example: https://waterdata.usgs.gov/nwis/inventory?agency_code=USGS&site_no=11169025
+    MonitoringLocationsFeature:
+      properties:
+        geometry:
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/geometryGeoJSON
+        id:
+          type: string
+        properties:
+          properties:
+            agency_code:
+              description: 'The agency that is reporting the data. Agency codes are fixed values assigned by the National Water Information System (NWIS). A list of agency codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/agency-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/agency-codes/items).
+
+                '
+              title: Agency code
+              type:
+              - string
+              - 'null'
+            agency_name:
+              description: 'The name of the agency that is reporting the data.
+
+                '
+              title: Agency name
+              type:
+              - string
+              - 'null'
+            altitude:
+              description: 'Altitude of the monitoring location referenced to the specified Vertical Datum.
+
+                '
+              title: Altitude
+              type:
+              - number
+              - 'null'
+            altitude_accuracy:
+              description: 'Accuracy of the altitude, in feet. An accuracy of +/- 0.1 foot would be entered as “.1”. Many altitudes are interpolated from the contours on topographic maps; accuracies determined in this way are generally entered as one-half of the contour interval.
+
+                '
+              title: Altitude accuracy
+              type:
+              - number
+              - 'null'
+            altitude_method_code:
+              description: 'Codes representing the method used to measure altitude.
+
+                '
+              title: Altitude method code
+              type:
+              - string
+              - 'null'
+            altitude_method_name:
+              description: 'The name of the method used to measure altitude.
+
+                '
+              title: Altitude method name
+              type:
+              - string
+              - 'null'
+            aquifer_code:
+              description: 'Local aquifers in the USGS water resources data base are identified by a geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name).
+
+                '
+              title: Aquifer code
+              type:
+              - string
+              - 'null'
+            aquifer_type_code:
+              description: 'Describes the confinement status of an aquifer at the monitoring location. A confined aquifer is an aquifer below the land surface that is saturated with water. A water table--or unconfined--aquifer is an aquifer whose upper water surface (water table) is at atmospheric pressure, and thus is able to rise and fall.
+
+                '
+              title: Aquifer type code
+              type:
+              - string
+              - 'null'
+            basin_code:
+              description: 'The Basin Code or "drainage basin code" is a two-digit code that further subdivides the 8-digit hydrologic-unit code. The drainage basin code is defined by the USGS State Office where the monitoring location is located.
+
+                '
+              title: Basin code
+              type:
+              - string
+              - 'null'
+            construction_date:
+              description: 'Date the well was completed.
+
+                '
+              title: Construction date
+              type:
+              - string
+              - 'null'
+            contributing_drainage_area:
+              description: 'The contributing drainage area of a lake, stream, wetland, or estuary monitoring location, in square miles. This item should be present only if the contributing area is different from the total drainage area. This situation can occur when part of the drainage area consists of very porous soil or depressions that either allow all runoff to enter the groundwater or traps the water in ponds so that rainfall does not contribute to runoff. A transbasin diversion can also affect the total drainage area.
+
+                '
+              title: Contributing drainage area
+              type:
+              - number
+              - 'null'
+            country_code:
+              description: 'The code for the country in which the monitoring location is located.
+
+                '
+              title: Country code
+              type:
+              - string
+              - 'null'
+            country_name:
+              description: 'The name of the country in which the monitoring location is located.
+
+                '
+              title: Country name
+              type:
+              - string
+              - 'null'
+            county_code:
+              description: 'The code for the county or county equivalent (parish, borough, etc.) in which the monitoring location is located. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/counties/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/counties/items).
+
+                '
+              title: County code
+              type:
+              - string
+              - 'null'
+            county_name:
+              description: 'The name of the county or county equivalent (parish, borough, etc.) in which the monitoring location is located. [A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/counties/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/counties/items).
+
+                '
+              title: County name
+              type:
+              - string
+              - 'null'
+            depth_source_code:
+              description: 'A code indicating the source of water-level data.
+
+                '
+              title: Depth source code
+              type:
+              - string
+              - 'null'
+            district_code:
+              description: 'The Water Science Centers (WSCs) across the United States use the FIPS state code as the district code. In some case, monitoring locations and samples may be managed by a water science center that is adjacent to the state in which the monitoring location actually resides. For example a monitoring location may have a district code of 30 which translates to Montana, but the state code could be 56 for Wyoming because that is where the monitoring location actually is located.
+
+                '
+              title: District code
+              type:
+              - string
+              - 'null'
+            drainage_area:
+              description: 'The area enclosed by a topographic divide from which direct surface runoff from precipitation normally drains by gravity into the stream above that point.
+
+                '
+              title: Drainage area
+              type:
+              - number
+              - 'null'
+            hole_constructed_depth:
+              description: 'The total depth to which the hole is drilled, in feet below land surface datum. Note: Not all groundwater monitoring locations have information on Hole Depth. Such monitoring locations will not be retrieved using this search criteria.
+
+                '
+              title: Hole constructed depth
+              type:
+              - number
+              - 'null'
+            horizontal_position_method_code:
+              description: 'Indicates the method used to determine latitude longitude values. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-method-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-method-codes/items).
+
+                '
+              title: Horizontal position method code
+              type:
+              - string
+              - 'null'
+            horizontal_position_method_name:
+              description: 'Indicates the method used to determine latitude longitude values. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-method-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-method-codes/items).
+
+                '
+              title: Horizontal position method name
+              type:
+              - string
+              - 'null'
+            horizontal_positional_accuracy:
+              description: 'Indicates the accuracy of the latitude longitude values. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-accuracy-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-accuracy-codes/items).
+
+                '
+              title: Horizontal positional accuracy
+              type:
+              - string
+              - 'null'
+            horizontal_positional_accuracy_code:
+              description: 'Indicates the accuracy of the latitude longitude values. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-accuracy-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-accuracy-codes/items).
+
+                '
+              title: Horizontal positional accuracy code
+              type:
+              - string
+              - 'null'
+            hydrologic_unit_code:
+              description: 'The hydrologic unit code (HUC) for the monitoring location. Supports prefix matching — querying with a shorter HUC (e.g. "04") matches all locations within that hydrologic region.
+
+                '
+              title: Hydrologic unit code (HUC)
+              type:
+              - string
+              - 'null'
+            id:
+              description: 'A unique identifier representing a single monitoring location. This corresponds to the `monitoring_location_id` field in other endpoints. Monitoring location IDs are created by combining the agency code of the agency responsible for the monitoring location (e.g. USGS) with the ID number of the monitoring location (e.g. 02238500), separated by a hyphen (e.g. USGS-02238500).
+
+                '
+              title: Monitoring location ID
+              type:
+              - string
+              - 'null'
+            minor_civil_division_code:
+              description: 'Codes for primary governmental or administrative divisions of the county or county equivalent in which the monitoring location is located.
+
+                '
+              title: Minor civil division code
+              type:
+              - string
+              - 'null'
+            monitoring_location_name:
+              description: 'This is the official name of the monitoring location in the database. For well information this can be a district-assigned local number.
+
+                '
+              title: Monitoring location name
+              type:
+              - string
+              - 'null'
+            monitoring_location_number:
+              description: 'Each monitoring location in the USGS data base has a unique 8- to 15-digit identification number.
+
+                '
+              title: Monitoring location number
+              type:
+              - string
+              - 'null'
+            national_aquifer_code:
+              description: 'National aquifers are the principal aquifers or aquifer systems in the United States, defined as regionally extensive aquifers or aquifer systems that have the potential to be used as a source of potable water. Not all groundwater monitoring locations can be associated with a National Aquifer. Such monitoring locations will not be retrieved using this search criteria. A list of National aquifer codes and names is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/national-aquifer-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/national-aquifer-codes/items).
+
+                '
+              title: National aquifer code
+              type:
+              - string
+              - 'null'
+            original_horizontal_datum:
+              description: 'Coordinates are published in EPSG:4326 / WGS84 / World Geodetic System 1984. This field indicates the original datum used to determine coordinates before they were converted. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-datum-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-datum-codes/items).
+
+                '
+              title: Original horizontal datum
+              type:
+              - string
+              - 'null'
+            original_horizontal_datum_name:
+              description: 'Coordinates are published in EPSG:4326 / WGS84 / World Geodetic System 1984. This field indicates the original datum used to determine coordinates before they were converted. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-datum-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-datum-codes/items).
+
+                '
+              title: Original horizontal datum name
+              type:
+              - string
+              - 'null'
+            revision_created:
+              description: 'The date a revision statement was created.
+
+                '
+              title: Date revision created
+              type:
+              - string
+              - 'null'
+            revision_modified:
+              description: 'The most recent date a revision statement was modified.
+
+                '
+              title: Date revision modified
+              type:
+              - string
+              - 'null'
+            revision_note:
+              description: 'Approved water data are considered published record, but on occasion changes or deletions (revisions) must be made to data after they are approved. Data revisions are rare because of USGS quality assurance practices, including documentation of all data before they are officially approved. This field contains text explanations for data revisions at this monitoring location. Changes to data also are indicated with revision qualifier codes alongside the data. Text explanations before 2017 are not necessarily available online, but can be requested.
+
+                '
+              title: Revision note
+              type:
+              - string
+              - 'null'
+            site_type:
+              description: 'A description of the hydrologic setting of the monitoring location. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items).
+
+                '
+              title: Monitoring location type
+              type:
+              - string
+              - 'null'
+            site_type_code:
+              description: 'A code describing the hydrologic setting of the monitoring location. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items).
+
+                '
+              title: Monitoring location type code
+              type:
+              - string
+              - 'null'
+            state_code:
+              description: 'State code. A [two-digit ANSI code](https://www2.census.gov/geo/docs/reference/state.txt) (formerly FIPS code) as defined by the American National Standards Institute, to define States and equivalents. A three-digit ANSI code is used to define counties and county equivalents. [A lookup table is available.](https://www.census.gov/library/reference/code-lists/ansi.html#states) The only countries with political subdivisions other than the US are Mexico and Canada. The Mexican states have US state codes ranging from 81-86 and Canadian provinces have state codes ranging from 90-98.
+
+                '
+              title: State code
+              type:
+              - string
+              - 'null'
+            state_name:
+              description: 'The name of the state or state equivalent in which the monitoring location is located.
+
+                '
+              title: State name
+              type:
+              - string
+              - 'null'
+            time_zone_abbreviation:
+              description: 'A short code describing the time zone used by a monitoring location.
+
+                '
+              title: Time zone abbreviation
+              type:
+              - string
+              - 'null'
+            uses_daylight_savings:
+              description: 'A flag indicating whether or not a monitoring location uses daylight savings.
+
+                '
+              title: Uses daylight savings flag
+              type:
+              - string
+              - 'null'
+            vertical_datum:
+              description: 'The datum used to determine altitude and vertical position at the monitoring location. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items).
+
+                '
+              title: Vertical datum
+              type:
+              - string
+              - 'null'
+            vertical_datum_name:
+              description: 'The datum used to determine altitude and vertical position at the monitoring location. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items).
+
+                '
+              title: Vertical datum name
+              type:
+              - string
+              - 'null'
+            well_constructed_depth:
+              description: 'The depth of the finished well, in feet below land surface datum. Note: Not all groundwater monitoring locations have information on Well Depth. Such monitoring locations will not be retrieved using this search criteria.
+
+                '
+              title: Well constructed depth
+              type:
+              - number
+              - 'null'
+          type: object
+        type:
+          enum:
+          - Feature
+          type: string
+      required:
+      - type
+      - properties
+      type: object
+    queryables:
+      properties:
+        queryables:
+          items:
+            $ref: '#/components/schemas/queryable'
+          type: array
+      required:
+      - queryables
+      type: object
+    queryable:
+      properties:
+        description:
+          description: a human-readable narrative describing the queryable
+          type: string
+        language:
+          default: en
+          description: the language used for the title and description
+          type: string
+        queryable:
+          description: the token that may be used in a CQL predicate
+          type: string
+        title:
+          description: a human readable title for the queryable
+          type: string
+        type:
+          description: the data type of the queryable
+          type: string
+        type-ref:
+          description: a reference to the formal definition of the type
+          format: url
+          type: string
+      required:
+      - queryable
+      - type
+      type: object
+    MonitoringLocationsFeatureCollection:
+      properties:
+        features:
+          items:
+            $ref: '#/components/schemas/MonitoringLocationsFeature'
+          type: array
+        links:
+          items:
+            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
+          type: array
+        numberMatched:
+          minimum: 0
+          type: integer
+        numberReturned:
+          minimum: 0
+          type: integer
+        timeStamp:
+          format: date-time
+          type: string
+        type:
+          enum:
+          - FeatureCollection
+          type: string
+      required:
+      - type
+      - features
+      type: object
+    Error:
+      properties:
+        error:
+          properties:
+            code:
+              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
+              type: string
+            message:
+              description: Error message
+              type: string
+          required:
+          - code
+          - message
+          type: object
+      type: object
   parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: Starting offset for pagination.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+        example: 0
+    bbox:
+      name: bbox
+      in: query
+      required: false
+      description: Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form.
+      schema:
+        type: string
+        example: -125,25,-65,50
     format:
       name: f
       in: query
@@ -279,24 +960,6 @@ components:
         - csv
         default: json
         example: json
-    bbox:
-      name: bbox
-      in: query
-      required: false
-      description: Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form.
-      schema:
-        type: string
-        example: -125,25,-65,50
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: Starting offset for pagination.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-        example: 0
     limit:
       name: limit
       in: query
@@ -308,3 +971,363 @@ components:
         maximum: 10000
         default: 100
         example: 100
+    lang:
+      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: en-US
+        enum:
+        - en-US
+        type: string
+    skipGeometry:
+      description: This option can be used to skip response geometries for each feature.
+      explode: false
+      in: query
+      name: skipGeometry
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    q:
+      description: "Full-text search across the most relevant text fields for this collection (e.g. site name, identifier, number, state, county, and site type).\n\nMatching rules:\n\n  - Case-insensitive, with prefix matching (e.g. `poud` matches `POUDRE`).\n  - Words separated by spaces are AND'd together (all must match).\n  - Terms separated by commas are OR'd together (any may match).\n  - Common abbreviations are expanded, so `river` also matches sites stored as `RV` (and vice versa).\n\nResults are ordered by relevance when `q` is supplied without an explicit `sortby`.\n\nExamples:\n\n  - `q=poudre` — sites whose name/identifier starts with or contains `poudre`\n  - `q=colorado river` — sites matching both `colorado` and `river`/`rv`\n  - `q=poudre,cache creek` — sites matching `poudre` OR (`cache` AND `creek`/`ck`)"
+      explode: false
+      in: query
+      name: q
+      required: false
+      schema:
+        minLength: 2
+        type: string
+      style: form
+    bbox-crs:
+      description: Indicates the coordinate reference system for the given bbox coordinates.
+      explode: false
+      in: query
+      name: bbox-crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    wda_sortby:
+      description: "Specifies a comma-separated list of property names by which the response shall be sorted.  If the property name is preceded by a plus (+) sign it indicates an ascending sort for that property.  If the property name is preceded by a minus (-) sign it indicates a descending sort for that property.  If the property is not preceded by a plus or minus, then the default sort order implied is ascending (+).  \n\nOnly a single page of data can be returned when specifying sortby. If you need more than a single page of data, don't specify a sortby value and sort the full data set after it's been downloaded."
+      explode: false
+      in: query
+      name: sortby
+      required: false
+      schema:
+        items:
+          pattern: '[+|-]?[A-Za-z_].*'
+          type: string
+        minItems: 1
+        type: array
+      style: form
+    crs:
+      description: Indicates the coordinate reference system for the results.
+      explode: false
+      in: query
+      name: crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    bbox_2:
+      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
+      explode: false
+      in: query
+      name: bbox
+      required: false
+      schema:
+        items:
+          type: number
+        maxItems: 6
+        minItems: 4
+        type: array
+      style: form
+    offset_2:
+      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
+      explode: false
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        minimum: 0
+        type: integer
+      style: form
+    filter:
+      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
+      in: query
+      name: filter
+      required: false
+      schema:
+        type: string
+    f:
+      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
+      explode: false
+      in: query
+      name: f
+      required: false
+      schema:
+        default: json
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        type: string
+      style: form
+  responses:
+    MonitoringLocationsFeatures:
+      content:
+        application/geo+json:
+          example:
+            features:
+            - geometry:
+                coordinates:
+                - -88.01
+                - 44.5286111111111
+                type: Point
+              id: USGS-09380000
+              properties:
+                agency_code: USGS
+                agency_name: U.S. Geological Survey
+                altitude: '930.63'
+                altitude_accuracy: '0.16'
+                altitude_method_code: X
+                altitude_method_name: GNSS2 - Level 2 Quality Survey Grade Global Navigation Satellite System
+                aquifer_code: 300GRNT
+                aquifer_type_code: U
+                basin_code: '01'
+                construction_date: '19630101'
+                contributing_drainage_area: '1338'
+                country_code: US
+                country_name: United States of America
+                county_code: '005'
+                county_name: Coconino County
+                depth_source_code: D
+                district_code: '04'
+                drainage_area: '1338'
+                hole_constructed_depth: '160'
+                horizontal_position_method_code: N
+                horizontal_position_method_name: Interpolated from digital map
+                horizontal_positional_accuracy: Accurate to + or - 1 sec.
+                horizontal_positional_accuracy_code: S
+                hydrologic_unit_code: '15010001'
+                id: USGS-09380000
+                minor_civil_division_code: '01465'
+                monitoring_location_name: Colorado River at Lees Ferry, AZ
+                monitoring_location_number: 09380000
+                national_aquifer_code: N100CMBRINM
+                original_horizontal_datum: NAD83
+                original_horizontal_datum_name: North American Datum of 1983
+                revision_created: '2017-11-13T06:00:00+00:00'
+                revision_modified: '2024-06-14T13:30:29+00:00'
+                revision_note: Drainage area revised.
+                site_type: Stream
+                site_type_code: ST
+                state_code: '04'
+                state_name: Arizona
+                time_zone_abbreviation: MST
+                uses_daylight_savings: Y
+                vertical_datum: NAVD88
+                vertical_datum_name: North American Vertical Datum of 1988
+                well_constructed_depth: '150'
+              type: Feature
+            links:
+            - href: https://api.waterdata.usgs.gov/ogcapi/v0/collections/monitoring-locations/items
+              rel: self
+              title: This document as GeoJSON
+              type: application/geo+json
+            numberMatched: 1
+            numberReturned: 1
+            timeStamp: '2024-07-21T12:00:00Z'
+            type: FeatureCollection
+          schema:
+            $ref: '#/components/schemas/MonitoringLocationsFeatureCollection'
+        text/html:
+          schema:
+            type: string
+      description: A feature collection of Monitoring locations.
+    Queryables:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/queryables'
+      description: successful queryables operation
+    Forbidden403:
+      content:
+        application/json:
+          examples:
+            missingApiKey:
+              summary: Missing API Key
+              value:
+                error:
+                  code: API_KEY_MISSING
+                  message: No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;API_KEY_MISSING&lt;/code&gt;\n        &lt;message&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            missingApiKeyCsv:
+              summary: Missing API Key (CSV)
+              value: 'Error Code,Error Message
+
+                API_KEY_MISSING, No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/'
+          schema:
+            type: string
+        text/html:
+          examples:
+            missingApiKeyHtml:
+              summary: Missing API Key (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;API_KEY_MISSING&lt;/h1&gt;\n        &lt;p&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Forbidden - API key is missing or not authorized for this resource.
+    TooManyRequests429:
+      content:
+        application/json:
+          examples:
+            rateLimitExceeded:
+              summary: Rate Limit Exceeded
+              value:
+                error:
+                  code: OVER_RATE_LIMIT
+                  message: You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;OVER_RATE_LIMIT&lt;/code&gt;\n        &lt;message&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            rateLimitCsv:
+              summary: Rate Limit Exceeded (CSV)
+              value: 'Error Code,Error Message
+
+                OVER_RATE_LIMIT,You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.'
+          schema:
+            type: string
+        text/html:
+          examples:
+            rateLimitHtml:
+              summary: Rate Limit Exceeded (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;OVER_RATE_LIMIT&lt;/h1&gt;\n        &lt;p&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Too Many Requests - Rate limit exceeded.
+    MonitoringLocationsFeature:
+      content:
+        application/geo+json:
+          example:
+            geometry:
+              coordinates:
+              - -88.01
+              - 44.5286111111111
+              type: Point
+            id: USGS-09380000
+            properties:
+              agency_code: USGS
+              agency_name: U.S. Geological Survey
+              altitude: '930.63'
+              altitude_accuracy: '0.16'
+              altitude_method_code: X
+              altitude_method_name: GNSS2 - Level 2 Quality Survey Grade Global Navigation Satellite System
+              aquifer_code: 300GRNT
+              aquifer_type_code: U
+              basin_code: '01'
+              construction_date: '19630101'
+              contributing_drainage_area: '1338'
+              country_code: US
+              country_name: United States of America
+              county_code: '005'
+              county_name: Coconino County
+              depth_source_code: D
+              district_code: '04'
+              drainage_area: '1338'
+              hole_constructed_depth: '160'
+              horizontal_position_method_code: N
+              horizontal_position_method_name: Interpolated from digital map
+              horizontal_positional_accuracy: Accurate to + or - 1 sec.
+              horizontal_positional_accuracy_code: S
+              hydrologic_unit_code: '15010001'
+              id: USGS-09380000
+              minor_civil_division_code: '01465'
+              monitoring_location_name: Colorado River at Lees Ferry, AZ
+              monitoring_location_number: 09380000
+              national_aquifer_code: N100CMBRINM
+              original_horizontal_datum: NAD83
+              original_horizontal_datum_name: North American Datum of 1983
+              revision_created: '2017-11-13T06:00:00+00:00'
+              revision_modified: '2024-06-14T13:30:29+00:00'
+              revision_note: Drainage area revised.
+              site_type: Stream
+              site_type_code: ST
+              state_code: '04'
+              state_name: Arizona
+              time_zone_abbreviation: MST
+              uses_daylight_savings: Y
+              vertical_datum: NAVD88
+              vertical_datum_name: North American Vertical Datum of 1988
+              well_constructed_depth: '150'
+            type: Feature
+          schema:
+            $ref: '#/components/schemas/MonitoringLocationsFeature'
+        text/html:
+          schema:
+            type: string
+      description: A single feature from Monitoring locations.
+  securitySchemes:
+    ApiKeyHeader:
+      description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup
+      in: header
+      name: api_key
+      type: apiKey
+    ApiKeyQuery:
+      description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup
+      in: query
+      name: api_key
+      type: apiKey
+x-refined-from:
+- u-s-geological-survey-monitoring-locations-api-openapi.yml
+- u-s-geological-survey-water-data-ogc-api-openapi.yml

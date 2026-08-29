@@ -1,0 +1,688 @@
+openapi: 3.2.0
+info:
+  contact:
+    name: US Geological Survey - Water Data for the Nation
+    url: https://waterdata.usgs.gov
+    x-ogc-serviceContact:
+      addresses: []
+      emails:
+      - value: wdfn@usgs.gov
+      hoursOfService: pointOfContact
+      links:
+      - href: https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov
+        type: text/html
+      name: WDFN Support
+  description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+    '
+  license:
+    name: US Government work in the public domain
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+  termsOfService: https://creativecommons.org/publicdomain/zero/1.0/
+  title: USGS Water Data Hydrologic Unit Codes API
+  version: 0.71.7
+  x-keywords:
+  - geospatial
+  - data
+  - api
+  - hydrology
+  - USGS
+servers:
+- description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+    '
+  url: https://api.waterdata.usgs.gov/ogcapi/v0
+tags:
+- description: 'Hydrologic units are geographic areas representing part or all of a surface drainage basin or distinct hydrologic feature identified by a unique number (HUC), and a name. The United States is divided and sub-divided into successively smaller hydrologic units which are classified into four levels: regions, sub-regions, accounting units, and cataloging units. Each unit consists of two to eight digits based on the four levels of classification in the hydrologic unit system. Additional information can be found at &lt;https://water.usgs.gov/GIS/huc.html&gt;.
+
+    '
+  name: hydrologic-unit-codes
+paths:
+  /collections/hydrologic-unit-codes:
+    get:
+      description: 'Hydrologic units are geographic areas representing part or all of a surface drainage basin or distinct hydrologic feature identified by a unique number (HUC), and a name. The United States is divided and sub-divided into successively smaller hydrologic units which are classified into four levels: regions, sub-regions, accounting units, and cataloging units. Each unit consists of two to eight digits based on the four levels of classification in the hydrologic unit system. Additional information can be found at &lt;https://water.usgs.gov/GIS/huc.html&gt;.
+
+        '
+      operationId: describeHydrologic-unit-codesCollection
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/Collection
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: Get Hydrologic unit codes (HUCs) metadata
+      tags:
+      - hydrologic-unit-codes
+  /collections/hydrologic-unit-codes/items:
+    get:
+      description: 'Hydrologic units are geographic areas representing part or all of a surface drainage basin or distinct hydrologic feature identified by a unique number (HUC), and a name. The United States is divided and sub-divided into successively smaller hydrologic units which are classified into four levels: regions, sub-regions, accounting units, and cataloging units. Each unit consists of two to eight digits based on the four levels of classification in the hydrologic unit system. Additional information can be found at &lt;https://water.usgs.gov/GIS/huc.html&gt;.
+
+        '
+      operationId: getHydrologic-unit-codesFeatures
+      parameters:
+      - description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.
+        explode: false
+        in: query
+        name: f
+        required: false
+        schema:
+          default: json
+          enum:
+          - json
+          - html
+          - jsonld
+          - csv
+          type: string
+        style: form
+      - $ref: '#/components/parameters/lang'
+      - $ref: '#/components/parameters/bbox'
+      - description: The optional limit parameter limits the number of items that are presented in the response document (maximum=50000, default=10000).
+        explode: false
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10000
+          maximum: 50000
+          minimum: 1
+          type: integer
+        style: form
+      - $ref: '#/components/parameters/crs'
+      - $ref: '#/components/parameters/bbox-crs'
+      - description: The properties that should be included. The parameter value is a comma-separated list of property names.
+        explode: false
+        in: query
+        name: properties
+        required: false
+        schema:
+          items:
+            enum:
+            - id
+            - hydrologic_unit_name
+            - hydrologic_unit_classification_code
+            type: string
+          type: array
+        style: form
+      - $ref: '#/components/parameters/skipGeometry'
+      - $ref: https://raw.githubusercontent.com/opengeospatial/ogcapi-records/master/core/openapi/parameters/sortby.yaml
+      - $ref: '#/components/parameters/offset'
+      - description: 'Hydrologic unit code. The format of the code is (''RRSSBBUUWWXX'') where: ''RR'' is the 2-digit code for the region. ''SS'' is the 2-digit code for the sub-region. ''BB'' is the 2-digit code for the basin. ''UU'' is the 2-digit code for the sub-basin. ''WW'' is the 2-digit code for the watershed. ''XX'' is the 2-digit code for the sub-watershed. Watersheds are delineated by USGS using a nationwide system based on surface hydrologic features. This system divides the country into 22 regions (2-digit), 245 subregions (4-digit), 405 basins (6-digit), ~2,400 subbasins (8-digit), ~19,000 watersheds (10-digit), and ~105,000 subwatersheds (12-digit). A hierarchical hydrologic unit code (HUC) consisting of 2 additional digits for each level in the hydrologic unit system is used to identify any hydrologic area (see Federal Standards and Procedures for the National Watershed Boundary Dataset - https://pubs.usgs.gov/tm/11/a3/).'
+        explode: false
+        in: query
+        name: id
+        required: false
+        schema:
+          description: 'Hydrologic unit code. The format of the code is (''RRSSBBUUWWXX'') where: ''RR'' is the 2-digit code for the region. ''SS'' is the 2-digit code for the sub-region. ''BB'' is the 2-digit code for the basin. ''UU'' is the 2-digit code for the sub-basin. ''WW'' is the 2-digit code for the watershed. ''XX'' is the 2-digit code for the sub-watershed. Watersheds are delineated by USGS using a nationwide system based on surface hydrologic features. This system divides the country into 22 regions (2-digit), 245 subregions (4-digit), 405 basins (6-digit), ~2,400 subbasins (8-digit), ~19,000 watersheds (10-digit), and ~105,000 subwatersheds (12-digit). A hierarchical hydrologic unit code (HUC) consisting of 2 additional digits for each level in the hydrologic unit system is used to identify any hydrologic area (see Federal Standards and Procedures for the National Watershed Boundary Dataset - https://pubs.usgs.gov/tm/11/a3/).'
+          type: string
+        style: form
+      - description: Hydrologic unit name.
+        explode: false
+        in: query
+        name: hydrologic_unit_name
+        required: false
+        schema:
+          description: Hydrologic unit name.
+          type: string
+        style: form
+      - description: Hydrologic unit classification code.
+        explode: false
+        in: query
+        name: hydrologic_unit_classification_code
+        required: false
+        schema:
+          description: Hydrologic unit classification code.
+          type: string
+        style: form
+      - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/HydrologicUnitCodesFeatures'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Hydrologic unit codes (HUCs) items
+      tags:
+      - hydrologic-unit-codes
+    options:
+      description: 'Hydrologic units are geographic areas representing part or all of a surface drainage basin or distinct hydrologic feature identified by a unique number (HUC), and a name. The United States is divided and sub-divided into successively smaller hydrologic units which are classified into four levels: regions, sub-regions, accounting units, and cataloging units. Each unit consists of two to eight digits based on the four levels of classification in the hydrologic unit system. Additional information can be found at &lt;https://water.usgs.gov/GIS/huc.html&gt;.
+
+        '
+      operationId: optionsHydrologic-unit-codesFeatures
+      responses:
+        '200':
+          description: options response
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Options for Hydrologic unit codes (HUCs) items
+      tags:
+      - hydrologic-unit-codes
+    post:
+      description: 'Hydrologic units are geographic areas representing part or all of a surface drainage basin or distinct hydrologic feature identified by a unique number (HUC), and a name. The United States is divided and sub-divided into successively smaller hydrologic units which are classified into four levels: regions, sub-regions, accounting units, and cataloging units. Each unit consists of two to eight digits based on the four levels of classification in the hydrologic unit system. Additional information can be found at &lt;https://water.usgs.gov/GIS/huc.html&gt;.
+
+        '
+      operationId: getCQL2Hydrologic-unit-codesFeatures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: https://schemas.opengis.net/cql2/1.0/cql2.json
+        description: Get items with CQL2
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/HydrologicUnitCodesFeatures'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Hydrologic unit codes (HUCs) items with CQL2
+      tags:
+      - hydrologic-unit-codes
+  /collections/hydrologic-unit-codes/items/{featureId}:
+    get:
+      description: 'Hydrologic units are geographic areas representing part or all of a surface drainage basin or distinct hydrologic feature identified by a unique number (HUC), and a name. The United States is divided and sub-divided into successively smaller hydrologic units which are classified into four levels: regions, sub-regions, accounting units, and cataloging units. Each unit consists of two to eight digits based on the four levels of classification in the hydrologic unit system. Additional information can be found at &lt;https://water.usgs.gov/GIS/huc.html&gt;.
+
+        '
+      operationId: getHydrologic-unit-codesFeature
+      parameters:
+      - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
+      - $ref: '#/components/parameters/crs'
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/HydrologicUnitCodesFeature'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Hydrologic unit codes (HUCs) item by id
+      tags:
+      - hydrologic-unit-codes
+    options:
+      description: 'Hydrologic units are geographic areas representing part or all of a surface drainage basin or distinct hydrologic feature identified by a unique number (HUC), and a name. The United States is divided and sub-divided into successively smaller hydrologic units which are classified into four levels: regions, sub-regions, accounting units, and cataloging units. Each unit consists of two to eight digits based on the four levels of classification in the hydrologic unit system. Additional information can be found at &lt;https://water.usgs.gov/GIS/huc.html&gt;.
+
+        '
+      operationId: optionsHydrologic-unit-codesFeature
+      parameters:
+      - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
+      responses:
+        '200':
+          description: options response
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Options for Hydrologic unit codes (HUCs) item by id
+      tags:
+      - hydrologic-unit-codes
+  /collections/hydrologic-unit-codes/queryables:
+    get:
+      description: 'Hydrologic units are geographic areas representing part or all of a surface drainage basin or distinct hydrologic feature identified by a unique number (HUC), and a name. The United States is divided and sub-divided into successively smaller hydrologic units which are classified into four levels: regions, sub-regions, accounting units, and cataloging units. Each unit consists of two to eight digits based on the four levels of classification in the hydrologic unit system. Additional information can be found at &lt;https://water.usgs.gov/GIS/huc.html&gt;.
+
+        '
+      operationId: getHydrologic-unit-codesQueryables
+      parameters:
+      - description: The properties that should be included. The parameter value is a comma-separated list of property names.
+        explode: false
+        in: query
+        name: properties
+        required: false
+        schema:
+          items:
+            enum:
+            - id
+            - hydrologic_unit_name
+            - hydrologic_unit_classification_code
+            type: string
+          type: array
+        style: form
+      - $ref: '#/components/parameters/f'
+      - description: The profile to be applied to a given request
+        explode: false
+        in: query
+        name: profile
+        required: false
+        schema:
+          enum:
+          - actual-domain
+          - valid-domain
+          type: string
+        style: form
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/Queryables'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Hydrologic unit codes (HUCs) queryables
+      tags:
+      - hydrologic-unit-codes
+  /collections/hydrologic-unit-codes/schema:
+    get:
+      description: 'Hydrologic units are geographic areas representing part or all of a surface drainage basin or distinct hydrologic feature identified by a unique number (HUC), and a name. The United States is divided and sub-divided into successively smaller hydrologic units which are classified into four levels: regions, sub-regions, accounting units, and cataloging units. Each unit consists of two to eight digits based on the four levels of classification in the hydrologic unit system. Additional information can be found at &lt;https://water.usgs.gov/GIS/huc.html&gt;.
+
+        '
+      operationId: getHydrologic-unit-codesSchema
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/Queryables'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Hydrologic unit codes (HUCs) schema
+      tags:
+      - hydrologic-unit-codes
+components:
+  schemas:
+    Error:
+      properties:
+        error:
+          properties:
+            code:
+              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
+              type: string
+            message:
+              description: Error message
+              type: string
+          required:
+          - code
+          - message
+          type: object
+      type: object
+    queryable:
+      properties:
+        description:
+          description: a human-readable narrative describing the queryable
+          type: string
+        language:
+          default: en
+          description: the language used for the title and description
+          type: string
+        queryable:
+          description: the token that may be used in a CQL predicate
+          type: string
+        title:
+          description: a human readable title for the queryable
+          type: string
+        type:
+          description: the data type of the queryable
+          type: string
+        type-ref:
+          description: a reference to the formal definition of the type
+          format: url
+          type: string
+      required:
+      - queryable
+      - type
+      type: object
+    HydrologicUnitCodesFeature:
+      properties:
+        geometry: {}
+        id:
+          type: string
+        properties:
+          properties:
+            hydrologic_unit_classification_code:
+              description: Hydrologic unit classification code.
+              type:
+              - string
+              - 'null'
+            hydrologic_unit_name:
+              description: Hydrologic unit name.
+              type:
+              - string
+              - 'null'
+            id:
+              description: 'Hydrologic unit code. The format of the code is (''RRSSBBUUWWXX'') where: ''RR'' is the 2-digit code for the region. ''SS'' is the 2-digit code for the sub-region. ''BB'' is the 2-digit code for the basin. ''UU'' is the 2-digit code for the sub-basin. ''WW'' is the 2-digit code for the watershed. ''XX'' is the 2-digit code for the sub-watershed. Watersheds are delineated by USGS using a nationwide system based on surface hydrologic features. This system divides the country into 22 regions (2-digit), 245 subregions (4-digit), 405 basins (6-digit), ~2,400 subbasins (8-digit), ~19,000 watersheds (10-digit), and ~105,000 subwatersheds (12-digit). A hierarchical hydrologic unit code (HUC) consisting of 2 additional digits for each level in the hydrologic unit system is used to identify any hydrologic area (see Federal Standards and Procedures for the National Watershed Boundary Dataset - https://pubs.usgs.gov/tm/11/a3/).'
+              type:
+              - string
+              - 'null'
+          type: object
+        type:
+          enum:
+          - Feature
+          type: string
+      required:
+      - type
+      - properties
+      type: object
+    HydrologicUnitCodesFeatureCollection:
+      properties:
+        features:
+          items:
+            $ref: '#/components/schemas/HydrologicUnitCodesFeature'
+          type: array
+        links:
+          items:
+            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
+          type: array
+        numberReturned:
+          minimum: 0
+          type: integer
+        timeStamp:
+          format: date-time
+          type: string
+        type:
+          enum:
+          - FeatureCollection
+          type: string
+      required:
+      - type
+      - features
+      type: object
+    queryables:
+      properties:
+        queryables:
+          items:
+            $ref: '#/components/schemas/queryable'
+          type: array
+      required:
+      - queryables
+      type: object
+  responses:
+    HydrologicUnitCodesFeatures:
+      content:
+        application/geo+json:
+          example:
+            features:
+            - geometry: null
+              id: '01'
+              properties:
+                hydrologic_unit_classification_code: R
+                hydrologic_unit_name: New England Region
+                id: '01'
+              type: Feature
+            links:
+            - href: https://api.waterdata.usgs.gov/ogcapi/v0/collections/hydrologic-unit-codes/items
+              rel: self
+              title: This document as GeoJSON
+              type: application/geo+json
+            numberReturned: 1
+            timeStamp: '2024-07-21T12:00:00Z'
+            type: FeatureCollection
+          schema:
+            $ref: '#/components/schemas/HydrologicUnitCodesFeatureCollection'
+        text/html:
+          schema:
+            type: string
+      description: A feature collection of Hydrologic unit codes (HUCs).
+    Queryables:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/queryables'
+      description: successful queryables operation
+    HydrologicUnitCodesFeature:
+      content:
+        application/geo+json:
+          example:
+            geometry: null
+            id: '01'
+            properties:
+              hydrologic_unit_classification_code: R
+              hydrologic_unit_name: New England Region
+              id: '01'
+            type: Feature
+          schema:
+            $ref: '#/components/schemas/HydrologicUnitCodesFeature'
+        text/html:
+          schema:
+            type: string
+      description: A single feature from Hydrologic unit codes (HUCs).
+    Forbidden403:
+      content:
+        application/json:
+          examples:
+            missingApiKey:
+              summary: Missing API Key
+              value:
+                error:
+                  code: API_KEY_MISSING
+                  message: No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;API_KEY_MISSING&lt;/code&gt;\n        &lt;message&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            missingApiKeyCsv:
+              summary: Missing API Key (CSV)
+              value: 'Error Code,Error Message
+
+                API_KEY_MISSING, No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/'
+          schema:
+            type: string
+        text/html:
+          examples:
+            missingApiKeyHtml:
+              summary: Missing API Key (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;API_KEY_MISSING&lt;/h1&gt;\n        &lt;p&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Forbidden - API key is missing or not authorized for this resource.
+    TooManyRequests429:
+      content:
+        application/json:
+          examples:
+            rateLimitExceeded:
+              summary: Rate Limit Exceeded
+              value:
+                error:
+                  code: OVER_RATE_LIMIT
+                  message: You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;OVER_RATE_LIMIT&lt;/code&gt;\n        &lt;message&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            rateLimitCsv:
+              summary: Rate Limit Exceeded (CSV)
+              value: 'Error Code,Error Message
+
+                OVER_RATE_LIMIT,You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.'
+          schema:
+            type: string
+        text/html:
+          examples:
+            rateLimitHtml:
+              summary: Rate Limit Exceeded (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;OVER_RATE_LIMIT&lt;/h1&gt;\n        &lt;p&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Too Many Requests - Rate limit exceeded.
+  parameters:
+    skipGeometry:
+      description: This option can be used to skip response geometries for each feature.
+      explode: false
+      in: query
+      name: skipGeometry
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    offset:
+      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
+      explode: false
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        minimum: 0
+        type: integer
+      style: form
+    filter:
+      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
+      in: query
+      name: filter
+      required: false
+      schema:
+        type: string
+    crs:
+      description: Indicates the coordinate reference system for the results.
+      explode: false
+      in: query
+      name: crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    lang:
+      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: en-US
+        enum:
+        - en-US
+        type: string
+    bbox:
+      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
+      explode: false
+      in: query
+      name: bbox
+      required: false
+      schema:
+        items:
+          type: number
+        maxItems: 6
+        minItems: 4
+        type: array
+      style: form
+    bbox-crs:
+      description: Indicates the coordinate reference system for the given bbox coordinates.
+      explode: false
+      in: query
+      name: bbox-crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    f:
+      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
+      explode: false
+      in: query
+      name: f
+      required: false
+      schema:
+        default: json
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        type: string
+      style: form
+  securitySchemes:
+    ApiKeyHeader:
+      description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup
+      in: header
+      name: api_key
+      type: apiKey
+    ApiKeyQuery:
+      description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup
+      in: query
+      name: api_key
+      type: apiKey

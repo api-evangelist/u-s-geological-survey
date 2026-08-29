@@ -1,0 +1,664 @@
+openapi: 3.2.0
+info:
+  contact:
+    name: US Geological Survey - Water Data for the Nation
+    url: https://waterdata.usgs.gov
+    x-ogc-serviceContact:
+      addresses: []
+      emails:
+      - value: wdfn@usgs.gov
+      hoursOfService: pointOfContact
+      links:
+      - href: https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov
+        type: text/html
+      name: WDFN Support
+  description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+    '
+  license:
+    name: US Government work in the public domain
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+  termsOfService: https://creativecommons.org/publicdomain/zero/1.0/
+  title: USGS Water Data Altitude Datums API
+  version: 0.71.7
+  x-keywords:
+  - geospatial
+  - data
+  - api
+  - hydrology
+  - USGS
+servers:
+- description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+    '
+  url: https://api.waterdata.usgs.gov/ogcapi/v0
+tags:
+- description: 'The recommended vertical datum is NAVD88 (North American Vertical Datum of 1988) where applicable as stated in Office of Information Technical Memo 2002.01. NGVD29 (National Geodetic Vertical Datum of 1929) and NAVD88 are the only datums that can be converted on output. NWIS uses the North American Vertical Datum Conversions (VERTCON) of the National Geodetic Survey to convert from NGVD29 to NAVD88 or vice versa. Conversions to or from other vertical datums are not available.
+
+    '
+  name: altitude-datums
+paths:
+  /collections/altitude-datums:
+    get:
+      description: 'The recommended vertical datum is NAVD88 (North American Vertical Datum of 1988) where applicable as stated in Office of Information Technical Memo 2002.01. NGVD29 (National Geodetic Vertical Datum of 1929) and NAVD88 are the only datums that can be converted on output. NWIS uses the North American Vertical Datum Conversions (VERTCON) of the National Geodetic Survey to convert from NGVD29 to NAVD88 or vice versa. Conversions to or from other vertical datums are not available.
+
+        '
+      operationId: describeAltitude-datumsCollection
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/Collection
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: Get Altitude datums metadata
+      tags:
+      - altitude-datums
+  /collections/altitude-datums/items:
+    get:
+      description: 'The recommended vertical datum is NAVD88 (North American Vertical Datum of 1988) where applicable as stated in Office of Information Technical Memo 2002.01. NGVD29 (National Geodetic Vertical Datum of 1929) and NAVD88 are the only datums that can be converted on output. NWIS uses the North American Vertical Datum Conversions (VERTCON) of the National Geodetic Survey to convert from NGVD29 to NAVD88 or vice versa. Conversions to or from other vertical datums are not available.
+
+        '
+      operationId: getAltitude-datumsFeatures
+      parameters:
+      - description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.
+        explode: false
+        in: query
+        name: f
+        required: false
+        schema:
+          default: json
+          enum:
+          - json
+          - html
+          - jsonld
+          - csv
+          type: string
+        style: form
+      - $ref: '#/components/parameters/lang'
+      - $ref: '#/components/parameters/bbox'
+      - description: The optional limit parameter limits the number of items that are presented in the response document (maximum=50000, default=10000).
+        explode: false
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10000
+          maximum: 50000
+          minimum: 1
+          type: integer
+        style: form
+      - $ref: '#/components/parameters/crs'
+      - $ref: '#/components/parameters/bbox-crs'
+      - description: The properties that should be included. The parameter value is a comma-separated list of property names.
+        explode: false
+        in: query
+        name: properties
+        required: false
+        schema:
+          items:
+            enum:
+            - id
+            - altitude_datum_description
+            type: string
+          type: array
+        style: form
+      - $ref: '#/components/parameters/skipGeometry'
+      - $ref: https://raw.githubusercontent.com/opengeospatial/ogcapi-records/master/core/openapi/parameters/sortby.yaml
+      - $ref: '#/components/parameters/offset'
+      - explode: false
+        in: query
+        name: id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: altitude_datum_description
+        required: false
+        schema:
+          type: string
+        style: form
+      - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/AltitudeDatumsFeatures'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Altitude datums items
+      tags:
+      - altitude-datums
+    options:
+      description: 'The recommended vertical datum is NAVD88 (North American Vertical Datum of 1988) where applicable as stated in Office of Information Technical Memo 2002.01. NGVD29 (National Geodetic Vertical Datum of 1929) and NAVD88 are the only datums that can be converted on output. NWIS uses the North American Vertical Datum Conversions (VERTCON) of the National Geodetic Survey to convert from NGVD29 to NAVD88 or vice versa. Conversions to or from other vertical datums are not available.
+
+        '
+      operationId: optionsAltitude-datumsFeatures
+      responses:
+        '200':
+          description: options response
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Options for Altitude datums items
+      tags:
+      - altitude-datums
+    post:
+      description: 'The recommended vertical datum is NAVD88 (North American Vertical Datum of 1988) where applicable as stated in Office of Information Technical Memo 2002.01. NGVD29 (National Geodetic Vertical Datum of 1929) and NAVD88 are the only datums that can be converted on output. NWIS uses the North American Vertical Datum Conversions (VERTCON) of the National Geodetic Survey to convert from NGVD29 to NAVD88 or vice versa. Conversions to or from other vertical datums are not available.
+
+        '
+      operationId: getCQL2Altitude-datumsFeatures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: https://schemas.opengis.net/cql2/1.0/cql2.json
+        description: Get items with CQL2
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/AltitudeDatumsFeatures'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Altitude datums items with CQL2
+      tags:
+      - altitude-datums
+  /collections/altitude-datums/items/{featureId}:
+    get:
+      description: 'The recommended vertical datum is NAVD88 (North American Vertical Datum of 1988) where applicable as stated in Office of Information Technical Memo 2002.01. NGVD29 (National Geodetic Vertical Datum of 1929) and NAVD88 are the only datums that can be converted on output. NWIS uses the North American Vertical Datum Conversions (VERTCON) of the National Geodetic Survey to convert from NGVD29 to NAVD88 or vice versa. Conversions to or from other vertical datums are not available.
+
+        '
+      operationId: getAltitude-datumsFeature
+      parameters:
+      - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
+      - $ref: '#/components/parameters/crs'
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/AltitudeDatumsFeature'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Altitude datums item by id
+      tags:
+      - altitude-datums
+    options:
+      description: 'The recommended vertical datum is NAVD88 (North American Vertical Datum of 1988) where applicable as stated in Office of Information Technical Memo 2002.01. NGVD29 (National Geodetic Vertical Datum of 1929) and NAVD88 are the only datums that can be converted on output. NWIS uses the North American Vertical Datum Conversions (VERTCON) of the National Geodetic Survey to convert from NGVD29 to NAVD88 or vice versa. Conversions to or from other vertical datums are not available.
+
+        '
+      operationId: optionsAltitude-datumsFeature
+      parameters:
+      - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
+      responses:
+        '200':
+          description: options response
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Options for Altitude datums item by id
+      tags:
+      - altitude-datums
+  /collections/altitude-datums/queryables:
+    get:
+      description: 'The recommended vertical datum is NAVD88 (North American Vertical Datum of 1988) where applicable as stated in Office of Information Technical Memo 2002.01. NGVD29 (National Geodetic Vertical Datum of 1929) and NAVD88 are the only datums that can be converted on output. NWIS uses the North American Vertical Datum Conversions (VERTCON) of the National Geodetic Survey to convert from NGVD29 to NAVD88 or vice versa. Conversions to or from other vertical datums are not available.
+
+        '
+      operationId: getAltitude-datumsQueryables
+      parameters:
+      - description: The properties that should be included. The parameter value is a comma-separated list of property names.
+        explode: false
+        in: query
+        name: properties
+        required: false
+        schema:
+          items:
+            enum:
+            - id
+            - altitude_datum_description
+            type: string
+          type: array
+        style: form
+      - $ref: '#/components/parameters/f'
+      - description: The profile to be applied to a given request
+        explode: false
+        in: query
+        name: profile
+        required: false
+        schema:
+          enum:
+          - actual-domain
+          - valid-domain
+          type: string
+        style: form
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/Queryables'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Altitude datums queryables
+      tags:
+      - altitude-datums
+  /collections/altitude-datums/schema:
+    get:
+      description: 'The recommended vertical datum is NAVD88 (North American Vertical Datum of 1988) where applicable as stated in Office of Information Technical Memo 2002.01. NGVD29 (National Geodetic Vertical Datum of 1929) and NAVD88 are the only datums that can be converted on output. NWIS uses the North American Vertical Datum Conversions (VERTCON) of the National Geodetic Survey to convert from NGVD29 to NAVD88 or vice versa. Conversions to or from other vertical datums are not available.
+
+        '
+      operationId: getAltitude-datumsSchema
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/Queryables'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Altitude datums schema
+      tags:
+      - altitude-datums
+components:
+  schemas:
+    AltitudeDatumsFeatureCollection:
+      properties:
+        features:
+          items:
+            $ref: '#/components/schemas/AltitudeDatumsFeature'
+          type: array
+        links:
+          items:
+            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
+          type: array
+        numberReturned:
+          minimum: 0
+          type: integer
+        timeStamp:
+          format: date-time
+          type: string
+        type:
+          enum:
+          - FeatureCollection
+          type: string
+      required:
+      - type
+      - features
+      type: object
+    Error:
+      properties:
+        error:
+          properties:
+            code:
+              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
+              type: string
+            message:
+              description: Error message
+              type: string
+          required:
+          - code
+          - message
+          type: object
+      type: object
+    queryable:
+      properties:
+        description:
+          description: a human-readable narrative describing the queryable
+          type: string
+        language:
+          default: en
+          description: the language used for the title and description
+          type: string
+        queryable:
+          description: the token that may be used in a CQL predicate
+          type: string
+        title:
+          description: a human readable title for the queryable
+          type: string
+        type:
+          description: the data type of the queryable
+          type: string
+        type-ref:
+          description: a reference to the formal definition of the type
+          format: url
+          type: string
+      required:
+      - queryable
+      - type
+      type: object
+    AltitudeDatumsFeature:
+      properties:
+        geometry: {}
+        id:
+          type: string
+        properties:
+          properties:
+            altitude_datum_description:
+              type:
+              - string
+              - 'null'
+            id:
+              type:
+              - string
+              - 'null'
+          type: object
+        type:
+          enum:
+          - Feature
+          type: string
+      required:
+      - type
+      - properties
+      type: object
+    queryables:
+      properties:
+        queryables:
+          items:
+            $ref: '#/components/schemas/queryable'
+          type: array
+      required:
+      - queryables
+      type: object
+  responses:
+    AltitudeDatumsFeatures:
+      content:
+        application/geo+json:
+          example:
+            features:
+            - geometry: null
+              id: NAVD88
+              properties:
+                altitude_datum_description: North American Vertical Datum of 1988
+                id: NAVD88
+              type: Feature
+            links:
+            - href: https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items
+              rel: self
+              title: This document as GeoJSON
+              type: application/geo+json
+            numberReturned: 1
+            timeStamp: '2024-07-21T12:00:00Z'
+            type: FeatureCollection
+          schema:
+            $ref: '#/components/schemas/AltitudeDatumsFeatureCollection'
+        text/html:
+          schema:
+            type: string
+      description: A feature collection of Altitude datums.
+    Queryables:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/queryables'
+      description: successful queryables operation
+    AltitudeDatumsFeature:
+      content:
+        application/geo+json:
+          example:
+            geometry: null
+            id: NAVD88
+            properties:
+              altitude_datum_description: North American Vertical Datum of 1988
+              id: NAVD88
+            type: Feature
+          schema:
+            $ref: '#/components/schemas/AltitudeDatumsFeature'
+        text/html:
+          schema:
+            type: string
+      description: A single feature from Altitude datums.
+    Forbidden403:
+      content:
+        application/json:
+          examples:
+            missingApiKey:
+              summary: Missing API Key
+              value:
+                error:
+                  code: API_KEY_MISSING
+                  message: No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;API_KEY_MISSING&lt;/code&gt;\n        &lt;message&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            missingApiKeyCsv:
+              summary: Missing API Key (CSV)
+              value: 'Error Code,Error Message
+
+                API_KEY_MISSING, No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/'
+          schema:
+            type: string
+        text/html:
+          examples:
+            missingApiKeyHtml:
+              summary: Missing API Key (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;API_KEY_MISSING&lt;/h1&gt;\n        &lt;p&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Forbidden - API key is missing or not authorized for this resource.
+    TooManyRequests429:
+      content:
+        application/json:
+          examples:
+            rateLimitExceeded:
+              summary: Rate Limit Exceeded
+              value:
+                error:
+                  code: OVER_RATE_LIMIT
+                  message: You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;OVER_RATE_LIMIT&lt;/code&gt;\n        &lt;message&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            rateLimitCsv:
+              summary: Rate Limit Exceeded (CSV)
+              value: 'Error Code,Error Message
+
+                OVER_RATE_LIMIT,You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.'
+          schema:
+            type: string
+        text/html:
+          examples:
+            rateLimitHtml:
+              summary: Rate Limit Exceeded (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;OVER_RATE_LIMIT&lt;/h1&gt;\n        &lt;p&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Too Many Requests - Rate limit exceeded.
+  parameters:
+    skipGeometry:
+      description: This option can be used to skip response geometries for each feature.
+      explode: false
+      in: query
+      name: skipGeometry
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    offset:
+      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
+      explode: false
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        minimum: 0
+        type: integer
+      style: form
+    filter:
+      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
+      in: query
+      name: filter
+      required: false
+      schema:
+        type: string
+    crs:
+      description: Indicates the coordinate reference system for the results.
+      explode: false
+      in: query
+      name: crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    lang:
+      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: en-US
+        enum:
+        - en-US
+        type: string
+    bbox:
+      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
+      explode: false
+      in: query
+      name: bbox
+      required: false
+      schema:
+        items:
+          type: number
+        maxItems: 6
+        minItems: 4
+        type: array
+      style: form
+    bbox-crs:
+      description: Indicates the coordinate reference system for the given bbox coordinates.
+      explode: false
+      in: query
+      name: bbox-crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    f:
+      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
+      explode: false
+      in: query
+      name: f
+      required: false
+      schema:
+        default: json
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        type: string
+      style: form
+  securitySchemes:
+    ApiKeyHeader:
+      description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup
+      in: header
+      name: api_key
+      type: apiKey
+    ApiKeyQuery:
+      description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup
+      in: query
+      name: api_key
+      type: apiKey

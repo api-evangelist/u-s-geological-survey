@@ -1,0 +1,300 @@
+openapi: 3.2.0
+info:
+  contact:
+    name: US Geological Survey - Water Data for the Nation
+    url: https://waterdata.usgs.gov
+    x-ogc-serviceContact:
+      addresses: []
+      emails:
+      - value: wdfn@usgs.gov
+      hoursOfService: pointOfContact
+      links:
+      - href: https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov
+        type: text/html
+      name: WDFN Support
+  description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+    '
+  license:
+    name: US Government work in the public domain
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+  termsOfService: https://creativecommons.org/publicdomain/zero/1.0/
+  title: USGS Water Data Server API
+  version: 0.71.7
+  x-keywords:
+  - geospatial
+  - data
+  - api
+  - hydrology
+  - USGS
+servers:
+- description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+    '
+  url: https://api.waterdata.usgs.gov/ogcapi/v0
+tags:
+- description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+    '
+  externalDocs:
+    description: information
+    url: https://api.waterdata.usgs.gov
+  name: server
+paths:
+  /:
+    get:
+      description: Landing page
+      operationId: getLandingPage
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/LandingPage
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: Landing page
+      tags:
+      - server
+  /collections:
+    get:
+      description: Collections
+      operationId: getCollections
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/LandingPage
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: Collections
+      tags:
+      - server
+  /conformance:
+    get:
+      description: API conformance definition
+      operationId: getConformanceDeclaration
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/LandingPage
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: API conformance definition
+      tags:
+      - server
+  /openapi:
+    get:
+      description: This document
+      operationId: getOpenapi
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      - description: UI to render the OpenAPI document
+        explode: false
+        in: query
+        name: ui
+        required: false
+        schema:
+          default: swagger
+          enum:
+          - swagger
+          - redoc
+          type: string
+        style: form
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        default:
+          $ref: '#/components/responses/default'
+      summary: This document
+      tags:
+      - server
+components:
+  responses:
+    default:
+      content:
+        application/json:
+          schema:
+            $ref: https://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/schemas/exception.yaml
+      description: Unexpected error
+    '200':
+      description: successful operation
+    Forbidden403:
+      content:
+        application/json:
+          examples:
+            missingApiKey:
+              summary: Missing API Key
+              value:
+                error:
+                  code: API_KEY_MISSING
+                  message: No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;API_KEY_MISSING&lt;/code&gt;\n        &lt;message&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            missingApiKeyCsv:
+              summary: Missing API Key (CSV)
+              value: 'Error Code,Error Message
+
+                API_KEY_MISSING, No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/'
+          schema:
+            type: string
+        text/html:
+          examples:
+            missingApiKeyHtml:
+              summary: Missing API Key (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;API_KEY_MISSING&lt;/h1&gt;\n        &lt;p&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Forbidden - API key is missing or not authorized for this resource.
+    TooManyRequests429:
+      content:
+        application/json:
+          examples:
+            rateLimitExceeded:
+              summary: Rate Limit Exceeded
+              value:
+                error:
+                  code: OVER_RATE_LIMIT
+                  message: You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;OVER_RATE_LIMIT&lt;/code&gt;\n        &lt;message&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            rateLimitCsv:
+              summary: Rate Limit Exceeded (CSV)
+              value: 'Error Code,Error Message
+
+                OVER_RATE_LIMIT,You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.'
+          schema:
+            type: string
+        text/html:
+          examples:
+            rateLimitHtml:
+              summary: Rate Limit Exceeded (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;OVER_RATE_LIMIT&lt;/h1&gt;\n        &lt;p&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Too Many Requests - Rate limit exceeded.
+  parameters:
+    f:
+      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
+      explode: false
+      in: query
+      name: f
+      required: false
+      schema:
+        default: json
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        type: string
+      style: form
+    lang:
+      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: en-US
+        enum:
+        - en-US
+        type: string
+  schemas:
+    Error:
+      properties:
+        error:
+          properties:
+            code:
+              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
+              type: string
+            message:
+              description: Error message
+              type: string
+          required:
+          - code
+          - message
+          type: object
+      type: object
+  securitySchemes:
+    ApiKeyHeader:
+      description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup
+      in: header
+      name: api_key
+      type: apiKey
+    ApiKeyQuery:
+      description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup
+      in: query
+      name: api_key
+      type: apiKey

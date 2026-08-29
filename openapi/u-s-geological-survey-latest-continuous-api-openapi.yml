@@ -1,0 +1,1450 @@
+openapi: 3.2.0
+info:
+  contact:
+    name: US Geological Survey - Water Data for the Nation
+    url: https://waterdata.usgs.gov
+    x-ogc-serviceContact:
+      addresses: []
+      emails:
+      - value: wdfn@usgs.gov
+      hoursOfService: pointOfContact
+      links:
+      - href: https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov
+        type: text/html
+      name: WDFN Support
+  description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+    '
+  license:
+    name: US Government work in the public domain
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+  termsOfService: https://creativecommons.org/publicdomain/zero/1.0/
+  title: USGS Water Data Latest Continuous API
+  version: 0.71.7
+  x-keywords:
+  - geospatial
+  - data
+  - api
+  - hydrology
+  - USGS
+servers:
+- description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
+
+    '
+  url: https://api.waterdata.usgs.gov/ogcapi/v0
+tags:
+- description: 'This endpoint provides the most recent observation for each time series of continuous data. Continuous data are collected via automated sensors installed at a monitoring location. They are collected at a high frequency and often at a fixed 15-minute interval. Depending on the specific monitoring location, the data may be transmitted automatically via telemetry and be available on WDFN within minutes of collection, while other times the delivery of data may be delayed if the monitoring location does not have the capacity to automatically transmit data. Continuous data are described by parameter name and parameter code. These data might also be referred to as "instantaneous values" or "IV"
+
+    '
+  name: latest-continuous
+paths:
+  /collections/latest-continuous:
+    get:
+      description: 'This endpoint provides the most recent observation for each time series of continuous data. Continuous data are collected via automated sensors installed at a monitoring location. They are collected at a high frequency and often at a fixed 15-minute interval. Depending on the specific monitoring location, the data may be transmitted automatically via telemetry and be available on WDFN within minutes of collection, while other times the delivery of data may be delayed if the monitoring location does not have the capacity to automatically transmit data. Continuous data are described by parameter name and parameter code. These data might also be referred to as "instantaneous values" or "IV"
+
+        '
+      operationId: describeLatest-continuousCollection
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/Collection
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: Get Latest continuous metadata
+      tags:
+      - latest-continuous
+  /collections/latest-continuous/items:
+    get:
+      description: 'This endpoint provides the most recent observation for each time series of continuous data. Continuous data are collected via automated sensors installed at a monitoring location. They are collected at a high frequency and often at a fixed 15-minute interval. Depending on the specific monitoring location, the data may be transmitted automatically via telemetry and be available on WDFN within minutes of collection, while other times the delivery of data may be delayed if the monitoring location does not have the capacity to automatically transmit data. Continuous data are described by parameter name and parameter code. These data might also be referred to as "instantaneous values" or "IV"
+
+        '
+      operationId: getLatest-continuousFeatures
+      parameters:
+      - description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.
+        explode: false
+        in: query
+        name: f
+        required: false
+        schema:
+          default: json
+          enum:
+          - json
+          - html
+          - jsonld
+          - csv
+          type: string
+        style: form
+      - $ref: '#/components/parameters/lang'
+      - $ref: '#/components/parameters/bbox'
+      - description: The optional limit parameter limits the number of items that are presented in the response document (maximum=50000, default=10).
+        explode: false
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          maximum: 50000
+          minimum: 1
+          type: integer
+        style: form
+      - $ref: '#/components/parameters/crs'
+      - $ref: '#/components/parameters/bbox-crs'
+      - description: The properties that should be included. The parameter value is a comma-separated list of property names.
+        explode: false
+        in: query
+        name: properties
+        required: false
+        schema:
+          items:
+            enum:
+            - time_series_id
+            - monitoring_location_id
+            - parameter_code
+            - statistic_id
+            - time
+            - value
+            - unit_of_measure
+            - approval_status
+            - qualifier
+            - last_modified
+            type: string
+          type: array
+        style: form
+      - $ref: '#/components/parameters/skipGeometry'
+      - $ref: '#/components/parameters/wda_sortby'
+      - $ref: '#/components/parameters/offset'
+      - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/datetime
+      - description: "A unique identifier representing a single time series. This corresponds to the `id` field in the `time-series-metadata` endpoint.\n Split parameters are enabled for this field, so you can supply multiple values separated by commas."
+        explode: false
+        in: query
+        name: time_series_id
+        required: false
+        schema:
+          description: "A unique identifier representing a single time series. This corresponds to the `id` field in the `time-series-metadata` endpoint.\n Split parameters are enabled for this field, so you can supply multiple values separated by commas."
+          title: Time series ID
+          type: string
+        style: form
+      - description: "A unique identifier representing a single monitoring location. This corresponds to the `id` field in the `monitoring-locations` endpoint. Monitoring location IDs are created by combining the agency code of the agency responsible for the monitoring location (e.g. USGS) with the ID number of the monitoring location (e.g. 02238500), separated by a hyphen (e.g. USGS-02238500).\n Split parameters are enabled for this field, so you can supply multiple values separated by commas."
+        explode: false
+        in: query
+        name: monitoring_location_id
+        required: false
+        schema:
+          description: "A unique identifier representing a single monitoring location. This corresponds to the `id` field in the `monitoring-locations` endpoint. Monitoring location IDs are created by combining the agency code of the agency responsible for the monitoring location (e.g. USGS) with the ID number of the monitoring location (e.g. 02238500), separated by a hyphen (e.g. USGS-02238500).\n Split parameters are enabled for this field, so you can supply multiple values separated by commas."
+          title: Monitoring location ID
+          type: string
+        style: form
+      - description: "Parameter codes are 5-digit codes used to identify the constituent measured and the units of measure. A complete list of parameter codes and associated groupings can be found at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/parameter-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/parameter-codes/items).\n Split parameters are enabled for this field, so you can supply multiple values separated by commas."
+        explode: false
+        in: query
+        name: parameter_code
+        required: false
+        schema:
+          description: "Parameter codes are 5-digit codes used to identify the constituent measured and the units of measure. A complete list of parameter codes and associated groupings can be found at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/parameter-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/parameter-codes/items).\n Split parameters are enabled for this field, so you can supply multiple values separated by commas."
+          title: Parameter code
+          type: string
+        style: form
+      - description: 'A code corresponding to the statistic an observation represents. Example codes include 00001 (max), 00002 (min), and 00003 (mean). A complete list of codes and their descriptions can be found at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/statistic-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/statistic-codes/items).
+
+          '
+        explode: false
+        in: query
+        name: statistic_id
+        required: false
+        schema:
+          description: 'A code corresponding to the statistic an observation represents. Example codes include 00001 (max), 00002 (min), and 00003 (mean). A complete list of codes and their descriptions can be found at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/statistic-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/statistic-codes/items).
+
+            '
+          title: Statistic ID
+          type: string
+        style: form
+      - description: "The date an observation represents. You can query this field using date-times or intervals, adhering to RFC 3339, or using ISO 8601 duration objects. Intervals may be bounded or half-bounded (double-dots at start or end).\nExamples:\n\n  - A date-time: \"2018-02-12T23:20:50Z\"\n  - A bounded interval: \"2018-02-12T00:00:00Z/2018-03-18T12:31:12Z\"\n  - Half-bounded intervals: \"2018-02-12T00:00:00Z/..\" or \"../2018-03-18T12:31:12Z\"\n  - Duration objects: \"P1M\" for data from the past month or \"PT36H\" for the last 36 hours\n\nOnly features that have a `time` that intersects the value of datetime are selected. If a feature has multiple temporal properties, it is the decision of the server whether only a single temporal property is used to determine the extent or all relevant temporal properties.\n"
+        explode: false
+        in: query
+        name: time
+        required: false
+        schema:
+          description: "The date an observation represents. You can query this field using date-times or intervals, adhering to RFC 3339, or using ISO 8601 duration objects. Intervals may be bounded or half-bounded (double-dots at start or end).\nExamples:\n\n  - A date-time: \"2018-02-12T23:20:50Z\"\n  - A bounded interval: \"2018-02-12T00:00:00Z/2018-03-18T12:31:12Z\"\n  - Half-bounded intervals: \"2018-02-12T00:00:00Z/..\" or \"../2018-03-18T12:31:12Z\"\n  - Duration objects: \"P1M\" for data from the past month or \"PT36H\" for the last 36 hours\n\nOnly features that have a `time` that intersects the value of datetime are selected. If a feature has multiple temporal properties, it is the decision of the server whether only a single temporal property is used to determine the extent or all relevant temporal properties.\n"
+          title: Time
+          type: string
+        style: form
+      - description: 'The value of the observation. Values are transmitted as strings in the JSON response format in order to preserve precision.
+
+          '
+        explode: false
+        in: query
+        name: value
+        required: false
+        schema:
+          description: 'The value of the observation. Values are transmitted as strings in the JSON response format in order to preserve precision.
+
+            '
+          title: Value
+          type: string
+        style: form
+      - description: A human-readable description of the units of measurement associated with an observation.
+        explode: false
+        in: query
+        name: unit_of_measure
+        required: false
+        schema:
+          description: A human-readable description of the units of measurement associated with an observation.
+          title: Unit of measure
+          type: string
+        style: form
+      - description: 'Some of the data that you have obtained from this U.S. Geological Survey database may not have received Director''s approval.  Any such data values are qualified as provisional and are subject to revision.  Provisional data are released on the condition that neither the USGS nor the United States Government may be held liable for any damages resulting from its use. This field reflects the approval status of each record, and is either "Approved", meaining processing review has been completed and the data is approved for publication, or "Provisional" and subject to revision. For more information about provisional data, go to [https://waterdata.usgs.gov/provisional-data-statement/](https://waterdata.usgs.gov/provisional-data-statement/).
+
+          '
+        explode: false
+        in: query
+        name: approval_status
+        required: false
+        schema:
+          description: 'Some of the data that you have obtained from this U.S. Geological Survey database may not have received Director''s approval.  Any such data values are qualified as provisional and are subject to revision.  Provisional data are released on the condition that neither the USGS nor the United States Government may be held liable for any damages resulting from its use. This field reflects the approval status of each record, and is either "Approved", meaining processing review has been completed and the data is approved for publication, or "Provisional" and subject to revision. For more information about provisional data, go to [https://waterdata.usgs.gov/provisional-data-statement/](https://waterdata.usgs.gov/provisional-data-statement/).
+
+            '
+          enum:
+          - Provisional
+          - Approved
+          title: Approval Status
+          type: string
+        style: form
+      - description: 'This field indicates any qualifiers associated with an observation, for instance if a sensor may have been impacted by ice or if values were estimated.
+
+          '
+        explode: false
+        in: query
+        name: qualifier
+        required: false
+        schema:
+          description: 'This field indicates any qualifiers associated with an observation, for instance if a sensor may have been impacted by ice or if values were estimated.
+
+            '
+          title: Qualifier
+          type: string
+        style: form
+      - description: "The last time a record was refreshed in our database. This may happen due to regular operational processes and does not necessarily indicate anything about the measurement has changed.\nYou can query this field using date-times or intervals, adhering to RFC 3339, or using ISO 8601 duration objects. Intervals may be bounded or half-bounded (double-dots at start or end).\nExamples:\n\n  - A date-time: \"2018-02-12T23:20:50Z\"\n  - A bounded interval: \"2018-02-12T00:00:00Z/2018-03-18T12:31:12Z\"\n  - Half-bounded intervals: \"2018-02-12T00:00:00Z/..\" or \"../2018-03-18T12:31:12Z\"\n  - Duration objects: \"P1M\" for data from the past month or \"PT36H\" for the last 36 hours\n\nOnly features that have a `last_modified` that intersects the value of datetime are selected.\n"
+        explode: false
+        in: query
+        name: last_modified
+        required: false
+        schema:
+          description: "The last time a record was refreshed in our database. This may happen due to regular operational processes and does not necessarily indicate anything about the measurement has changed.\nYou can query this field using date-times or intervals, adhering to RFC 3339, or using ISO 8601 duration objects. Intervals may be bounded or half-bounded (double-dots at start or end).\nExamples:\n\n  - A date-time: \"2018-02-12T23:20:50Z\"\n  - A bounded interval: \"2018-02-12T00:00:00Z/2018-03-18T12:31:12Z\"\n  - Half-bounded intervals: \"2018-02-12T00:00:00Z/..\" or \"../2018-03-18T12:31:12Z\"\n  - Duration objects: \"P1M\" for data from the past month or \"PT36H\" for the last 36 hours\n\nOnly features that have a `last_modified` that intersects the value of datetime are selected.\n"
+          title: Last modified date
+          type: string
+        style: form
+      - description: 'The agency that is reporting the data. Agency codes are fixed values assigned by the National Water Information System (NWIS). A list of agency codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/agency-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/agency-codes/items).
+
+          '
+        explode: false
+        in: query
+        name: agency_code
+        required: false
+        schema:
+          description: 'The agency that is reporting the data. Agency codes are fixed values assigned by the National Water Information System (NWIS). A list of agency codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/agency-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/agency-codes/items).
+
+            '
+          title: Agency code
+          type: string
+        style: form
+      - description: 'The name of the agency that is reporting the data.
+
+          '
+        explode: false
+        in: query
+        name: agency_name
+        required: false
+        schema:
+          description: 'The name of the agency that is reporting the data.
+
+            '
+          title: Agency name
+          type: string
+        style: form
+      - description: 'Altitude of the monitoring location referenced to the specified Vertical Datum.
+
+          '
+        explode: false
+        in: query
+        name: altitude
+        required: false
+        schema:
+          description: 'Altitude of the monitoring location referenced to the specified Vertical Datum.
+
+            '
+          title: Altitude
+          type: number
+        style: form
+      - description: 'Accuracy of the altitude, in feet. An accuracy of +/- 0.1 foot would be entered as “.1”. Many altitudes are interpolated from the contours on topographic maps; accuracies determined in this way are generally entered as one-half of the contour interval.
+
+          '
+        explode: false
+        in: query
+        name: altitude_accuracy
+        required: false
+        schema:
+          description: 'Accuracy of the altitude, in feet. An accuracy of +/- 0.1 foot would be entered as “.1”. Many altitudes are interpolated from the contours on topographic maps; accuracies determined in this way are generally entered as one-half of the contour interval.
+
+            '
+          title: Altitude accuracy
+          type: number
+        style: form
+      - description: 'Codes representing the method used to measure altitude.
+
+          '
+        explode: false
+        in: query
+        name: altitude_method_code
+        required: false
+        schema:
+          description: 'Codes representing the method used to measure altitude.
+
+            '
+          title: Altitude method code
+          type: string
+        style: form
+      - description: 'The name of the method used to measure altitude.
+
+          '
+        explode: false
+        in: query
+        name: altitude_method_name
+        required: false
+        schema:
+          description: 'The name of the method used to measure altitude.
+
+            '
+          title: Altitude method name
+          type: string
+        style: form
+      - description: 'Local aquifers in the USGS water resources data base are identified by a geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name).
+
+          '
+        explode: false
+        in: query
+        name: aquifer_code
+        required: false
+        schema:
+          description: 'Local aquifers in the USGS water resources data base are identified by a geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name).
+
+            '
+          title: Aquifer code
+          type: string
+        style: form
+      - description: 'Describes the confinement status of an aquifer at the monitoring location. A confined aquifer is an aquifer below the land surface that is saturated with water. A water table--or unconfined--aquifer is an aquifer whose upper water surface (water table) is at atmospheric pressure, and thus is able to rise and fall.
+
+          '
+        explode: false
+        in: query
+        name: aquifer_type_code
+        required: false
+        schema:
+          description: 'Describes the confinement status of an aquifer at the monitoring location. A confined aquifer is an aquifer below the land surface that is saturated with water. A water table--or unconfined--aquifer is an aquifer whose upper water surface (water table) is at atmospheric pressure, and thus is able to rise and fall.
+
+            '
+          title: Aquifer type code
+          type: string
+        style: form
+      - description: 'The Basin Code or "drainage basin code" is a two-digit code that further subdivides the 8-digit hydrologic-unit code. The drainage basin code is defined by the USGS State Office where the monitoring location is located.
+
+          '
+        explode: false
+        in: query
+        name: basin_code
+        required: false
+        schema:
+          description: 'The Basin Code or "drainage basin code" is a two-digit code that further subdivides the 8-digit hydrologic-unit code. The drainage basin code is defined by the USGS State Office where the monitoring location is located.
+
+            '
+          title: Basin code
+          type: string
+        style: form
+      - description: 'Date the well was completed.
+
+          '
+        explode: false
+        in: query
+        name: construction_date
+        required: false
+        schema:
+          description: 'Date the well was completed.
+
+            '
+          title: Construction date
+          type: string
+        style: form
+      - description: 'The contributing drainage area of a lake, stream, wetland, or estuary monitoring location, in square miles. This item should be present only if the contributing area is different from the total drainage area. This situation can occur when part of the drainage area consists of very porous soil or depressions that either allow all runoff to enter the groundwater or traps the water in ponds so that rainfall does not contribute to runoff. A transbasin diversion can also affect the total drainage area.
+
+          '
+        explode: false
+        in: query
+        name: contributing_drainage_area
+        required: false
+        schema:
+          description: 'The contributing drainage area of a lake, stream, wetland, or estuary monitoring location, in square miles. This item should be present only if the contributing area is different from the total drainage area. This situation can occur when part of the drainage area consists of very porous soil or depressions that either allow all runoff to enter the groundwater or traps the water in ponds so that rainfall does not contribute to runoff. A transbasin diversion can also affect the total drainage area.
+
+            '
+          title: Contributing drainage area
+          type: number
+        style: form
+      - description: 'The code for the country in which the monitoring location is located.
+
+          '
+        explode: false
+        in: query
+        name: country_code
+        required: false
+        schema:
+          description: 'The code for the country in which the monitoring location is located.
+
+            '
+          title: Country code
+          type: string
+        style: form
+      - description: 'The name of the country in which the monitoring location is located.
+
+          '
+        explode: false
+        in: query
+        name: country_name
+        required: false
+        schema:
+          description: 'The name of the country in which the monitoring location is located.
+
+            '
+          title: Country name
+          type: string
+        style: form
+      - description: 'The code for the county or county equivalent (parish, borough, etc.) in which the monitoring location is located. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/counties/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/counties/items).
+
+          '
+        explode: false
+        in: query
+        name: county_code
+        required: false
+        schema:
+          description: 'The code for the county or county equivalent (parish, borough, etc.) in which the monitoring location is located. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/counties/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/counties/items).
+
+            '
+          title: County code
+          type: string
+        style: form
+      - description: 'The name of the county or county equivalent (parish, borough, etc.) in which the monitoring location is located. [A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/counties/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/counties/items).
+
+          '
+        explode: false
+        in: query
+        name: county_name
+        required: false
+        schema:
+          description: 'The name of the county or county equivalent (parish, borough, etc.) in which the monitoring location is located. [A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/counties/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/counties/items).
+
+            '
+          title: County name
+          type: string
+        style: form
+      - description: 'The time interval threshold used for gap detection in the time series.
+
+          '
+        explode: false
+        in: query
+        name: data_gap_interval
+        required: false
+        schema:
+          description: 'The time interval threshold used for gap detection in the time series.
+
+            '
+          format: duration
+          title: Data gap interval
+          type: string
+        style: form
+      - description: 'A code indicating the source of water-level data.
+
+          '
+        explode: false
+        in: query
+        name: depth_source_code
+        required: false
+        schema:
+          description: 'A code indicating the source of water-level data.
+
+            '
+          title: Depth source code
+          type: string
+        style: form
+      - description: 'The Water Science Centers (WSCs) across the United States use the FIPS state code as the district code. In some case, monitoring locations and samples may be managed by a water science center that is adjacent to the state in which the monitoring location actually resides. For example a monitoring location may have a district code of 30 which translates to Montana, but the state code could be 56 for Wyoming because that is where the monitoring location actually is located.
+
+          '
+        explode: false
+        in: query
+        name: district_code
+        required: false
+        schema:
+          description: 'The Water Science Centers (WSCs) across the United States use the FIPS state code as the district code. In some case, monitoring locations and samples may be managed by a water science center that is adjacent to the state in which the monitoring location actually resides. For example a monitoring location may have a district code of 30 which translates to Montana, but the state code could be 56 for Wyoming because that is where the monitoring location actually is located.
+
+            '
+          title: District code
+          type: string
+        style: form
+      - description: 'The area enclosed by a topographic divide from which direct surface runoff from precipitation normally drains by gravity into the stream above that point.
+
+          '
+        explode: false
+        in: query
+        name: drainage_area
+        required: false
+        schema:
+          description: 'The area enclosed by a topographic divide from which direct surface runoff from precipitation normally drains by gravity into the stream above that point.
+
+            '
+          title: Drainage area
+          type: number
+        style: form
+      - description: 'The total depth to which the hole is drilled, in feet below land surface datum. Note: Not all groundwater monitoring locations have information on Hole Depth. Such monitoring locations will not be retrieved using this search criteria.
+
+          '
+        explode: false
+        in: query
+        name: hole_constructed_depth
+        required: false
+        schema:
+          description: 'The total depth to which the hole is drilled, in feet below land surface datum. Note: Not all groundwater monitoring locations have information on Hole Depth. Such monitoring locations will not be retrieved using this search criteria.
+
+            '
+          title: Hole constructed depth
+          type: number
+        style: form
+      - description: 'Indicates the method used to determine latitude longitude values. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-method-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-method-codes/items).
+
+          '
+        explode: false
+        in: query
+        name: horizontal_position_method_code
+        required: false
+        schema:
+          description: 'Indicates the method used to determine latitude longitude values. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-method-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-method-codes/items).
+
+            '
+          title: Horizontal position method code
+          type: string
+        style: form
+      - description: 'Indicates the method used to determine latitude longitude values. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-method-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-method-codes/items).
+
+          '
+        explode: false
+        in: query
+        name: horizontal_position_method_name
+        required: false
+        schema:
+          description: 'Indicates the method used to determine latitude longitude values. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-method-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-method-codes/items).
+
+            '
+          title: Horizontal position method name
+          type: string
+        style: form
+      - description: 'Indicates the accuracy of the latitude longitude values. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-accuracy-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-accuracy-codes/items).
+
+          '
+        explode: false
+        in: query
+        name: horizontal_positional_accuracy
+        required: false
+        schema:
+          description: 'Indicates the accuracy of the latitude longitude values. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-accuracy-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-accuracy-codes/items).
+
+            '
+          title: Horizontal positional accuracy
+          type: string
+        style: form
+      - description: 'Indicates the accuracy of the latitude longitude values. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-accuracy-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-accuracy-codes/items).
+
+          '
+        explode: false
+        in: query
+        name: horizontal_positional_accuracy_code
+        required: false
+        schema:
+          description: 'Indicates the accuracy of the latitude longitude values. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-accuracy-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-accuracy-codes/items).
+
+            '
+          title: Horizontal positional accuracy code
+          type: string
+        style: form
+      - description: "The hydrologic unit code (HUC) for the monitoring location. Supports prefix matching — querying with a shorter HUC (e.g. \"04\") matches all locations within that hydrologic region.\n Search will match partial HUCs."
+        explode: false
+        in: query
+        name: hydrologic_unit_code
+        required: false
+        schema:
+          description: "The hydrologic unit code (HUC) for the monitoring location. Supports prefix matching — querying with a shorter HUC (e.g. \"04\") matches all locations within that hydrologic region.\n Search will match partial HUCs."
+          title: Hydrologic unit code (HUC)
+          type: string
+        style: form
+      - description: 'Codes for primary governmental or administrative divisions of the county or county equivalent in which the monitoring location is located.
+
+          '
+        explode: false
+        in: query
+        name: minor_civil_division_code
+        required: false
+        schema:
+          description: 'Codes for primary governmental or administrative divisions of the county or county equivalent in which the monitoring location is located.
+
+            '
+          title: Minor civil division code
+          type: string
+        style: form
+      - description: 'This is the official name of the monitoring location in the database. For well information this can be a district-assigned local number.
+
+          '
+        explode: false
+        in: query
+        name: monitoring_location_name
+        required: false
+        schema:
+          description: 'This is the official name of the monitoring location in the database. For well information this can be a district-assigned local number.
+
+            '
+          title: Monitoring location name
+          type: string
+        style: form
+      - description: "Each monitoring location in the USGS data base has a unique 8- to 15-digit identification number.\n Split parameters are enabled for this field, so you can supply multiple values separated by commas."
+        explode: false
+        in: query
+        name: monitoring_location_number
+        required: false
+        schema:
+          description: "Each monitoring location in the USGS data base has a unique 8- to 15-digit identification number.\n Split parameters are enabled for this field, so you can supply multiple values separated by commas."
+          title: Monitoring location number
+          type: string
+        style: form
+      - description: 'National aquifers are the principal aquifers or aquifer systems in the United States, defined as regionally extensive aquifers or aquifer systems that have the potential to be used as a source of potable water. Not all groundwater monitoring locations can be associated with a National Aquifer. Such monitoring locations will not be retrieved using this search criteria. A list of National aquifer codes and names is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/national-aquifer-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/national-aquifer-codes/items).
+
+          '
+        explode: false
+        in: query
+        name: national_aquifer_code
+        required: false
+        schema:
+          description: 'National aquifers are the principal aquifers or aquifer systems in the United States, defined as regionally extensive aquifers or aquifer systems that have the potential to be used as a source of potable water. Not all groundwater monitoring locations can be associated with a National Aquifer. Such monitoring locations will not be retrieved using this search criteria. A list of National aquifer codes and names is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/national-aquifer-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/national-aquifer-codes/items).
+
+            '
+          title: National aquifer code
+          type: string
+        style: form
+      - description: 'Coordinates are published in EPSG:4326 / WGS84 / World Geodetic System 1984. This field indicates the original datum used to determine coordinates before they were converted. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-datum-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-datum-codes/items).
+
+          '
+        explode: false
+        in: query
+        name: original_horizontal_datum
+        required: false
+        schema:
+          description: 'Coordinates are published in EPSG:4326 / WGS84 / World Geodetic System 1984. This field indicates the original datum used to determine coordinates before they were converted. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-datum-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-datum-codes/items).
+
+            '
+          title: Original horizontal datum
+          type: string
+        style: form
+      - description: 'Coordinates are published in EPSG:4326 / WGS84 / World Geodetic System 1984. This field indicates the original datum used to determine coordinates before they were converted. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-datum-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-datum-codes/items).
+
+          '
+        explode: false
+        in: query
+        name: original_horizontal_datum_name
+        required: false
+        schema:
+          description: 'Coordinates are published in EPSG:4326 / WGS84 / World Geodetic System 1984. This field indicates the original datum used to determine coordinates before they were converted. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-datum-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/coordinate-datum-codes/items).
+
+            '
+          title: Original horizontal datum name
+          type: string
+        style: form
+      - description: 'A description of the hydrologic setting of the monitoring location. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items).
+
+          '
+        explode: false
+        in: query
+        name: site_type
+        required: false
+        schema:
+          description: 'A description of the hydrologic setting of the monitoring location. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items).
+
+            '
+          title: Monitoring location type
+          type: string
+        style: form
+      - description: 'A code describing the hydrologic setting of the monitoring location. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items).
+
+          '
+        explode: false
+        in: query
+        name: site_type_code
+        required: false
+        schema:
+          description: 'A code describing the hydrologic setting of the monitoring location. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items).
+
+            '
+          title: Monitoring location type code
+          type: string
+        style: form
+      - description: 'State code. A [two-digit ANSI code](https://www2.census.gov/geo/docs/reference/state.txt) (formerly FIPS code) as defined by the American National Standards Institute, to define States and equivalents. A three-digit ANSI code is used to define counties and county equivalents. [A lookup table is available.](https://www.census.gov/library/reference/code-lists/ansi.html#states) The only countries with political subdivisions other than the US are Mexico and Canada. The Mexican states have US state codes ranging from 81-86 and Canadian provinces have state codes ranging from 90-98.
+
+          '
+        explode: false
+        in: query
+        name: state_code
+        required: false
+        schema:
+          description: 'State code. A [two-digit ANSI code](https://www2.census.gov/geo/docs/reference/state.txt) (formerly FIPS code) as defined by the American National Standards Institute, to define States and equivalents. A three-digit ANSI code is used to define counties and county equivalents. [A lookup table is available.](https://www.census.gov/library/reference/code-lists/ansi.html#states) The only countries with political subdivisions other than the US are Mexico and Canada. The Mexican states have US state codes ranging from 81-86 and Canadian provinces have state codes ranging from 90-98.
+
+            '
+          title: State code
+          type: string
+        style: form
+      - description: 'The name of the state or state equivalent in which the monitoring location is located.
+
+          '
+        explode: false
+        in: query
+        name: state_name
+        required: false
+        schema:
+          description: 'The name of the state or state equivalent in which the monitoring location is located.
+
+            '
+          title: State name
+          type: string
+        style: form
+      - description: 'A short code describing the time zone used by a monitoring location.
+
+          '
+        explode: false
+        in: query
+        name: time_zone_abbreviation
+        required: false
+        schema:
+          description: 'A short code describing the time zone used by a monitoring location.
+
+            '
+          title: Time zone abbreviation
+          type: string
+        style: form
+      - description: 'A flag indicating whether or not a monitoring location uses daylight savings.
+
+          '
+        explode: false
+        in: query
+        name: uses_daylight_savings
+        required: false
+        schema:
+          description: 'A flag indicating whether or not a monitoring location uses daylight savings.
+
+            '
+          title: Uses daylight savings flag
+          type: string
+        style: form
+      - description: 'The datum used to determine altitude and vertical position at the monitoring location. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items).
+
+          '
+        explode: false
+        in: query
+        name: vertical_datum
+        required: false
+        schema:
+          description: 'The datum used to determine altitude and vertical position at the monitoring location. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items).
+
+            '
+          title: Vertical datum
+          type: string
+        style: form
+      - description: 'The datum used to determine altitude and vertical position at the monitoring location. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items).
+
+          '
+        explode: false
+        in: query
+        name: vertical_datum_name
+        required: false
+        schema:
+          description: 'The datum used to determine altitude and vertical position at the monitoring location. A list of codes is available at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/altitude-datums/items).
+
+            '
+          title: Vertical datum name
+          type: string
+        style: form
+      - description: 'The depth of the finished well, in feet below land surface datum. Note: Not all groundwater monitoring locations have information on Well Depth. Such monitoring locations will not be retrieved using this search criteria.
+
+          '
+        explode: false
+        in: query
+        name: well_constructed_depth
+        required: false
+        schema:
+          description: 'The depth of the finished well, in feet below land surface datum. Note: Not all groundwater monitoring locations have information on Well Depth. Such monitoring locations will not be retrieved using this search criteria.
+
+            '
+          title: Well constructed depth
+          type: number
+        style: form
+      - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/LatestContinuousFeatures'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Latest continuous items
+      tags:
+      - latest-continuous
+    options:
+      description: 'This endpoint provides the most recent observation for each time series of continuous data. Continuous data are collected via automated sensors installed at a monitoring location. They are collected at a high frequency and often at a fixed 15-minute interval. Depending on the specific monitoring location, the data may be transmitted automatically via telemetry and be available on WDFN within minutes of collection, while other times the delivery of data may be delayed if the monitoring location does not have the capacity to automatically transmit data. Continuous data are described by parameter name and parameter code. These data might also be referred to as "instantaneous values" or "IV"
+
+        '
+      operationId: optionsLatest-continuousFeatures
+      responses:
+        '200':
+          description: options response
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Options for Latest continuous items
+      tags:
+      - latest-continuous
+    post:
+      description: 'This endpoint provides the most recent observation for each time series of continuous data. Continuous data are collected via automated sensors installed at a monitoring location. They are collected at a high frequency and often at a fixed 15-minute interval. Depending on the specific monitoring location, the data may be transmitted automatically via telemetry and be available on WDFN within minutes of collection, while other times the delivery of data may be delayed if the monitoring location does not have the capacity to automatically transmit data. Continuous data are described by parameter name and parameter code. These data might also be referred to as "instantaneous values" or "IV"
+
+        '
+      operationId: getCQL2Latest-continuousFeatures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: https://schemas.opengis.net/cql2/1.0/cql2.json
+        description: Get items with CQL2
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/LatestContinuousFeatures'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Latest continuous items with CQL2
+      tags:
+      - latest-continuous
+  /collections/latest-continuous/items/{featureId}:
+    get:
+      description: 'This endpoint provides the most recent observation for each time series of continuous data. Continuous data are collected via automated sensors installed at a monitoring location. They are collected at a high frequency and often at a fixed 15-minute interval. Depending on the specific monitoring location, the data may be transmitted automatically via telemetry and be available on WDFN within minutes of collection, while other times the delivery of data may be delayed if the monitoring location does not have the capacity to automatically transmit data. Continuous data are described by parameter name and parameter code. These data might also be referred to as "instantaneous values" or "IV"
+
+        '
+      operationId: getLatest-continuousFeature
+      parameters:
+      - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
+      - $ref: '#/components/parameters/crs'
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/LatestContinuousFeature'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Latest continuous item by id
+      tags:
+      - latest-continuous
+    options:
+      description: 'This endpoint provides the most recent observation for each time series of continuous data. Continuous data are collected via automated sensors installed at a monitoring location. They are collected at a high frequency and often at a fixed 15-minute interval. Depending on the specific monitoring location, the data may be transmitted automatically via telemetry and be available on WDFN within minutes of collection, while other times the delivery of data may be delayed if the monitoring location does not have the capacity to automatically transmit data. Continuous data are described by parameter name and parameter code. These data might also be referred to as "instantaneous values" or "IV"
+
+        '
+      operationId: optionsLatest-continuousFeature
+      parameters:
+      - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
+      responses:
+        '200':
+          description: options response
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Options for Latest continuous item by id
+      tags:
+      - latest-continuous
+  /collections/latest-continuous/queryables:
+    get:
+      description: 'This endpoint provides the most recent observation for each time series of continuous data. Continuous data are collected via automated sensors installed at a monitoring location. They are collected at a high frequency and often at a fixed 15-minute interval. Depending on the specific monitoring location, the data may be transmitted automatically via telemetry and be available on WDFN within minutes of collection, while other times the delivery of data may be delayed if the monitoring location does not have the capacity to automatically transmit data. Continuous data are described by parameter name and parameter code. These data might also be referred to as "instantaneous values" or "IV"
+
+        '
+      operationId: getLatest-continuousQueryables
+      parameters:
+      - description: The properties that should be included. The parameter value is a comma-separated list of property names.
+        explode: false
+        in: query
+        name: properties
+        required: false
+        schema:
+          items:
+            enum:
+            - time_series_id
+            - monitoring_location_id
+            - parameter_code
+            - statistic_id
+            - time
+            - value
+            - unit_of_measure
+            - approval_status
+            - qualifier
+            - last_modified
+            type: string
+          type: array
+        style: form
+      - $ref: '#/components/parameters/f'
+      - description: The profile to be applied to a given request
+        explode: false
+        in: query
+        name: profile
+        required: false
+        schema:
+          enum:
+          - actual-domain
+          - valid-domain
+          type: string
+        style: form
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/Queryables'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Latest continuous queryables
+      tags:
+      - latest-continuous
+  /collections/latest-continuous/schema:
+    get:
+      description: 'This endpoint provides the most recent observation for each time series of continuous data. Continuous data are collected via automated sensors installed at a monitoring location. They are collected at a high frequency and often at a fixed 15-minute interval. Depending on the specific monitoring location, the data may be transmitted automatically via telemetry and be available on WDFN within minutes of collection, while other times the delivery of data may be delayed if the monitoring location does not have the capacity to automatically transmit data. Continuous data are described by parameter name and parameter code. These data might also be referred to as "instantaneous values" or "IV"
+
+        '
+      operationId: getLatest-continuousSchema
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/Queryables'
+        '400':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+        '500':
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      security:
+      - ApiKeyQuery: []
+      - ApiKeyHeader: []
+      summary: Get Latest continuous schema
+      tags:
+      - latest-continuous
+components:
+  responses:
+    LatestContinuousFeature:
+      content:
+        application/geo+json:
+          example:
+            geometry:
+              coordinates:
+              - -88.01
+              - 44.5286111111111
+              type: Point
+            id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+            properties:
+              approval_status: Approved
+              last_modified: '2025-06-16T14:13:28+00:00'
+              monitoring_location_id: USGS-09380000
+              parameter_code: '00060'
+              qualifier: Ice
+              statistic_id: '00003'
+              time: '2024-06-15T14:00:00+00:00'
+              time_series_id: 6b0fefaa5f8a41a6b5907b31f2f4eb03
+              unit_of_measure: ft3/s
+              value: '579.40'
+            type: Feature
+          schema:
+            $ref: '#/components/schemas/LatestContinuousFeature'
+        text/html:
+          schema:
+            type: string
+      description: A single feature from Latest continuous.
+    Queryables:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/queryables'
+      description: successful queryables operation
+    Forbidden403:
+      content:
+        application/json:
+          examples:
+            missingApiKey:
+              summary: Missing API Key
+              value:
+                error:
+                  code: API_KEY_MISSING
+                  message: No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;API_KEY_MISSING&lt;/code&gt;\n        &lt;message&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            missingApiKeyCsv:
+              summary: Missing API Key (CSV)
+              value: 'Error Code,Error Message
+
+                API_KEY_MISSING, No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/'
+          schema:
+            type: string
+        text/html:
+          examples:
+            missingApiKeyHtml:
+              summary: Missing API Key (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;API_KEY_MISSING&lt;/h1&gt;\n        &lt;p&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Forbidden - API key is missing or not authorized for this resource.
+    TooManyRequests429:
+      content:
+        application/json:
+          examples:
+            rateLimitExceeded:
+              summary: Rate Limit Exceeded
+              value:
+                error:
+                  code: OVER_RATE_LIMIT
+                  message: You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;OVER_RATE_LIMIT&lt;/code&gt;\n        &lt;message&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            rateLimitCsv:
+              summary: Rate Limit Exceeded (CSV)
+              value: 'Error Code,Error Message
+
+                OVER_RATE_LIMIT,You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.'
+          schema:
+            type: string
+        text/html:
+          examples:
+            rateLimitHtml:
+              summary: Rate Limit Exceeded (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;OVER_RATE_LIMIT&lt;/h1&gt;\n        &lt;p&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Too Many Requests - Rate limit exceeded.
+    LatestContinuousFeatures:
+      content:
+        application/geo+json:
+          example:
+            features:
+            - geometry:
+                coordinates:
+                - -88.01
+                - 44.5286111111111
+                type: Point
+              id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+              properties:
+                approval_status: Approved
+                last_modified: '2025-06-16T14:13:28+00:00'
+                monitoring_location_id: USGS-09380000
+                parameter_code: '00060'
+                qualifier: Ice
+                statistic_id: '00003'
+                time: '2024-06-15T14:00:00+00:00'
+                time_series_id: 6b0fefaa5f8a41a6b5907b31f2f4eb03
+                unit_of_measure: ft3/s
+                value: '579.40'
+              type: Feature
+            links:
+            - href: https://api.waterdata.usgs.gov/ogcapi/v0/collections/latest-continuous/items
+              rel: self
+              title: This document as GeoJSON
+              type: application/geo+json
+            numberMatched: 1
+            numberReturned: 1
+            timeStamp: '2024-07-21T12:00:00Z'
+            type: FeatureCollection
+          schema:
+            $ref: '#/components/schemas/LatestContinuousFeatureCollection'
+        text/html:
+          schema:
+            type: string
+      description: A feature collection of Latest continuous.
+  parameters:
+    lang:
+      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: en-US
+        enum:
+        - en-US
+        type: string
+    skipGeometry:
+      description: This option can be used to skip response geometries for each feature.
+      explode: false
+      in: query
+      name: skipGeometry
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    bbox-crs:
+      description: Indicates the coordinate reference system for the given bbox coordinates.
+      explode: false
+      in: query
+      name: bbox-crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    wda_sortby:
+      description: "Specifies a comma-separated list of property names by which the response shall be sorted.  If the property name is preceded by a plus (+) sign it indicates an ascending sort for that property.  If the property name is preceded by a minus (-) sign it indicates a descending sort for that property.  If the property is not preceded by a plus or minus, then the default sort order implied is ascending (+).  \n\nOnly a single page of data can be returned when specifying sortby. If you need more than a single page of data, don't specify a sortby value and sort the full data set after it's been downloaded."
+      explode: false
+      in: query
+      name: sortby
+      required: false
+      schema:
+        items:
+          pattern: '[+|-]?[A-Za-z_].*'
+          type: string
+        minItems: 1
+        type: array
+      style: form
+    crs:
+      description: Indicates the coordinate reference system for the results.
+      explode: false
+      in: query
+      name: crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    bbox:
+      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
+      explode: false
+      in: query
+      name: bbox
+      required: false
+      schema:
+        items:
+          type: number
+        maxItems: 6
+        minItems: 4
+        type: array
+      style: form
+    offset:
+      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
+      explode: false
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        minimum: 0
+        type: integer
+      style: form
+    filter:
+      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
+      in: query
+      name: filter
+      required: false
+      schema:
+        type: string
+    f:
+      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
+      explode: false
+      in: query
+      name: f
+      required: false
+      schema:
+        default: json
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        type: string
+      style: form
+  schemas:
+    LatestContinuousFeatureCollection:
+      properties:
+        features:
+          items:
+            $ref: '#/components/schemas/LatestContinuousFeature'
+          type: array
+        links:
+          items:
+            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
+          type: array
+        numberMatched:
+          minimum: 0
+          type: integer
+        numberReturned:
+          minimum: 0
+          type: integer
+        timeStamp:
+          format: date-time
+          type: string
+        type:
+          enum:
+          - FeatureCollection
+          type: string
+      required:
+      - type
+      - features
+      type: object
+    queryables:
+      properties:
+        queryables:
+          items:
+            $ref: '#/components/schemas/queryable'
+          type: array
+      required:
+      - queryables
+      type: object
+    LatestContinuousFeature:
+      properties:
+        geometry:
+          $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/geometryGeoJSON
+        id:
+          type: string
+        properties:
+          properties:
+            approval_status:
+              description: 'Some of the data that you have obtained from this U.S. Geological Survey database may not have received Director''s approval.  Any such data values are qualified as provisional and are subject to revision.  Provisional data are released on the condition that neither the USGS nor the United States Government may be held liable for any damages resulting from its use. This field reflects the approval status of each record, and is either "Approved", meaining processing review has been completed and the data is approved for publication, or "Provisional" and subject to revision. For more information about provisional data, go to [https://waterdata.usgs.gov/provisional-data-statement/](https://waterdata.usgs.gov/provisional-data-statement/).
+
+                '
+              enum:
+              - Provisional
+              - Approved
+              title: Approval Status
+              type:
+              - string
+              - 'null'
+            last_modified:
+              description: "The last time a record was refreshed in our database. This may happen due to regular operational processes and does not necessarily indicate anything about the measurement has changed.\nYou can query this field using date-times or intervals, adhering to RFC 3339, or using ISO 8601 duration objects. Intervals may be bounded or half-bounded (double-dots at start or end).\nExamples:\n\n  - A date-time: \"2018-02-12T23:20:50Z\"\n  - A bounded interval: \"2018-02-12T00:00:00Z/2018-03-18T12:31:12Z\"\n  - Half-bounded intervals: \"2018-02-12T00:00:00Z/..\" or \"../2018-03-18T12:31:12Z\"\n  - Duration objects: \"P1M\" for data from the past month or \"PT36H\" for the last 36 hours\n\nOnly features that have a `last_modified` that intersects the value of datetime are selected.\n"
+              title: Last modified date
+              type:
+              - string
+              - 'null'
+            monitoring_location_id:
+              description: 'A unique identifier representing a single monitoring location. This corresponds to the `id` field in the `monitoring-locations` endpoint. Monitoring location IDs are created by combining the agency code of the agency responsible for the monitoring location (e.g. USGS) with the ID number of the monitoring location (e.g. 02238500), separated by a hyphen (e.g. USGS-02238500).
+
+                '
+              title: Monitoring location ID
+              type:
+              - string
+              - 'null'
+            parameter_code:
+              description: 'Parameter codes are 5-digit codes used to identify the constituent measured and the units of measure. A complete list of parameter codes and associated groupings can be found at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/parameter-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/parameter-codes/items).
+
+                '
+              title: Parameter code
+              type:
+              - string
+              - 'null'
+            qualifier:
+              description: 'This field indicates any qualifiers associated with an observation, for instance if a sensor may have been impacted by ice or if values were estimated.
+
+                '
+              title: Qualifier
+              type:
+              - string
+              - 'null'
+            statistic_id:
+              description: 'A code corresponding to the statistic an observation represents. Example codes include 00001 (max), 00002 (min), and 00003 (mean). A complete list of codes and their descriptions can be found at [https://api.waterdata.usgs.gov/ogcapi/v0/collections/statistic-codes/items](https://api.waterdata.usgs.gov/ogcapi/v0/collections/statistic-codes/items).
+
+                '
+              title: Statistic ID
+              type:
+              - string
+              - 'null'
+            time:
+              description: "The date an observation represents. You can query this field using date-times or intervals, adhering to RFC 3339, or using ISO 8601 duration objects. Intervals may be bounded or half-bounded (double-dots at start or end).\nExamples:\n\n  - A date-time: \"2018-02-12T23:20:50Z\"\n  - A bounded interval: \"2018-02-12T00:00:00Z/2018-03-18T12:31:12Z\"\n  - Half-bounded intervals: \"2018-02-12T00:00:00Z/..\" or \"../2018-03-18T12:31:12Z\"\n  - Duration objects: \"P1M\" for data from the past month or \"PT36H\" for the last 36 hours\n\nOnly features that have a `time` that intersects the value of datetime are selected. If a feature has multiple temporal properties, it is the decision of the server whether only a single temporal property is used to determine the extent or all relevant temporal properties.\n"
+              title: Time
+              type:
+              - string
+              - 'null'
+            time_series_id:
+              description: 'A unique identifier representing a single time series. This corresponds to the `id` field in the `time-series-metadata` endpoint.
+
+                '
+              title: Time series ID
+              type:
+              - string
+              - 'null'
+            unit_of_measure:
+              description: A human-readable description of the units of measurement associated with an observation.
+              title: Unit of measure
+              type:
+              - string
+              - 'null'
+            value:
+              description: 'The value of the observation. Values are transmitted as strings in the JSON response format in order to preserve precision.
+
+                '
+              title: Value
+              type:
+              - string
+              - 'null'
+          type: object
+        type:
+          enum:
+          - Feature
+          type: string
+      required:
+      - type
+      - properties
+      type: object
+    queryable:
+      properties:
+        description:
+          description: a human-readable narrative describing the queryable
+          type: string
+        language:
+          default: en
+          description: the language used for the title and description
+          type: string
+        queryable:
+          description: the token that may be used in a CQL predicate
+          type: string
+        title:
+          description: a human readable title for the queryable
+          type: string
+        type:
+          description: the data type of the queryable
+          type: string
+        type-ref:
+          description: a reference to the formal definition of the type
+          format: url
+          type: string
+      required:
+      - queryable
+      - type
+      type: object
+    Error:
+      properties:
+        error:
+          properties:
+            code:
+              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
+              type: string
+            message:
+              description: Error message
+              type: string
+          required:
+          - code
+          - message
+          type: object
+      type: object
+  securitySchemes:
+    ApiKeyHeader:
+      description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup
+      in: header
+      name: api_key
+      type: apiKey
+    ApiKeyQuery:
+      description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup
+      in: query
+      name: api_key
+      type: apiKey

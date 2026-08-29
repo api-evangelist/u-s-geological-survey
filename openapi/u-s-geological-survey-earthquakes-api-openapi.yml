@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: USGS Earthquake Notifications, Feeds, and Web Services Catalog Earthquakes API
   description: The USGS Earthquake Hazards Program provides real-time earthquake data through the FDSN (International Federation of Digital Seismograph Networks) Event Web Service. This API allows searching the USGS ANSS (Advanced National Seismic System) ComCat earthquake catalog for event data using geographic, temporal, magnitude, and other filters. Responses are available in GeoJSON, CSV, KML, QuakeML, and text formats.
@@ -494,23 +494,24 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    EarthquakeFeature:
-      title: EarthquakeFeature
+    EarthquakeGeometry:
+      title: EarthquakeGeometry
       type: object
-      description: A GeoJSON Feature representing a single earthquake event.
+      description: GeoJSON Point geometry for the earthquake epicenter location.
       properties:
         type:
           type: string
-          description: GeoJSON object type (always Feature).
-          example: Feature
-        properties:
-          $ref: '#/components/schemas/EarthquakeProperties'
-        geometry:
-          $ref: '#/components/schemas/EarthquakeGeometry'
-        id:
-          type: string
-          description: Unique USGS event identifier.
-          example: us7000n5no
+          description: GeoJSON geometry type (always Point).
+          example: Point
+        coordinates:
+          type: array
+          description: Array of [longitude, latitude, depth_km]. Depth is in kilometers below the surface (positive = deeper).
+          items:
+            type: number
+          example:
+          - -122.0
+          - 37.75
+          - 10.5
     CountResponse:
       title: CountResponse
       type: object
@@ -550,24 +551,60 @@ components:
           - -90.0
           - 180.0
           - 90.0
-    EarthquakeGeometry:
-      title: EarthquakeGeometry
+    EarthquakeMetadata:
+      title: EarthquakeMetadata
       type: object
-      description: GeoJSON Point geometry for the earthquake epicenter location.
+      description: Metadata about the earthquake query response.
+      properties:
+        generated:
+          type: integer
+          description: Unix timestamp (milliseconds) when the response was generated.
+          example: 1743897600000
+        url:
+          type: string
+          description: URL used to generate this response.
+          example: https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=10
+        title:
+          type: string
+          description: Title for this result set.
+          example: USGS Earthquakes
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 200
+        api:
+          type: string
+          description: API version string.
+          example: 1.14.1
+        count:
+          type: integer
+          description: Number of events returned.
+          example: 47
+        limit:
+          type: integer
+          description: Maximum events requested.
+          example: 100
+        offset:
+          type: integer
+          description: Starting offset in the result set.
+          example: 1
+    EarthquakeFeature:
+      title: EarthquakeFeature
+      type: object
+      description: A GeoJSON Feature representing a single earthquake event.
       properties:
         type:
           type: string
-          description: GeoJSON geometry type (always Point).
-          example: Point
-        coordinates:
-          type: array
-          description: Array of [longitude, latitude, depth_km]. Depth is in kilometers below the surface (positive = deeper).
-          items:
-            type: number
-          example:
-          - -122.0
-          - 37.75
-          - 10.5
+          description: GeoJSON object type (always Feature).
+          example: Feature
+        properties:
+          $ref: '#/components/schemas/EarthquakeProperties'
+        geometry:
+          $ref: '#/components/schemas/EarthquakeGeometry'
+        id:
+          type: string
+          description: Unique USGS event identifier.
+          example: us7000n5no
     EarthquakeProperties:
       title: EarthquakeProperties
       type: object
@@ -661,40 +698,3 @@ components:
           type: integer
           description: Number of seismic stations used to determine earthquake location.
           example: 45
-    EarthquakeMetadata:
-      title: EarthquakeMetadata
-      type: object
-      description: Metadata about the earthquake query response.
-      properties:
-        generated:
-          type: integer
-          description: Unix timestamp (milliseconds) when the response was generated.
-          example: 1743897600000
-        url:
-          type: string
-          description: URL used to generate this response.
-          example: https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=10
-        title:
-          type: string
-          description: Title for this result set.
-          example: USGS Earthquakes
-        status:
-          type: integer
-          description: HTTP status code.
-          example: 200
-        api:
-          type: string
-          description: API version string.
-          example: 1.14.1
-        count:
-          type: integer
-          description: Number of events returned.
-          example: 47
-        limit:
-          type: integer
-          description: Maximum events requested.
-          example: 100
-        offset:
-          type: integer
-          description: Starting offset in the result set.
-          example: 1
