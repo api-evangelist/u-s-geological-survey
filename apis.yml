@@ -13,6 +13,8 @@ apis:
   properties:
   - url: https://api.waterdata.usgs.gov/ogcapi/v0/openapi
     type: OpenAPI
+  - url: https://api.waterdata.usgs.gov/ogcapi/v0/conformance
+    type: ConformanceEndpoint
   - url: https://api.waterdata.usgs.gov/docs/
     type: Documentation
   description: >-
