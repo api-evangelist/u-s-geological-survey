@@ -1,17 +1,17 @@
 ---
 kin_checks:
   slug: u-s-geological-survey
-  schema_version: 0.18.2
-  scored_at: '2026-09-04'
-  run_ts: 2026-09-04T062714
+  schema_version: 0.18.3
+  scored_at: '2026-09-06'
+  run_ts: 2026-09-06T011047
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.18.2.yml; counts below let you verify that.
+    in rubric/scoring-0.18.3.yml; counts below let you verify that.
   counts:
     total: 132
-    earned: 24
-    partial: 27
-    missed: 48
-    na: 33
+    earned: 26
+    partial: 28
+    missed: 53
+    na: 25
   checks:
   - id: maintainer_present
     status: missed
@@ -37,8 +37,6 @@ kin_checks:
   - id: asyncapi_present
     status: missed
   - id: lifecycle_documented
-    status: missed
-  - id: domain_standard_conformance
     status: missed
   - id: overlay_published
     status: missed
@@ -74,6 +72,12 @@ kin_checks:
     status: missed
   - id: support_channel
     status: missed
+  - id: plans_multiple
+    status: missed
+  - id: pricing_link
+    status: missed
+  - id: sign_up_present
+    status: missed
   - id: terms_of_service
     status: missed
   - id: privacy_policy
@@ -92,7 +96,11 @@ kin_checks:
     status: missed
   - id: reg_named_standard_conformance
     status: missed
+  - id: reversibility_documented
+    status: missed
   - id: mcp_server
+    status: missed
+  - id: idempotency
     status: missed
   - id: event_surface_described
     status: missed
@@ -103,6 +111,8 @@ kin_checks:
   - id: consent_identity
     status: missed
   - id: agent_card
+    status: missed
+  - id: dry_run_mode
     status: missed
   - id: delegated_identity
     status: missed
@@ -197,6 +207,9 @@ kin_checks:
     status: partial
     earned: 1.0
     detail: pointer liveness 0.5
+  - id: plans_present
+    status: partial
+    earned: 2.0
   - id: agentic_access
     status: partial
     earned: 2.5
