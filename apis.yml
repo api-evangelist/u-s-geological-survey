@@ -1,34 +1,6 @@
 aid: u-s-geological-survey
 url: https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/apis.yml
 apis:
-- aid: u-s-geological-survey:water-data-ogc-api
-  name: USGS Water Data APIs
-  baseURL: https://api.waterdata.usgs.gov/ogcapi/v0
-  tags:
-  - Water
-  - Geospatial
-  - OGC
-  - OGC API Features
-  humanURL: https://api.waterdata.usgs.gov/docs/
-  properties:
-  - url: https://api.waterdata.usgs.gov/ogcapi/v0/openapi
-    type: OpenAPI
-  - url: https://api.waterdata.usgs.gov/ogcapi/v0/conformance
-    type: ConformanceEndpoint
-  - url: https://api.waterdata.usgs.gov/docs/
-    type: Documentation
-  description: >-
-    The USGS Water Data OGC API — an OGC API Features service declaring 18 conformance classes,
-    including OGC API Common Parts 1-3, Features Parts 1-4 and CQL2 filtering, and serving 37
-    collections. Verified live 2026-08-30: /conformance returns the class URIs, /collections
-    returns 37 entries, and the landing page advertises a first-party OpenAPI 3.0.2 with 189
-    paths at its service-desc link. A control path on the same host returns 404, so the host
-    discriminates and the 200s are evidence rather than a catch-all.
-    The live /conformance endpoint is NOT registered as a property: `Conformance` is the local
-    artifact type (5,889 providers use it for conformance/*.yml on disk), and there is no
-    pointer class meaning a live OGC conformance endpoint. That gap is roadmap#80's failure
-    mode 3, and overloading an existing type to work around it would hide the gap rather than
-    record it. The classes are captured in conformance/ with their source URL.
 - aid: u-s-geological-survey:asset-identifier-service-ais
   name: Asset Identifier Service (AIS)
   tags:
@@ -1899,6 +1871,20 @@ apis:
   - type: Examples
     url: >-
       https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/examples/usgs-water-data-api-monitoring-location-properties-example.json
+- aid: u-s-geological-survey:u-s-geological-survey-collections-api
+  name: U.S. Geological Survey Collections API
+  description: OGC API collections listing and metadata.
+  humanURL: https://api.waterdata.usgs.gov/docs/
+  baseURL: https://api.waterdata.usgs.gov/ogcapi/v0
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/u-s-geological-survey-collections-api-openapi.yml
+  - type: ConformanceEndpoint
+    url: https://api.waterdata.usgs.gov/ogcapi/v0/conformance
+  - type: Documentation
+    url: https://api.waterdata.usgs.gov/docs/
 name: U.S. Geological Survey
 tags:
   - Federal-Government
