@@ -1522,7 +1522,7 @@ apis:
   humanURL: https://www.usgs.gov/tools/asset-identifier-service-ais
   baseURL: https://earthquake.usgs.gov/fdsnws/event/1
   tags:
-  - Server
+  - Servers
   tags_raw:
   - server
   properties:
@@ -1877,6 +1877,8 @@ apis:
   humanURL: https://api.waterdata.usgs.gov/docs/
   baseURL: https://api.waterdata.usgs.gov/ogcapi/v0
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
