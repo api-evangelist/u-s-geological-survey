@@ -12,9 +12,7 @@ info:
       - href: https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov
         type: text/html
       name: WDFN Support
-  description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
-
-    '
+  description: The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
   license:
     name: US Government work in the public domain
     url: https://creativecommons.org/publicdomain/zero/1.0/
@@ -33,16 +31,12 @@ servers:
     '
   url: https://api.waterdata.usgs.gov/ogcapi/v0
 tags:
-- description: 'Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
-
-    '
+- description: Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name).
   name: aquifer-codes
 paths:
   /collections/aquifer-codes:
     get:
-      description: 'Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
-
-        '
+      description: Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
       operationId: describeAquifer-codesCollection
       parameters:
       - $ref: '#/components/parameters/f'
@@ -65,9 +59,7 @@ paths:
       - aquifer-codes
   /collections/aquifer-codes/items:
     get:
-      description: 'Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
-
-        '
+      description: Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
       operationId: getAquifer-codesFeatures
       parameters:
       - description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.
@@ -154,9 +146,7 @@ paths:
       tags:
       - aquifer-codes
     options:
-      description: 'Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
-
-        '
+      description: Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
       operationId: optionsAquifer-codesFeatures
       responses:
         '200':
@@ -168,9 +158,7 @@ paths:
       tags:
       - aquifer-codes
     post:
-      description: 'Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
-
-        '
+      description: Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
       operationId: getCQL2Aquifer-codesFeatures
       requestBody:
         content:
@@ -198,9 +186,7 @@ paths:
       - aquifer-codes
   /collections/aquifer-codes/items/{featureId}:
     get:
-      description: 'Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
-
-        '
+      description: Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
       operationId: getAquifer-codesFeature
       parameters:
       - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
@@ -227,9 +213,7 @@ paths:
       tags:
       - aquifer-codes
     options:
-      description: 'Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
-
-        '
+      description: Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
       operationId: optionsAquifer-codesFeature
       parameters:
       - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
@@ -244,9 +228,7 @@ paths:
       - aquifer-codes
   /collections/aquifer-codes/queryables:
     get:
-      description: 'Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
-
-        '
+      description: Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
       operationId: getAquifer-codesQueryables
       parameters:
       - description: The properties that should be included. The parameter value is a comma-separated list of property names.
@@ -296,9 +278,7 @@ paths:
       - aquifer-codes
   /collections/aquifer-codes/schema:
     get:
-      description: 'Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
-
-        '
+      description: Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation, followed by a 4 or 5 character abbreviation for the geologic unit or aquifer name). For the age of formation (aquifer age), generally the smaller the number represents the younger the geohydrologic unit. Aquifer names and the definition of an aquifer can be very subjective. One rock unit may be called different aquifer names by different people. Local aquifers and layered aquifers are often grouped into larger named regional aquifers or aquifer systems. For example, the National Northern Atlantic Coastal Plain aquifer system (National aquifer) consists of five layered regional aquifers. Each regional aquifer is divided into two or more aquifers which may have a different name in each of the states in which the aquifer is found.
       operationId: getAquifer-codesSchema
       parameters:
       - $ref: '#/components/parameters/f'
@@ -323,7 +303,153 @@ paths:
       tags:
       - aquifer-codes
 components:
+  parameters:
+    offset:
+      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
+      explode: false
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        minimum: 0
+        type: integer
+      style: form
+    bbox-crs:
+      description: Indicates the coordinate reference system for the given bbox coordinates.
+      explode: false
+      in: query
+      name: bbox-crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    skipGeometry:
+      description: This option can be used to skip response geometries for each feature.
+      explode: false
+      in: query
+      name: skipGeometry
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    filter:
+      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
+      in: query
+      name: filter
+      required: false
+      schema:
+        type: string
+    crs:
+      description: Indicates the coordinate reference system for the results.
+      explode: false
+      in: query
+      name: crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    bbox:
+      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
+      explode: false
+      in: query
+      name: bbox
+      required: false
+      schema:
+        items:
+          type: number
+        maxItems: 6
+        minItems: 4
+        type: array
+      style: form
+    lang:
+      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: en-US
+        enum:
+        - en-US
+        type: string
+    f:
+      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
+      explode: false
+      in: query
+      name: f
+      required: false
+      schema:
+        default: json
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        type: string
+      style: form
   schemas:
+    AquiferCodesFeatureCollection:
+      properties:
+        features:
+          items:
+            $ref: '#/components/schemas/AquiferCodesFeature'
+          type: array
+        links:
+          items:
+            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
+          type: array
+        numberReturned:
+          minimum: 0
+          type: integer
+        timeStamp:
+          format: date-time
+          type: string
+        type:
+          enum:
+          - FeatureCollection
+          type: string
+      required:
+      - type
+      - features
+      type: object
+    queryable:
+      properties:
+        description:
+          description: a human-readable narrative describing the queryable
+          type: string
+        language:
+          default: en
+          description: the language used for the title and description
+          type: string
+        queryable:
+          description: the token that may be used in a CQL predicate
+          type: string
+        title:
+          description: a human readable title for the queryable
+          type: string
+        type:
+          description: the data type of the queryable
+          type: string
+        type-ref:
+          description: a reference to the formal definition of the type
+          format: url
+          type: string
+      required:
+      - queryable
+      - type
+      type: object
+    queryables:
+      properties:
+        queryables:
+          items:
+            $ref: '#/components/schemas/queryable'
+          type: array
+      required:
+      - queryables
+      type: object
     AquiferCodesFeature:
       properties:
         geometry: {}
@@ -365,97 +491,7 @@ components:
           - message
           type: object
       type: object
-    queryable:
-      properties:
-        description:
-          description: a human-readable narrative describing the queryable
-          type: string
-        language:
-          default: en
-          description: the language used for the title and description
-          type: string
-        queryable:
-          description: the token that may be used in a CQL predicate
-          type: string
-        title:
-          description: a human readable title for the queryable
-          type: string
-        type:
-          description: the data type of the queryable
-          type: string
-        type-ref:
-          description: a reference to the formal definition of the type
-          format: url
-          type: string
-      required:
-      - queryable
-      - type
-      type: object
-    AquiferCodesFeatureCollection:
-      properties:
-        features:
-          items:
-            $ref: '#/components/schemas/AquiferCodesFeature'
-          type: array
-        links:
-          items:
-            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
-          type: array
-        numberReturned:
-          minimum: 0
-          type: integer
-        timeStamp:
-          format: date-time
-          type: string
-        type:
-          enum:
-          - FeatureCollection
-          type: string
-      required:
-      - type
-      - features
-      type: object
-    queryables:
-      properties:
-        queryables:
-          items:
-            $ref: '#/components/schemas/queryable'
-          type: array
-      required:
-      - queryables
-      type: object
   responses:
-    Queryables:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/queryables'
-      description: successful queryables operation
-    AquiferCodesFeatures:
-      content:
-        application/geo+json:
-          example:
-            features:
-            - geometry: null
-              id: 000AARF
-              properties:
-                aquifer_name: Amphibolite and Amphibolite Rich Foliats
-                id: 000AARF
-              type: Feature
-            links:
-            - href: https://api.waterdata.usgs.gov/ogcapi/v0/collections/aquifer-codes/items
-              rel: self
-              title: This document as GeoJSON
-              type: application/geo+json
-            numberReturned: 1
-            timeStamp: '2024-07-21T12:00:00Z'
-            type: FeatureCollection
-          schema:
-            $ref: '#/components/schemas/AquiferCodesFeatureCollection'
-        text/html:
-          schema:
-            type: string
-      description: A feature collection of Aquifer codes.
     AquiferCodesFeature:
       content:
         application/geo+json:
@@ -521,6 +557,12 @@ components:
           schema:
             type: string
       description: Forbidden - API key is missing or not authorized for this resource.
+    Queryables:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/queryables'
+      description: successful queryables operation
     TooManyRequests429:
       content:
         application/json:
@@ -570,93 +612,31 @@ components:
           schema:
             type: string
       description: Too Many Requests - Rate limit exceeded.
-  parameters:
-    skipGeometry:
-      description: This option can be used to skip response geometries for each feature.
-      explode: false
-      in: query
-      name: skipGeometry
-      required: false
-      schema:
-        default: false
-        type: boolean
-      style: form
-    offset:
-      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
-      explode: false
-      in: query
-      name: offset
-      required: false
-      schema:
-        default: 0
-        minimum: 0
-        type: integer
-      style: form
-    filter:
-      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
-      in: query
-      name: filter
-      required: false
-      schema:
-        type: string
-    crs:
-      description: Indicates the coordinate reference system for the results.
-      explode: false
-      in: query
-      name: crs
-      required: false
-      schema:
-        format: uri
-        type: string
-      style: form
-    lang:
-      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
-      in: query
-      name: lang
-      required: false
-      schema:
-        default: en-US
-        enum:
-        - en-US
-        type: string
-    bbox:
-      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
-      explode: false
-      in: query
-      name: bbox
-      required: false
-      schema:
-        items:
-          type: number
-        maxItems: 6
-        minItems: 4
-        type: array
-      style: form
-    bbox-crs:
-      description: Indicates the coordinate reference system for the given bbox coordinates.
-      explode: false
-      in: query
-      name: bbox-crs
-      required: false
-      schema:
-        format: uri
-        type: string
-      style: form
-    f:
-      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
-      explode: false
-      in: query
-      name: f
-      required: false
-      schema:
-        default: json
-        enum:
-        - json
-        - html
-        - jsonld
-        - csv
-        type: string
-      style: form
+    AquiferCodesFeatures:
+      content:
+        application/geo+json:
+          example:
+            features:
+            - geometry: null
+              id: 000AARF
+              properties:
+                aquifer_name: Amphibolite and Amphibolite Rich Foliats
+                id: 000AARF
+              type: Feature
+            links:
+            - href: https://api.waterdata.usgs.gov/ogcapi/v0/collections/aquifer-codes/items
+              rel: self
+              title: This document as GeoJSON
+              type: application/geo+json
+            numberReturned: 1
+            timeStamp: '2024-07-21T12:00:00Z'
+            type: FeatureCollection
+          schema:
+            $ref: '#/components/schemas/AquiferCodesFeatureCollection'
+        text/html:
+          schema:
+            type: string
+      description: A feature collection of Aquifer codes.
   securitySchemes:
     ApiKeyHeader:
       description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup

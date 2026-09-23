@@ -1,19 +1,23 @@
 openapi: 3.2.0
 info:
-  title: USGS Earthquake Notifications, Feeds, and Web Services Catalog Reference Data API
-  description: The USGS Earthquake Hazards Program provides real-time earthquake data through the FDSN (International Federation of Digital Seismograph Networks) Event Web Service. This API allows searching the USGS ANSS (Advanced National Seismic System) ComCat earthquake catalog for event data using geographic, temporal, magnitude, and other filters. Responses are available in GeoJSON, CSV, KML, QuakeML, and text formats.
-  version: '1.0'
+  title: USGS Water Data Reference Data API
+  description: The USGS Water Data APIs provide OGC-compliant interfaces to USGS water data, including continuous sensor measurements, daily values, discrete field measurements, and metadata about monitoring locations. These APIs implement the OGC API Features standard and support spatial filtering, temporal filtering, CQL2 filtering, and multiple output formats. An API key is required for data access beyond metadata endpoints.
+  version: 0.49.2
   contact:
-    name: USGS Earthquake Hazards Program
-    url: https://earthquake.usgs.gov/
-    email: shake-admin@usgs.gov
+    name: USGS Water Data for the Nation
+    url: https://api.waterdata.usgs.gov/
+    email: wdfn@usgs.gov
   license:
-    name: Public Domain (U.S. Government Work)
-    url: https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits
+    name: Public Domain (CC0 1.0)
+    url: https://creativecommons.org/publicdomain/zero/1.0/
   x-generated-from: documentation
 servers:
-- url: https://earthquake.usgs.gov/fdsnws/event/1
-  description: USGS FDSN Event Web Service
+- url: https://api.waterdata.usgs.gov/ogcapi/v0
+  description: USGS Water Data OGC API
+security:
+- ApiKeyQuery: []
+- ApiKeyHeader: []
+- {}
 tags:
 - name: Reference Data
   description: Reference code tables including agency codes, datum types, and aquifer data.
@@ -56,7 +60,46 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Number of results to return (default 100, max 10000).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 10000
+        default: 100
+        example: 100
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format (json, html, jsonld, csv).
+      schema:
+        type: string
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        default: json
+        example: json
   schemas:
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: Standard OGC API error response.
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: InvalidParameter
+        description:
+          type: string
+          description: Human-readable error description.
+          example: Invalid value for parameter bbox.
     FeatureCollection:
       title: FeatureCollection
       type: object
@@ -79,42 +122,14 @@ components:
           type: integer
           description: Number of features in this response.
           example: 100
-    ErrorResponse:
-      title: ErrorResponse
-      type: object
-      description: Standard OGC API error response.
-      properties:
-        code:
-          type: string
-          description: Error code.
-          example: InvalidParameter
-        description:
-          type: string
-          description: Human-readable error description.
-          example: Invalid value for parameter bbox.
-  parameters:
-    format:
-      name: f
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
       in: query
-      required: false
-      description: Output format (json, html, jsonld, csv).
-      schema:
-        type: string
-        enum:
-        - json
-        - html
-        - jsonld
-        - csv
-        default: json
-        example: json
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: Number of results to return (default 100, max 10000).
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 10000
-        default: 100
-        example: 100
+      name: api_key
+      description: USGS Water Data API key. Obtain at https://api.waterdata.usgs.gov/signup/
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: api_key
+      description: USGS Water Data API key passed as a request header.

@@ -12,9 +12,7 @@ info:
       - href: https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov
         type: text/html
       name: WDFN Support
-  description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
-
-    '
+  description: The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
   license:
     name: US Government work in the public domain
     url: https://creativecommons.org/publicdomain/zero/1.0/
@@ -33,16 +31,12 @@ servers:
     '
   url: https://api.waterdata.usgs.gov/ogcapi/v0
 tags:
-- description: 'The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
-
-    '
+- description: The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
   name: site-types
 paths:
   /collections/site-types:
     get:
-      description: 'The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
-
-        '
+      description: The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
       operationId: describeSite-typesCollection
       parameters:
       - $ref: '#/components/parameters/f'
@@ -65,9 +59,7 @@ paths:
       - site-types
   /collections/site-types/items:
     get:
-      description: 'The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
-
-        '
+      description: The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
       operationId: getSite-typesFeatures
       parameters:
       - description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.
@@ -174,9 +166,7 @@ paths:
       tags:
       - site-types
     options:
-      description: 'The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
-
-        '
+      description: The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
       operationId: optionsSite-typesFeatures
       responses:
         '200':
@@ -188,9 +178,7 @@ paths:
       tags:
       - site-types
     post:
-      description: 'The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
-
-        '
+      description: The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
       operationId: getCQL2Site-typesFeatures
       requestBody:
         content:
@@ -218,9 +206,7 @@ paths:
       - site-types
   /collections/site-types/items/{featureId}:
     get:
-      description: 'The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
-
-        '
+      description: The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
       operationId: getSite-typesFeature
       parameters:
       - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
@@ -247,9 +233,7 @@ paths:
       tags:
       - site-types
     options:
-      description: 'The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
-
-        '
+      description: The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
       operationId: optionsSite-typesFeature
       parameters:
       - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
@@ -264,9 +248,7 @@ paths:
       - site-types
   /collections/site-types/queryables:
     get:
-      description: 'The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
-
-        '
+      description: The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
       operationId: getSite-typesQueryables
       parameters:
       - description: The properties that should be included. The parameter value is a comma-separated list of property names.
@@ -318,9 +300,7 @@ paths:
       - site-types
   /collections/site-types/schema:
     get:
-      description: 'The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
-
-        '
+      description: The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types associated with data collection sites. All sites have a primary site type, and may additionally have a secondary site type that further describes the location.
       operationId: getSite-typesSchema
       parameters:
       - $ref: '#/components/parameters/f'
@@ -345,31 +325,205 @@ paths:
       tags:
       - site-types
 components:
-  responses:
+  parameters:
+    offset:
+      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
+      explode: false
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        minimum: 0
+        type: integer
+      style: form
+    bbox-crs:
+      description: Indicates the coordinate reference system for the given bbox coordinates.
+      explode: false
+      in: query
+      name: bbox-crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    skipGeometry:
+      description: This option can be used to skip response geometries for each feature.
+      explode: false
+      in: query
+      name: skipGeometry
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    filter:
+      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
+      in: query
+      name: filter
+      required: false
+      schema:
+        type: string
+    crs:
+      description: Indicates the coordinate reference system for the results.
+      explode: false
+      in: query
+      name: crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    bbox:
+      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
+      explode: false
+      in: query
+      name: bbox
+      required: false
+      schema:
+        items:
+          type: number
+        maxItems: 6
+        minItems: 4
+        type: array
+      style: form
+    lang:
+      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: en-US
+        enum:
+        - en-US
+        type: string
+    f:
+      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
+      explode: false
+      in: query
+      name: f
+      required: false
+      schema:
+        default: json
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        type: string
+      style: form
+  schemas:
     SiteTypesFeature:
-      content:
-        application/geo+json:
-          example:
-            geometry: null
-            id: GL
-            properties:
-              id: GL
-              site_type_description: Body of land ice that consists of recrystallized snow accumulated on the surface of the ground and moves slowly downslope (WSP-1541A) over a period of years or centuries.  Since glacial sites move, the lat-long precision for these sites is usually coarse.
-              site_type_name: Glacier
-              site_type_primary_flag: Y
-            type: Feature
-          schema:
+      properties:
+        geometry: {}
+        id:
+          type: string
+        properties:
+          properties:
+            id:
+              description: An acronym specifying the primary or secondary site type.
+              type:
+              - string
+              - 'null'
+            site_type_description:
+              description: Site type description.
+              type:
+              - string
+              - 'null'
+            site_type_name:
+              description: A long name for the site type used in retrieved output.
+              type:
+              - string
+              - 'null'
+            site_type_primary_flag:
+              description: Identifies which site types are primary.
+              type:
+              - string
+              - 'null'
+          type: object
+        type:
+          enum:
+          - Feature
+          type: string
+      required:
+      - type
+      - properties
+      type: object
+    queryable:
+      properties:
+        description:
+          description: a human-readable narrative describing the queryable
+          type: string
+        language:
+          default: en
+          description: the language used for the title and description
+          type: string
+        queryable:
+          description: the token that may be used in a CQL predicate
+          type: string
+        title:
+          description: a human readable title for the queryable
+          type: string
+        type:
+          description: the data type of the queryable
+          type: string
+        type-ref:
+          description: a reference to the formal definition of the type
+          format: url
+          type: string
+      required:
+      - queryable
+      - type
+      type: object
+    queryables:
+      properties:
+        queryables:
+          items:
+            $ref: '#/components/schemas/queryable'
+          type: array
+      required:
+      - queryables
+      type: object
+    Error:
+      properties:
+        error:
+          properties:
+            code:
+              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
+              type: string
+            message:
+              description: Error message
+              type: string
+          required:
+          - code
+          - message
+          type: object
+      type: object
+    SiteTypesFeatureCollection:
+      properties:
+        features:
+          items:
             $ref: '#/components/schemas/SiteTypesFeature'
-        text/html:
-          schema:
-            type: string
-      description: A single feature from Site types.
-    Queryables:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/queryables'
-      description: successful queryables operation
+          type: array
+        links:
+          items:
+            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
+          type: array
+        numberReturned:
+          minimum: 0
+          type: integer
+        timeStamp:
+          format: date-time
+          type: string
+        type:
+          enum:
+          - FeatureCollection
+          type: string
+      required:
+      - type
+      - features
+      type: object
+  responses:
     Forbidden403:
       content:
         application/json:
@@ -446,6 +600,30 @@ components:
           schema:
             type: string
       description: A feature collection of Site types.
+    SiteTypesFeature:
+      content:
+        application/geo+json:
+          example:
+            geometry: null
+            id: GL
+            properties:
+              id: GL
+              site_type_description: Body of land ice that consists of recrystallized snow accumulated on the surface of the ground and moves slowly downslope (WSP-1541A) over a period of years or centuries.  Since glacial sites move, the lat-long precision for these sites is usually coarse.
+              site_type_name: Glacier
+              site_type_primary_flag: Y
+            type: Feature
+          schema:
+            $ref: '#/components/schemas/SiteTypesFeature'
+        text/html:
+          schema:
+            type: string
+      description: A single feature from Site types.
+    Queryables:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/queryables'
+      description: successful queryables operation
     TooManyRequests429:
       content:
         application/json:
@@ -495,204 +673,6 @@ components:
           schema:
             type: string
       description: Too Many Requests - Rate limit exceeded.
-  schemas:
-    queryable:
-      properties:
-        description:
-          description: a human-readable narrative describing the queryable
-          type: string
-        language:
-          default: en
-          description: the language used for the title and description
-          type: string
-        queryable:
-          description: the token that may be used in a CQL predicate
-          type: string
-        title:
-          description: a human readable title for the queryable
-          type: string
-        type:
-          description: the data type of the queryable
-          type: string
-        type-ref:
-          description: a reference to the formal definition of the type
-          format: url
-          type: string
-      required:
-      - queryable
-      - type
-      type: object
-    SiteTypesFeature:
-      properties:
-        geometry: {}
-        id:
-          type: string
-        properties:
-          properties:
-            id:
-              description: An acronym specifying the primary or secondary site type.
-              type:
-              - string
-              - 'null'
-            site_type_description:
-              description: Site type description.
-              type:
-              - string
-              - 'null'
-            site_type_name:
-              description: A long name for the site type used in retrieved output.
-              type:
-              - string
-              - 'null'
-            site_type_primary_flag:
-              description: Identifies which site types are primary.
-              type:
-              - string
-              - 'null'
-          type: object
-        type:
-          enum:
-          - Feature
-          type: string
-      required:
-      - type
-      - properties
-      type: object
-    SiteTypesFeatureCollection:
-      properties:
-        features:
-          items:
-            $ref: '#/components/schemas/SiteTypesFeature'
-          type: array
-        links:
-          items:
-            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
-          type: array
-        numberReturned:
-          minimum: 0
-          type: integer
-        timeStamp:
-          format: date-time
-          type: string
-        type:
-          enum:
-          - FeatureCollection
-          type: string
-      required:
-      - type
-      - features
-      type: object
-    Error:
-      properties:
-        error:
-          properties:
-            code:
-              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
-              type: string
-            message:
-              description: Error message
-              type: string
-          required:
-          - code
-          - message
-          type: object
-      type: object
-    queryables:
-      properties:
-        queryables:
-          items:
-            $ref: '#/components/schemas/queryable'
-          type: array
-      required:
-      - queryables
-      type: object
-  parameters:
-    bbox-crs:
-      description: Indicates the coordinate reference system for the given bbox coordinates.
-      explode: false
-      in: query
-      name: bbox-crs
-      required: false
-      schema:
-        format: uri
-        type: string
-      style: form
-    skipGeometry:
-      description: This option can be used to skip response geometries for each feature.
-      explode: false
-      in: query
-      name: skipGeometry
-      required: false
-      schema:
-        default: false
-        type: boolean
-      style: form
-    offset:
-      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
-      explode: false
-      in: query
-      name: offset
-      required: false
-      schema:
-        default: 0
-        minimum: 0
-        type: integer
-      style: form
-    filter:
-      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
-      in: query
-      name: filter
-      required: false
-      schema:
-        type: string
-    crs:
-      description: Indicates the coordinate reference system for the results.
-      explode: false
-      in: query
-      name: crs
-      required: false
-      schema:
-        format: uri
-        type: string
-      style: form
-    lang:
-      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
-      in: query
-      name: lang
-      required: false
-      schema:
-        default: en-US
-        enum:
-        - en-US
-        type: string
-    bbox:
-      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
-      explode: false
-      in: query
-      name: bbox
-      required: false
-      schema:
-        items:
-          type: number
-        maxItems: 6
-        minItems: 4
-        type: array
-      style: form
-    f:
-      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
-      explode: false
-      in: query
-      name: f
-      required: false
-      schema:
-        default: json
-        enum:
-        - json
-        - html
-        - jsonld
-        - csv
-        type: string
-      style: form
   securitySchemes:
     ApiKeyHeader:
       description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup

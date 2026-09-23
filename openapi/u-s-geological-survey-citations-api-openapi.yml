@@ -12,9 +12,7 @@ info:
       - href: https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov
         type: text/html
       name: WDFN Support
-  description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
-
-    '
+  description: The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
   license:
     name: US Government work in the public domain
     url: https://creativecommons.org/publicdomain/zero/1.0/
@@ -33,16 +31,12 @@ servers:
     '
   url: https://api.waterdata.usgs.gov/ogcapi/v0
 tags:
-- description: 'Citations associated with water measurement methods.
-
-    '
-  name: citations
+- description: Citations associated with water measurement methods.
+  name: Citations
 paths:
   /collections/citations:
     get:
-      description: 'Citations associated with water measurement methods.
-
-        '
+      description: Citations associated with water measurement methods.
       operationId: describeCitationsCollection
       parameters:
       - $ref: '#/components/parameters/f'
@@ -62,12 +56,10 @@ paths:
           $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
       summary: Get Citations metadata
       tags:
-      - citations
+      - Citations
   /collections/citations/items:
     get:
-      description: 'Citations associated with water measurement methods.
-
-        '
+      description: Citations associated with water measurement methods.
       operationId: getCitationsFeatures
       parameters:
       - description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.
@@ -152,11 +144,9 @@ paths:
       - ApiKeyHeader: []
       summary: Get Citations items
       tags:
-      - citations
+      - Citations
     options:
-      description: 'Citations associated with water measurement methods.
-
-        '
+      description: Citations associated with water measurement methods.
       operationId: optionsCitationsFeatures
       responses:
         '200':
@@ -166,11 +156,9 @@ paths:
       - ApiKeyHeader: []
       summary: Options for Citations items
       tags:
-      - citations
+      - Citations
     post:
-      description: 'Citations associated with water measurement methods.
-
-        '
+      description: Citations associated with water measurement methods.
       operationId: getCQL2CitationsFeatures
       requestBody:
         content:
@@ -195,12 +183,10 @@ paths:
       - ApiKeyHeader: []
       summary: Get Citations items with CQL2
       tags:
-      - citations
+      - Citations
   /collections/citations/items/{featureId}:
     get:
-      description: 'Citations associated with water measurement methods.
-
-        '
+      description: Citations associated with water measurement methods.
       operationId: getCitationsFeature
       parameters:
       - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
@@ -225,11 +211,9 @@ paths:
       - ApiKeyHeader: []
       summary: Get Citations item by id
       tags:
-      - citations
+      - Citations
     options:
-      description: 'Citations associated with water measurement methods.
-
-        '
+      description: Citations associated with water measurement methods.
       operationId: optionsCitationsFeature
       parameters:
       - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
@@ -241,12 +225,10 @@ paths:
       - ApiKeyHeader: []
       summary: Options for Citations item by id
       tags:
-      - citations
+      - Citations
   /collections/citations/queryables:
     get:
-      description: 'Citations associated with water measurement methods.
-
-        '
+      description: Citations associated with water measurement methods.
       operationId: getCitationsQueryables
       parameters:
       - description: The properties that should be included. The parameter value is a comma-separated list of property names.
@@ -293,12 +275,10 @@ paths:
       - ApiKeyHeader: []
       summary: Get Citations queryables
       tags:
-      - citations
+      - Citations
   /collections/citations/schema:
     get:
-      description: 'Citations associated with water measurement methods.
-
-        '
+      description: Citations associated with water measurement methods.
       operationId: getCitationsSchema
       parameters:
       - $ref: '#/components/parameters/f'
@@ -321,42 +301,96 @@ paths:
       - ApiKeyHeader: []
       summary: Get Citations schema
       tags:
-      - citations
+      - Citations
 components:
+  parameters:
+    offset:
+      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
+      explode: false
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        minimum: 0
+        type: integer
+      style: form
+    bbox-crs:
+      description: Indicates the coordinate reference system for the given bbox coordinates.
+      explode: false
+      in: query
+      name: bbox-crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    skipGeometry:
+      description: This option can be used to skip response geometries for each feature.
+      explode: false
+      in: query
+      name: skipGeometry
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    filter:
+      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
+      in: query
+      name: filter
+      required: false
+      schema:
+        type: string
+    crs:
+      description: Indicates the coordinate reference system for the results.
+      explode: false
+      in: query
+      name: crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    bbox:
+      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
+      explode: false
+      in: query
+      name: bbox
+      required: false
+      schema:
+        items:
+          type: number
+        maxItems: 6
+        minItems: 4
+        type: array
+      style: form
+    lang:
+      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: en-US
+        enum:
+        - en-US
+        type: string
+    f:
+      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
+      explode: false
+      in: query
+      name: f
+      required: false
+      schema:
+        default: json
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        type: string
+      style: form
   schemas:
-    CitationsFeatureCollection:
-      properties:
-        features:
-          items:
-            $ref: '#/components/schemas/CitationsFeature'
-          type: array
-        links:
-          items:
-            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
-          type: array
-        numberReturned:
-          minimum: 0
-          type: integer
-        timeStamp:
-          format: date-time
-          type: string
-        type:
-          enum:
-          - FeatureCollection
-          type: string
-      required:
-      - type
-      - features
-      type: object
-    queryables:
-      properties:
-        queryables:
-          items:
-            $ref: '#/components/schemas/queryable'
-          type: array
-      required:
-      - queryables
-      type: object
     queryable:
       properties:
         description:
@@ -382,6 +416,15 @@ components:
       required:
       - queryable
       - type
+      type: object
+    queryables:
+      properties:
+        queryables:
+          items:
+            $ref: '#/components/schemas/queryable'
+          type: array
+      required:
+      - queryables
       type: object
     CitationsFeature:
       properties:
@@ -424,13 +467,31 @@ components:
           - message
           type: object
       type: object
+    CitationsFeatureCollection:
+      properties:
+        features:
+          items:
+            $ref: '#/components/schemas/CitationsFeature'
+          type: array
+        links:
+          items:
+            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
+          type: array
+        numberReturned:
+          minimum: 0
+          type: integer
+        timeStamp:
+          format: date-time
+          type: string
+        type:
+          enum:
+          - FeatureCollection
+          type: string
+      required:
+      - type
+      - features
+      type: object
   responses:
-    Queryables:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/queryables'
-      description: successful queryables operation
     CitationsFeature:
       content:
         application/geo+json:
@@ -521,6 +582,12 @@ components:
           schema:
             type: string
       description: A feature collection of Citations.
+    Queryables:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/queryables'
+      description: successful queryables operation
     TooManyRequests429:
       content:
         application/json:
@@ -570,93 +637,6 @@ components:
           schema:
             type: string
       description: Too Many Requests - Rate limit exceeded.
-  parameters:
-    bbox-crs:
-      description: Indicates the coordinate reference system for the given bbox coordinates.
-      explode: false
-      in: query
-      name: bbox-crs
-      required: false
-      schema:
-        format: uri
-        type: string
-      style: form
-    skipGeometry:
-      description: This option can be used to skip response geometries for each feature.
-      explode: false
-      in: query
-      name: skipGeometry
-      required: false
-      schema:
-        default: false
-        type: boolean
-      style: form
-    offset:
-      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
-      explode: false
-      in: query
-      name: offset
-      required: false
-      schema:
-        default: 0
-        minimum: 0
-        type: integer
-      style: form
-    filter:
-      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
-      in: query
-      name: filter
-      required: false
-      schema:
-        type: string
-    lang:
-      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
-      in: query
-      name: lang
-      required: false
-      schema:
-        default: en-US
-        enum:
-        - en-US
-        type: string
-    bbox:
-      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
-      explode: false
-      in: query
-      name: bbox
-      required: false
-      schema:
-        items:
-          type: number
-        maxItems: 6
-        minItems: 4
-        type: array
-      style: form
-    crs:
-      description: Indicates the coordinate reference system for the results.
-      explode: false
-      in: query
-      name: crs
-      required: false
-      schema:
-        format: uri
-        type: string
-      style: form
-    f:
-      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
-      explode: false
-      in: query
-      name: f
-      required: false
-      schema:
-        default: json
-        enum:
-        - json
-        - html
-        - jsonld
-        - csv
-        type: string
-      style: form
   securitySchemes:
     ApiKeyHeader:
       description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup

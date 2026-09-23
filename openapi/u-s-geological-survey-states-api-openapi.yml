@@ -12,9 +12,7 @@ info:
       - href: https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov
         type: text/html
       name: WDFN Support
-  description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
-
-    '
+  description: The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
   license:
     name: US Government work in the public domain
     url: https://creativecommons.org/publicdomain/zero/1.0/
@@ -33,16 +31,12 @@ servers:
     '
   url: https://api.waterdata.usgs.gov/ogcapi/v0
 tags:
-- description: 'State name or territory. Includes U.S. states and foreign entities classified under FIPS as ''Principal Administrative Divisions''.
-
-    '
-  name: states
+- description: State name or territory. Includes U.S. states and foreign entities classified under FIPS as 'Principal Administrative Divisions'.
+  name: States
 paths:
   /collections/states:
     get:
-      description: 'State name or territory. Includes U.S. states and foreign entities classified under FIPS as ''Principal Administrative Divisions''.
-
-        '
+      description: State name or territory. Includes U.S. states and foreign entities classified under FIPS as 'Principal Administrative Divisions'.
       operationId: describeStatesCollection
       parameters:
       - $ref: '#/components/parameters/f'
@@ -62,12 +56,10 @@ paths:
           $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
       summary: Get State identifiers metadata
       tags:
-      - states
+      - States
   /collections/states/items:
     get:
-      description: 'State name or territory. Includes U.S. states and foreign entities classified under FIPS as ''Principal Administrative Divisions''.
-
-        '
+      description: State name or territory. Includes U.S. states and foreign entities classified under FIPS as 'Principal Administrative Divisions'.
       operationId: getStatesFeatures
       parameters:
       - description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.
@@ -180,11 +172,9 @@ paths:
       - ApiKeyHeader: []
       summary: Get State identifiers items
       tags:
-      - states
+      - States
     options:
-      description: 'State name or territory. Includes U.S. states and foreign entities classified under FIPS as ''Principal Administrative Divisions''.
-
-        '
+      description: State name or territory. Includes U.S. states and foreign entities classified under FIPS as 'Principal Administrative Divisions'.
       operationId: optionsStatesFeatures
       responses:
         '200':
@@ -194,11 +184,9 @@ paths:
       - ApiKeyHeader: []
       summary: Options for State identifiers items
       tags:
-      - states
+      - States
     post:
-      description: 'State name or territory. Includes U.S. states and foreign entities classified under FIPS as ''Principal Administrative Divisions''.
-
-        '
+      description: State name or territory. Includes U.S. states and foreign entities classified under FIPS as 'Principal Administrative Divisions'.
       operationId: getCQL2StatesFeatures
       requestBody:
         content:
@@ -223,12 +211,10 @@ paths:
       - ApiKeyHeader: []
       summary: Get State identifiers items with CQL2
       tags:
-      - states
+      - States
   /collections/states/items/{featureId}:
     get:
-      description: 'State name or territory. Includes U.S. states and foreign entities classified under FIPS as ''Principal Administrative Divisions''.
-
-        '
+      description: State name or territory. Includes U.S. states and foreign entities classified under FIPS as 'Principal Administrative Divisions'.
       operationId: getStatesFeature
       parameters:
       - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
@@ -253,11 +239,9 @@ paths:
       - ApiKeyHeader: []
       summary: Get State identifiers item by id
       tags:
-      - states
+      - States
     options:
-      description: 'State name or territory. Includes U.S. states and foreign entities classified under FIPS as ''Principal Administrative Divisions''.
-
-        '
+      description: State name or territory. Includes U.S. states and foreign entities classified under FIPS as 'Principal Administrative Divisions'.
       operationId: optionsStatesFeature
       parameters:
       - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
@@ -269,12 +253,10 @@ paths:
       - ApiKeyHeader: []
       summary: Options for State identifiers item by id
       tags:
-      - states
+      - States
   /collections/states/queryables:
     get:
-      description: 'State name or territory. Includes U.S. states and foreign entities classified under FIPS as ''Principal Administrative Divisions''.
-
-        '
+      description: State name or territory. Includes U.S. states and foreign entities classified under FIPS as 'Principal Administrative Divisions'.
       operationId: getStatesQueryables
       parameters:
       - description: The properties that should be included. The parameter value is a comma-separated list of property names.
@@ -324,12 +306,10 @@ paths:
       - ApiKeyHeader: []
       summary: Get State identifiers queryables
       tags:
-      - states
+      - States
   /collections/states/schema:
     get:
-      description: 'State name or territory. Includes U.S. states and foreign entities classified under FIPS as ''Principal Administrative Divisions''.
-
-        '
+      description: State name or territory. Includes U.S. states and foreign entities classified under FIPS as 'Principal Administrative Divisions'.
       operationId: getStatesSchema
       parameters:
       - $ref: '#/components/parameters/f'
@@ -352,62 +332,211 @@ paths:
       - ApiKeyHeader: []
       summary: Get State identifiers schema
       tags:
-      - states
+      - States
 components:
-  responses:
-    StatesFeatures:
-      content:
-        application/geo+json:
-          example:
-            features:
-            - geometry: null
-              id: AD-00
-              properties:
-                country_code: AD
-                id: AD-00
-                state_fips_code: '00'
-                state_name: Unspecified
-                state_postal_code: example-value
-              type: Feature
-            links:
-            - href: https://api.waterdata.usgs.gov/ogcapi/v0/collections/states/items
-              rel: self
-              title: This document as GeoJSON
-              type: application/geo+json
-            numberReturned: 1
-            timeStamp: '2024-07-21T12:00:00Z'
-            type: FeatureCollection
-          schema:
-            $ref: '#/components/schemas/StatesFeatureCollection'
-        text/html:
-          schema:
-            type: string
-      description: A feature collection of State identifiers.
-    Queryables:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/queryables'
-      description: successful queryables operation
-    StatesFeature:
-      content:
-        application/geo+json:
-          example:
-            geometry: null
-            id: AD-00
-            properties:
-              country_code: AD
-              id: AD-00
-              state_fips_code: '00'
-              state_name: Unspecified
-              state_postal_code: example-value
-            type: Feature
-          schema:
+  schemas:
+    StatesFeatureCollection:
+      properties:
+        features:
+          items:
             $ref: '#/components/schemas/StatesFeature'
-        text/html:
-          schema:
-            type: string
-      description: A single feature from State identifiers.
+          type: array
+        links:
+          items:
+            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
+          type: array
+        numberReturned:
+          minimum: 0
+          type: integer
+        timeStamp:
+          format: date-time
+          type: string
+        type:
+          enum:
+          - FeatureCollection
+          type: string
+      required:
+      - type
+      - features
+      type: object
+    queryable:
+      properties:
+        description:
+          description: a human-readable narrative describing the queryable
+          type: string
+        language:
+          default: en
+          description: the language used for the title and description
+          type: string
+        queryable:
+          description: the token that may be used in a CQL predicate
+          type: string
+        title:
+          description: a human readable title for the queryable
+          type: string
+        type:
+          description: the data type of the queryable
+          type: string
+        type-ref:
+          description: a reference to the formal definition of the type
+          format: url
+          type: string
+      required:
+      - queryable
+      - type
+      type: object
+    queryables:
+      properties:
+        queryables:
+          items:
+            $ref: '#/components/schemas/queryable'
+          type: array
+      required:
+      - queryables
+      type: object
+    StatesFeature:
+      properties:
+        geometry: {}
+        id:
+          type: string
+        properties:
+          properties:
+            country_code:
+              description: 'FIPS country code as defined by FIPS PUB 10-4: Countries, Dependencies, Areas of Special Sovereignty, and Their Principal Administrative Divisions.'
+              type:
+              - string
+              - 'null'
+            id:
+              type:
+              - string
+              - 'null'
+            state_fips_code:
+              description: State FIPS code.
+              type:
+              - string
+              - 'null'
+            state_name:
+              description: State name.
+              type:
+              - string
+              - 'null'
+            state_postal_code:
+              description: State postal abbreviation. A two-letter USPS state postal abbreviation.
+              type:
+              - string
+              - 'null'
+          type: object
+        type:
+          enum:
+          - Feature
+          type: string
+      required:
+      - type
+      - properties
+      type: object
+    Error:
+      properties:
+        error:
+          properties:
+            code:
+              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
+              type: string
+            message:
+              description: Error message
+              type: string
+          required:
+          - code
+          - message
+          type: object
+      type: object
+  parameters:
+    offset:
+      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
+      explode: false
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        minimum: 0
+        type: integer
+      style: form
+    skipGeometry:
+      description: This option can be used to skip response geometries for each feature.
+      explode: false
+      in: query
+      name: skipGeometry
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    bbox-crs:
+      description: Indicates the coordinate reference system for the given bbox coordinates.
+      explode: false
+      in: query
+      name: bbox-crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    filter:
+      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
+      in: query
+      name: filter
+      required: false
+      schema:
+        type: string
+    crs:
+      description: Indicates the coordinate reference system for the results.
+      explode: false
+      in: query
+      name: crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    bbox:
+      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
+      explode: false
+      in: query
+      name: bbox
+      required: false
+      schema:
+        items:
+          type: number
+        maxItems: 6
+        minItems: 4
+        type: array
+      style: form
+    lang:
+      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: en-US
+        enum:
+        - en-US
+        type: string
+    f:
+      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
+      explode: false
+      in: query
+      name: f
+      required: false
+      schema:
+        default: json
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        type: string
+      style: form
+  responses:
     Forbidden403:
       content:
         application/json:
@@ -457,6 +586,59 @@ components:
           schema:
             type: string
       description: Forbidden - API key is missing or not authorized for this resource.
+    StatesFeature:
+      content:
+        application/geo+json:
+          example:
+            geometry: null
+            id: AD-00
+            properties:
+              country_code: AD
+              id: AD-00
+              state_fips_code: '00'
+              state_name: Unspecified
+              state_postal_code: example-value
+            type: Feature
+          schema:
+            $ref: '#/components/schemas/StatesFeature'
+        text/html:
+          schema:
+            type: string
+      description: A single feature from State identifiers.
+    StatesFeatures:
+      content:
+        application/geo+json:
+          example:
+            features:
+            - geometry: null
+              id: AD-00
+              properties:
+                country_code: AD
+                id: AD-00
+                state_fips_code: '00'
+                state_name: Unspecified
+                state_postal_code: example-value
+              type: Feature
+            links:
+            - href: https://api.waterdata.usgs.gov/ogcapi/v0/collections/states/items
+              rel: self
+              title: This document as GeoJSON
+              type: application/geo+json
+            numberReturned: 1
+            timeStamp: '2024-07-21T12:00:00Z'
+            type: FeatureCollection
+          schema:
+            $ref: '#/components/schemas/StatesFeatureCollection'
+        text/html:
+          schema:
+            type: string
+      description: A feature collection of State identifiers.
+    Queryables:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/queryables'
+      description: successful queryables operation
     TooManyRequests429:
       content:
         application/json:
@@ -506,208 +688,6 @@ components:
           schema:
             type: string
       description: Too Many Requests - Rate limit exceeded.
-  schemas:
-    queryable:
-      properties:
-        description:
-          description: a human-readable narrative describing the queryable
-          type: string
-        language:
-          default: en
-          description: the language used for the title and description
-          type: string
-        queryable:
-          description: the token that may be used in a CQL predicate
-          type: string
-        title:
-          description: a human readable title for the queryable
-          type: string
-        type:
-          description: the data type of the queryable
-          type: string
-        type-ref:
-          description: a reference to the formal definition of the type
-          format: url
-          type: string
-      required:
-      - queryable
-      - type
-      type: object
-    StatesFeature:
-      properties:
-        geometry: {}
-        id:
-          type: string
-        properties:
-          properties:
-            country_code:
-              description: 'FIPS country code as defined by FIPS PUB 10-4: Countries, Dependencies, Areas of Special Sovereignty, and Their Principal Administrative Divisions.'
-              type:
-              - string
-              - 'null'
-            id:
-              type:
-              - string
-              - 'null'
-            state_fips_code:
-              description: State FIPS code.
-              type:
-              - string
-              - 'null'
-            state_name:
-              description: State name.
-              type:
-              - string
-              - 'null'
-            state_postal_code:
-              description: State postal abbreviation. A two-letter USPS state postal abbreviation.
-              type:
-              - string
-              - 'null'
-          type: object
-        type:
-          enum:
-          - Feature
-          type: string
-      required:
-      - type
-      - properties
-      type: object
-    StatesFeatureCollection:
-      properties:
-        features:
-          items:
-            $ref: '#/components/schemas/StatesFeature'
-          type: array
-        links:
-          items:
-            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
-          type: array
-        numberReturned:
-          minimum: 0
-          type: integer
-        timeStamp:
-          format: date-time
-          type: string
-        type:
-          enum:
-          - FeatureCollection
-          type: string
-      required:
-      - type
-      - features
-      type: object
-    Error:
-      properties:
-        error:
-          properties:
-            code:
-              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
-              type: string
-            message:
-              description: Error message
-              type: string
-          required:
-          - code
-          - message
-          type: object
-      type: object
-    queryables:
-      properties:
-        queryables:
-          items:
-            $ref: '#/components/schemas/queryable'
-          type: array
-      required:
-      - queryables
-      type: object
-  parameters:
-    bbox-crs:
-      description: Indicates the coordinate reference system for the given bbox coordinates.
-      explode: false
-      in: query
-      name: bbox-crs
-      required: false
-      schema:
-        format: uri
-        type: string
-      style: form
-    skipGeometry:
-      description: This option can be used to skip response geometries for each feature.
-      explode: false
-      in: query
-      name: skipGeometry
-      required: false
-      schema:
-        default: false
-        type: boolean
-      style: form
-    filter:
-      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
-      in: query
-      name: filter
-      required: false
-      schema:
-        type: string
-    offset:
-      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
-      explode: false
-      in: query
-      name: offset
-      required: false
-      schema:
-        default: 0
-        minimum: 0
-        type: integer
-      style: form
-    lang:
-      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
-      in: query
-      name: lang
-      required: false
-      schema:
-        default: en-US
-        enum:
-        - en-US
-        type: string
-    bbox:
-      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
-      explode: false
-      in: query
-      name: bbox
-      required: false
-      schema:
-        items:
-          type: number
-        maxItems: 6
-        minItems: 4
-        type: array
-      style: form
-    crs:
-      description: Indicates the coordinate reference system for the results.
-      explode: false
-      in: query
-      name: crs
-      required: false
-      schema:
-        format: uri
-        type: string
-      style: form
-    f:
-      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
-      explode: false
-      in: query
-      name: f
-      required: false
-      schema:
-        default: json
-        enum:
-        - json
-        - html
-        - jsonld
-        - csv
-        type: string
-      style: form
   securitySchemes:
     ApiKeyHeader:
       description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup

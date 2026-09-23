@@ -12,9 +12,7 @@ info:
       - href: https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov
         type: text/html
       name: WDFN Support
-  description: 'The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
-
-    '
+  description: The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data collection. These APIs provide access to that data, alongside metadata about data collections and monitoring locations, in standardized machine-readable formats.
   license:
     name: US Government work in the public domain
     url: https://creativecommons.org/publicdomain/zero/1.0/
@@ -33,16 +31,12 @@ servers:
     '
   url: https://api.waterdata.usgs.gov/ogcapi/v0
 tags:
-- description: 'Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
-
-    '
+- description: Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
   name: field-measurements
 paths:
   /collections/field-measurements:
     get:
-      description: 'Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
-
-        '
+      description: Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
       operationId: describeField-measurementsCollection
       parameters:
       - $ref: '#/components/parameters/f'
@@ -65,9 +59,7 @@ paths:
       - field-measurements
   /collections/field-measurements/items:
     get:
-      description: 'Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
-
-        '
+      description: Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
       operationId: getField-measurementsFeatures
       parameters:
       - description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.
@@ -961,9 +953,7 @@ paths:
       tags:
       - field-measurements
     options:
-      description: 'Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
-
-        '
+      description: Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
       operationId: optionsField-measurementsFeatures
       responses:
         '200':
@@ -975,9 +965,7 @@ paths:
       tags:
       - field-measurements
     post:
-      description: 'Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
-
-        '
+      description: Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
       operationId: getCQL2Field-measurementsFeatures
       requestBody:
         content:
@@ -1005,9 +993,7 @@ paths:
       - field-measurements
   /collections/field-measurements/items/{featureId}:
     get:
-      description: 'Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
-
-        '
+      description: Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
       operationId: getField-measurementsFeature
       parameters:
       - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
@@ -1034,9 +1020,7 @@ paths:
       tags:
       - field-measurements
     options:
-      description: 'Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
-
-        '
+      description: Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
       operationId: optionsField-measurementsFeature
       parameters:
       - $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
@@ -1051,9 +1035,7 @@ paths:
       - field-measurements
   /collections/field-measurements/queryables:
     get:
-      description: 'Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
-
-        '
+      description: Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
       operationId: getField-measurementsQueryables
       parameters:
       - description: The properties that should be included. The parameter value is a comma-separated list of property names.
@@ -1122,9 +1104,7 @@ paths:
       - field-measurements
   /collections/field-measurements/schema:
     get:
-      description: 'Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
-
-        '
+      description: Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage height and discharge, and readings of groundwater levels, and are primarily used as calibration readings for the automated sensors collecting continuous data. They are collected at a low frequency, and delivery of the data in WDFN may be delayed due to data processing time.
       operationId: getField-measurementsSchema
       parameters:
       - $ref: '#/components/parameters/f'
@@ -1149,6 +1129,299 @@ paths:
       tags:
       - field-measurements
 components:
+  parameters:
+    offset:
+      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
+      explode: false
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        minimum: 0
+        type: integer
+      style: form
+    filter:
+      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
+      in: query
+      name: filter
+      required: false
+      schema:
+        type: string
+    lang:
+      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: en-US
+        enum:
+        - en-US
+        type: string
+    f:
+      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
+      explode: false
+      in: query
+      name: f
+      required: false
+      schema:
+        default: json
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        type: string
+      style: form
+    bbox-crs:
+      description: Indicates the coordinate reference system for the given bbox coordinates.
+      explode: false
+      in: query
+      name: bbox-crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    skipGeometry:
+      description: This option can be used to skip response geometries for each feature.
+      explode: false
+      in: query
+      name: skipGeometry
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    crs:
+      description: Indicates the coordinate reference system for the results.
+      explode: false
+      in: query
+      name: crs
+      required: false
+      schema:
+        format: uri
+        type: string
+      style: form
+    bbox:
+      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
+      explode: false
+      in: query
+      name: bbox
+      required: false
+      schema:
+        items:
+          type: number
+        maxItems: 6
+        minItems: 4
+        type: array
+      style: form
+    wda_sortby:
+      description: "Specifies a comma-separated list of property names by which the response shall be sorted.  If the property name is preceded by a plus (+) sign it indicates an ascending sort for that property.  If the property name is preceded by a minus (-) sign it indicates a descending sort for that property.  If the property is not preceded by a plus or minus, then the default sort order implied is ascending (+).  \n\nOnly a single page of data can be returned when specifying sortby. If you need more than a single page of data, don't specify a sortby value and sort the full data set after it's been downloaded."
+      explode: false
+      in: query
+      name: sortby
+      required: false
+      schema:
+        items:
+          pattern: '[+|-]?[A-Za-z_].*'
+          type: string
+        minItems: 1
+        type: array
+      style: form
+  responses:
+    FieldMeasurementsFeatures:
+      content:
+        application/geo+json:
+          example:
+            features:
+            - geometry:
+                coordinates:
+                - -88.01
+                - 44.5286111111111
+                type: Point
+              id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+              properties:
+                approval_status: Approved
+                control_condition: Clear
+                day: 15
+                field_measurements_series_id: WDA-STABLE-SERIES-0001
+                field_visit_id: 00000000-0000-0000-0000-000000000002
+                last_modified: '2025-06-16T14:13:28+00:00'
+                measurement_rated: Fair
+                measuring_agency: USGS
+                monitoring_location_id: USGS-09380000
+                month: 6
+                observing_procedure: GW level, calib steel tape
+                observing_procedure_code: S
+                parameter_code: '00060'
+                qualifier: Ice
+                reading_type: ReferencePrimary
+                time: '2024-06-15T14:00:00+00:00'
+                time_of_day: 12:00:00+00:00
+                unit_of_measure: ft3/s
+                value: '579.40'
+                vertical_datum: NAVD88
+                year: 2020
+              type: Feature
+            links:
+            - href: https://api.waterdata.usgs.gov/ogcapi/v0/collections/field-measurements/items
+              rel: self
+              title: This document as GeoJSON
+              type: application/geo+json
+            numberMatched: 1
+            numberReturned: 1
+            timeStamp: '2024-07-21T12:00:00Z'
+            type: FeatureCollection
+          schema:
+            $ref: '#/components/schemas/FieldMeasurementsFeatureCollection'
+        text/html:
+          schema:
+            type: string
+      description: A feature collection of Field measurements.
+    TooManyRequests429:
+      content:
+        application/json:
+          examples:
+            rateLimitExceeded:
+              summary: Rate Limit Exceeded
+              value:
+                error:
+                  code: OVER_RATE_LIMIT
+                  message: You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;OVER_RATE_LIMIT&lt;/code&gt;\n        &lt;message&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            rateLimitCsv:
+              summary: Rate Limit Exceeded (CSV)
+              value: 'Error Code,Error Message
+
+                OVER_RATE_LIMIT,You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.'
+          schema:
+            type: string
+        text/html:
+          examples:
+            rateLimitHtml:
+              summary: Rate Limit Exceeded (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;OVER_RATE_LIMIT&lt;/h1&gt;\n        &lt;p&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Too Many Requests - Rate limit exceeded.
+    Forbidden403:
+      content:
+        application/json:
+          examples:
+            missingApiKey:
+              summary: Missing API Key
+              value:
+                error:
+                  code: API_KEY_MISSING
+                  message: No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;API_KEY_MISSING&lt;/code&gt;\n        &lt;message&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            missingApiKeyCsv:
+              summary: Missing API Key (CSV)
+              value: 'Error Code,Error Message
+
+                API_KEY_MISSING, No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/'
+          schema:
+            type: string
+        text/html:
+          examples:
+            missingApiKeyHtml:
+              summary: Missing API Key (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;API_KEY_MISSING&lt;/h1&gt;\n        &lt;p&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Forbidden - API key is missing or not authorized for this resource.
+    FieldMeasurementsFeature:
+      content:
+        application/geo+json:
+          example:
+            geometry:
+              coordinates:
+              - -88.01
+              - 44.5286111111111
+              type: Point
+            id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+            properties:
+              approval_status: Approved
+              control_condition: Clear
+              day: 15
+              field_measurements_series_id: WDA-STABLE-SERIES-0001
+              field_visit_id: 00000000-0000-0000-0000-000000000002
+              last_modified: '2025-06-16T14:13:28+00:00'
+              measurement_rated: Fair
+              measuring_agency: USGS
+              monitoring_location_id: USGS-09380000
+              month: 6
+              observing_procedure: GW level, calib steel tape
+              observing_procedure_code: S
+              parameter_code: '00060'
+              qualifier: Ice
+              reading_type: ReferencePrimary
+              time: '2024-06-15T14:00:00+00:00'
+              time_of_day: 12:00:00+00:00
+              unit_of_measure: ft3/s
+              value: '579.40'
+              vertical_datum: NAVD88
+              year: 2020
+            type: Feature
+          schema:
+            $ref: '#/components/schemas/FieldMeasurementsFeature'
+        text/html:
+          schema:
+            type: string
+      description: A single feature from Field measurements.
+    Queryables:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/queryables'
+      description: successful queryables operation
   schemas:
     FieldMeasurementsFeatureCollection:
       properties:
@@ -1364,6 +1637,21 @@ components:
       required:
       - queryables
       type: object
+    Error:
+      properties:
+        error:
+          properties:
+            code:
+              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
+              type: string
+            message:
+              description: Error message
+              type: string
+          required:
+          - code
+          - message
+          type: object
+      type: object
     queryable:
       properties:
         description:
@@ -1390,314 +1678,6 @@ components:
       - queryable
       - type
       type: object
-    Error:
-      properties:
-        error:
-          properties:
-            code:
-              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
-              type: string
-            message:
-              description: Error message
-              type: string
-          required:
-          - code
-          - message
-          type: object
-      type: object
-  parameters:
-    lang:
-      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
-      in: query
-      name: lang
-      required: false
-      schema:
-        default: en-US
-        enum:
-        - en-US
-        type: string
-    skipGeometry:
-      description: This option can be used to skip response geometries for each feature.
-      explode: false
-      in: query
-      name: skipGeometry
-      required: false
-      schema:
-        default: false
-        type: boolean
-      style: form
-    bbox-crs:
-      description: Indicates the coordinate reference system for the given bbox coordinates.
-      explode: false
-      in: query
-      name: bbox-crs
-      required: false
-      schema:
-        format: uri
-        type: string
-      style: form
-    wda_sortby:
-      description: "Specifies a comma-separated list of property names by which the response shall be sorted.  If the property name is preceded by a plus (+) sign it indicates an ascending sort for that property.  If the property name is preceded by a minus (-) sign it indicates a descending sort for that property.  If the property is not preceded by a plus or minus, then the default sort order implied is ascending (+).  \n\nOnly a single page of data can be returned when specifying sortby. If you need more than a single page of data, don't specify a sortby value and sort the full data set after it's been downloaded."
-      explode: false
-      in: query
-      name: sortby
-      required: false
-      schema:
-        items:
-          pattern: '[+|-]?[A-Za-z_].*'
-          type: string
-        minItems: 1
-        type: array
-      style: form
-    crs:
-      description: Indicates the coordinate reference system for the results.
-      explode: false
-      in: query
-      name: crs
-      required: false
-      schema:
-        format: uri
-        type: string
-      style: form
-    bbox:
-      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
-      explode: false
-      in: query
-      name: bbox
-      required: false
-      schema:
-        items:
-          type: number
-        maxItems: 6
-        minItems: 4
-        type: array
-      style: form
-    offset:
-      description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
-      explode: false
-      in: query
-      name: offset
-      required: false
-      schema:
-        default: 0
-        minimum: 0
-        type: integer
-      style: form
-    filter:
-      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
-      in: query
-      name: filter
-      required: false
-      schema:
-        type: string
-    f:
-      description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
-      explode: false
-      in: query
-      name: f
-      required: false
-      schema:
-        default: json
-        enum:
-        - json
-        - html
-        - jsonld
-        - csv
-        type: string
-      style: form
-  responses:
-    FieldMeasurementsFeatures:
-      content:
-        application/geo+json:
-          example:
-            features:
-            - geometry:
-                coordinates:
-                - -88.01
-                - 44.5286111111111
-                type: Point
-              id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
-              properties:
-                approval_status: Approved
-                control_condition: Clear
-                day: 15
-                field_measurements_series_id: WDA-STABLE-SERIES-0001
-                field_visit_id: 00000000-0000-0000-0000-000000000002
-                last_modified: '2025-06-16T14:13:28+00:00'
-                measurement_rated: Fair
-                measuring_agency: USGS
-                monitoring_location_id: USGS-09380000
-                month: 6
-                observing_procedure: GW level, calib steel tape
-                observing_procedure_code: S
-                parameter_code: '00060'
-                qualifier: Ice
-                reading_type: ReferencePrimary
-                time: '2024-06-15T14:00:00+00:00'
-                time_of_day: 12:00:00+00:00
-                unit_of_measure: ft3/s
-                value: '579.40'
-                vertical_datum: NAVD88
-                year: 2020
-              type: Feature
-            links:
-            - href: https://api.waterdata.usgs.gov/ogcapi/v0/collections/field-measurements/items
-              rel: self
-              title: This document as GeoJSON
-              type: application/geo+json
-            numberMatched: 1
-            numberReturned: 1
-            timeStamp: '2024-07-21T12:00:00Z'
-            type: FeatureCollection
-          schema:
-            $ref: '#/components/schemas/FieldMeasurementsFeatureCollection'
-        text/html:
-          schema:
-            type: string
-      description: A feature collection of Field measurements.
-    Queryables:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/queryables'
-      description: successful queryables operation
-    Forbidden403:
-      content:
-        application/json:
-          examples:
-            missingApiKey:
-              summary: Missing API Key
-              value:
-                error:
-                  code: API_KEY_MISSING
-                  message: No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;API_KEY_MISSING&lt;/code&gt;\n        &lt;message&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
-          schema:
-            properties:
-              response:
-                properties:
-                  error:
-                    properties:
-                      code:
-                        type: string
-                      message:
-                        type: string
-                    required:
-                    - code
-                    - message
-                    type: object
-                required:
-                - error
-                type: object
-            type: object
-        text/csv:
-          examples:
-            missingApiKeyCsv:
-              summary: Missing API Key (CSV)
-              value: 'Error Code,Error Message
-
-                API_KEY_MISSING, No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/'
-          schema:
-            type: string
-        text/html:
-          examples:
-            missingApiKeyHtml:
-              summary: Missing API Key (HTML)
-              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;API_KEY_MISSING&lt;/h1&gt;\n        &lt;p&gt;No api_key was supplied. Get one at https://api.waterdata.usgs.gov/signup/&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
-          schema:
-            type: string
-      description: Forbidden - API key is missing or not authorized for this resource.
-    TooManyRequests429:
-      content:
-        application/json:
-          examples:
-            rateLimitExceeded:
-              summary: Rate Limit Exceeded
-              value:
-                error:
-                  code: OVER_RATE_LIMIT
-                  message: You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;OVER_RATE_LIMIT&lt;/code&gt;\n        &lt;message&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
-          schema:
-            properties:
-              response:
-                properties:
-                  error:
-                    properties:
-                      code:
-                        type: string
-                      message:
-                        type: string
-                    required:
-                    - code
-                    - message
-                    type: object
-                required:
-                - error
-                type: object
-            type: object
-        text/csv:
-          examples:
-            rateLimitCsv:
-              summary: Rate Limit Exceeded (CSV)
-              value: 'Error Code,Error Message
-
-                OVER_RATE_LIMIT,You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.'
-          schema:
-            type: string
-        text/html:
-          examples:
-            rateLimitHtml:
-              summary: Rate Limit Exceeded (HTML)
-              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;OVER_RATE_LIMIT&lt;/h1&gt;\n        &lt;p&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
-          schema:
-            type: string
-      description: Too Many Requests - Rate limit exceeded.
-    FieldMeasurementsFeature:
-      content:
-        application/geo+json:
-          example:
-            geometry:
-              coordinates:
-              - -88.01
-              - 44.5286111111111
-              type: Point
-            id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
-            properties:
-              approval_status: Approved
-              control_condition: Clear
-              day: 15
-              field_measurements_series_id: WDA-STABLE-SERIES-0001
-              field_visit_id: 00000000-0000-0000-0000-000000000002
-              last_modified: '2025-06-16T14:13:28+00:00'
-              measurement_rated: Fair
-              measuring_agency: USGS
-              monitoring_location_id: USGS-09380000
-              month: 6
-              observing_procedure: GW level, calib steel tape
-              observing_procedure_code: S
-              parameter_code: '00060'
-              qualifier: Ice
-              reading_type: ReferencePrimary
-              time: '2024-06-15T14:00:00+00:00'
-              time_of_day: 12:00:00+00:00
-              unit_of_measure: ft3/s
-              value: '579.40'
-              vertical_datum: NAVD88
-              year: 2020
-            type: Feature
-          schema:
-            $ref: '#/components/schemas/FieldMeasurementsFeature'
-        text/html:
-          schema:
-            type: string
-      description: A single feature from Field measurements.
   securitySchemes:
     ApiKeyHeader:
       description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup
