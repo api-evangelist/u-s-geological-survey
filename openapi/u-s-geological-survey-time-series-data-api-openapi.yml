@@ -102,6 +102,14 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    time:
+      name: time
+      in: query
+      required: false
+      description: Temporal filter in RFC 3339 or ISO 8601 format. Use a single datetime or interval (e.g., 2025-01-01/2025-03-01).
+      schema:
+        type: string
+        example: 2025-01-01/2025-03-01
     offset:
       name: offset
       in: query
@@ -112,22 +120,17 @@ components:
         minimum: 0
         default: 0
         example: 0
-    time:
-      name: time
+    limit:
+      name: limit
       in: query
       required: false
-      description: Temporal filter in RFC 3339 or ISO 8601 format. Use a single datetime or interval (e.g., 2025-01-01/2025-03-01).
+      description: Number of results to return (default 100, max 10000).
       schema:
-        type: string
-        example: 2025-01-01/2025-03-01
-    bbox:
-      name: bbox
-      in: query
-      required: false
-      description: Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form.
-      schema:
-        type: string
-        example: -125,25,-65,50
+        type: integer
+        minimum: 1
+        maximum: 10000
+        default: 100
+        example: 100
     format:
       name: f
       in: query
@@ -142,18 +145,26 @@ components:
         - csv
         default: json
         example: json
-    limit:
-      name: limit
+    bbox:
+      name: bbox
       in: query
       required: false
-      description: Number of results to return (default 100, max 10000).
+      description: Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form.
       schema:
-        type: integer
-        minimum: 1
-        maximum: 10000
-        default: 100
-        example: 100
+        type: string
+        example: -125,25,-65,50
   schemas:
+    TimeSeriesFeature:
+      title: TimeSeriesFeature
+      type: object
+      description: A single time series observation from a USGS monitoring location.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: Feature
+        properties:
+          $ref: '#/components/schemas/TimeSeriesProperties'
     TimeSeriesProperties:
       title: TimeSeriesProperties
       type: object
@@ -209,17 +220,6 @@ components:
           type: integer
           description: Number of observations returned.
           example: 100
-    TimeSeriesFeature:
-      title: TimeSeriesFeature
-      type: object
-      description: A single time series observation from a USGS monitoring location.
-      properties:
-        type:
-          type: string
-          description: GeoJSON type.
-          example: Feature
-        properties:
-          $ref: '#/components/schemas/TimeSeriesProperties'
     ErrorResponse:
       title: ErrorResponse
       type: object

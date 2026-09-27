@@ -180,14 +180,6 @@ components:
           schema:
             type: string
       description: Forbidden - API key is missing or not authorized for this resource.
-    '200':
-      description: successful operation
-    default:
-      content:
-        application/json:
-          schema:
-            $ref: https://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/schemas/exception.yaml
-      description: Unexpected error
     TooManyRequests429:
       content:
         application/json:
@@ -237,22 +229,14 @@ components:
           schema:
             type: string
       description: Too Many Requests - Rate limit exceeded.
-  schemas:
-    Error:
-      properties:
-        error:
-          properties:
-            code:
-              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
-              type: string
-            message:
-              description: Error message
-              type: string
-          required:
-          - code
-          - message
-          type: object
-      type: object
+    '200':
+      description: successful operation
+    default:
+      content:
+        application/json:
+          schema:
+            $ref: https://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/schemas/exception.yaml
+      description: Unexpected error
   parameters:
     lang:
       description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
@@ -279,6 +263,22 @@ components:
         - csv
         type: string
       style: form
+  schemas:
+    Error:
+      properties:
+        error:
+          properties:
+            code:
+              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
+              type: string
+            message:
+              description: Error message
+              type: string
+          required:
+          - code
+          - message
+          type: object
+      type: object
   securitySchemes:
     ApiKeyHeader:
       description: Providing your API key gives you higher rate limits when querying our APIs. You can obtain an API key at https://api.waterdata.usgs.gov/signup

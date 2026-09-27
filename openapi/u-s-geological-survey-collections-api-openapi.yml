@@ -85,16 +85,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CollectionsList:
-      title: CollectionsList
-      type: object
-      description: List of available OGC API collections.
-      properties:
-        collections:
-          type: array
-          description: Array of collection metadata objects.
-          items:
-            $ref: '#/components/schemas/Collection'
     LandingPage:
       title: LandingPage
       type: object
@@ -111,27 +101,6 @@ components:
         links:
           type: array
           description: Navigation links.
-          items:
-            $ref: '#/components/schemas/Link'
-    Collection:
-      title: Collection
-      type: object
-      description: Metadata for an OGC API collection.
-      properties:
-        id:
-          type: string
-          description: Collection identifier.
-          example: monitoring-locations
-        title:
-          type: string
-          description: Human-readable collection title.
-          example: Monitoring Locations
-        description:
-          type: string
-          description: Description of the collection.
-          example: USGS water monitoring sites.
-        links:
-          type: array
           items:
             $ref: '#/components/schemas/Link'
     Link:
@@ -155,6 +124,37 @@ components:
           type: string
           description: Human-readable link title.
           example: This document
+    Collection:
+      title: Collection
+      type: object
+      description: Metadata for an OGC API collection.
+      properties:
+        id:
+          type: string
+          description: Collection identifier.
+          example: monitoring-locations
+        title:
+          type: string
+          description: Human-readable collection title.
+          example: Monitoring Locations
+        description:
+          type: string
+          description: Description of the collection.
+          example: USGS water monitoring sites.
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    CollectionsList:
+      title: CollectionsList
+      type: object
+      description: List of available OGC API collections.
+      properties:
+        collections:
+          type: array
+          description: Array of collection metadata objects.
+          items:
+            $ref: '#/components/schemas/Collection'
   parameters:
     format:
       name: f

@@ -965,6 +965,36 @@ paths:
       url: https://api.waterdata.usgs.gov/ogcapi/v0
 components:
   parameters:
+    lang:
+      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: en-US
+        enum:
+        - en-US
+        type: string
+    bbox:
+      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
+      explode: false
+      in: query
+      name: bbox
+      required: false
+      schema:
+        items:
+          type: number
+        maxItems: 6
+        minItems: 4
+        type: array
+      style: form
+    filter:
+      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
+      in: query
+      name: filter
+      required: false
+      schema:
+        type: string
     offset:
       description: The optional offset parameter indicates the index within the result set from which the server shall begin presenting results in the response document.  The first element has an index of 0 (default).
       explode: false
@@ -976,23 +1006,26 @@ components:
         minimum: 0
         type: integer
       style: form
-    filter:
-      description: "CQL Text filter expression.  CQL JSON cannot be used here, only in the body. \nSee also: https://docs.pygeoapi.io/en/latest/cql.html \n\nExample: time_series_id IN ('64ee32f5350a4ec4967435dcd2e364ea', '3e55d9c2d8a54bec9ca5e292b07d5a96')"
+    bbox-crs:
+      description: Indicates the coordinate reference system for the given bbox coordinates.
+      explode: false
       in: query
-      name: filter
+      name: bbox-crs
       required: false
       schema:
+        format: uri
         type: string
-    lang:
-      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      style: form
+    q:
+      description: "Full-text search across the most relevant text fields for this collection (e.g. site name, identifier, number, state, county, and site type).\n\nMatching rules:\n\n  - Case-insensitive, with prefix matching (e.g. `poud` matches `POUDRE`).\n  - Words separated by spaces are AND'd together (all must match).\n  - Terms separated by commas are OR'd together (any may match).\n  - Common abbreviations are expanded, so `river` also matches sites stored as `RV` (and vice versa).\n\nResults are ordered by relevance when `q` is supplied without an explicit `sortby`.\n\nExamples:\n\n  - `q=poudre` — sites whose name/identifier starts with or contains `poudre`\n  - `q=colorado river` — sites matching both `colorado` and `river`/`rv`\n  - `q=poudre,cache creek` — sites matching `poudre` OR (`cache` AND `creek`/`ck`)"
+      explode: false
       in: query
-      name: lang
+      name: q
       required: false
       schema:
-        default: en-US
-        enum:
-        - en-US
+        minLength: 2
         type: string
+      style: form
     f:
       description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
       explode: false
@@ -1008,26 +1041,6 @@ components:
         - csv
         type: string
       style: form
-    bbox-crs:
-      description: Indicates the coordinate reference system for the given bbox coordinates.
-      explode: false
-      in: query
-      name: bbox-crs
-      required: false
-      schema:
-        format: uri
-        type: string
-      style: form
-    skipGeometry:
-      description: This option can be used to skip response geometries for each feature.
-      explode: false
-      in: query
-      name: skipGeometry
-      required: false
-      schema:
-        default: false
-        type: boolean
-      style: form
     crs:
       description: Indicates the coordinate reference system for the results.
       explode: false
@@ -1037,19 +1050,6 @@ components:
       schema:
         format: uri
         type: string
-      style: form
-    bbox:
-      description: Only features that have a geometry that intersects the bounding box are selected.The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth).
-      explode: false
-      in: query
-      name: bbox
-      required: false
-      schema:
-        items:
-          type: number
-        maxItems: 6
-        minItems: 4
-        type: array
       style: form
     wda_sortby:
       description: "Specifies a comma-separated list of property names by which the response shall be sorted.  If the property name is preceded by a plus (+) sign it indicates an ascending sort for that property.  If the property name is preceded by a minus (-) sign it indicates a descending sort for that property.  If the property is not preceded by a plus or minus, then the default sort order implied is ascending (+).  \n\nOnly a single page of data can be returned when specifying sortby. If you need more than a single page of data, don't specify a sortby value and sort the full data set after it's been downloaded."
@@ -1064,15 +1064,15 @@ components:
         minItems: 1
         type: array
       style: form
-    q:
-      description: "Full-text search across the most relevant text fields for this collection (e.g. site name, identifier, number, state, county, and site type).\n\nMatching rules:\n\n  - Case-insensitive, with prefix matching (e.g. `poud` matches `POUDRE`).\n  - Words separated by spaces are AND'd together (all must match).\n  - Terms separated by commas are OR'd together (any may match).\n  - Common abbreviations are expanded, so `river` also matches sites stored as `RV` (and vice versa).\n\nResults are ordered by relevance when `q` is supplied without an explicit `sortby`.\n\nExamples:\n\n  - `q=poudre` — sites whose name/identifier starts with or contains `poudre`\n  - `q=colorado river` — sites matching both `colorado` and `river`/`rv`\n  - `q=poudre,cache creek` — sites matching `poudre` OR (`cache` AND `creek`/`ck`)"
+    skipGeometry:
+      description: This option can be used to skip response geometries for each feature.
       explode: false
       in: query
-      name: q
+      name: skipGeometry
       required: false
       schema:
-        minLength: 2
-        type: string
+        default: false
+        type: boolean
       style: form
     offset_2:
       name: offset
@@ -1084,14 +1084,17 @@ components:
         minimum: 0
         default: 0
         example: 0
-    bbox_2:
-      name: bbox
+    limit:
+      name: limit
       in: query
       required: false
-      description: Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form.
+      description: Number of results to return (default 100, max 10000).
       schema:
-        type: string
-        example: -125,25,-65,50
+        type: integer
+        minimum: 1
+        maximum: 10000
+        default: 100
+        example: 100
     format:
       name: f
       in: query
@@ -1106,18 +1109,57 @@ components:
         - csv
         default: json
         example: json
-    limit:
-      name: limit
+    bbox_2:
+      name: bbox
       in: query
       required: false
-      description: Number of results to return (default 100, max 10000).
+      description: Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form.
       schema:
-        type: integer
-        minimum: 1
-        maximum: 10000
-        default: 100
-        example: 100
+        type: string
+        example: -125,25,-65,50
   schemas:
+    MonitoringLocationsFeatureCollection:
+      properties:
+        features:
+          items:
+            $ref: '#/components/schemas/MonitoringLocationsFeature'
+          type: array
+        links:
+          items:
+            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
+          type: array
+        numberMatched:
+          minimum: 0
+          type: integer
+        numberReturned:
+          minimum: 0
+          type: integer
+        timeStamp:
+          format: date-time
+          type: string
+        type:
+          enum:
+          - FeatureCollection
+          type: string
+      required:
+      - type
+      - features
+      type: object
+    Error:
+      properties:
+        error:
+          properties:
+            code:
+              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
+              type: string
+            message:
+              description: Error message
+              type: string
+          required:
+          - code
+          - message
+          type: object
+      type: object
     queryables:
       properties:
         queryables:
@@ -1488,21 +1530,6 @@ components:
       - type
       - properties
       type: object
-    Error:
-      properties:
-        error:
-          properties:
-            code:
-              description: Error code such as OVER_RATE_LIMIT, see https://api.data.gov/docs/developer-manual/#general-web-service-errors
-              type: string
-            message:
-              description: Error message
-              type: string
-          required:
-          - code
-          - message
-          type: object
-      type: object
     queryable:
       properties:
         description:
@@ -1529,54 +1556,6 @@ components:
       - queryable
       - type
       type: object
-    MonitoringLocationsFeatureCollection:
-      properties:
-        features:
-          items:
-            $ref: '#/components/schemas/MonitoringLocationsFeature'
-          type: array
-        links:
-          items:
-            $ref: https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/link
-          type: array
-        numberMatched:
-          minimum: 0
-          type: integer
-        numberReturned:
-          minimum: 0
-          type: integer
-        timeStamp:
-          format: date-time
-          type: string
-        type:
-          enum:
-          - FeatureCollection
-          type: string
-      required:
-      - type
-      - features
-      type: object
-    MonitoringLocationCollection:
-      title: MonitoringLocationCollection
-      type: object
-      description: GeoJSON FeatureCollection of USGS monitoring locations.
-      properties:
-        type:
-          type: string
-          description: GeoJSON type.
-          example: FeatureCollection
-        features:
-          type: array
-          items:
-            $ref: '#/components/schemas/MonitoringLocationFeature'
-        numberMatched:
-          type: integer
-          description: Total number of matching locations.
-          example: 8423
-        numberReturned:
-          type: integer
-          description: Number of locations returned.
-          example: 100
     MonitoringLocationFeature:
       title: MonitoringLocationFeature
       type: object
@@ -1602,6 +1581,27 @@ components:
               - 37.775
         properties:
           $ref: '#/components/schemas/MonitoringLocationProperties'
+    MonitoringLocationCollection:
+      title: MonitoringLocationCollection
+      type: object
+      description: GeoJSON FeatureCollection of USGS monitoring locations.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: FeatureCollection
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonitoringLocationFeature'
+        numberMatched:
+          type: integer
+          description: Total number of matching locations.
+          example: 8423
+        numberReturned:
+          type: integer
+          description: Number of locations returned.
+          example: 100
     MonitoringLocationProperties:
       title: MonitoringLocationProperties
       type: object
@@ -1657,55 +1657,6 @@ components:
           description: Human-readable error description.
           example: Invalid value for parameter bbox.
   responses:
-    TooManyRequests429:
-      content:
-        application/json:
-          examples:
-            rateLimitExceeded:
-              summary: Rate Limit Exceeded
-              value:
-                error:
-                  code: OVER_RATE_LIMIT
-                  message: You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;OVER_RATE_LIMIT&lt;/code&gt;\n        &lt;message&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
-          schema:
-            properties:
-              response:
-                properties:
-                  error:
-                    properties:
-                      code:
-                        type: string
-                      message:
-                        type: string
-                    required:
-                    - code
-                    - message
-                    type: object
-                required:
-                - error
-                type: object
-            type: object
-        text/csv:
-          examples:
-            rateLimitCsv:
-              summary: Rate Limit Exceeded (CSV)
-              value: 'Error Code,Error Message
-
-                OVER_RATE_LIMIT,You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.'
-          schema:
-            type: string
-        text/html:
-          examples:
-            rateLimitHtml:
-              summary: Rate Limit Exceeded (HTML)
-              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;OVER_RATE_LIMIT&lt;/h1&gt;\n        &lt;p&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
-          schema:
-            type: string
-      description: Too Many Requests - Rate limit exceeded.
     Forbidden403:
       content:
         application/json:
@@ -1887,6 +1838,55 @@ components:
           schema:
             type: string
       description: A single feature from Monitoring locations.
+    TooManyRequests429:
+      content:
+        application/json:
+          examples:
+            rateLimitExceeded:
+              summary: Rate Limit Exceeded
+              value:
+                error:
+                  code: OVER_RATE_LIMIT
+                  message: You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          example: "&lt;response&gt;\n      &lt;error&gt;\n        &lt;code&gt;OVER_RATE_LIMIT&lt;/code&gt;\n        &lt;message&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/message&gt;\n      &lt;/error&gt;\n    &lt;/response&gt;"
+          schema:
+            properties:
+              response:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                    type: object
+                required:
+                - error
+                type: object
+            type: object
+        text/csv:
+          examples:
+            rateLimitCsv:
+              summary: Rate Limit Exceeded (CSV)
+              value: 'Error Code,Error Message
+
+                OVER_RATE_LIMIT,You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.'
+          schema:
+            type: string
+        text/html:
+          examples:
+            rateLimitHtml:
+              summary: Rate Limit Exceeded (HTML)
+              value: "&lt;html&gt;\n      &lt;body&gt;\n        &lt;h1&gt;OVER_RATE_LIMIT&lt;/h1&gt;\n        &lt;p&gt;You have exceeded your rate limit. Make sure you provided your API key from https://api.waterdata.usgs.gov/signup/, then either try again later or contact us at https://waterdata.usgs.gov/questions-comments/?referrerUrl=https://api.waterdata.usgs.gov for assistance.&lt;/p&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;"
+          schema:
+            type: string
+      description: Too Many Requests - Rate limit exceeded.
     Queryables:
       content:
         application/json:

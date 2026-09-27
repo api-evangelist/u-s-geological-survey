@@ -30,6 +30,9 @@ apis:
   name: ScienceBase
   tags:
   - Research Data
+  - Research Repository
+  tags_raw:
+  - Research Data
   - Data Repository
   humanURL: https://www.usgs.gov/tools/sciencebase
   properties:
@@ -1889,7 +1892,7 @@ apis:
     url: https://api.waterdata.usgs.gov/docs/
 name: U.S. Geological Survey
 tags:
-  - Federal-Government
+  - Federal Government
   - Geological
   - Earth Science
   - Natural Resources
@@ -1904,6 +1907,7 @@ tags_raw:
   - Earthquake
   - Water
   - Hydrology
+  - Federal-Government
 kind: contract
 deliveryModel:
   model: unknown
