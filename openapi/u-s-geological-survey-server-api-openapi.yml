@@ -131,6 +131,8 @@ paths:
       - Server
 components:
   responses:
+    '200':
+      description: successful operation
     Forbidden403:
       content:
         application/json:
@@ -229,8 +231,6 @@ components:
           schema:
             type: string
       description: Too Many Requests - Rate limit exceeded.
-    '200':
-      description: successful operation
     default:
       content:
         application/json:
@@ -238,16 +238,6 @@ components:
             $ref: https://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/schemas/exception.yaml
       description: Unexpected error
   parameters:
-    lang:
-      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
-      in: query
-      name: lang
-      required: false
-      schema:
-        default: en-US
-        enum:
-        - en-US
-        type: string
     f:
       description: The optional f parameter indicates the output format which the server shall provide as part of the response document.  The default format is GeoJSON.  CSV is also available.
       explode: false
@@ -263,6 +253,16 @@ components:
         - csv
         type: string
       style: form
+    lang:
+      description: The optional lang parameter instructs the server return a response in a certain language, if supported.  If the language is not among the available values, the Accept-Language header language will be used if it is supported. If the header is missing, the default server language is used. Note that providers may only support a single language (or often no language at all), that can be different from the server language.  Language strings can be written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: en-US
+        enum:
+        - en-US
+        type: string
   schemas:
     Error:
       properties:

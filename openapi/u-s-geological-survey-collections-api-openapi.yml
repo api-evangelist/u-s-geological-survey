@@ -85,24 +85,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    LandingPage:
-      title: LandingPage
-      type: object
-      description: OGC API landing page with navigation links.
-      properties:
-        title:
-          type: string
-          description: API title.
-          example: USGS Water Data OGC APIs
-        description:
-          type: string
-          description: API description.
-          example: Access to USGS water data using OGC API standards.
-        links:
-          type: array
-          description: Navigation links.
-          items:
-            $ref: '#/components/schemas/Link'
     Link:
       title: Link
       type: object
@@ -155,6 +137,24 @@ components:
           description: Array of collection metadata objects.
           items:
             $ref: '#/components/schemas/Collection'
+    LandingPage:
+      title: LandingPage
+      type: object
+      description: OGC API landing page with navigation links.
+      properties:
+        title:
+          type: string
+          description: API title.
+          example: USGS Water Data OGC APIs
+        description:
+          type: string
+          description: API description.
+          example: Access to USGS water data using OGC API standards.
+        links:
+          type: array
+          description: Navigation links.
+          items:
+            $ref: '#/components/schemas/Link'
   parameters:
     format:
       name: f

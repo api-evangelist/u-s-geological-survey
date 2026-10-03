@@ -101,15 +101,95 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  schemas:
+    TimeSeriesProperties:
+      title: TimeSeriesProperties
+      type: object
+      description: Properties of a single water data observation.
+      properties:
+        monitoringLocationIdentifier:
+          type: string
+          description: Monitoring location identifier.
+          example: USGS-11169025
+        observedPropertyId:
+          type: string
+          description: USGS parameter code for the measured property.
+          example: '00060'
+        observedPropertyName:
+          type: string
+          description: Human-readable parameter name.
+          example: Streamflow, ft³/s
+        phenomenonTime:
+          type: string
+          format: date-time
+          description: ISO 8601 datetime when the measurement was taken.
+          example: '2025-03-15T14:00:00Z'
+        result:
+          type: number
+          description: Measured value.
+          example: 450.0
+        resultUnitCode:
+          type: string
+          description: Unit of measurement.
+          example: ft3/s
+        resultQualityCode:
+          type: string
+          description: 'Quality code: P (provisional), A (approved), e (estimated).'
+          example: P
+    TimeSeriesFeature:
+      title: TimeSeriesFeature
+      type: object
+      description: A single time series observation from a USGS monitoring location.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: Feature
+        properties:
+          $ref: '#/components/schemas/TimeSeriesProperties'
+    TimeSeriesCollection:
+      title: TimeSeriesCollection
+      type: object
+      description: Collection of USGS water data time series observations.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: FeatureCollection
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSeriesFeature'
+        numberMatched:
+          type: integer
+          description: Total number of matching observations.
+          example: 8760
+        numberReturned:
+          type: integer
+          description: Number of observations returned.
+          example: 100
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: Standard OGC API error response.
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: InvalidParameter
+        description:
+          type: string
+          description: Human-readable error description.
+          example: Invalid value for parameter bbox.
   parameters:
-    time:
-      name: time
+    bbox:
+      name: bbox
       in: query
       required: false
-      description: Temporal filter in RFC 3339 or ISO 8601 format. Use a single datetime or interval (e.g., 2025-01-01/2025-03-01).
+      description: Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form.
       schema:
         type: string
-        example: 2025-01-01/2025-03-01
+        example: -125,25,-65,50
     offset:
       name: offset
       in: query
@@ -145,94 +225,14 @@ components:
         - csv
         default: json
         example: json
-    bbox:
-      name: bbox
+    time:
+      name: time
       in: query
       required: false
-      description: Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form.
+      description: Temporal filter in RFC 3339 or ISO 8601 format. Use a single datetime or interval (e.g., 2025-01-01/2025-03-01).
       schema:
         type: string
-        example: -125,25,-65,50
-  schemas:
-    TimeSeriesFeature:
-      title: TimeSeriesFeature
-      type: object
-      description: A single time series observation from a USGS monitoring location.
-      properties:
-        type:
-          type: string
-          description: GeoJSON type.
-          example: Feature
-        properties:
-          $ref: '#/components/schemas/TimeSeriesProperties'
-    TimeSeriesProperties:
-      title: TimeSeriesProperties
-      type: object
-      description: Properties of a single water data observation.
-      properties:
-        monitoringLocationIdentifier:
-          type: string
-          description: Monitoring location identifier.
-          example: USGS-11169025
-        observedPropertyId:
-          type: string
-          description: USGS parameter code for the measured property.
-          example: '00060'
-        observedPropertyName:
-          type: string
-          description: Human-readable parameter name.
-          example: Streamflow, ft³/s
-        phenomenonTime:
-          type: string
-          format: date-time
-          description: ISO 8601 datetime when the measurement was taken.
-          example: '2025-03-15T14:00:00Z'
-        result:
-          type: number
-          description: Measured value.
-          example: 450.0
-        resultUnitCode:
-          type: string
-          description: Unit of measurement.
-          example: ft3/s
-        resultQualityCode:
-          type: string
-          description: 'Quality code: P (provisional), A (approved), e (estimated).'
-          example: P
-    TimeSeriesCollection:
-      title: TimeSeriesCollection
-      type: object
-      description: Collection of USGS water data time series observations.
-      properties:
-        type:
-          type: string
-          description: GeoJSON type.
-          example: FeatureCollection
-        features:
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeSeriesFeature'
-        numberMatched:
-          type: integer
-          description: Total number of matching observations.
-          example: 8760
-        numberReturned:
-          type: integer
-          description: Number of observations returned.
-          example: 100
-    ErrorResponse:
-      title: ErrorResponse
-      type: object
-      description: Standard OGC API error response.
-      properties:
-        code:
-          type: string
-          description: Error code.
-          example: InvalidParameter
-        description:
-          type: string
-          description: Human-readable error description.
-          example: Invalid value for parameter bbox.
+        example: 2025-01-01/2025-03-01
   securitySchemes:
     ApiKeyQuery:
       type: apiKey
