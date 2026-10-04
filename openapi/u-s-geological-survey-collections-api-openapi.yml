@@ -127,16 +127,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Link'
-    CollectionsList:
-      title: CollectionsList
-      type: object
-      description: List of available OGC API collections.
-      properties:
-        collections:
-          type: array
-          description: Array of collection metadata objects.
-          items:
-            $ref: '#/components/schemas/Collection'
     LandingPage:
       title: LandingPage
       type: object
@@ -155,6 +145,16 @@ components:
           description: Navigation links.
           items:
             $ref: '#/components/schemas/Link'
+    CollectionsList:
+      title: CollectionsList
+      type: object
+      description: List of available OGC API collections.
+      properties:
+        collections:
+          type: array
+          description: Array of collection metadata objects.
+          items:
+            $ref: '#/components/schemas/Collection'
   parameters:
     format:
       name: f

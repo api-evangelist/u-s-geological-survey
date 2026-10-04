@@ -101,7 +101,104 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    bbox:
+      name: bbox
+      in: query
+      required: false
+      description: Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form.
+      schema:
+        type: string
+        example: -125,25,-65,50
+    time:
+      name: time
+      in: query
+      required: false
+      description: Temporal filter in RFC 3339 or ISO 8601 format. Use a single datetime or interval (e.g., 2025-01-01/2025-03-01).
+      schema:
+        type: string
+        example: 2025-01-01/2025-03-01
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format (json, html, jsonld, csv).
+      schema:
+        type: string
+        enum:
+        - json
+        - html
+        - jsonld
+        - csv
+        default: json
+        example: json
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Number of results to return (default 100, max 10000).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 10000
+        default: 100
+        example: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: Starting offset for pagination.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+        example: 0
   schemas:
+    TimeSeriesCollection:
+      title: TimeSeriesCollection
+      type: object
+      description: Collection of USGS water data time series observations.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: FeatureCollection
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSeriesFeature'
+        numberMatched:
+          type: integer
+          description: Total number of matching observations.
+          example: 8760
+        numberReturned:
+          type: integer
+          description: Number of observations returned.
+          example: 100
+    TimeSeriesFeature:
+      title: TimeSeriesFeature
+      type: object
+      description: A single time series observation from a USGS monitoring location.
+      properties:
+        type:
+          type: string
+          description: GeoJSON type.
+          example: Feature
+        properties:
+          $ref: '#/components/schemas/TimeSeriesProperties'
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: Standard OGC API error response.
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: InvalidParameter
+        description:
+          type: string
+          description: Human-readable error description.
+          example: Invalid value for parameter bbox.
     TimeSeriesProperties:
       title: TimeSeriesProperties
       type: object
@@ -136,103 +233,6 @@ components:
           type: string
           description: 'Quality code: P (provisional), A (approved), e (estimated).'
           example: P
-    TimeSeriesFeature:
-      title: TimeSeriesFeature
-      type: object
-      description: A single time series observation from a USGS monitoring location.
-      properties:
-        type:
-          type: string
-          description: GeoJSON type.
-          example: Feature
-        properties:
-          $ref: '#/components/schemas/TimeSeriesProperties'
-    TimeSeriesCollection:
-      title: TimeSeriesCollection
-      type: object
-      description: Collection of USGS water data time series observations.
-      properties:
-        type:
-          type: string
-          description: GeoJSON type.
-          example: FeatureCollection
-        features:
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeSeriesFeature'
-        numberMatched:
-          type: integer
-          description: Total number of matching observations.
-          example: 8760
-        numberReturned:
-          type: integer
-          description: Number of observations returned.
-          example: 100
-    ErrorResponse:
-      title: ErrorResponse
-      type: object
-      description: Standard OGC API error response.
-      properties:
-        code:
-          type: string
-          description: Error code.
-          example: InvalidParameter
-        description:
-          type: string
-          description: Human-readable error description.
-          example: Invalid value for parameter bbox.
-  parameters:
-    bbox:
-      name: bbox
-      in: query
-      required: false
-      description: Bounding box spatial filter as [min_lon,min_lat,max_lon,max_lat]. Optionally include min_elev and max_elev for 6-coordinate form.
-      schema:
-        type: string
-        example: -125,25,-65,50
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: Starting offset for pagination.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-        example: 0
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: Number of results to return (default 100, max 10000).
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 10000
-        default: 100
-        example: 100
-    format:
-      name: f
-      in: query
-      required: false
-      description: Output format (json, html, jsonld, csv).
-      schema:
-        type: string
-        enum:
-        - json
-        - html
-        - jsonld
-        - csv
-        default: json
-        example: json
-    time:
-      name: time
-      in: query
-      required: false
-      description: Temporal filter in RFC 3339 or ISO 8601 format. Use a single datetime or interval (e.g., 2025-01-01/2025-03-01).
-      schema:
-        type: string
-        example: 2025-01-01/2025-03-01
   securitySchemes:
     ApiKeyQuery:
       type: apiKey

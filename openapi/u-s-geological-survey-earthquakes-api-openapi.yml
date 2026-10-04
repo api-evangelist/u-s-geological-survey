@@ -494,67 +494,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    EarthquakeFeatureCollection:
-      title: EarthquakeFeatureCollection
-      type: object
-      description: GeoJSON FeatureCollection containing earthquake event records from the USGS ComCat earthquake catalog.
-      properties:
-        type:
-          type: string
-          description: GeoJSON object type (always FeatureCollection).
-          example: FeatureCollection
-        metadata:
-          $ref: '#/components/schemas/EarthquakeMetadata'
-        features:
-          type: array
-          description: Array of earthquake event GeoJSON Features.
-          items:
-            $ref: '#/components/schemas/EarthquakeFeature'
-        bbox:
-          type: array
-          description: Bounding box for the collection [min_lon, min_lat, max_lon, max_lat].
-          items:
-            type: number
-          example:
-          - -180.0
-          - -90.0
-          - 180.0
-          - 90.0
-    EarthquakeGeometry:
-      title: EarthquakeGeometry
-      type: object
-      description: GeoJSON Point geometry for the earthquake epicenter location.
-      properties:
-        type:
-          type: string
-          description: GeoJSON geometry type (always Point).
-          example: Point
-        coordinates:
-          type: array
-          description: Array of [longitude, latitude, depth_km]. Depth is in kilometers below the surface (positive = deeper).
-          items:
-            type: number
-          example:
-          - -122.0
-          - 37.75
-          - 10.5
-    EarthquakeFeature:
-      title: EarthquakeFeature
-      type: object
-      description: A GeoJSON Feature representing a single earthquake event.
-      properties:
-        type:
-          type: string
-          description: GeoJSON object type (always Feature).
-          example: Feature
-        properties:
-          $ref: '#/components/schemas/EarthquakeProperties'
-        geometry:
-          $ref: '#/components/schemas/EarthquakeGeometry'
-        id:
-          type: string
-          description: Unique USGS event identifier.
-          example: us7000n5no
     EarthquakeProperties:
       title: EarthquakeProperties
       type: object
@@ -648,6 +587,32 @@ components:
           type: integer
           description: Number of seismic stations used to determine earthquake location.
           example: 45
+    EarthquakeFeatureCollection:
+      title: EarthquakeFeatureCollection
+      type: object
+      description: GeoJSON FeatureCollection containing earthquake event records from the USGS ComCat earthquake catalog.
+      properties:
+        type:
+          type: string
+          description: GeoJSON object type (always FeatureCollection).
+          example: FeatureCollection
+        metadata:
+          $ref: '#/components/schemas/EarthquakeMetadata'
+        features:
+          type: array
+          description: Array of earthquake event GeoJSON Features.
+          items:
+            $ref: '#/components/schemas/EarthquakeFeature'
+        bbox:
+          type: array
+          description: Bounding box for the collection [min_lon, min_lat, max_lon, max_lat].
+          items:
+            type: number
+          example:
+          - -180.0
+          - -90.0
+          - 180.0
+          - 90.0
     CountResponse:
       title: CountResponse
       type: object
@@ -661,6 +626,41 @@ components:
           type: integer
           description: Maximum allowed events per query.
           example: 20000
+    EarthquakeGeometry:
+      title: EarthquakeGeometry
+      type: object
+      description: GeoJSON Point geometry for the earthquake epicenter location.
+      properties:
+        type:
+          type: string
+          description: GeoJSON geometry type (always Point).
+          example: Point
+        coordinates:
+          type: array
+          description: Array of [longitude, latitude, depth_km]. Depth is in kilometers below the surface (positive = deeper).
+          items:
+            type: number
+          example:
+          - -122.0
+          - 37.75
+          - 10.5
+    EarthquakeFeature:
+      title: EarthquakeFeature
+      type: object
+      description: A GeoJSON Feature representing a single earthquake event.
+      properties:
+        type:
+          type: string
+          description: GeoJSON object type (always Feature).
+          example: Feature
+        properties:
+          $ref: '#/components/schemas/EarthquakeProperties'
+        geometry:
+          $ref: '#/components/schemas/EarthquakeGeometry'
+        id:
+          type: string
+          description: Unique USGS event identifier.
+          example: us7000n5no
     EarthquakeMetadata:
       title: EarthquakeMetadata
       type: object
