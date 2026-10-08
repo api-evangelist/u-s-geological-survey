@@ -1937,6 +1937,12 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/u-s-geological-survey.png
 access: 3rd-Party
 common:
+  - type: Plans
+    url: plans/u-s-geological-survey-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/u-s-geological-survey-rate-limits.yml
+  - type: FinOps
+    url: finops/u-s-geological-survey-finops.yml
   - type: AgenticAccess
     url: agentic-access/u-s-geological-survey-agentic-access.yml
   - type: VulnerabilityDisclosure
