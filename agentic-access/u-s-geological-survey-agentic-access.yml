@@ -1,4 +1,4 @@
-generated: '2026-09-16'
+generated: '2026-09-23'
 method: generated
 source: openapi/u-s-geological-survey-agency-codes-api-openapi.yml, openapi/u-s-geological-survey-altitude-datums-api-openapi.yml,
   openapi/u-s-geological-survey-aquifer-codes-api-openapi.yml, openapi/u-s-geological-survey-aquifer-types-api-openapi.yml,
@@ -27,11 +27,9 @@ description: Recommended x-agentic-access execution contracts, classified heuris
 summary:
   operations: 301
   by_action_class:
-    connected: 265
-    acting: 36
+    connected: 301
   by_consequence:
-    read: 265
-    write: 36
+    read: 301
   human_in_the_loop_required: 0
 operations:
 - path: /collections/agency-codes
@@ -68,18 +66,12 @@ operations:
   method: post
   operationId: getCQL2Agency-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/agency-codes/items/{featureId}
   method: get
   operationId: getAgency-codesFeature
@@ -154,18 +146,12 @@ operations:
   method: post
   operationId: getCQL2Altitude-datumsFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/altitude-datums/items/{featureId}
   method: get
   operationId: getAltitude-datumsFeature
@@ -240,18 +226,12 @@ operations:
   method: post
   operationId: getCQL2Aquifer-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/aquifer-codes/items/{featureId}
   method: get
   operationId: getAquifer-codesFeature
@@ -326,18 +306,12 @@ operations:
   method: post
   operationId: getCQL2Aquifer-typesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/aquifer-types/items/{featureId}
   method: get
   operationId: getAquifer-typesFeature
@@ -442,18 +416,12 @@ operations:
   method: post
   operationId: getCQL2Channel-measurementsFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/channel-measurements/items/{featureId}
   method: get
   operationId: getChannel-measurementsFeature
@@ -528,18 +496,12 @@ operations:
   method: post
   operationId: getCQL2CitationsFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/citations/items/{featureId}
   method: get
   operationId: getCitationsFeature
@@ -634,18 +596,12 @@ operations:
   method: post
   operationId: getCQL2Combined-metadataFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/combined-metadata/items/{featureId}
   method: get
   operationId: getCombined-metadataFeature
@@ -720,18 +676,12 @@ operations:
   method: post
   operationId: getCQL2ContinuousFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/continuous/items/{featureId}
   method: get
   operationId: getContinuousFeature
@@ -806,18 +756,12 @@ operations:
   method: post
   operationId: getCQL2Coordinate-accuracy-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/coordinate-accuracy-codes/items/{featureId}
   method: get
   operationId: getCoordinate-accuracy-codesFeature
@@ -892,18 +836,12 @@ operations:
   method: post
   operationId: getCQL2Coordinate-datum-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/coordinate-datum-codes/items/{featureId}
   method: get
   operationId: getCoordinate-datum-codesFeature
@@ -978,18 +916,12 @@ operations:
   method: post
   operationId: getCQL2Coordinate-method-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/coordinate-method-codes/items/{featureId}
   method: get
   operationId: getCoordinate-method-codesFeature
@@ -1064,18 +996,12 @@ operations:
   method: post
   operationId: getCQL2CountiesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/counties/items/{featureId}
   method: get
   operationId: getCountiesFeature
@@ -1150,18 +1076,12 @@ operations:
   method: post
   operationId: getCQL2CountriesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/countries/items/{featureId}
   method: get
   operationId: getCountriesFeature
@@ -1236,18 +1156,12 @@ operations:
   method: post
   operationId: getCQL2DailyFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/daily/items/{featureId}
   method: get
   operationId: getDailyFeature
@@ -1342,18 +1256,12 @@ operations:
   method: post
   operationId: getCQL2Field-measurementsFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/field-measurements/items/{featureId}
   method: get
   operationId: getField-measurementsFeature
@@ -1428,18 +1336,12 @@ operations:
   method: post
   operationId: getCQL2Field-measurements-metadataFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/field-measurements-metadata/items/{featureId}
   method: get
   operationId: getField-measurements-metadataFeature
@@ -1514,18 +1416,12 @@ operations:
   method: post
   operationId: getCQL2Hydrologic-unit-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/hydrologic-unit-codes/items/{featureId}
   method: get
   operationId: getHydrologic-unit-codesFeature
@@ -1600,18 +1496,12 @@ operations:
   method: post
   operationId: getCQL2Latest-continuousFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/latest-continuous/items/{featureId}
   method: get
   operationId: getLatest-continuousFeature
@@ -1686,18 +1576,12 @@ operations:
   method: post
   operationId: getCQL2Latest-dailyFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/latest-daily/items/{featureId}
   method: get
   operationId: getLatest-dailyFeature
@@ -1772,18 +1656,12 @@ operations:
   method: post
   operationId: getCQL2Latest-field-measurementsFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/latest-field-measurements/items/{featureId}
   method: get
   operationId: getLatest-field-measurementsFeature
@@ -1858,18 +1736,12 @@ operations:
   method: post
   operationId: getCQL2Medium-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/medium-codes/items/{featureId}
   method: get
   operationId: getMedium-codesFeature
@@ -1944,18 +1816,12 @@ operations:
   method: post
   operationId: getCQL2Method-categoriesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/method-categories/items/{featureId}
   method: get
   operationId: getMethod-categoriesFeature
@@ -2030,18 +1896,12 @@ operations:
   method: post
   operationId: getCQL2Method-citationsFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/method-citations/items/{featureId}
   method: get
   operationId: getMethod-citationsFeature
@@ -2116,18 +1976,12 @@ operations:
   method: post
   operationId: getCQL2MethodsFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/methods/items/{featureId}
   method: get
   operationId: getMethodsFeature
@@ -2202,18 +2056,12 @@ operations:
   method: post
   operationId: getCQL2Monitoring-locationsFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/monitoring-locations/items/{featureId}
   method: get
   operationId: getMonitoring-locationsFeature
@@ -2288,18 +2136,12 @@ operations:
   method: post
   operationId: getCQL2National-aquifer-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/national-aquifer-codes/items/{featureId}
   method: get
   operationId: getNational-aquifer-codesFeature
@@ -2374,18 +2216,12 @@ operations:
   method: post
   operationId: getCQL2Parameter-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/parameter-codes/items/{featureId}
   method: get
   operationId: getParameter-codesFeature
@@ -2460,18 +2296,12 @@ operations:
   method: post
   operationId: getCQL2PeaksFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/peaks/items/{featureId}
   method: get
   operationId: getPeaksFeature
@@ -2556,18 +2386,12 @@ operations:
   method: post
   operationId: getCQL2Reliability-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/reliability-codes/items/{featureId}
   method: get
   operationId: getReliability-codesFeature
@@ -2682,18 +2506,12 @@ operations:
   method: post
   operationId: getCQL2Site-typesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/site-types/items/{featureId}
   method: get
   operationId: getSite-typesFeature
@@ -2768,18 +2586,12 @@ operations:
   method: post
   operationId: getCQL2StatesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/states/items/{featureId}
   method: get
   operationId: getStatesFeature
@@ -2854,18 +2666,12 @@ operations:
   method: post
   operationId: getCQL2Statistic-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/statistic-codes/items/{featureId}
   method: get
   operationId: getStatistic-codesFeature
@@ -2950,18 +2756,12 @@ operations:
   method: post
   operationId: getCQL2Time-series-metadataFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/time-series-metadata/items/{featureId}
   method: get
   operationId: getTime-series-metadataFeature
@@ -3036,18 +2836,12 @@ operations:
   method: post
   operationId: getCQL2Time-series-revisionsFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/time-series-revisions/items/{featureId}
   method: get
   operationId: getTime-series-revisionsFeature
@@ -3122,18 +2916,12 @@ operations:
   method: post
   operationId: getCQL2Time-zone-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/time-zone-codes/items/{featureId}
   method: get
   operationId: getTime-zone-codesFeature
@@ -3208,18 +2996,12 @@ operations:
   method: post
   operationId: getCQL2Topographic-codesFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /collections/topographic-codes/items/{featureId}
   method: get
   operationId: getTopographic-codesFeature
