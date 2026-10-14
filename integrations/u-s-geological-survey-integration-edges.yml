@@ -1,0 +1,19 @@
+edges:
+- partner_name: Open Geospatial Consortium
+  partner: ogc
+  detected_by: sweep-geospatial.py
+  first_seen: '2026-10-14'
+  partner_match: shape-anchor
+  type: contract
+  direction: provider-built
+  channel: provider-built
+  relationship: compatible
+  shape: ogc-api-features
+  evidence_kind: own-contract
+  evidence: https://github.com/api-evangelist/u-s-geological-survey/blob/main/openapi/u-s-geological-survey-collections-api-openapi.yml#L4
+  degree: declared-unqualified
+  quote: 'description: The USGS Water Data APIs provide OGC-compliant interfaces to USGS water data, including continuous
+    sensor measurements, daily values, discrete field measurements, and metadata about monitoring locations. These
+    APIs implement th'
+generated: '2026-10-14'
+method: searched
