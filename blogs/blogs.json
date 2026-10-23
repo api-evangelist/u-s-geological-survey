@@ -3,10 +3,13 @@
   "feeds": [
     {
       "source": "https://www.usgs.gov/news/news-releases/all-news-releases",
-      "error": "TimeoutError"
+      "feed_url": "https://www.usgs.gov/news/news-releases/all-news-releases",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-10-10T13:15:00Z",
+  "fetched": "2026-10-17T14:53:57Z",
   "post_count": 5,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
