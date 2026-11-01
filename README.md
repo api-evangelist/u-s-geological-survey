@@ -1,4 +1,4 @@
-# U.S. Geological Survey (u-s-geological-survey)
+# U.S. Geological Survey
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,205 +66,257 @@
 
 The U.S. Geological Survey (USGS) is a scientific agency of the U.S. government that conducts research and provides data on the natural resources and hazards of the United States. The USGS is known for its work in mapping and monitoring earthquakes, volcanoes, and landslides to help mitigate risks and protect communities. USGS also studies water resources including streamflow, groundwater, and water quality through a nationwide network of monitoring stations. Their public APIs provide programmatic access to real-time earthquake data, water monitoring observations, seismic design parameters, and geospatial data products.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/u-s-geological-survey/refs/heads/main/apis.yml)
+**Areas:** Federal Government · Geological · Earth Science · Natural Resources · Earthquake · Water · Hydrology
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## U.S. Geological Survey on APIs.io
 
-## Tags:
+Everything profiled for U.S. Geological Survey is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/u-s-geological-survey/](https://apis.io/providers/u-s-geological-survey/)** — or go straight to one of the APIs or properties below.
 
- - Federal Government, Geological, Earth Science, Natural Resources, Earthquake, Water, Hydrology
+### APIs (47)
 
-## Timestamps
+- [Asset Identifier Service (AIS)](https://apis.io/apis/u-s-geological-survey/asset-identifier-service-ais/) — The USGS Asset Identifier Service (AIS) allows USGS personnel to reserve, register, publish, and manage USGS persistent identifiers to make research more…
+- [Seismic Design Web Service](https://apis.io/apis/u-s-geological-survey/seismic-design-web-service/) — Web services produced by the U.S. Geological Survey for calculating parameter values from various seismic design reference documents for engineering and…
+- [ScienceBase](https://apis.io/apis/u-s-geological-survey/sciencebase/) — ScienceBase is a USGS Trusted Digital Repository that provides permission-controlled and public access to scientific data products through a REST API…
+- [StreamStats Web Services](https://apis.io/apis/u-s-geological-survey/streamstats-web-services/) — The StreamStats Web Services provide HTTP-accessible hydrological analysis services for delineating drainage areas, estimating peak flows, and computing…
+- [USGS Water Services (Legacy)](https://apis.io/apis/u-s-geological-survey/usgs-water-services/) — The original USGS NWIS water services API providing streamflow, groundwater, water quality, and site information via REST protocol in XML and other media…
+- [U.S. Geological Survey Catalog API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-catalog-api/) — Discover available catalogs, contributors, and supported parameter values.
+- [U.S. Geological Survey Earthquakes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-earthquakes-api/) — Query and retrieve earthquake event data from the USGS earthquake catalog.
+- [U.S. Geological Survey Monitoring Locations API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-monitoring-locations-api/) — USGS stream gages, groundwater wells, and other water monitoring stations.
+- [U.S. Geological Survey Reference Data API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-reference-data-api/) — Reference code tables including agency codes, datum types, and aquifer data.
+- [U.S. Geological Survey Time Series Data API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-time-series-data-api/) — Continuous and daily value water data from USGS monitoring locations.
+- [U.S. Geological Survey Agency Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-agency-codes-api/) — Code identifying the agency or organization used for site information, data sources, and permitting agencies. Agency codes are fixed values assigned by the…
+- [U.S. Geological Survey Altitude Datums API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-altitude-datums-api/) — The recommended vertical datum is NAVD88 (North American Vertical Datum of 1988) where applicable as stated in Office of Information Technical Memo 2002.01.…
+- [U.S. Geological Survey Aquifer Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-aquifer-codes-api/) — Local aquifers in USGS data are identified by an aquifer name and geohydrologic unit code (a three-digit number related to the age of the formation,…
+- [U.S. Geological Survey Aquifer Types API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-aquifer-types-api/) — Groundwater occurs in aquifers under two different conditions. Where water only partly fills an aquifer, the upper surface is free to rise and decline.…
+- [U.S. Geological Survey Channel Measurements API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-channel-measurements-api/) — Channel measurements taken as part of streamflow field measurements.
+- [U.S. Geological Survey Citations API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-citations-api/) — Citations associated with water measurement methods.
+- [U.S. Geological Survey Combined Metadata API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-combined-metadata-api/) — This endpoint combines metadata from timeseries and field measurements collections by site.
+- [U.S. Geological Survey Continuous API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-continuous-api/) — Continuous data are collected via automated sensors installed at a monitoring location. They are collected at a high frequency and often at a fixed…
+- [U.S. Geological Survey Coordinate Accuracy Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-coordinate-accuracy-codes-api/) — Appropriate code on the schedule to indicate the accuracy of the latitude-longitude values.
+- [U.S. Geological Survey Coordinate Datum Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-coordinate-datum-codes-api/) — Horizontal datum code for the latitude/longitude coordinates. There are currently more than 300 horizontal datums available for entry.
+- [U.S. Geological Survey Coordinate Method Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-coordinate-method-codes-api/) — Methods used to determine latitude-longitude values.
+- [U.S. Geological Survey Counties API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-counties-api/) — The name of the county or county equivalent (parish, borough, planning reagion, etc.) in which the site is located. List includes Census Bureau FIPS county…
+- [U.S. Geological Survey Countries API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-countries-api/) — FIPS country codes and names.
+- [U.S. Geological Survey Daily API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-daily-api/) — Daily data provide one data value to represent water conditions for the day. Throughout much of the history of the USGS, the primary water data available…
+- [U.S. Geological Survey Field Measurements API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-field-measurements-api/) — Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage…
+- [U.S. Geological Survey Field Measurements Metadata API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-field-measurements-metadata-api/) — This endpoint provides metadata about field measurement collections, including when the earliest and most recent observations for a parameter occurred at a…
+- [U.S. Geological Survey Hydrologic Unit Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-hydrologic-unit-codes-api/) — Hydrologic units are geographic areas representing part or all of a surface drainage basin or distinct hydrologic feature identified by a unique number…
+- [U.S. Geological Survey Latest Continuous API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-latest-continuous-api/) — This endpoint provides the most recent observation for each time series of continuous data. Continuous data are collected via automated sensors installed at…
+- [U.S. Geological Survey Latest Daily API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-latest-daily-api/) — Daily data provide one data value to represent water conditions for the day. Throughout much of the history of the USGS, the primary water data available…
+- [U.S. Geological Survey Latest Field Measurements API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-latest-field-measurements-api/) — Field measurements are physically measured values collected during a visit to the monitoring location. Field measurements consist of measurements of gage…
+- [U.S. Geological Survey Medium Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-medium-codes-api/) — Medium refers to the specific environmental medium from which the sample was collected. Medium type differs from site type because one site type, such as…
+- [U.S. Geological Survey Method Categories API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-method-categories-api/) — Categorical standards for methods describing the associated data's appropriateness for an intended use.
+- [U.S. Geological Survey Method Citations API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-method-citations-api/) — Citation identifiers for water measurement methods.
+- [U.S. Geological Survey Methods API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-methods-api/) — Water measurement or water-quality analytical methods. Codes and descriptions defining a method for calculating or measuring the value of a water quality or…
+- [U.S. Geological Survey National Aquifer Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-national-aquifer-codes-api/) — National aquifers are the principal aquifers or aquifer systems in the United States, defined as regionally extensive aquifers or aquifer systems that have…
+- [U.S. Geological Survey Parameter Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-parameter-codes-api/) — Parameter codes are 5-digit codes and associated descriptions used to identify the constituent measured and the units of measure. Some parameter code…
+- [U.S. Geological Survey Peaks API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-peaks-api/) — Annual peak flow values are the maximum instantaneous streamflow values recorded at a particular site for the entire water year from October 1 to September…
+- [U.S. Geological Survey Reliability Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-reliability-codes-api/) — Code indicating the reliability of the data available for the site.
+- [U.S. Geological Survey Server API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-server-api/) — The United States Geological Survey (USGS) collects water data at monitoring locations across the United States using both automated sensors and manual data…
+- [U.S. Geological Survey Site Types API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-site-types-api/) — The hydrologic cycle setting or a man-made feature thought to affect the hydrologic conditions measured at a site. Primary and secondary site types…
+- [U.S. Geological Survey States API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-states-api/) — State name or territory. Includes U.S. states and foreign entities classified under FIPS as 'Principal Administrative Divisions'.
+- [U.S. Geological Survey Statistic Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-statistic-codes-api/) — Statistic codes.
+- [U.S. Geological Survey Time Series Metadata API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-time-series-metadata-api/) — Daily data and continuous measurements are grouped into time series, which represent a collection of observations of a single parameter, potentially…
+- [U.S. Geological Survey Time Series Revisions API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-time-series-revisions-api/) — Approved water data are considered published record, but on occasion changes or deletions (revisions) must be made to data after they are approved. Data…
+- [U.S. Geological Survey Time Zone Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-time-zone-codes-api/) — The ISO 8601 standard defines time zone offsets as a numerical value added to a local time to convert it to Coordinated Universal Time (UTC), either as…
+- [U.S. Geological Survey Topographic Codes API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-topographic-codes-api/) — The code that best describes the topographic setting in which the site is located. Topographic setting refers to the geomorphic features in the vicinity of…
+- [U.S. Geological Survey Collections API](https://apis.io/apis/u-s-geological-survey/u-s-geological-survey-collections-api/) — OGC API collections listing and metadata.
 
-- **Created:** 2024-11-14
-- **Modified:** 2026-05-03
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Earthquake Notifications, Feeds, and Web Services
+#### Agentic access (1)
 
-The USGS Earthquake Hazards Program provides real-time notifications and historical earthquake data through the FDSN Event Web Service. Search the ANSS ComCat earthquake catalog by geography, time, magnitude, and depth. Responses available in GeoJSON, CSV, KML, and QuakeML formats.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-**Human URL:** [https://earthquake.usgs.gov/earthquakes/feed/](https://earthquake.usgs.gov/earthquakes/feed/)
+- [U S Geological Survey Agentic Access](https://apis.io/agentic-access/u-s-geological-survey/u-s-geological-survey-agentic-access/)
 
-#### Tags:
+#### JSON Schema (18)
 
- - Earthquakes, Seismic, Geoscience
+The data models the API reads and writes.
 
-#### Properties
+- [CountResponse](https://apis.io/schemas/u-s-geological-survey/usgs-earthquake-api-count-response/)
+- [EarthquakeFeature](https://apis.io/schemas/u-s-geological-survey/usgs-earthquake-api-earthquake-feature/)
+- [EarthquakeFeatureCollection](https://apis.io/schemas/u-s-geological-survey/usgs-earthquake-api-earthquake-feature-collection/)
+- [EarthquakeGeometry](https://apis.io/schemas/u-s-geological-survey/usgs-earthquake-api-earthquake-geometry/)
+- [EarthquakeMetadata](https://apis.io/schemas/u-s-geological-survey/usgs-earthquake-api-earthquake-metadata/)
+- [EarthquakeProperties](https://apis.io/schemas/u-s-geological-survey/usgs-earthquake-api-earthquake-properties/)
+- [Collection](https://apis.io/schemas/u-s-geological-survey/usgs-water-data-api-collection/)
+- [CollectionsList](https://apis.io/schemas/u-s-geological-survey/usgs-water-data-api-collections-list/)
+- [ErrorResponse](https://apis.io/schemas/u-s-geological-survey/usgs-water-data-api-error-response/)
+- [FeatureCollection](https://apis.io/schemas/u-s-geological-survey/usgs-water-data-api-feature-collection/)
+- [LandingPage](https://apis.io/schemas/u-s-geological-survey/usgs-water-data-api-landing-page/)
+- [Link](https://apis.io/schemas/u-s-geological-survey/usgs-water-data-api-link/)
+- [MonitoringLocationCollection](https://apis.io/schemas/u-s-geological-survey/usgs-water-data-api-monitoring-location-collection/)
+- [MonitoringLocationFeature](https://apis.io/schemas/u-s-geological-survey/usgs-water-data-api-monitoring-location-feature/)
+- [MonitoringLocationProperties](https://apis.io/schemas/u-s-geological-survey/usgs-water-data-api-monitoring-location-properties/)
+- [TimeSeriesCollection](https://apis.io/schemas/u-s-geological-survey/usgs-water-data-api-time-series-collection/)
+- [TimeSeriesFeature](https://apis.io/schemas/u-s-geological-survey/usgs-water-data-api-time-series-feature/)
+- [TimeSeriesProperties](https://apis.io/schemas/u-s-geological-survey/usgs-water-data-api-time-series-properties/)
 
-- [Documentation](https://earthquake.usgs.gov/fdsnws/event/1/)
-- [GettingStarted](https://earthquake.usgs.gov/earthquakes/feed/)
-- [OpenAPI](openapi/usgs-earthquake-api-openapi.yaml)
-- [Earthquake Properties Schema](json-schema/usgs-earthquake-api-earthquake-properties-schema.json)
-- [JSON-LD](json-ld/usgs-earthquake-api-context.jsonld)
-- [Earthquake Properties Example](examples/usgs-earthquake-api-earthquake-properties-example.json)
+#### JSON Structure (18)
 
-### USGS Water Data APIs
+Data models expressed in JSON Structure.
 
-The USGS Water Data OGC APIs provide standardized access to USGS water monitoring data including continuous streamflow, daily values, groundwater levels, discrete water quality measurements, and monitoring location metadata. Implements OGC API Features standard with spatial and temporal filtering support.
+- [Usgs Earthquake Api Count Response Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-earthquake-api-count-response-structure/)
+- [Usgs Earthquake Api Earthquake Feature Collection Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-earthquake-api-earthquake-feature-collection-structure/)
+- [Usgs Earthquake Api Earthquake Feature Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-earthquake-api-earthquake-feature-structure/)
+- [Usgs Earthquake Api Earthquake Geometry Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-earthquake-api-earthquake-geometry-structure/)
+- [Usgs Earthquake Api Earthquake Metadata Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-earthquake-api-earthquake-metadata-structure/)
+- [Usgs Earthquake Api Earthquake Properties Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-earthquake-api-earthquake-properties-structure/)
+- [Usgs Water Data Api Collection Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-water-data-api-collection-structure/)
+- [Usgs Water Data Api Collections List Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-water-data-api-collections-list-structure/)
+- [Usgs Water Data Api Error Response Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-water-data-api-error-response-structure/)
+- [Usgs Water Data Api Feature Collection Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-water-data-api-feature-collection-structure/)
+- [Usgs Water Data Api Landing Page Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-water-data-api-landing-page-structure/)
+- [Usgs Water Data Api Link Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-water-data-api-link-structure/)
+- [Usgs Water Data Api Monitoring Location Collection Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-water-data-api-monitoring-location-collection-structure/)
+- [Usgs Water Data Api Monitoring Location Feature Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-water-data-api-monitoring-location-feature-structure/)
+- [Usgs Water Data Api Monitoring Location Properties Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-water-data-api-monitoring-location-properties-structure/)
+- [Usgs Water Data Api Time Series Collection Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-water-data-api-time-series-collection-structure/)
+- [Usgs Water Data Api Time Series Feature Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-water-data-api-time-series-feature-structure/)
+- [Usgs Water Data Api Time Series Properties Structure](https://apis.io/json-structure/u-s-geological-survey/usgs-water-data-api-time-series-properties-structure/)
 
-**Human URL:** [https://api.waterdata.usgs.gov/](https://api.waterdata.usgs.gov/)
+#### JSON-LD (2)
 
-#### Tags:
+Linked-data contexts for the provider's vocabulary.
 
- - Water, Hydrology, Streamflow, Groundwater
+- [Usgs Earthquake Api Context](https://apis.io/jsonld/u-s-geological-survey/usgs-earthquake-api-context/)
+- [Usgs Water Data Api Context](https://apis.io/jsonld/u-s-geological-survey/usgs-water-data-api-context/)
 
-#### Properties
+#### Vocabulary (1)
 
-- [Documentation](https://api.waterdata.usgs.gov/docs/)
-- [Authentication](https://api.waterdata.usgs.gov/signup/)
-- [OpenAPI](openapi/usgs-water-data-api-openapi.yaml)
-- [Monitoring Location Schema](json-schema/usgs-water-data-api-monitoring-location-properties-schema.json)
-- [Time Series Properties Schema](json-schema/usgs-water-data-api-time-series-properties-schema.json)
-- [JSON-LD](json-ld/usgs-water-data-api-context.jsonld)
-- [Monitoring Location Example](examples/usgs-water-data-api-monitoring-location-properties-example.json)
+The provider's domain terms, defined.
 
-### Asset Identifier Service (AIS)
+- [U S Geological Survey Vocabulary](https://apis.io/vocabularies/u-s-geological-survey/u-s-geological-survey-vocabulary/)
 
-The USGS Asset Identifier Service (AIS) allows USGS personnel to reserve, register, publish, and manage USGS persistent identifiers to make research more FAIR.
+#### Examples (18)
 
-**Human URL:** [https://www.usgs.gov/tools/asset-identifier-service-ais](https://www.usgs.gov/tools/asset-identifier-service-ais)
+Example requests and responses.
 
-#### Properties
+- [Usgs Earthquake Api Count Response Example](https://apis.io/examples/u-s-geological-survey/usgs-earthquake-api-count-response-example/)
+- [Usgs Earthquake Api Earthquake Feature Collection Example](https://apis.io/examples/u-s-geological-survey/usgs-earthquake-api-earthquake-feature-collection-example/)
+- [Usgs Earthquake Api Earthquake Feature Example](https://apis.io/examples/u-s-geological-survey/usgs-earthquake-api-earthquake-feature-example/)
+- [Usgs Earthquake Api Earthquake Geometry Example](https://apis.io/examples/u-s-geological-survey/usgs-earthquake-api-earthquake-geometry-example/)
+- [Usgs Earthquake Api Earthquake Metadata Example](https://apis.io/examples/u-s-geological-survey/usgs-earthquake-api-earthquake-metadata-example/)
+- [Usgs Earthquake Api Earthquake Properties Example](https://apis.io/examples/u-s-geological-survey/usgs-earthquake-api-earthquake-properties-example/)
+- [Usgs Water Data Api Collection Example](https://apis.io/examples/u-s-geological-survey/usgs-water-data-api-collection-example/)
+- [Usgs Water Data Api Collections List Example](https://apis.io/examples/u-s-geological-survey/usgs-water-data-api-collections-list-example/)
+- [Usgs Water Data Api Error Response Example](https://apis.io/examples/u-s-geological-survey/usgs-water-data-api-error-response-example/)
+- [Usgs Water Data Api Feature Collection Example](https://apis.io/examples/u-s-geological-survey/usgs-water-data-api-feature-collection-example/)
+- [Usgs Water Data Api Landing Page Example](https://apis.io/examples/u-s-geological-survey/usgs-water-data-api-landing-page-example/)
+- [Usgs Water Data Api Link Example](https://apis.io/examples/u-s-geological-survey/usgs-water-data-api-link-example/)
+- [Usgs Water Data Api Monitoring Location Collection Example](https://apis.io/examples/u-s-geological-survey/usgs-water-data-api-monitoring-location-collection-example/)
+- [Usgs Water Data Api Monitoring Location Feature Example](https://apis.io/examples/u-s-geological-survey/usgs-water-data-api-monitoring-location-feature-example/)
+- [Usgs Water Data Api Monitoring Location Properties Example](https://apis.io/examples/u-s-geological-survey/usgs-water-data-api-monitoring-location-properties-example/)
+- [Usgs Water Data Api Time Series Collection Example](https://apis.io/examples/u-s-geological-survey/usgs-water-data-api-time-series-collection-example/)
+- [Usgs Water Data Api Time Series Feature Example](https://apis.io/examples/u-s-geological-survey/usgs-water-data-api-time-series-feature-example/)
+- [Usgs Water Data Api Time Series Properties Example](https://apis.io/examples/u-s-geological-survey/usgs-water-data-api-time-series-properties-example/)
 
-- [Documentation](https://www.usgs.gov/tools/asset-identifier-service-ais)
+#### Collections (6)
 
-### Seismic Design Web Service
+Postman and Open Collection request collections.
 
-Web services for calculating parameter values from various seismic design reference documents for engineering and construction purposes.
+- [USGS Earthquake Notifications, Feeds, and Web Services Catalog API](https://apis.io/collections/u-s-geological-survey/open-u-s-geological-survey-catalog-api/)
+- [USGS Earthquake Notifications, Feeds, and Web Services Catalog Collections API](https://apis.io/collections/u-s-geological-survey/open-u-s-geological-survey-collections-api/)
+- [USGS Earthquake Notifications, Feeds, and Web Services Catalog Earthquakes API](https://apis.io/collections/u-s-geological-survey/open-u-s-geological-survey-earthquakes-api/)
+- [USGS Earthquake Notifications, Feeds, and Web Services Catalog Monitoring Locations API](https://apis.io/collections/u-s-geological-survey/open-u-s-geological-survey-monitoring-locations-api/)
+- [USGS Earthquake Notifications, Feeds, and Web Services Catalog Reference Data API](https://apis.io/collections/u-s-geological-survey/open-u-s-geological-survey-reference-data-api/)
+- [USGS Earthquake Notifications, Feeds, and Web Services Catalog Time Series Data API](https://apis.io/collections/u-s-geological-survey/open-u-s-geological-survey-time-series-data-api/)
 
-**Human URL:** [https://earthquake.usgs.gov/ws/designmaps/](https://earthquake.usgs.gov/ws/designmaps/)
+#### Governance rules (3)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://earthquake.usgs.gov/ws/designmaps/)
+- [U.S. Geological Survey — jsonschema rules](https://apis.io/rules/u-s-geological-survey/u-s-geological-survey-jsonschema-spectral-rules/)
+- [U.S. Geological Survey API Rules](https://apis.io/rules/u-s-geological-survey/u-s-geological-survey-spectral-rules/)
+- [U.S. Geological Survey — usgs rules](https://apis.io/rules/u-s-geological-survey/usgs-spectral-rules/)
 
-### ScienceBase
+#### Security (3)
 
-ScienceBase is a USGS Trusted Digital Repository providing permission-controlled and public access to scientific data products through a REST API.
+Authentication, trust centre, and vulnerability disclosure.
 
-**Human URL:** [https://www.usgs.gov/tools/sciencebase](https://www.usgs.gov/tools/sciencebase)
+- [U S Geological Survey Authentication](https://apis.io/security/u-s-geological-survey/u-s-geological-survey-authentication/)
+- [U S Geological Survey Domain Security](https://apis.io/security/u-s-geological-survey/u-s-geological-survey-domain-security/)
+- [U S Geological Survey Vulnerability Disclosure](https://apis.io/security/u-s-geological-survey/u-s-geological-survey-vulnerability-disclosure/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://www.usgs.gov/tools/sciencebase)
-- [ScienceBase API Documentation](https://www.usgs.gov/sciencebase-instructions-and-documentation/api-and-web-services)
+Published plans, tiers and prices.
 
-### StreamStats Web Services
+- [U S Geological Survey Plans Pricing](https://apis.io/plans/u-s-geological-survey/u-s-geological-survey-plans-pricing/)
 
-HTTP-accessible hydrological analysis services for drainage area delineation, peak flow estimation, and basin characteristic computation.
+#### Rate limits (1)
 
-**Human URL:** [https://www.usgs.gov/tools/streamstats-web-services](https://www.usgs.gov/tools/streamstats-web-services)
+Published request limits.
 
-#### Properties
+- [U S Geological Survey Rate Limits](https://apis.io/rate-limits/u-s-geological-survey/u-s-geological-survey-rate-limits/)
 
-- [Documentation](https://www.usgs.gov/tools/streamstats-web-services)
+#### FinOps (1)
 
-### USGS Water Services (Legacy)
+What the API costs to run, by operation.
 
-The original USGS NWIS water services API providing streamflow, groundwater, and water quality data via REST protocol.
+- [U S Geological Survey Finops](https://apis.io/finops/u-s-geological-survey/u-s-geological-survey-finops/)
 
-**Human URL:** [https://www.usgs.gov/tools/usgs-water-services](https://www.usgs.gov/tools/usgs-water-services)
+## Where to find this API
 
-#### Properties
-
-- [Documentation](https://nwis.waterservices.usgs.gov/)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.usgs.gov/)
-- [GitHubOrganization](https://github.com/usgs)
 - [Documentation](https://www.usgs.gov/products/web-tools/apis)
-- [SpectralRules](rules/usgs-spectral-rules.yml)
-- [Vocabulary](vocabulary/u-s-geological-survey-vocabulary.yaml)
-- [Geoscience Data Access Capability](capabilities/geoscience-data-access.yaml)
+- [Blog](https://www.usgs.gov/news/news-releases/all-news-releases)
+- [GitHub](https://github.com/usgs)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Earthquake Catalog Query | Search the USGS ANSS ComCat earthquake catalog by geography, time, magnitude, depth, and event type with 20,000 event limit per query. |
-| Real-Time Earthquake Data | Access near real-time earthquake data updated within minutes of events occurring anywhere in the world. |
-| Water Monitoring Locations | Query USGS stream gages, groundwater wells, and other water quality monitoring stations by state, watershed, or geographic area. |
-| Water Data Time Series | Retrieve continuous and daily water data including streamflow, stage, temperature, and water quality parameters. |
-| OGC API Compliance | USGS Water Data APIs implement OGC API Features standard supporting CQL2 filtering, spatial queries, and standardized output formats. |
-| GeoJSON Output | All spatial data returned in GeoJSON format compatible with mapping libraries and geospatial analysis tools. |
+**Kin Score 37.2** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 64.5 |
+| Contract governance | 45.5 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 5.3 |
 
-| Name | Description |
-|------|-------------|
-| Earthquake Hazard Monitoring | Emergency managers and scientists monitor real-time earthquake activity for hazard assessment and emergency response planning. |
-| Flood Forecasting | Hydrologists use USGS streamflow data for flood prediction, water supply forecasting, and reservoir management. |
-| Groundwater Management | Water managers track groundwater level trends for sustainable aquifer management and drought assessment. |
-| Environmental Research | Researchers use USGS geological and water data for environmental impact assessments and climate change studies. |
-| Engineering Design | Civil engineers use USGS water data and seismic design services for infrastructure planning and construction. |
+**Agent readiness 26.2** — agent-aware
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| USGS GitHub Organization | Open-source tools including libcomcat, rcomcat, and other clients for accessing USGS earthquake and water data. |
-| USGS Water Data for the Nation | The flagship USGS water data portal providing maps and tools built on the NWIS water services API. |
-| National Water Information System (NWIS) | Legacy USGS water data system providing the underlying data for Water Data APIs with millions of site records. |
-| FDSN Standards | USGS earthquake API implements FDSN web service specifications for international seismograph network data exchange. |
+**Regulatory alignment 22.5** — Government & Public Sector
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/u-s-geological-survey/](https://apis.io/providers/u-s-geological-survey/).
 
-### OpenAPI
+## How this profile is made
 
-- [usgs-earthquake-api-openapi.yaml](openapi/usgs-earthquake-api-openapi.yaml)
-- [usgs-water-data-api-openapi.yaml](openapi/usgs-water-data-api-openapi.yaml)
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-### JSON Schema
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for U.S. Geological Survey: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-- [usgs-earthquake-api-earthquake-feature-collection-schema.json](json-schema/usgs-earthquake-api-earthquake-feature-collection-schema.json)
-- [usgs-earthquake-api-earthquake-properties-schema.json](json-schema/usgs-earthquake-api-earthquake-properties-schema.json)
-- [usgs-earthquake-api-earthquake-geometry-schema.json](json-schema/usgs-earthquake-api-earthquake-geometry-schema.json)
-- [usgs-water-data-api-monitoring-location-properties-schema.json](json-schema/usgs-water-data-api-monitoring-location-properties-schema.json)
-- [usgs-water-data-api-time-series-properties-schema.json](json-schema/usgs-water-data-api-time-series-properties-schema.json)
+## Open an issue
 
-### JSON Structure
-
-- [usgs-earthquake-api-earthquake-properties-structure.json](json-structure/usgs-earthquake-api-earthquake-properties-structure.json)
-- [usgs-water-data-api-monitoring-location-properties-structure.json](json-structure/usgs-water-data-api-monitoring-location-properties-structure.json)
-- [usgs-water-data-api-time-series-properties-structure.json](json-structure/usgs-water-data-api-time-series-properties-structure.json)
-
-### JSON-LD
-
-- [usgs-earthquake-api-context.jsonld](json-ld/usgs-earthquake-api-context.jsonld)
-- [usgs-water-data-api-context.jsonld](json-ld/usgs-water-data-api-context.jsonld)
-
-### Examples
-
-- [usgs-earthquake-api-earthquake-properties-example.json](examples/usgs-earthquake-api-earthquake-properties-example.json)
-- [usgs-water-data-api-monitoring-location-properties-example.json](examples/usgs-water-data-api-monitoring-location-properties-example.json)
-- [usgs-water-data-api-time-series-properties-example.json](examples/usgs-water-data-api-time-series-properties-example.json)
-
-## Capabilities
-
-### Shared Per-API Definitions
-
-- [USGS Earthquake API](capabilities/shared/usgs-earthquake-api.yaml) — 3 operations for earthquake event querying and catalog discovery
-- [USGS Water Data API](capabilities/shared/usgs-water-data-api.yaml) — 3 operations for water monitoring location and time series access
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Geoscience Data Access](capabilities/geoscience-data-access.yaml) | USGS Earthquake API, USGS Water Data API | 7 | Geoscientist, Emergency Manager, Hydrologist |
-
-## Vocabulary
-
-- [U.S. Geological Survey Vocabulary](vocabulary/u-s-geological-survey-vocabulary.yaml) — Unified taxonomy mapping 4 resources, 4 actions, 1 workflow, and 4 personas across earthquake monitoring and water resources domains
-
-## Rules
-
-- [USGS Spectral Rules](rules/usgs-spectral-rules.yml) — 32 rules across 13 categories enforcing USGS API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/u-s-geological-survey/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
